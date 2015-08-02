@@ -24,8 +24,10 @@ class Api extends REST_Controller {
 	function __construct()
 	 {
 	   parent::__construct();
-	   $this->load->model('authenticate','',TRUE);
-	   $this->load->model('news','',TRUE);
+	   $this->load->model('content','',TRUE);
+	   $this->load->model('user','',TRUE);
+	   $this->load->model('device','',TRUE);
+	   //$this->load->model('news','',TRUE);
 	 }
 
 	public function index()
@@ -33,48 +35,109 @@ class Api extends REST_Controller {
 		$this->load->view('welcome_message');
 	}
 
-	function checkKey_post()
+	function login_post()
     {
     	$data = array();
 
-    	$key = $this->post('key');
-    	if(!$key)
-        {
-            $this->response(NULL, 400);
-        }
-    	$result = $this->authenticate->key_exists($key);
+    	$username = $this->post('username');
+    	$password = $this->post('password');
+        $device_id = $this->post('device_id');
+        $device_type = $this->post('device_type');
 
-       if(is_array($result))
-	   {
-	    	$data["header"]["error"] = "0";
-        	$data["header"]["message"] = "Key exists"; 
-	   }
-	   else
-	   {
-			$data["header"]["error"] = "1";
-        	$data["header"]["message"] = "Key not exists.";
-	   }
-       
-       $this->response($data);
+        if(!$username || !$password)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Username or password is incorrect";
+            $this->response($data, 400);
+        }
+        else
+        {
+
+            $result = $this->user->login($username, $password, 0);
+
+            if(is_array($result))
+            {
+                $device = $this->device->get_user_device($result[0]->user_id);
+                if(count($device) > 0)
+                {
+                    //update device table
+                    $device_data = array('uid'=>$device_id, 'type'=>$device_type);
+                    $this->device->edit_device($result[0]->user_id, $device_data);
+                }
+                else
+                {
+                    if(isset($device_type) && isset($device_id))
+                    {
+
+                        //insert device table
+                        $device_data = array('user_id'=>$result[0]->user_id,'uid'=>$device_id, 'type'=>$device_type);
+                        $this->device->insert_device($device_data);
+                    }
+                }
+                $data["header"]["error"] = "0";
+                $data["header"]["message"] = "Login successfully";
+            }
+            else
+            {
+                $data["header"]["error"] = "1";
+                $data["header"]["message"] = "Username or password is incorrect";
+            }
+
+            $this->response($data);
+        }
     }
 
-    function getNews_get()
+    function forgetPassword_post()
     {
     	$data = array();
 
-    	$result = $this->news->get_news();
-    	
-       if(count($result) > 0)
-	   {
-	    	$data["header"]["error"] = "0";
-        	$data["body"] = $result; 
-	   }
-	   else
-	   {
-			$data["header"]["error"] = "1";
-        	$data["header"]["message"] = "No news found.";
-	   }
-       
-       $this->response($data);
+        $username = $this->post('username');
+
+        if(!$username)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide username";
+            $this->response($data,400);
+        }
+        else
+        {
+            //$result = $this->news->get_news();
+
+//            if(count($result) > 0)
+//            {
+//                $data["header"]["error"] = "0";
+//                $data["body"] = $result;
+//            }
+//            else
+//            {
+//                $data["header"]["error"] = "1";
+//                $data["header"]["message"] = "No news found.";
+//            }
+            $data["header"]["error"] = "0";
+            $data["header"]["message"] = "Admin will contact you shortly.";
+
+            $this->response($data);
+        }
+
+
+    }
+
+    function getContent_post()
+    {
+        $type = $this->post('type');
+
+        $result = $this->content->get_content_by_type($type);
+
+        if(count($result) > 0)
+        {
+            $data["header"]["error"] = "0";
+            $data["body"] = $result;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
     }
 }

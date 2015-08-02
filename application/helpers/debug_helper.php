@@ -179,7 +179,7 @@ function xml_to_array($deXml,$main_heading = '') {
   function get_pagination_config($url, $total, $pagination_limit, $uri_segment)
   {
       $config = array();
-      $config["base_url"] = base_url() . "index.php/welcome/$url";
+      $config["base_url"] = base_url() . "index.php/admin/$url";
       $config["total_rows"] = $total;
       $config["per_page"] = $pagination_limit;
       $config["uri_segment"] = $uri_segment;

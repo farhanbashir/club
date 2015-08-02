@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Dashboard extends CI_Controller {
 
     /**
      * Index Page for this controller.
@@ -33,21 +33,22 @@ class Admin extends CI_Controller {
 
     public function index() {
         $data = array();
-        $data['total_contents'] = $this->content->get_total_contents();
-        $data['total_pages'] = $this->page->get_total_pages();
-        $data['latest_five_contents'] = $this->content->get_latest_five_contents();
-        $data['latest_five_pages'] = $this->page->get_latest_five_pages();
+        $data['total_events'] = $this->content->get_total_content_by_type('events');
+        $data['total_courses'] = $this->content->get_total_content_by_type('courses');
+        $data['latest_five_events'] = $this->content->get_latest_five_by_type('events');
+        $data['latest_five_courses'] = $this->content->get_latest_five_by_type('courses');
 
         $content = $this->load->view('content.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
-    public function pages() {
+    public function events() {
+        $type = 'events';
         $data = array();
         $this->load->library("pagination");
-        $total_rows = $this->page->get_total_pages();
+        $total_rows = $this->content->get_total_content_by_type($type);
 
-        $pagination_config = get_pagination_config('keyes', $total_rows, $this->config->item('pagination_limit'), 3);
+        $pagination_config = get_pagination_config($type, $total_rows, $this->config->item('pagination_limit'), 3);
 
         $this->pagination->initialize($pagination_config);
 
@@ -55,30 +56,12 @@ class Admin extends CI_Controller {
 
         $data["links"] = $this->pagination->create_links();
 
-        $pages = $this->page->get_pages($page);
+        $pages = $this->content->get_content_by_type($type, $page);
         $data['pages'] = $pages;
         $content = $this->load->view('pages.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
-    public function news() {
-        $data = array();
-        $this->load->library("pagination");
-        $total_rows = $this->news->get_total_news();
-
-        $pagination_config = get_pagination_config('keyes', $total_rows, $this->config->item('pagination_limit'), 3);
-
-        $this->pagination->initialize($pagination_config);
-
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-        $data["links"] = $this->pagination->create_links();
-
-        $news = $this->news->get_news($page);
-        $data['news'] = $news;
-        $content = $this->load->view('news.php', $data, true);
-        $this->load->view('welcome_message', array('content' => $content));
-    }
 
 
     /* public function parents()

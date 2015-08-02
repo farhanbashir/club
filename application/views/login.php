@@ -20,7 +20,7 @@
 
         <div class="form-box" id="login-box">
             <div class="header">Sign In</div>
-            <form action="<?php echo base_url();?>index.php/login/check_database" method="post">
+            <form action="<?php echo base_url();?>index.php/auth/check_database" method="post">
                 <div class="body bg-gray">
                     <?php
                     if(isset($error))

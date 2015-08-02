@@ -17,10 +17,10 @@
             <div class="small-box bg-aqua">
                 <div class="inner">
                     <h3>
-                        <?php echo $total_contents;?>
+                        <?php echo $total_courses;?>
                     </h3>
                     <p>
-                        Total Contents
+                        Total Courses
                     </p>
                 </div>
                 <div class="icon">
@@ -36,10 +36,10 @@
             <div class="small-box bg-yellow">
                 <div class="inner">
                     <h3>
-                        <?php echo $total_pages;?>
+                        <?php echo $total_events;?>
                     </h3>
                     <p>
-                        Total Pages
+                        Total Events
                     </p>
                 </div>
                 <div class="icon">
@@ -55,23 +55,23 @@
                         <div class="col-md-6">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Latest Contents</h3>
+                                    <h3 class="box-title">Latest Events</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body no-padding">
                                     <table class="table table-condensed">
                                         <tbody><tr>
                                             <th style="width: 10px">#</th>
-                                            <th>Key</th>
+                                            <th>Title</th>
                                         </tr>
                                         <?php
                                         $i=0;
-                                        foreach($latest_five_contents as $content)
+                                        foreach($latest_five_events as $event)
                                         {
                                             $i++;
                                         ?>
                                         <tr>
                                             <td><?php echo $i;?></td>
-                                            <td><?php echo $content['title'];?></td>
+                                            <td><?php echo $event['title'];?></td>
                                         </tr>
                                         <?php
                                         }
@@ -85,27 +85,27 @@
                         <div class="col-md-6">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Latest Pages</h3>
+                                    <h3 class="box-title">Latest Courses</h3>
 
                                 </div><!-- /.box-header -->
                                 <div class="box-body no-padding">
                                     <table class="table">
                                         <tbody><tr>
                                             <th style="width: 10px">#</th>
-                                            <th>Key</th>
-                                            <th>Content</th>
+                                            <th>Title</th>
+                                            <th>Description</th>
                                             <!-- <th style="width: 40px">View</th> -->
                                         </tr>
                                         <?php
                                         $i=0;
-                                        foreach($latest_five_pages as $page)
+                                        foreach($latest_five_courses as $course)
                                         {
                                             $i++;
                                         ?>
                                         <tr>
                                             <td><?php echo $i;?></td>
-                                            <td><?php echo $page['key'];?></td>
-                                            <td><?php echo $page['content'];?></td>
+                                            <td><?php echo $course['title'];?></td>
+                                            <td><?php echo $course['description'];?></td>
                                         </tr>
                                         <?php
                                         }

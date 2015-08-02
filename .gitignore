@@ -1,1 +1,12 @@
 /nbproject/private/
+readme.rst
+.idea/workspace.xml
+composer.json
+.idea/vcs.xml
+.idea/scopes/scope_settings.xml
+.idea/modules.xml
+*.xml
+.idea/club.iml
+.idea/.name
+contributing.md
+license.txt

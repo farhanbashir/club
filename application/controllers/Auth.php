@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Auth extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,14 +21,14 @@ class Login extends CI_Controller {
 	function __construct()
 	 {
 	   parent::__construct();
-	   //$this->load->model('user','',TRUE);
+	   $this->load->model('user','',TRUE);
 	 }
 
 	public function index()
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			redirect('admin', 'refresh');
+			redirect(base_url()."index.php/admin/admin", 'refresh');
 		}
 		else
 		{
@@ -44,11 +44,11 @@ class Login extends CI_Controller {
 	   $password = $this->input->post('password');
 
 	   //query the database
-	   //$result = $this->user->login($username, $password);
+	   $result = $this->user->login($username, $password, 1);
 
        //temporary work for admin
-	   if($username == "admin@club.com" && $password == "clubadmin")
-	   //if(is_array($result))
+	   //if($username == "admin@club.com" && $password == "clubadmin")
+	   if(is_array($result))
 	   {
 	     $sess_array = array();
            $this->session->set_userdata('logged_in', array('id' => 1,'username' => $username));
@@ -60,7 +60,7 @@ class Login extends CI_Controller {
 //	       );
 //	       $this->session->set_userdata('logged_in', $sess_array);
 //	     }
-	     redirect(base_url()."index.php/admin");
+	     redirect(base_url()."index.php/admin/dashboard");
 	   }
 	   else
 	   {
@@ -69,6 +69,12 @@ class Login extends CI_Controller {
 			return false;
 	   }
 	 }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect(base_url());
+    }
 
 
 }

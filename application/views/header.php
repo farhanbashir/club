@@ -2,7 +2,7 @@
     <a href="<?php echo base_url();?>" class="logo">
         <!-- Add the class icon to your logo image or logo icon to add the margining -->
 
-        <img src="<?php echo asset_img('logo.png');?>" class="logo icon" alt="User Image" />
+        <img src="<?php echo asset_img('logo.jpg');?>" class="logo icon" alt="User Image" />
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -52,7 +52,7 @@
                             </div>
 -->
                             <div class="pull-right">
-                                <a href="<?php echo base_url();?>/index.php/welcome/logout" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="<?php echo base_url();?>/index.php/auth/logout" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>
