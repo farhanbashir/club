@@ -15,8 +15,13 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
         <li class="active">
-            <a href="<?php echo site_url('admin/keys') ?>">
-                <i class="fa fa-dashboard"></i> <span>Keys</span>
+            <a href="<?php echo site_url('admin/pages') ?>">
+                <i class="fa fa-dashboard"></i> <span>Pages</span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="<?php echo site_url('event/all') ?>">
+                <i class="fa fa-dashboard"></i> <span>Events</span>
             </a>
         </li>
         <li class="active">

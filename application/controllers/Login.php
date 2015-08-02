@@ -47,7 +47,7 @@ class Login extends CI_Controller {
 	   //$result = $this->user->login($username, $password);
 
        //temporary work for admin
-	   if($username == "admin@alef.com" && $password == "alefadmin")
+	   if($username == "admin@club.com" && $password == "clubadmin")
 	   //if(is_array($result))
 	   {
 	     $sess_array = array();

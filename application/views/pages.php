@@ -1,6 +1,6 @@
 <section class="content-header">
     <h1>
-        Keys
+        Pages
     </h1>
 </section>
 
@@ -20,12 +20,12 @@
                             <!-- <th>Action</th> -->
                         </tr>
                         <?php
-                        foreach($keys as $key)
+                        foreach($pages as $page)
                         {
                         ?>
                         <tr>
-                            <td><?php echo $key['id'];?></td>
-                            <td><?php echo $key['key'];?></td>
+                            <td><?php echo $page['page_id'];?></td>
+                            <td><?php echo $page['key'];?></td>
                             <!-- <td>
                                 <a href="<?php echo base_url();?>/index.php/welcome/feed_detail/<?php echo $feed['feed_id'];?>">View</a>
                                 &nbsp;&nbsp;&nbsp;

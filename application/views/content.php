@@ -17,10 +17,10 @@
             <div class="small-box bg-aqua">
                 <div class="inner">
                     <h3>
-                        <?php echo $total_keys;?>
+                        <?php echo $total_contents;?>
                     </h3>
                     <p>
-                        Total Keys
+                        Total Contents
                     </p>
                 </div>
                 <div class="icon">
@@ -36,10 +36,10 @@
             <div class="small-box bg-yellow">
                 <div class="inner">
                     <h3>
-                        <?php echo $total_news;?>
+                        <?php echo $total_pages;?>
                     </h3>
                     <p>
-                        Total News
+                        Total Pages
                     </p>
                 </div>
                 <div class="icon">
@@ -55,7 +55,7 @@
                         <div class="col-md-6">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Latest Keys</h3>
+                                    <h3 class="box-title">Latest Contents</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body no-padding">
                                     <table class="table table-condensed">
@@ -65,13 +65,13 @@
                                         </tr>
                                         <?php
                                         $i=0;
-                                        foreach($latest_five_keys as $key)
+                                        foreach($latest_five_contents as $content)
                                         {
                                             $i++;
                                         ?>
                                         <tr>
                                             <td><?php echo $i;?></td>
-                                            <td><?php echo $key['key'];?></td>
+                                            <td><?php echo $content['title'];?></td>
                                         </tr>
                                         <?php
                                         }
@@ -85,35 +85,27 @@
                         <div class="col-md-6">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Latest News</h3>
+                                    <h3 class="box-title">Latest Pages</h3>
 
                                 </div><!-- /.box-header -->
                                 <div class="box-body no-padding">
                                     <table class="table">
                                         <tbody><tr>
                                             <th style="width: 10px">#</th>
-                                            <th>Title</th>
-                                            <th>Intro</th>
-                                            <th>Detail</th>
-                                            <th>Date</th>
+                                            <th>Key</th>
+                                            <th>Content</th>
                                             <!-- <th style="width: 40px">View</th> -->
                                         </tr>
                                         <?php
                                         $i=0;
-                                        foreach($latest_five_news as $news)
+                                        foreach($latest_five_pages as $page)
                                         {
                                             $i++;
                                         ?>
                                         <tr>
                                             <td><?php echo $i;?></td>
-                                            <td><?php echo $news['title'];?></td>
-                                            <td><?php echo $news['intro'];?></td>
-                                            <td>
-                                                <?php echo $news['detail'];?>
-                                            </td>
-                                            <td>
-                                                <?php echo date("F j,Y",strtotime($news['date']));?>
-                                            </td>
+                                            <td><?php echo $page['key'];?></td>
+                                            <td><?php echo $page['content'];?></td>
                                         </tr>
                                         <?php
                                         }
