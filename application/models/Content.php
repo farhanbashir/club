@@ -1,15 +1,13 @@
 <?php
-Class Content extends CI_Model
-{
 
- function get_total_contents()
- {
-     return $this->db->count_all('content');
- }
+Class Content extends CI_Model {
 
- function get_latest_five_by_type($type)
- {
-     $sql = "select * from content
+    function get_total_contents() {
+        return $this->db->count_all('content');
+    }
+
+    function get_latest_five_by_type($type) {
+        $sql = "select * from content
             WHERE content_type_id =
             (
                     SELECT content_type_id FROM content_type
@@ -17,11 +15,11 @@ Class Content extends CI_Model
                     order by content_id desc limit 5
             )";
 
-     $query = $this->db->query($sql);
-     $result = $query->result_array();
-     $query->free_result();
-     return $result;
- }
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
 
     function get_total_content_by_type($type) {
 
@@ -37,28 +35,25 @@ Class Content extends CI_Model
         return $result[0]['count'];
     }
 
-
-function get_content_by_type($type, $page = 0)
-{
-    $sql = "select * from content
+    function get_content_by_type($type, $page = 0) {
+        $sql = "select * from content
             WHERE content_type_id =
             (
                     SELECT content_type_id FROM content_type
                     WHERE content = '$type'
             )";
 
-    if($page >= 0)
-    {
-        $start =  $page;
-        $limit = $this->config->item('pagination_limit');
-        $sql .=" limit $start,$limit";
-    }
+        if ($page >= 0) {
+            $start = $page;
+            $limit = $this->config->item('pagination_limit');
+            $sql .=" limit $start,$limit";
+        }
 
-    $query = $this->db->query($sql);
-    $result = $query->result_array();
-    $query->free_result();
-    return $result;
-}
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
 
     public function get_content_by_id($type, $id) {
         $sql = "SELECT * FROM content
@@ -79,17 +74,35 @@ function get_content_by_type($type, $page = 0)
         return $id;
     }
 
- function get_contents($page)
- {
-    $start =  $page;
-    $limit = $this->config->item('pagination_limit');
+    function get_contents($page) {
+        $start = $page;
+        $limit = $this->config->item('pagination_limit');
 
-     $sql = "select * from content limit $start,$limit" ;
-     $query = $this->db->query($sql);
-     $result = $query->result_array();
-     $query->free_result();
-     return $result;
- }
+        $sql = "select * from content limit $start,$limit";
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
+
+    public function add_content($data, $type) {
+        $this->db->select('content_type_id');
+        $this->db->from('content_type');
+        $this->db->where('content', $type);
+        $query = $this->db->get();
+        $result = $query->result_array();
+        $query->free_result();
+        $content_id = $result[0]['content_type_id'];
+        $data['content_type_id'] = $content_id;
+
+        $this->db->insert('content', $data);
+        return $this->db->insert_id();
+    }
+
+    public function delete_content($id) {
+        return $this->db->delete('content', array('content_id' => $id));
+    }
 
 }
+
 ?>

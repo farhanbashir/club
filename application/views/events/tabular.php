@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <a href="<?php echo site_url('event/addnew') ?>"><button class="btn btn-info pull-right" style="margin:10px ">Add New</button></a>
+            <a href="<?php echo site_url('admin/events/addnew') ?>"><button class="btn btn-info pull-right" style="margin:10px ">Add New</button></a>
         </div>
         
         <div class="col-xs-12">

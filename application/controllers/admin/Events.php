@@ -90,15 +90,17 @@ class Events extends CI_Controller {
             'title' => $_POST['event']['title'],
             'date' => $_POST['event']['date'],
             'description' => $_POST['event']['description'],
-            'link' => $_POST['event']['link']
+//            'link' => $_POST['event']['link']
         );
 
-        $event_id = $this->eventModel->add_event($data);
+        $event_id = $this->content->add_content($data, $this->type);
         $this->view($event_id);
     }
+    
+    
 
     public function delete($id) {
-        $flag = $this->eventModel->delete_event($id);
+        $flag = $this->content->delete_content($id);
 
         redirect(site_url('admin/'.$this->type.'/index'));
     }
