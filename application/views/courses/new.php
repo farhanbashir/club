@@ -41,7 +41,7 @@
                             <div class="form-group">
                                 <div style="background: #f7f8fa;padding: 50px;">
                                     <!-- filer 3 -->
-                                    <input type="file" multiple="multiple" name="files[]" id="input2">
+                                    <input type="file" multiple="multiple" name="course[]" id="input2">
 
                                 </div>
 
