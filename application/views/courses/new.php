@@ -32,11 +32,22 @@
                                 <textarea class="form-control" id="course_short_description" name="course[description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
-<!--                            <div class="form-group">
-                                <label for="course_link">Read More Link</label>
-                                <input type="url" class="form-control" name="course[link]" placeholder="Enter ..." value="">
-                            </div>-->
+                            <!--                            <div class="form-group">
+                                                            <label for="course_link">Read More Link</label>
+                                                            <input type="url" class="form-control" name="course[link]" placeholder="Enter ..." value="">
+                                                        </div>-->
 
+
+                            <div class="form-group">
+                                <div style="background: #f7f8fa;padding: 50px;">
+                                    <!-- filer 3 -->
+                                    <input type="file" multiple="multiple" name="files[]" id="input2">
+
+                                </div>
+
+                                <!--                                <label for="images">Image</label>
+                                                                <input name="Abc" type="file" id="images">-->
+                            </div> 
                         </div><!-- /.box-body -->
 
                         <div class="box-footer">
