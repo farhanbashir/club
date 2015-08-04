@@ -1,6 +1,6 @@
 <section class="content-header">
     <h1>
-        Events
+        Courses
     </h1>
 
 </section>
@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <a href="<?php echo site_url('event/addnew') ?>"><button class="btn btn-info pull-right" style="margin:10px ">Add New</button></a>
+            <a href="<?php echo site_url('admin/courses/addnew') ?>"><button class="btn btn-info pull-right" style="margin:10px ">Add New</button></a>
         </div>
         
         <div class="col-xs-12">
@@ -31,19 +31,19 @@
                             <th>Action</th>
                         </tr>
                         <?php
-                        foreach ($events as $event) {
+                        foreach ($courses as $course) {
                             ?>
                             <tr>
-                                <td><?php echo $event['content_id']; ?></td>
-                                <td><?php echo $event['title']; ?></td>
-                                <td><?php echo $event['date']; ?></td>
-                                <td><?php echo $event['description']; ?></td>
+                                <td><?php echo $course['content_id']; ?></td>
+                                <td><?php echo $course['title']; ?></td>
+                                <td><?php echo $course['date']; ?></td>
+                                <td><?php echo $course['description']; ?></td>
                                 <td>
-                                    <a href="<?php echo base_url(); ?>index.php/admin/events/view/<?php echo $event['content_id']; ?>">View</a>
+                                    <a href="<?php echo base_url(); ?>index.php/admin/courses/view/<?php echo $course['content_id']; ?>">View</a>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a href="<?php echo base_url(); ?>index.php/admin/events/edit/<?php echo $event['content_id']; ?>">Edit</a>
+                                    <a href="<?php echo base_url(); ?>index.php/admin/courses/edit/<?php echo $course['content_id']; ?>">Edit</a>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a href="<?php echo base_url(); ?>index.php/admin/events/delete/<?php echo $event['content_id']; ?>">Delete</a>
+                                    <a href="<?php echo base_url(); ?>index.php/admin/courses/delete/<?php echo $course['content_id']; ?>">Delete</a>
                                 </td> 
                             </tr>
                             <?php

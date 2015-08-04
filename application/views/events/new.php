@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <p class="lead">CREATE EVENT</p>
+            <p class="lead">Create Event</p>
 
             <div class="table-responsive">
 

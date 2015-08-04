@@ -3,25 +3,25 @@
     <div class="row">
         <div class="col-xs-12">
 
-            <p class="lead col-xs-6">Event # <?php echo ucfirst($event['content_id']); ?></p>
+            <p class="lead col-xs-6">Course # <?php echo ucfirst($course['content_id']); ?></p>
 
            
-                <a href="<?php echo site_url('admin/events/delete/'.$event['content_id']) ?>"><button class="btn btn-danger pull-right" style="margin:10px ">Delete</button></a>
+                <a href="<?php echo site_url('admin/courses/delete/'.$course['content_id']) ?>"><button class="btn btn-danger pull-right" style="margin:10px ">Delete</button></a>
            
             <div class="table-responsive">
                 <table class="table">
                     <tbody>
                         <tr>
                             <th>Title:</th>
-                            <td><?php echo $event['title']; ?></td>
+                            <td><?php echo $course['title']; ?></td>
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <td><?php echo $event['date']; ?></td>
+                            <td><?php echo $course['date']; ?></td>
                         </tr>
                         <tr>
                             <th>Short Description</th>
-                            <td><?php echo $event['description']; ?></td>
+                            <td><?php echo $course['description']; ?></td>
                         </tr>
 
                     </tbody></table>

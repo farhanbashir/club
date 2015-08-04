@@ -26,7 +26,7 @@ class Courses extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('content', '', TRUE);
-
+        
         if (!$this->session->userdata('logged_in')) {
             redirect(base_url());
         }
@@ -45,22 +45,22 @@ class Courses extends CI_Controller {
 
         $data["links"] = $this->pagination->create_links();
 
-        $events = $this->content->get_content_by_type($this->type , $page);
-        $data['events'] = $events;
+        $courses = $this->content->get_content_by_type($this->type , $page);
+        $data['courses'] = $courses;
         $content = $this->load->view($this->type.'/tabular.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
     public function view($id) {
-        $event = $this->content->get_content_by_id($this->type, $id);
-        $data['event'] = $event[0];
+        $course = $this->content->get_content_by_id($this->type, $id);
+        $data['course'] = $course[0];
         $content = $this->load->view($this->type.'/view.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
     public function edit($id) {
-        $event = $this->content->get_content_by_id($this->type, $id);
-        $data['event'] = $event[0];
+        $course = $this->content->get_content_by_id($this->type, $id);
+        $data['course'] = $course[0];
         $content = $this->load->view($this->type.'/edit.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
@@ -68,15 +68,15 @@ class Courses extends CI_Controller {
     public function update() {
 
         $data = array(
-            'title' => $_POST['event']['title'],
-            'date' => $_POST['event']['date'],
-            'description' => $_POST['event']['description'],
-            //'link' => $_POST['event']['link']
+            'title' => $_POST['course']['title'],
+            'date' => $_POST['course']['date'],
+            'description' => $_POST['course']['description'],
+            //'link' => $_POST['course']['link']
         );
 
-        $event_id = $this->content->update_content_by_id($_POST['event']['id'], $data);
+        $course_id = $this->content->update_content_by_id($_POST['course']['id'], $data);
 
-        $this->edit($event_id);
+        $this->edit($course_id);
     }
 
     public function addnew() {
@@ -87,18 +87,20 @@ class Courses extends CI_Controller {
     public function submit() {
 
         $data = array(
-            'title' => $_POST['event']['title'],
-            'date' => $_POST['event']['date'],
-            'description' => $_POST['event']['description'],
-            'link' => $_POST['event']['link']
+            'title' => $_POST['course']['title'],
+            'date' => $_POST['course']['date'],
+            'description' => $_POST['course']['description'],
+//            'link' => $_POST['course']['link']
         );
 
-        $event_id = $this->eventModel->add_event($data);
-        $this->view($event_id);
+        $course_id = $this->content->add_content($data, $this->type);
+        $this->view($course_id);
     }
+    
+    
 
     public function delete($id) {
-        $flag = $this->eventModel->delete_event($id);
+        $flag = $this->content->delete_content($id);
 
         redirect(site_url('admin/'.$this->type.'/index'));
     }

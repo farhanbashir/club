@@ -3,15 +3,15 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <p class="lead">CREATE EVENT</p>
+            <p class="lead">Create Course</p>
 
             <div class="table-responsive">
 
                 <div class="box box-primary">
 
                     <!-- form start -->
-                    <form name="add_event" id="add_event" action="<?php echo base_url(); ?>index.php/event/submit" method="POST"  enctype="multipart/form-data">
-                        <input name="event[is_submit]" id="is_submit" value="1" type="hidden" />
+                    <form name="add_course" id="add_course" action="<?php echo base_url(); ?>index.php/admin/courses/submit" method="POST"  enctype="multipart/form-data">
+                        <input name="course[is_submit]" id="is_submit" value="1" type="hidden" />
 
                         <div class="box-body">
 
@@ -19,23 +19,23 @@
 
                             <div class="form-group">
                                 <label>Title</label>
-                                <input type="text" class="form-control" name="event[title]" placeholder="Enter ..." value="">
+                                <input type="text" class="form-control" name="course[title]" placeholder="Enter ..." value="">
                             </div>
 
                             <div class="form-group">
-                                <label for="event_date">Date</label>
-                                <input type="date" class="form-control" name="event[date]" placeholder="Enter ..." value="">
+                                <label for="course_date">Date</label>
+                                <input type="date" class="form-control" name="course[date]" placeholder="Enter ..." value="">
                             </div>
 
                             <div class="form-group">
-                                <label for="event_short_description">Short Description</label>
-                                <textarea class="form-control" id="event_short_description" name="event[description]" rows="3" placeholder="Enter ..."></textarea>
+                                <label for="course_short_description">Short Description</label>
+                                <textarea class="form-control" id="course_short_description" name="course[description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
-                            <div class="form-group">
-                                <label for="event_link">Read More Link</label>
-                                <input type="url" class="form-control" name="event[link]" placeholder="Enter ..." value="">
-                            </div>
+<!--                            <div class="form-group">
+                                <label for="course_link">Read More Link</label>
+                                <input type="url" class="form-control" name="course[link]" placeholder="Enter ..." value="">
+                            </div>-->
 
                         </div><!-- /.box-body -->
 
