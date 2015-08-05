@@ -93,19 +93,19 @@ class Courses extends My_Controller {
 //            'link' => $_POST['course']['link']
         );
 
-        $this->uploadImageFile();
-
-        if ($this->uploadSuccess) {
-//            $data = array('upload_data' => $this->uploadData);
-//            $this->load->view('upload_success', $data);
-        } else {
-
-            $this->load->view('upload_form', $this->uploadError);
-        }
-
-
-
         $course_id = $this->content->add_content($data, $this->type);
+        $this->uploadImageFile($course_id, $this->type);
+
+//        if ($this->uploadSuccess) {
+////            $data = array('upload_data' => $this->uploadData);
+////            $this->load->view('upload_success', $data);
+//        } else {
+//
+////            $this->load->view('upload_form', $this->uploadError);
+//        }
+
+
+
         $this->view($course_id);
     }
 
