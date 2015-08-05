@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Courses extends CI_Controller {
+class Courses extends My_Controller {
 
     /**
      * Index Page for this controller.
@@ -93,8 +93,16 @@ class Courses extends CI_Controller {
 //            'link' => $_POST['course']['link']
         );
 
-        $this->load->library('../controllers/admin/imageupload');
-        $this->imageupload->do_upload('course');
+        $this->uploadImageFile();
+
+        if ($this->uploadSuccess) {
+//            $data = array('upload_data' => $this->uploadData);
+            var_dump($this->uploadSuccess);exit;
+//            $this->load->view('upload_success', $data);
+        } else {
+            
+//            $this->load->view('upload_form', $this->uploadError);
+        }
 
 
 

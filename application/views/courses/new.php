@@ -38,25 +38,28 @@
                                                         </div>-->
 
 
-                            <div class="form-group">
-                                <div style="background: #f7f8fa;padding: 50px;">
-                                    <!-- filer 3 -->
-                                    <input type="file" multiple="multiple" name="course[]" id="input2">
+                            <!--                            <div class="form-group">
+                                                            <div style="background: #f7f8fa;padding: 50px;">
+                                                               
+                                                                <input type="file" multiple="multiple" name="course[]" id="input2">
+                            
+                                                            </div>-->
 
-                                </div>
 
-                                <!--                                <label for="images">Image</label>
-                                                                <input name="Abc" type="file" id="images">-->
-                            </div> 
-                        </div><!-- /.box-body -->
 
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+
+                            <label for="images">Image</label>
+                            <input name="course" type="file" id="images">
+                        </div> 
+                </div><!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-
+                </form>
             </div>
+
         </div>
     </div>
+</div>
 </section><!-- /.content -->
