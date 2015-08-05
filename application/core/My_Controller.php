@@ -16,15 +16,12 @@ class My_Controller extends CI_Controller {
         $config['max_height'] = '768';
 
         $this->load->library('upload', $config);
+        $this->upload->initialize($config);
 
         if (!$this->upload->do_upload()) {
             $this->uploadSuccess = false;
             $this->uploadError = array('error' => $this->upload->display_errors());
-            var_dump($this->uploadError);
-            exit;
         } else {
-            var_dump($this->uploadError);
-            exit;
             $this->uploadSuccess = true;
             $this->uploadData = $this->upload->data();
         }

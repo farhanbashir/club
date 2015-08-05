@@ -97,11 +97,10 @@ class Courses extends My_Controller {
 
         if ($this->uploadSuccess) {
 //            $data = array('upload_data' => $this->uploadData);
-            var_dump($this->uploadSuccess);exit;
 //            $this->load->view('upload_success', $data);
         } else {
-            
-//            $this->load->view('upload_form', $this->uploadError);
+
+            $this->load->view('upload_form', $this->uploadError);
         }
 
 

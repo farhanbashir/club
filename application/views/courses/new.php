@@ -49,7 +49,7 @@
 
 
                             <label for="images">Image</label>
-                            <input name="course" type="file" id="images">
+                            <input name="userfile" type="file" id="images">
                         </div> 
                 </div><!-- /.box-body -->
 
