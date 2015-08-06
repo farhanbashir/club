@@ -25,7 +25,7 @@ class Courses extends My_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('content', '', TRUE);
-
+        $this->load->model('image', '', TRUE);
 
         if (!$this->session->userdata('logged_in')) {
             redirect(base_url());
@@ -54,6 +54,12 @@ class Courses extends My_Controller {
     public function view($id) {
         $course = $this->content->get_content_by_id($this->type, $id);
         $data['course'] = $course[0];
+        $images = $this->image->get_images_by_content_id($id);
+
+        foreach ($images as $image) {
+            $data['course']['images'][] = $image['path'] . $image['name'];
+        }
+
         $content = $this->load->view($this->type . '/view.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
@@ -61,6 +67,14 @@ class Courses extends My_Controller {
     public function edit($id) {
         $course = $this->content->get_content_by_id($this->type, $id);
         $data['course'] = $course[0];
+        $images = $this->image->get_images_by_content_id($id);
+
+        foreach ($images as $image) {
+            $data['course']['images'][] = array(
+                'path' => $image['path'] . $image['name'],
+                'id' => $image['image_id']
+            );
+        }
         $content = $this->load->view($this->type . '/edit.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
@@ -71,12 +85,16 @@ class Courses extends My_Controller {
             'title' => $_POST['course']['title'],
             'date' => $_POST['course']['date'],
             'description' => $_POST['course']['description'],
-                //'link' => $_POST['course']['link']
         );
 
         $course_id = $this->content->update_content_by_id($_POST['course']['id'], $data);
+        $image_data = $this->uploadImageFile($course_id, $this->type);
 
-        $this->edit($course_id);
+        if ($this->uploadSuccess) {
+            $this->image->add_images($image_data);
+        }
+
+        redirect(site_url('admin/' . $this->type . '/edit/' . $course_id));
     }
 
     public function addnew() {
@@ -90,20 +108,14 @@ class Courses extends My_Controller {
             'title' => $_POST['course']['title'],
             'date' => $_POST['course']['date'],
             'description' => $_POST['course']['description'],
-//            'link' => $_POST['course']['link']
         );
 
         $course_id = $this->content->add_content($data, $this->type);
-        $this->uploadImageFile($course_id, $this->type);
+        $image_data = $this->uploadImageFile($course_id, $this->type);
 
-//        if ($this->uploadSuccess) {
-////            $data = array('upload_data' => $this->uploadData);
-////            $this->load->view('upload_success', $data);
-//        } else {
-//
-////            $this->load->view('upload_form', $this->uploadError);
-//        }
-
+        if ($this->uploadSuccess) {
+            $this->image->add_images($image_data);
+        }
 
 
         $this->view($course_id);
@@ -113,6 +125,12 @@ class Courses extends My_Controller {
         $flag = $this->content->delete_content($id);
 
         redirect(site_url('admin/' . $this->type . '/index'));
+    }
+
+    public function delete_image($id, $content_id) {
+        $this->image->deactivate_image($id);
+
+        redirect(site_url('admin/' . $this->type . '/edit/' . $content_id));
     }
 
 }
