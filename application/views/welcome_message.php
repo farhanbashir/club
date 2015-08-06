@@ -26,7 +26,7 @@
         <!-- Theme style -->
         <link href="<?php echo asset_css('AdminLTE.css'); ?>" rel="stylesheet" type="text/css" />
 
-
+        <link href="<?php echo asset_css('admin-custom.css'); ?>" rel="stylesheet" type="text/css" />
         <link href="<?php echo asset_css('jquery.filer-dragdropbox-theme.css'); ?>" rel="stylesheet" type="text/css" />
         <link href="<?php echo asset_css('jquery.filer.css'); ?>" rel="stylesheet" type="text/css" />
 
@@ -98,5 +98,9 @@
 
         <script src="<?php echo asset_js('jquery.filer.min.js'); ?>" type="text/javascript"></script>
         <script src="<?php echo asset_js('admin-custom.js'); ?>" type="text/javascript"></script>
+
+
+        <script src="<?php echo asset_js('jquery.validate.min.js'); ?>" type="text/javascript"></script>
+        <script src="<?php echo asset_js('validator.js'); ?>" type="text/javascript"></script>
     </body>
 </html>

@@ -10,7 +10,7 @@
                 <div class="box box-primary">
 
                     <!-- form start -->
-                    <form name="add_course" id="add_course" action="<?php echo base_url(); ?>index.php/admin/courses/submit" method="POST"  enctype="multipart/form-data">
+                    <form name="add_course" id="club_course" action="<?php echo base_url(); ?>index.php/admin/courses/submit" method="POST"  enctype="multipart/form-data">
                         <input name="course[is_submit]" id="is_submit" value="1" type="hidden" />
 
                         <div class="box-body">
@@ -23,19 +23,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="course_date">Date</label>
+                                <label for="course_date">Start Date</label>
                                 <input type="date" class="form-control" name="course[date]" placeholder="Enter ..." value="">
                             </div>
 
                             <div class="form-group">
-                                <label for="course_short_description">Short Description</label>
-                                <textarea class="form-control" id="course_short_description" name="course[description]" rows="3" placeholder="Enter ..."></textarea>
+                                <label for="course_short_description">Detailed Description</label>
+                                <textarea class="form-control" id="course_short_description" name="course[detail_description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
-                            <!--                            <div class="form-group">
-                                                            <label for="course_link">Read More Link</label>
-                                                            <input type="url" class="form-control" name="course[link]" placeholder="Enter ..." value="">
-                                                        </div>-->
 
 
                             <div class="form-group">
@@ -44,12 +40,6 @@
                                     <input type="file" multiple="multiple" name="userfile" id="input2">
 
                                 </div>
-
-
-
-
-<!--                                <label for="images">Image</label>
-                                <input name="userfile" type="file" id="images">-->
                             </div> 
                         </div><!-- /.box-body -->
 

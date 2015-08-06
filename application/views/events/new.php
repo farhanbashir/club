@@ -10,7 +10,7 @@
                 <div class="box box-primary">
 
                     <!-- form start -->
-                    <form name="add_event" id="add_event" action="<?php echo base_url(); ?>index.php/admin/events/submit" method="POST"  enctype="multipart/form-data">
+                    <form name="add_event" id="club_event" action="<?php echo base_url(); ?>index.php/admin/events/submit" method="POST"  enctype="multipart/form-data">
                         <input name="event[is_submit]" id="is_submit" value="1" type="hidden" />
 
                         <div class="box-body">
@@ -32,11 +32,15 @@
                                 <textarea class="form-control" id="event_short_description" name="event[description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
-<!--                            <div class="form-group">
-                                <label for="event_link">Read More Link</label>
-                                <input type="url" class="form-control" name="event[link]" placeholder="Enter ..." value="">
-                            </div>-->
 
+
+                            <div class="form-group">
+                                <div style="background: #f7f8fa;padding: 50px;">
+
+                                    <input type="file" multiple="multiple" name="userfile" id="input2">
+
+                                </div>
+                            </div> 
                         </div><!-- /.box-body -->
 
                         <div class="box-footer">

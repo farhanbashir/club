@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Events extends CI_Controller {
+class Events extends My_Controller {
 
     /**
      * Index Page for this controller.
@@ -20,13 +20,13 @@ class Events extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
-
     public $type = 'events';
 
     function __construct() {
         parent::__construct();
         $this->load->model('content', '', TRUE);
-        
+        $this->load->model('image', '', TRUE);
+
         if (!$this->session->userdata('logged_in')) {
             redirect(base_url());
         }
@@ -37,7 +37,7 @@ class Events extends CI_Controller {
         $this->load->library("pagination");
         $total_rows = $this->content->get_total_content_by_type($this->type);
 
-        $pagination_config = get_pagination_config($this->type.'/index', $total_rows, $this->config->item('pagination_limit'), 4);
+        $pagination_config = get_pagination_config($this->type . '/index', $total_rows, $this->config->item('pagination_limit'), 4);
 
         $this->pagination->initialize($pagination_config);
 
@@ -45,23 +45,37 @@ class Events extends CI_Controller {
 
         $data["links"] = $this->pagination->create_links();
 
-        $events = $this->content->get_content_by_type($this->type , $page);
+        $events = $this->content->get_content_by_type($this->type, $page);
         $data['events'] = $events;
-        $content = $this->load->view($this->type.'/tabular.php', $data, true);
+        $content = $this->load->view($this->type . '/tabular.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
     public function view($id) {
         $event = $this->content->get_content_by_id($this->type, $id);
         $data['event'] = $event[0];
-        $content = $this->load->view($this->type.'/view.php', $data, true);
+        $images = $this->image->get_images_by_content_id($id);
+
+        foreach ($images as $image) {
+            $data['event']['images'][] = $image['path'] . $image['name'];
+        }
+
+        $content = $this->load->view($this->type . '/view.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
     public function edit($id) {
         $event = $this->content->get_content_by_id($this->type, $id);
         $data['event'] = $event[0];
-        $content = $this->load->view($this->type.'/edit.php', $data, true);
+        $images = $this->image->get_images_by_content_id($id);
+
+        foreach ($images as $image) {
+            $data['event']['images'][] = array(
+                'path' => $image['path'] . $image['name'],
+                'id' => $image['image_id']
+            );
+        }
+        $content = $this->load->view($this->type . '/edit.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
@@ -71,16 +85,20 @@ class Events extends CI_Controller {
             'title' => $_POST['event']['title'],
             'date' => $_POST['event']['date'],
             'description' => $_POST['event']['description'],
-            //'link' => $_POST['event']['link']
         );
 
         $event_id = $this->content->update_content_by_id($_POST['event']['id'], $data);
+        $image_data = $this->uploadImageFile($event_id, $this->type);
 
-        $this->edit($event_id);
+        if ($this->uploadSuccess) {
+            $this->image->add_images($image_data);
+        }
+
+        redirect(site_url('admin/' . $this->type . '/edit/' . $event_id));
     }
 
     public function addnew() {
-        $content = $this->load->view($this->type.'/new.php', $data = NULL, true);
+        $content = $this->load->view($this->type . '/new.php', $data = NULL, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
@@ -90,19 +108,28 @@ class Events extends CI_Controller {
             'title' => $_POST['event']['title'],
             'date' => $_POST['event']['date'],
             'description' => $_POST['event']['description'],
-//            'link' => $_POST['event']['link']
         );
 
         $event_id = $this->content->add_content($data, $this->type);
-        $this->view($event_id);
+        $image_data = $this->uploadImageFile($event_id, $this->type);
+
+        if ($this->uploadSuccess) {
+            $this->image->add_images($image_data);
+        }
+
+        redirect(site_url('admin/' . $this->type . '/view/' . $event_id));
     }
-    
-    
 
     public function delete($id) {
         $flag = $this->content->delete_content($id);
+        $this->image->delete_content_images($id);
+        redirect(site_url('admin/' . $this->type . '/index'));
+    }
 
-        redirect(site_url('admin/'.$this->type.'/index'));
+    public function delete_image($id, $content_id) {
+        $this->image->deactivate_image($id);
+
+        redirect(site_url('admin/' . $this->type . '/edit/' . $content_id));
     }
 
 }

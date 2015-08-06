@@ -33,6 +33,11 @@ Class Image extends CI_Model {
         $this->db->update('image', $data);
     }
 
+    function delete_content_images($content_id) {
+        $this->db->where('content_id', $content_id);
+        $this->db->delete('image');
+    }
+
 }
 
 ?>

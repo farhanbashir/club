@@ -64,27 +64,3 @@
     </div>
 </section><!-- /.content -->
 <script>
-function confirm_deactive()
-{
-    var url = '<?php echo base_url();?>/index.php/welcome/deactivate_feed/<?php echo $detail['feed_id'];?>';
-
-    var r = confirm("Are you sure you want to deactivate this feed?");
-    if (r == true) {
-        window.location = url;
-    } else {
-
-    }
-}
-
-function confirm_active()
-{
-    var url = '<?php echo base_url();?>/index.php/welcome/activate_feed/<?php echo $detail['feed_id'];?>';
-
-    var r = confirm("Are you sure you want to activate this feed?");
-    if (r == true) {
-        window.location = url;
-    } else {
-
-    }
-}
-</script>

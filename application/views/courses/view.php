@@ -16,12 +16,12 @@
                             <td><?php echo $course['title']; ?></td>
                         </tr>
                         <tr>
-                            <th>Date:</th>
+                            <th>Start Date:</th>
                             <td><?php echo $course['date']; ?></td>
                         </tr>
                         <tr>
-                            <th>Short Description</th>
-                            <td><?php echo $course['description']; ?></td>
+                            <th>Detailed Description</th>
+                            <td><?php echo $course['detail_description']; ?></td>
                         </tr>
 
                     </tbody></table>
@@ -81,28 +81,3 @@
         </div>
     </div>
 </section><!-- /.content -->
-<script>
-    function confirm_deactive()
-    {
-        var url = '<?php echo base_url(); ?>/index.php/welcome/deactivate_feed/<?php echo $detail['feed_id']; ?>';
-
-                var r = confirm("Are you sure you want to deactivate this feed?");
-                if (r == true) {
-                    window.location = url;
-                } else {
-
-                }
-            }
-
-            function confirm_active()
-            {
-                var url = '<?php echo base_url(); ?>/index.php/welcome/activate_feed/<?php echo $detail['feed_id']; ?>';
-
-                        var r = confirm("Are you sure you want to activate this feed?");
-                        if (r == true) {
-                            window.location = url;
-                        } else {
-
-                        }
-                    }
-</script>

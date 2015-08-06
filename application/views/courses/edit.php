@@ -12,7 +12,7 @@
                         <div class="box box-primary">
 
                             <!-- form start -->
-                            <form name="edit_course" id="edit_course" action="<?php echo base_url(); ?>index.php/admin/courses/update" method="POST"  enctype="multipart/form-data">
+                            <form name="edit_course" id="club_course" action="<?php echo base_url(); ?>index.php/admin/courses/update" method="POST"  enctype="multipart/form-data">
                                 <input name="course[is_submit]" id="is_submit" value="1" type="hidden" />
                                 <input name="course[id]" id="uniqid" value="<?php echo $course['content_id']; ?>" type="hidden" />
                                 <div class="box-body">
@@ -25,13 +25,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="course_date">Date</label>
+                                        <label for="course_date">Start Date</label>
                                         <input type="date" class="form-control" name="course[date]" placeholder="Enter ..." value="<?php echo $course['date']; ?>">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="course_short_description">Short Description</label>
-                                        <textarea class="form-control" id="course_short_description" name="course[description]" rows="3" placeholder="Enter ..."><?php echo $course['description']; ?></textarea>
+                                        <label for="course_short_description">Detailed Description</label>
+                                        <textarea class="form-control" id="course_short_description" name="course[detail_description]" rows="3" placeholder="Enter ..."><?php echo $course['detail_description']; ?></textarea>
                                     </div>
 
                                     <div class="form-group">
@@ -122,5 +122,3 @@
     </div>
 
 </section><!-- /.content -->
-
-</script>

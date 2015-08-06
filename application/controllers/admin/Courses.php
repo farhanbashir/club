@@ -84,7 +84,7 @@ class Courses extends My_Controller {
         $data = array(
             'title' => $_POST['course']['title'],
             'date' => $_POST['course']['date'],
-            'description' => $_POST['course']['description'],
+            'detail_description' => $_POST['course']['detail_description'],
         );
 
         $course_id = $this->content->update_content_by_id($_POST['course']['id'], $data);
@@ -107,7 +107,7 @@ class Courses extends My_Controller {
         $data = array(
             'title' => $_POST['course']['title'],
             'date' => $_POST['course']['date'],
-            'description' => $_POST['course']['description'],
+            'detail_description' => $_POST['course']['detail_description'],
         );
 
         $course_id = $this->content->add_content($data, $this->type);
@@ -117,13 +117,12 @@ class Courses extends My_Controller {
             $this->image->add_images($image_data);
         }
 
-
-        $this->view($course_id);
+        redirect(site_url('admin/' . $this->type . '/view/' . $course_id));
     }
 
     public function delete($id) {
-        $flag = $this->content->delete_content($id);
-
+        $this->content->delete_content($id);
+        $this->image->delete_content_images($id);
         redirect(site_url('admin/' . $this->type . '/index'));
     }
 

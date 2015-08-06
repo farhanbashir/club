@@ -27,7 +27,6 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Date</th>
-                            <th>Short Description</th>
                             <th>Action</th>
                         </tr>
                         <?php
@@ -37,7 +36,6 @@
                                 <td><?php echo $event['content_id']; ?></td>
                                 <td><?php echo $event['title']; ?></td>
                                 <td><?php echo $event['date']; ?></td>
-                                <td><?php echo $event['description']; ?></td>
                                 <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/events/view/<?php echo $event['content_id']; ?>">View</a>
                                     &nbsp;&nbsp;&nbsp;

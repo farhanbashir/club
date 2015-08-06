@@ -12,7 +12,7 @@
         <div class="col-xs-12">
             <a href="<?php echo site_url('admin/courses/addnew') ?>"><button class="btn btn-info pull-right" style="margin:10px ">Add New</button></a>
         </div>
-        
+
         <div class="col-xs-12">
 
             <div class="box">
@@ -26,8 +26,7 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
-                            <th>Date</th>
-                            <th>Short Description</th>
+                            <th>Start Date</th>
                             <th>Action</th>
                         </tr>
                         <?php
@@ -37,7 +36,6 @@
                                 <td><?php echo $course['content_id']; ?></td>
                                 <td><?php echo $course['title']; ?></td>
                                 <td><?php echo $course['date']; ?></td>
-                                <td><?php echo $course['description']; ?></td>
                                 <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/courses/view/<?php echo $course['content_id']; ?>">View</a>
                                     &nbsp;&nbsp;&nbsp;
