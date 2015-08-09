@@ -26,7 +26,7 @@
 
                                     <div class="form-group">
                                         <label for="course_date">Start Date</label>
-                                        <input type="date" class="form-control" name="course[date]" placeholder="Enter ..." value="<?php echo $course['date']; ?>">
+                                        <input id="start_date" class="form-control" name="course[start_date]" placeholder="Enter ..." value="<?php echo $course['start_date']; ?>">
                                     </div>
 
                                     <div class="form-group">

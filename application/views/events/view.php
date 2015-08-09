@@ -17,7 +17,7 @@
                         </tr>
                         <tr>
                             <th>Date:</th>
-                            <td><?php echo $event['date']; ?></td>
+                            <td><?php echo $event['start_date']; ?></td>
                         </tr>
                         <tr>
                             <th>Detailed Description</th>

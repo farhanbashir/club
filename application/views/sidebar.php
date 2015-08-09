@@ -33,7 +33,7 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo site_url('welcome/parents') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Resturants</a></li>
-                <li><a href="<?php echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Promotions</a></li>
+                <li><a href="<?php echo site_url('admin/promotions') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Promotions</a></li>
                 <li><a href="<?php echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Private Parties/Events</a></li>
             </ul>
         </li>
@@ -43,8 +43,8 @@
                 <i class="fa pull-right fa-angle-down"></i>
             </a>
             <ul class="treeview-menu" style="display: none;">
-                <li><a href="<?php echo site_url('welcome/parents') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Pools</a></li>
-                <li><a href="<?php echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Beaches</a></li>
+                <li><a href="<?php echo site_url('admin/pools') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Pools</a></li>
+                <li><a href="<?php echo site_url('admin/beaches') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Beaches</a></li>
                 <li><a href="<?php echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Fringe Benefits Salon & Barber's</a></li>
                 <li><a href="<?php echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Library</a></li>
                 <li><a href="<?php echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Squash & Racketball</a></li>
@@ -71,7 +71,7 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo site_url('welcome/parents') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Personal Training</a></li>
-                <li><a href="<?php echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Classes</a></li>
+                <li><a href="<?php echo site_url('admin/classes') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Classes</a></li>
             </ul>
         </li>
         <li class="treeview">
@@ -80,8 +80,8 @@
                 <i class="fa pull-right fa-angle-down"></i>
             </a>
             <ul class="treeview-menu" style="display: none;">
-                <li><a href="<?php echo site_url('welcome/parents') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Activities</a></li>
-                <li><a href="<?php echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Camps</a></li>
+                <li><a href="<?php echo site_url('admin/activities/') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Activities</a></li>
+                <li><a href="<?php echo site_url('admin/camps/') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Camps</a></li>
             </ul>
         </li>
         <li class="treeview">

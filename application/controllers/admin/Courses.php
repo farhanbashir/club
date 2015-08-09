@@ -83,7 +83,7 @@ class Courses extends My_Controller {
 
         $data = array(
             'title' => $_POST['course']['title'],
-            'date' => $_POST['course']['date'],
+            'start_date' => $_POST['course']['start_date'],
             'detail_description' => $_POST['course']['detail_description'],
         );
 
@@ -106,7 +106,7 @@ class Courses extends My_Controller {
 
         $data = array(
             'title' => $_POST['course']['title'],
-            'date' => $_POST['course']['date'],
+            'start_date' => $_POST['course']['start_date'],
             'detail_description' => $_POST['course']['detail_description'],
         );
 

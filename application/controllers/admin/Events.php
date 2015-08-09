@@ -83,7 +83,7 @@ class Events extends My_Controller {
 
         $data = array(
             'title' => $_POST['event']['title'],
-            'date' => $_POST['event']['date'],
+            'start_date' => $_POST['event']['start_date'],
             'description' => $_POST['event']['description'],
         );
 
@@ -106,7 +106,7 @@ class Events extends My_Controller {
 
         $data = array(
             'title' => $_POST['event']['title'],
-            'date' => $_POST['event']['date'],
+            'start_date' => $_POST['event']['start_date'],
             'description' => $_POST['event']['description'],
         );
 

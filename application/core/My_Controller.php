@@ -8,7 +8,7 @@ class My_Controller extends CI_Controller {
 
     public function uploadImageFile($id, $type) {
 
-        $path = './uploads/' . $type . '/' . $id;
+        $path = './assets/uploads/' . $type . '/' . $id;
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
@@ -46,7 +46,7 @@ class My_Controller extends CI_Controller {
             $data[$i] = array(
                 'content_id' => $id,
                 'name' => $files['userfile']['name'][$i],
-                'path' => '/uploads/' . $type . '/' . $id . '/',
+                'path' => '/assets/uploads/' . $type . '/' . $id . '/',
                 'is_active' => 1
             );
         }

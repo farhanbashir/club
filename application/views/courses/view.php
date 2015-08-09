@@ -17,7 +17,7 @@
                         </tr>
                         <tr>
                             <th>Start Date:</th>
-                            <td><?php echo $course['date']; ?></td>
+                            <td><?php echo $course['start_date']; ?></td>
                         </tr>
                         <tr>
                             <th>Detailed Description</th>

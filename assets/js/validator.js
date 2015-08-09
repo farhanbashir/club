@@ -63,4 +63,29 @@ jQuery(document).ready(function () {
             },
         },
     });
+    
+    
+        jQuery("#club_promotion").validate({
+        rules: {
+            "promotion[title]": {
+                required: true,
+                minlength: 2,
+                maxlength: 255
+            },
+            "promotion[description]": {
+                required: true,
+            },
+        },
+        messages: {
+            "promotion[title]": {
+                required: "Please provide a title for promotion.",
+                minlength: "The promotion title should be at least 2 characters long.",
+                maxlength: "Promotion title can be a maximum of 255 characters in length."
+            },
+            "promotion[description]": {
+                required: "Please provide discription.",
+            },
+        },
+    });
+    
 });
