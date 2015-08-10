@@ -32,7 +32,7 @@
                 <i class="fa pull-right fa-angle-down"></i>
             </a>
             <ul class="treeview-menu" style="display: none;">
-                <li><a href="<?php echo site_url('welcome/parents') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Resturants</a></li>
+                <li><a href="<?php echo site_url('admin/restaurants') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Resturants</a></li>
                 <li><a href="<?php echo site_url('admin/promotions') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Promotions</a></li>
                 <li><a href="<?php echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Private Parties/Events</a></li>
             </ul>

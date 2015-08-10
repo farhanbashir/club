@@ -1,28 +1,37 @@
+<?php
+$data = unserialize($restaurant['data']);
+?>
 <!-- Main content -->
 <section class="content">
     <div class="row  col-xs-12">
         <div class="col-xs-6">
 
-            <p class="lead col-xs-6">Event # <?php echo ucfirst($event['content_id']); ?></p>
+            <p class="lead col-xs-6">Restaurant # <?php echo ucfirst($restaurant['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/events/delete/' . $event['content_id']) ?>"><button class="btn btn-danger pull-right" style="margin:10px ">Delete</button></a>
+            <a href="<?php echo site_url('admin/restaurants/delete/' . $restaurant['content_id']) ?>"><button class="btn btn-danger pull-right" style="margin:10px ">Delete</button></a>
 
             <div class="table-responsive">
                 <table class="table">
                     <tbody>
                         <tr>
                             <th>Title:</th>
-                            <td><?php echo $event['title']; ?></td>
+                            <td><?php echo $restaurant['title']; ?></td>
                         </tr>
-                        <tr>
-                            <th>Date:</th>
-                            <td><?php echo $event['start_date']; ?></td>
-                        </tr>
+
                         <tr>
                             <th>Short Description</th>
-                            <td><?php echo $event['description']; ?></td>
+                            <td><?php echo $restaurant['description']; ?></td>
                         </tr>
+                        <tr>
+                            <th>Dress Code</th>
+                            <td><?php echo!empty($data['dress_code']) ? $data['dress_code'] : ''; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Guest's Dining Policy</th>
+                            <td><?php echo!empty($data['guest_dining_policy']) ? $data['guest_dining_policy'] : ''; ?></td>
+                        </tr>
+
 
                     </tbody></table>
 
@@ -41,11 +50,11 @@
 
 
                     <?php
-                    if (!empty($event['images'])) {
+                    if (!empty($restaurant['images'])) {
                         ?>
                         <ul class="jFiler-item-list box-body ">
                             <?php
-                            foreach ($event['images'] as $image) {
+                            foreach ($restaurant['images'] as $image) {
                                 ?>
                                 <li class="jFiler-item" data-jfiler-index="3" style="">    
                                     <div class="jFiler-item-container">               

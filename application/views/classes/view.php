@@ -27,7 +27,7 @@ if (!empty($data['day'])) {
                             <td><?php echo $class['start_date']; ?></td>
                         </tr>
                         <tr>
-                            <th>Detailed Description</th>
+                            <th>Short Description</th>
                             <td><?php echo $class['description']; ?></td>
                         </tr>
                         <tr>
