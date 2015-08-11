@@ -41,26 +41,29 @@ class My_Controller extends CI_Controller {
             $this->upload->initialize($config);
             $this->upload->do_upload();
             $this->load->library('upload', $config);
+            $image_data = $this->upload->data();
 
 
             $data[$i] = array(
                 'content_id' => $id,
-                'name' => $files['userfile']['name'][$i],
-                'path' => '/assets/uploads/' . $type . '/' . $id . '/',
+                'name' => $image_data['file_name'],
+                'path' => base_url() . '/assets/uploads/' . $type . '/' . $id . '/',
                 'is_active' => 1
             );
         }
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
+
+
         if (!$this->upload->do_upload()) {
             $this->uploadSuccess = false;
             $this->uploadError = array('error' => $this->upload->display_errors());
         } else {
             $this->uploadSuccess = true;
             $this->uploadData = $this->upload->data();
+            return $data;
         }
-        return $data;
     }
 
 }

@@ -55,7 +55,7 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/classes/edit/<?php echo $class['content_id']; ?>">Edit</a>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a href="<?php echo base_url(); ?>index.php/admin/classes/delete/<?php echo $class['content_id']; ?>">Delete</a>
+                                    <a href="<?php echo base_url(); ?>index.php/admin/classes/delete/<?php echo $class['content_id']; ?>" class="delete_anything">Delete</a>
                                 </td> 
                             </tr>
                             <?php
