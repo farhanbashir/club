@@ -12,7 +12,7 @@
         <div class="col-xs-12">
             <a href="<?php echo site_url('admin/events/addnew') ?>"><button class="btn btn-info pull-right" style="margin:10px ">Add New</button></a>
         </div>
-        
+
         <div class="col-xs-12">
 
             <div class="box">
@@ -27,7 +27,9 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Date</th>
+                            <th>Short Description</th>
                             <th>Action</th>
+
                         </tr>
                         <?php
                         foreach ($events as $event) {
@@ -35,7 +37,9 @@
                             <tr>
                                 <td><?php echo $event['content_id']; ?></td>
                                 <td><?php echo $event['title']; ?></td>
-                                <td><?php echo $event['date']; ?></td>
+                                <td><?php echo $event['start_date']; ?></td>
+                                <td><?php echo(strlen($event['description']) > 100) ? substr($event['description'], 0, 97) . '...' : $event['description']; ?></td>
+
                                 <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/events/view/<?php echo $event['content_id']; ?>">View</a>
                                     &nbsp;&nbsp;&nbsp;

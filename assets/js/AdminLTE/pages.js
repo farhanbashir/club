@@ -10,13 +10,19 @@
  * to change the values in the less files!
  */
 
-$(function($) {
+$(function ($) {
     "use strict";
-console.log('here');
 
 // edit event
-$('#start_date').datetimepicker({format:'Y-m-d H:i:s'});
-$('#end_date').datetimepicker({format:'Y-m-d H:i:s'});
+    $('#start_date').datetimepicker({format: 'Y-m-d H:i:s'});
+    $('#end_date').datetimepicker({format: 'Y-m-d H:i:s'});
+
+
+
+    $('#multiple_select').select2();
+
+$('input#time_picker').timepicker({ timeFormat: 'h:mm:ss p' });
+//    $("#time_picker").timepicker();
 
 
 }(jQuery));
