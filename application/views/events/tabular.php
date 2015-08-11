@@ -26,7 +26,8 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
-                            <th>Date</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
                             <th>Short Description</th>
                             <th>Action</th>
 
@@ -38,6 +39,7 @@
                                 <td><?php echo $event['content_id']; ?></td>
                                 <td><?php echo $event['title']; ?></td>
                                 <td><?php echo $event['start_date']; ?></td>
+                                <td><?php echo $event['end_date']; ?></td>s
                                 <td><?php echo(strlen($event['description']) > 100) ? substr($event['description'], 0, 97) . '...' : $event['description']; ?></td>
 
                                 <td>

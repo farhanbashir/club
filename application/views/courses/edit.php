@@ -30,6 +30,11 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="course_date">Start Date</label>
+                                        <input id="end_date" class="form-control" name="course[end_date]" placeholder="Enter ..." value="<?php echo $course['end_date']; ?>">
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="course_short_description">Detailed Description</label>
                                         <textarea class="form-control" id="course_short_description" name="course[detail_description]" rows="3" placeholder="Enter ..."><?php echo $course['detail_description']; ?></textarea>
                                     </div>

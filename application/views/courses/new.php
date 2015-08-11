@@ -28,6 +28,11 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="course_date">End Date</label>
+                                <input id="end_date" class="form-control" name="course[end_date]" placeholder="Enter ..." value="">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="course_short_description">Detailed Description</label>
                                 <textarea class="form-control" id="course_short_description" name="course[detail_description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
