@@ -18,7 +18,9 @@ CREATE TABLE `content` (
   `title` varchar(255) DEFAULT NULL,
   `description` text,
   `detail_description` text,
-  `date` date DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `start_date` datetime DEFAULT NULL,
+  `data` text,
   `is_active` tinyint(1) DEFAULT '1' COMMENT '0=inactive, 1=active',
   PRIMARY KEY (`content_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -31,11 +33,11 @@ CREATE TABLE `content_type` (
   `content_type_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `content` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`content_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `content_type` */
 
-insert  into `content_type`(`content_type_id`,`content`) values (1,'events'),(2,'courses');
+insert  into `content_type`(`content_type_id`,`content`) values (1,'events'),(2,'courses'),(3,'restaurants'),(4,'promotions'),(5,'pools'),(6,'beaches'),(7,'classes'),(8,'activities'),(9,'camps');
 
 /*Table structure for table `devices` */
 
@@ -47,11 +49,9 @@ CREATE TABLE `devices` (
   `lang` tinyint(1) DEFAULT '0' COMMENT '0=en,1=ar',
   `token` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`device_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `devices` */
-
-insert  into `devices`(`device_id`,`user_id`,`uid`,`type`,`lang`,`token`) values (4,82,'adadfasdfdaf',0,0,NULL);
 
 /*Table structure for table `image` */
 
