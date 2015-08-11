@@ -98,7 +98,7 @@ if (!empty($data['type'])) {
 
                                                     </div>                                        
                                                     <div class="jFiler-item-thumb-image">
-                                                        <img src="<?php echo base_url() . $image['path']; ?>" draggable="false">
+                                                        <img src="<?php echo $image['path']; ?>" draggable="false">
                                                     </div>    
 
                                                 </div>   
@@ -114,7 +114,7 @@ if (!empty($data['type'])) {
                                                         </li>                             
                                                     </ul>                                        
                                                     <ul class="list-inline pull-right">   
-                                                        <li><a href="<?php echo base_url(); ?>index.php/admin/pools/delete_image/<?php echo $image['id'] . '/' . $pool['content_id']; ?>" class="icon-jfi-trash jFiler-item-trash-action"></a>
+                                                        <li><a href="<?php echo base_url(); ?>index.php/admin/pools/delete_image/<?php echo $image['id'] . '/' . $pool['content_id']; ?>" class="icon-jfi-trash jFiler-item-trash-action delete_anything"></a>
                                                         </li>                                       
                                                     </ul>                                
                                                 </div>

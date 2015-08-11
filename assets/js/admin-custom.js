@@ -1,4 +1,18 @@
 $(document).ready(function () {
+    $(".delete_anything").on('click', function (e) {
+        var r = confirm("Are you sure you want to delete?");
+        if (r == true) {
+
+        } else {
+            e.preventDefault();
+        }
+
+    });
+    
+
+
+
+
     $('#input1').filer();
 
     $('.file_input').filer({
@@ -134,7 +148,7 @@ $(document).ready(function () {
             }
         },
         uploadFile: {
-            url: BASE_URL+"assets/php/upload.php",
+            url: BASE_URL + "assets/php/upload.php",
             data: {},
             type: 'POST',
             enctype: 'multipart/form-data',

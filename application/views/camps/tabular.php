@@ -47,7 +47,7 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/camps/edit/<?php echo $camp['content_id']; ?>">Edit</a>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a href="<?php echo base_url(); ?>index.php/admin/camps/delete/<?php echo $camp['content_id']; ?>">Delete</a>
+                                    <a href="<?php echo base_url(); ?>index.php/admin/camps/delete/<?php echo $camp['content_id']; ?>" class="delete_anything">Delete</a>
                                 </td> 
                             </tr>
                             <?php
