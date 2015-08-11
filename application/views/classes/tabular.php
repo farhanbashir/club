@@ -30,7 +30,7 @@
                             <th>Date</th>
                             <th>Days</th>
                             <th>Time</th>
-                            <th>Detailed Description</th>
+                            <th>Short Description</th>
                             <th>Action</th>
 
                         </tr>

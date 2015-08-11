@@ -29,7 +29,7 @@ if (!empty($data['type'])) {
                         </tr>
 
                         <tr>
-                            <th>Detailed Description</th>
+                            <th>Short Description</th>
                             <td><?php echo $beach['description']; ?></td>
                         </tr>
 

@@ -20,7 +20,7 @@
                             <td><?php echo $event['start_date']; ?></td>
                         </tr>
                         <tr>
-                            <th>Detailed Description</th>
+                            <th>Short Description</th>
                             <td><?php echo $event['description']; ?></td>
                         </tr>
 

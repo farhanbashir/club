@@ -28,7 +28,7 @@
                             <th>Title</th>
                             <th>Start Date</th>
                             <th>End Date</th>
-                            <th>Detailed Description</th>
+                            <th>Short Description</th>
                             <th>Action</th>
 
                         </tr>

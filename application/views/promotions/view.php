@@ -15,9 +15,9 @@
                             <th>Title:</th>
                             <td><?php echo $promotion['title']; ?></td>
                         </tr>
- 
+
                         <tr>
-                            <th>Detailed Description</th>
+                            <th>Short Description</th>
                             <td><?php echo $promotion['description']; ?></td>
                         </tr>
 

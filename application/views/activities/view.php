@@ -25,7 +25,7 @@
                             <td><?php echo $activity['end_date']; ?></td>
                         </tr>
                         <tr>
-                            <th>Detailed Description</th>
+                            <th>Short Description</th>
                             <td><?php echo $activity['description']; ?></td>
                         </tr>
 

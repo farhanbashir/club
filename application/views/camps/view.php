@@ -25,7 +25,7 @@
                             <td><?php echo $camp['end_date']; ?></td>
                         </tr>
                         <tr>
-                            <th>Detailed Description</th>
+                            <th>Short Description</th>
                             <td><?php echo $camp['description']; ?></td>
                         </tr>
 

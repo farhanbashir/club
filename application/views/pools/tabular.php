@@ -28,7 +28,7 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Type</th>
-                            <th>Detailed Description</th>
+                            <th>Short Description</th>
                             <th>Action</th>
 
                         </tr>

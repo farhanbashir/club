@@ -1,37 +1,37 @@
 <?php
-$data = unserialize($pool['data']);
-
-if (!empty($data['type'])) {
-    $type = $data['type'];
-}
+$data = unserialize($restaurant['data']);
 ?>
 <!-- Main content -->
 <section class="content">
     <div class="row  col-xs-12">
         <div class="col-xs-6">
 
-            <p class="lead col-xs-6">Pool # <?php echo ucfirst($pool['content_id']); ?></p>
+            <p class="lead col-xs-6">Restaurant # <?php echo ucfirst($restaurant['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/pools/delete/' . $pool['content_id']) ?>"><button class="btn btn-danger pull-right delete_anything" style="margin:10px ">Delete</button></a>
+            <a href="<?php echo site_url('admin/restaurants/delete/' . $restaurant['content_id']) ?>"><button class="btn btn-danger pull-right" style="margin:10px ">Delete</button></a>
 
             <div class="table-responsive">
                 <table class="table">
                     <tbody>
                         <tr>
                             <th>Title:</th>
-                            <td><?php echo $pool['title']; ?></td>
-                        </tr>
-
-                        <tr>
-                            <th>Type:</th>
-                            <td><?php echo $type; ?></td>
+                            <td><?php echo $restaurant['title']; ?></td>
                         </tr>
 
                         <tr>
                             <th>Short Description</th>
-                            <td><?php echo $pool['description']; ?></td>
+                            <td><?php echo $restaurant['description']; ?></td>
                         </tr>
+                        <tr>
+                            <th>Dress Code</th>
+                            <td><?php echo!empty($data['dress_code']) ? $data['dress_code'] : ''; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Guest's Dining Policy</th>
+                            <td><?php echo!empty($data['guest_dining_policy']) ? $data['guest_dining_policy'] : ''; ?></td>
+                        </tr>
+
 
                     </tbody></table>
 
@@ -50,11 +50,11 @@ if (!empty($data['type'])) {
 
 
                     <?php
-                    if (!empty($pool['images'])) {
+                    if (!empty($restaurant['images'])) {
                         ?>
                         <ul class="jFiler-item-list box-body ">
                             <?php
-                            foreach ($pool['images'] as $image) {
+                            foreach ($restaurant['images'] as $image) {
                                 ?>
                                 <li class="jFiler-item" data-jfiler-index="3" style="">    
                                     <div class="jFiler-item-container">               
@@ -65,7 +65,7 @@ if (!empty($data['type'])) {
 
                                                 </div>                                        
                                                 <div class="jFiler-item-thumb-image">
-                                                    <img src="<?php echo $image; ?>" draggable="false">
+                                                    <img src="<?php echo base_url() . $image; ?>" draggable="false">
                                                 </div>                                    
                                             </div>                                   
 
