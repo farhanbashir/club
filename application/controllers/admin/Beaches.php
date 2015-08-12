@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Beaches extends My_Controller {
+class Beaches extends MY_Controller {
 
     /**
      * Index Page for this controller.
