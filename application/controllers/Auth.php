@@ -28,7 +28,7 @@ class Auth extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			redirect(base_url()."index.php/admin/admin", 'refresh');
+			redirect(base_url()."index.php/admin/dashboard", 'refresh');
 		}
 		else
 		{
