@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Events extends My_Controller {
+class Events extends MY_Controller {
 
     /**
      * Index Page for this controller.
@@ -84,6 +84,7 @@ class Events extends My_Controller {
         $data = array(
             'title' => $_POST['event']['title'],
             'start_date' => $_POST['event']['start_date'],
+            'end_date' => $_POST['event']['end_date'],
             'description' => $_POST['event']['description'],
         );
 
@@ -107,6 +108,7 @@ class Events extends My_Controller {
         $data = array(
             'title' => $_POST['event']['title'],
             'start_date' => $_POST['event']['start_date'],
+            'end_date' => $_POST['event']['end_date'],
             'description' => $_POST['event']['description'],
         );
 

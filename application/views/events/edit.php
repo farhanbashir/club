@@ -25,8 +25,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="event_date">Date</label>
+                                        <label for="event_date">Start Date</label>
                                         <input id="start_date" class="form-control" name="event[start_date]" placeholder="Enter ..." value="<?php echo $event['start_date']; ?>">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="event_date">End Date</label>
+                                        <input id="end_date" class="form-control" name="event[end_date]" placeholder="Enter ..." value="<?php echo $event['end_date']; ?>">
                                     </div>
 
                                     <div class="form-group">

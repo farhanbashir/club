@@ -20,6 +20,10 @@
                             <td><?php echo $course['start_date']; ?></td>
                         </tr>
                         <tr>
+                            <th>End Date:</th>
+                            <td><?php echo $course['end_date']; ?></td>
+                        </tr>
+                        <tr>
                             <th>Detailed Description</th>
                             <td><?php echo $course['detail_description']; ?></td>
                         </tr>
