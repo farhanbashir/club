@@ -13,7 +13,7 @@ if (!empty($data['type'])) {
             <p class="lead col-xs-6">Beach # <?php echo ucfirst($beach['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/beaches/delete/' . $beach['content_id']) ?>"><button class="btn btn-danger pull-right" style="margin:10px ">Delete</button></a>
+            <a href="<?php echo site_url('admin/beaches/delete/' . $beach['content_id']) ?>"><button class="btn btn-danger pull-right delete_anything" style="margin:10px ">Delete</button></a>
 
             <div class="table-responsive">
                 <table class="table">
@@ -65,7 +65,7 @@ if (!empty($data['type'])) {
 
                                                 </div>                                        
                                                 <div class="jFiler-item-thumb-image">
-                                                    <img src="<?php echo base_url() . $image; ?>" draggable="false">
+                                                    <img src="<?php echo $image; ?>" draggable="false">
                                                 </div>                                    
                                             </div>                                   
 
