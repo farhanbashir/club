@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Pools extends My_Controller {
+class Pools extends MY_Controller {
 
     /**
      * Index Page for this controller.

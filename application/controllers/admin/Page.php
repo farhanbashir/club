@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Page extends My_Controller {
+class Page extends MY_Controller {
 
     /**
      * Index Page for this controller.
