@@ -47,5 +47,14 @@ Class Page extends CI_Model
      return $result;
  }
 
+ public function get_page_by_key($key) {
+        $sql = "SELECT * FROM page
+                WHERE `key` = '$key' limit 1";
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
+
 }
 ?>

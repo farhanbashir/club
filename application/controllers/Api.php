@@ -26,7 +26,9 @@ class Api extends REST_Controller {
 	   parent::__construct();
 	   $this->load->model('content','',TRUE);
 	   $this->load->model('user','',TRUE);
-	   $this->load->model('device','',TRUE);
+       $this->load->model('device','',TRUE);
+       $this->load->model('image','',TRUE);
+	   $this->load->model('page','',TRUE);
 	   //$this->load->model('news','',TRUE);
 	 }
 
@@ -130,8 +132,9 @@ class Api extends REST_Controller {
 
         if(count($result) > 0)
         {
+            $return = $this->__makeData($type, $result);
             $data["header"]["error"] = "0";
-            $data["body"] = $result;
+            $data["body"] = $return;
         }
         else
         {
@@ -140,4 +143,644 @@ class Api extends REST_Controller {
         }
         $this->response($data);
     }
+
+    function getImagesArray($content_id)
+    {
+        $images = $this->image->get_images_by_content_id($content_id);
+        if(count($images) > 0)
+        {
+            $return = array();
+            foreach($images as $image)
+            {
+                $return[] = $image['path'].$image['name'];
+            }    
+            return $return;
+        }   
+        else
+        {
+            return array();    
+        } 
+        
+    }
+
+    function __makeData($type, $data)
+    {
+        $return = array();
+        switch ($type) {
+            case 'events':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }    
+                    
+                    unset($return[$i]['data']);
+                    unset($return[$i]['content_type_id']);
+                    unset($return[$i]['detail_description']);
+                    $i++;
+                }
+                //$return = $data;
+                break;
+            case 'courses':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['data']);
+                    unset($return[$i]['content_type_id']);
+                    unset($return[$i]['detail_description']);
+                    $i++;
+                }
+                break;
+            case 'restaurants':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['start_date']);
+                    unset($return[$i]['end_date']);
+                    unset($return[$i]['data']);
+                    unset($return[$i]['content_type_id']);
+                    unset($return[$i]['detail_description']);
+                    $i++;
+                }
+                break;
+            case 'promotions':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+                    unset($return[$i]['start_date']);
+                    unset($return[$i]['end_date']);
+                    unset($return[$i]['data']);
+                    unset($return[$i]['content_type_id']);
+                    unset($return[$i]['detail_description']);
+                    $i++;
+                }
+                break;
+            case 'pools':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['start_date']);
+                    unset($return[$i]['end_date']);
+                    unset($return[$i]['data']);
+                    unset($return[$i]['content_type_id']);
+                    unset($return[$i]['detail_description']);
+                    $i++;
+                }
+                break;
+            case 'beaches':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['start_date']);
+                    unset($return[$i]['end_date']);
+                    unset($return[$i]['data']);
+                    unset($return[$i]['content_type_id']);
+                    unset($return[$i]['detail_description']);
+                    $i++;
+                }
+                break;
+            case 'classes':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['end_date']);
+                    unset($return[$i]['data']);
+                    unset($return[$i]['content_type_id']);
+                    unset($return[$i]['detail_description']);
+                    $i++;
+                }
+                break;
+            case 'activities':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['data']);
+                    unset($return[$i]['content_type_id']);
+                    unset($return[$i]['detail_description']);
+                    $i++;
+                }
+                break;
+            case 'camps':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['data']);
+                    unset($return[$i]['content_type_id']);
+                    unset($return[$i]['detail_description']);
+                    $i++;
+                }
+                break;
+            default:
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    $i++;
+                }
+                break;
+        }
+        return $return;
+    }
+
+    function getCourseById_post()
+    {
+        $content_id = $this->post('id');
+        $type = 'courses';
+        $return = array();
+
+        if(!$content_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide id";
+            $this->response($data,400);
+        }
+
+        $result = $this->content->get_content_by_id($type, $content_id);
+        $images = $this->image->get_images_by_content_id($content_id);
+
+        if(count($result) > 0)
+        {
+            $return = $result[0];
+            $result_images = array();
+            if(count($images) > 0)
+            {
+                foreach ($images as $key => $value) {
+                    $result_images[] = $value['path'].$value['name'];
+                }
+            }    
+            $return['images'] = $result_images;
+
+            unset($return['data']);
+            unset($return['content_type_id']);
+            unset($return['detail_description']);
+            $data["header"]["error"] = "0";
+            $data["body"] = $return;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+    }
+
+    function getPageByKey_post()
+    {
+        $key = $this->post('key');
+        $return = array();
+
+        if(!$key)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide key";
+            $this->response($data,400);
+        }
+
+        $result = $this->page->get_page_by_key($key);
+        
+        if(count($result) > 0)
+        {
+            $data["header"]["error"] = "0";
+            $data["body"] = $result;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found for this key.";
+        }
+        $this->response($data);
+    }
+
+    function getEventById_post()
+    {
+        $content_id = $this->post('id');
+        $type = 'events';
+        $return = array();
+
+        if(!$content_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide id";
+            $this->response($data,400);
+        }
+
+        $result = $this->content->get_content_by_id($type, $content_id);
+        $images = $this->image->get_images_by_content_id($content_id);
+        if(count($result) > 0)
+        {
+            $return = $result[0];
+            $result_images = array();
+            if(count($images) > 0)
+            {
+                foreach ($images as $key => $value) {
+                    $result_images[] = $value['path'].$value['name'];
+                }
+            }    
+            $return['images'] = $result_images;
+            unset($return['data']);
+            unset($return['content_type_id']);
+            unset($return['detail_description']);
+            $data["header"]["error"] = "0";
+            $data["body"] = $return;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+    }
+
+    function getResturantById_post()
+    {
+        $content_id = $this->post('id');
+        $type = 'restaurants';
+        $return = array();
+
+        if(!$content_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide id";
+            $this->response($data,400);
+        }
+
+        $result = $this->content->get_content_by_id($type, $content_id);
+        $images = $this->image->get_images_by_content_id($content_id);
+
+        if(count($result) > 0)
+        {
+            $additional_fields = unserialize($result[0]['data']);
+            $return = array_merge($result[0],$additional_fields);
+            $result_images = array();
+            if(count($images) > 0)
+            {
+                foreach ($images as $key => $value) {
+                    $result_images[] = $value['path'].$value['name'];
+                }
+            }    
+            $return['images'] = $result_images;
+
+            //removing unwanted fields
+            unset($return['start_date']);
+            unset($return['end_date']);
+            unset($return['data']);
+            unset($return['content_type_id']);
+            unset($return['detail_description']);
+
+            $data["header"]["error"] = "0";
+            $data["body"] = $return;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+    }
+
+    function getPromotionById_post()
+    {
+        $content_id = $this->post('id');
+        $type = 'promotions';
+        $return = array();
+
+        if(!$content_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide id";
+            $this->response($data,400);
+        }
+
+        $result = $this->content->get_content_by_id($type, $content_id);
+        $images = $this->image->get_images_by_content_id($content_id);
+        
+        if(count($result) > 0)
+        {
+            $return = $result[0];
+            //$additional_fields = unserialize($result[0]['data']);
+            //$return = array_merge($result[0],$additional_fields);
+            $result_images = array();
+            if(count($images) > 0)
+            {
+                foreach ($images as $key => $value) {
+                    $result_images[] = $value['path'].$value['name'];
+                }
+            }    
+            $return['images'] = $result_images;
+
+            //removing unwanted fields
+            unset($return['start_date']);
+            unset($return['end_date']);
+            unset($return['data']);
+            unset($return['content_type_id']);
+            unset($return['detail_description']);
+
+            $data["header"]["error"] = "0";
+            $data["body"] = $return;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+    }
+
+    function getCampById_post()
+    {
+        $content_id = $this->post('id');
+        $type = 'camps';
+        $return = array();
+
+        if(!$content_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide id";
+            $this->response($data,400);
+        }
+
+        $result = $this->content->get_content_by_id($type, $content_id);
+        $images = $this->image->get_images_by_content_id($content_id);
+        if(count($result) > 0)
+        {
+            $return = $result[0];
+            $result_images = array();
+            if(count($images) > 0)
+            {
+                foreach ($images as $key => $value) {
+                    $result_images[] = $value['path'].$value['name'];
+                }
+            }    
+            $return['images'] = $result_images;
+            unset($return['data']);
+            unset($return['content_type_id']);
+            unset($return['detail_description']);
+            $data["header"]["error"] = "0";
+            $data["body"] = $return;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+    }
+
+    function getActivityById_post()
+    {
+        $content_id = $this->post('id');
+        $type = 'activities';
+        $return = array();
+
+        if(!$content_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide id";
+            $this->response($data,400);
+        }
+
+        $result = $this->content->get_content_by_id($type, $content_id);
+        $images = $this->image->get_images_by_content_id($content_id);
+        if(count($result) > 0)
+        {
+            $return = $result[0];
+            $result_images = array();
+            if(count($images) > 0)
+            {
+                foreach ($images as $key => $value) {
+                    $result_images[] = $value['path'].$value['name'];
+                }
+            }    
+            $return['images'] = $result_images;
+            unset($return['data']);
+            unset($return['content_type_id']);
+            unset($return['detail_description']);
+            $data["header"]["error"] = "0";
+            $data["body"] = $return;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+    }
+
+    function getPoolById_post()
+    {
+        $content_id = $this->post('id');
+        $type = 'pools';
+        $return = array();
+
+        if(!$content_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide id";
+            $this->response($data,400);
+        }
+
+        $result = $this->content->get_content_by_id($type, $content_id);
+        $images = $this->image->get_images_by_content_id($content_id);
+
+        if(count($result) > 0)
+        {
+            $additional_fields = unserialize($result[0]['data']);
+            $return = array_merge($result[0],$additional_fields);
+            $result_images = array();
+            if(count($images) > 0)
+            {
+                foreach ($images as $key => $value) {
+                    $result_images[] = $value['path'].$value['name'];
+                }
+            }    
+            $return['images'] = $result_images;
+
+            //removing unwanted fields
+            unset($return['start_date']);
+            unset($return['end_date']);
+            unset($return['data']);
+            unset($return['content_type_id']);
+            unset($return['detail_description']);
+
+            $data["header"]["error"] = "0";
+            $data["body"] = $return;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+    }
+
+    function getBeachById_post()
+    {
+        $content_id = $this->post('id');
+        $type = 'beaches';
+        $return = array();
+
+        if(!$content_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide id";
+            $this->response($data,400);
+        }
+
+        $result = $this->content->get_content_by_id($type, $content_id);
+        $images = $this->image->get_images_by_content_id($content_id);
+
+        if(count($result) > 0)
+        {
+            $additional_fields = unserialize($result[0]['data']);
+            $return = array_merge($result[0],$additional_fields);
+            $result_images = array();
+            if(count($images) > 0)
+            {
+                foreach ($images as $key => $value) {
+                    $result_images[] = $value['path'].$value['name'];
+                }
+            }    
+            $return['images'] = $result_images;
+
+            //removing unwanted fields
+            unset($return['start_date']);
+            unset($return['end_date']);
+            unset($return['data']);
+            unset($return['content_type_id']);
+            unset($return['detail_description']);
+
+            $data["header"]["error"] = "0";
+            $data["body"] = $return;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+    }
+
+    function getClassById_post()
+    {
+        $content_id = $this->post('id');
+        $type = 'classes';
+        $return = array();
+
+        if(!$content_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide id";
+            $this->response($data,400);
+        }
+
+        $result = $this->content->get_content_by_id($type, $content_id);
+        $images = $this->image->get_images_by_content_id($content_id);
+
+        if(count($result) > 0)
+        {
+            $additional_fields = unserialize($result[0]['data']);
+            $return = array_merge($result[0],$additional_fields);
+            $result_images = array();
+            if(count($images) > 0)
+            {
+                foreach ($images as $key => $value) {
+                    $result_images[] = $value['path'].$value['name'];
+                }
+            }    
+            $return['images'] = $result_images;
+
+            //removing unwanted fields
+            //unset($return['start_date']);
+            unset($return['end_date']);
+            unset($return['data']);
+            unset($return['content_type_id']);
+            unset($return['detail_description']);
+
+            $data["header"]["error"] = "0";
+            $data["body"] = $return;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+    }
+
+
 }
