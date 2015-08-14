@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     $(".delete_anything").on('click', function (e) {
         var r = confirm("Are you sure you want to delete?");
         if (r == true) {

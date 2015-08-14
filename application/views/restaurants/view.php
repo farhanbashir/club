@@ -65,7 +65,8 @@ $data = unserialize($restaurant['data']);
 
                                                 </div>                                        
                                                 <div class="jFiler-item-thumb-image">
-                                                    <img src="<?php echo base_url() . $image; ?>" draggable="false">
+                                                    <img src="<?php echo  $image; ?>" draggable="false">
+                                                
                                                 </div>                                    
                                             </div>                                   
 
