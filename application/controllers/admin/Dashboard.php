@@ -23,7 +23,7 @@ class Dashboard extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('content', '', TRUE);
-        $this->load->model('page', '', TRUE);
+        $this->load->model('pagemodel', '', TRUE);
 //        $this->load->model('event', '', TRUE);
 
         if (!$this->session->userdata('logged_in')) {

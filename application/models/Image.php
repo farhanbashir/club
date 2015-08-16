@@ -20,6 +20,14 @@ Class Image extends CI_Model {
         return $result;
     }
 
+    function get_images_by_page_id($page_id) {
+        $this->db->where('is_active', 1);
+        $query = $this->db->get_where('image', array('page_id' => $page_id));
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
+
     function delete_image($id) {
         return $this->db->delete('image', array('imagess_id' => $id));
     }

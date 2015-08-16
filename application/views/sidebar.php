@@ -22,8 +22,8 @@
             <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo site_url('admin/events') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Events</a></li>
                 <li><a href="<?php echo site_url('admin/courses') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Courses</a></li>
-<!--                <li><a href="<?php // echo site_url('admin/accumulator') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Accumulator</a></li>
-                <li><a href="<?php // echo site_url('admin/tv') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>TV Schedule</a></li>-->
+                <li><a href="<?php echo site_url('admin/page/accumulator') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Accumulator</a></li>
+                <li><a href="<?php echo site_url('admin/page/tv_schedule') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>TV Schedule</a></li>
             </ul>
         </li>
         <li class="treeview">
@@ -100,10 +100,10 @@
                 <i class="fa pull-right fa-angle-down"></i>
             </a>
             <ul class="treeview-menu" style="display: none;">
-<!--                <li><a href="<?php // echo site_url('welcome/parents') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>About Us</a></li>
-                <li><a href="<?php // echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Contact Us</a></li>
-                <li><a href="<?php // echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Membership Enquiries</a></li>
-                <li><a href="<?php // echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Guest policy & Fees</a></li>-->
+                <li><a href="<?php echo site_url('admin/page/about_us') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>About Us</a></li>
+                <li><a href="<?php echo site_url('admin/page/contact_us') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Contact Us</a></li>
+                <li><a href="<?php echo site_url('admin/page/membership_enquiries') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Membership Enquiries</a></li>
+                <li><a href="<?php echo site_url('admin/page/guest_policy_fees') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Guest policy & Fees</a></li>
             </ul>
         </li>
         <li class="treeview">
