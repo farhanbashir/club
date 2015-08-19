@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     });
 
-    $('#page_description').wysihtml5();
+    $('textarea').wysihtml5();
 
 
 

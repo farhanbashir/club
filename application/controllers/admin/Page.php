@@ -44,7 +44,29 @@ class Page extends MY_Controller {
     }
 
     public function index($page_slug) {
-        $pages = array('tv_schedule', 'accumulator', 'about_us', 'contact_us', 'membership_enquiries', 'guest_policy_fees');
+        $pages = array(
+            'tv_schedule',
+            'accumulator',
+            'about_us',
+            'contact_us',
+            'membership_enquiries', 
+            'guest_policy_fees',
+            'fringe_benefits_salon_barbers',
+            'library',
+            'multipurpose_court',
+            'adds',
+            'diving',
+            'football',
+            'sailing',
+            'photography',
+            'the_gallery',
+            'creche',
+            'creche',
+            'goodies',
+            'dry_cleaners',
+            'liquor_shop',
+            'bus_schedule'
+            );
         if (in_array($page_slug, $pages)) {
             $page = $this->pagemodel->get_page_by_key($page_slug);
             if (!empty($page)) {
