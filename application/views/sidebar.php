@@ -47,12 +47,9 @@
                 <li><a href="<?php echo site_url('admin/beaches') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Beaches</a></li>
                 <li><a href="<?php echo site_url('admin/page/fringe_benefits_salon_barbers') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Fringe Benefits Salon & Barber's</a></li>
                 <li><a href="<?php echo site_url('admin/page/library') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Library</a></li>
-                <li><a href="<?php // echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Squash & Racketball</a></li>
-                <li><a href="<?php // echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Bedminton</a>
-                    <ul>
-                        <li>Court</li>
-                    </ul>                
-                </li>
+                <li><a href="<?php echo site_url('admin/page/tennis') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Tennis</a></li>
+                <li><a href="<?php echo site_url('admin/page/squash_and_racketball') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Squash & Racketball</a></li>
+                <li><a href="<?php echo site_url('admin/page/badminton') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Bedminton</a></li>
                 <li><a href="<?php echo site_url('admin/page/multipurpose_court') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Multipurpose Court</a></li>
                 <li><a href="<?php echo site_url('admin/page/adds') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>ADDS</a></li>
                 <li><a href="<?php echo site_url('admin/page/diving') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Diving</a></li>
@@ -116,8 +113,8 @@
                 <i class="fa pull-right fa-angle-left"></i>
             </a>
             <ul class="treeview-menu" style="display: none;">
-<!--                <li><a href="<?php // echo site_url('welcome/parents') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Recent Events</a></li>
-                <li><a href="<?php // echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Members Gallery</a></li>-->
+                <li><a href="<?php echo site_url('admin/galleries') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Recent Events</a></li>
+                <!--<li><a href="<?php // echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Members Gallery</a></li>-->
             </ul>
         </li>
 <!--        <li class="active">-->

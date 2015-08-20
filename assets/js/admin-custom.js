@@ -1,5 +1,47 @@
 $(document).ready(function () {
 
+
+    $(function () {
+        var addDiv = $('#news_input_div');
+        var i = $('#news_input_div div.newpacket').size() + 1;
+
+        $('#addnews').on('click', function (e) {
+            if (i < 6) {
+                e.preventDefault();
+                $('<div class="input-group margin newpacket" id="">' +
+                        '<input type="text" class="form-control" name="page[data][news][]">' +
+                        '<span class="input-group-btn">' +
+                        '<button class="btn removenews btn-danger btn-flat" type="button"><i class="glyphicon glyphicon-remove"></i></button>' +
+                        '</span>' +
+                        '</div>').appendTo(addDiv);
+
+                $('.removenews').on('click', function () {
+                    $(this).parents('div.newpacket').remove();
+                });
+
+                i++;
+            }
+            return false;
+        });
+
+        $('.removenews').on('click', function () {
+            $(this).parents('div.newpacket').remove();
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $(".delete_anything").on('click', function (e) {
         var r = confirm("Are you sure you want to delete?");
         if (r == true) {

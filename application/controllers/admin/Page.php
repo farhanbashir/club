@@ -65,7 +65,10 @@ class Page extends MY_Controller {
             'goodies',
             'dry_cleaners',
             'liquor_shop',
-            'bus_schedule'
+            'bus_schedule',
+            'tennis',
+            'squash_and_racketball',
+            'badminton'
             );
         if (in_array($page_slug, $pages)) {
             $page = $this->pagemodel->get_page_by_key($page_slug);

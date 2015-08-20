@@ -2,3 +2,22 @@
     color: #C52929;
     font-size: 13px;
 }
+
+.users-list>li img {
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+}
+
+.users-list>li {
+    width: 25%;
+    float: left;
+    padding: 10px;
+    text-align: center;
+}
+
+.users-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
