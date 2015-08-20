@@ -1,6 +1,6 @@
 <?php
 
-Class PageModel extends CI_Model {
+Class Pagemodel extends CI_Model {
 
     function get_total_pages() {
         return $this->db->count_all('page');
