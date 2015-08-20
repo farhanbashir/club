@@ -46,15 +46,24 @@ class Galleries extends MY_Controller {
         $data["links"] = $this->pagination->create_links();
 
         $galleries = $this->content->get_content_by_type($this->type, $page);
-
-        $images = $this->image->get_images_by_content_id($id);
-
-//        foreach ($images as $image) {
-//            $data['gallery']['images'][] = $image['path'] . $image['name'];
-//        }
-//
-//
 //        $data['galleries'] = $galleries;
+
+
+        if (!empty($galleries)) {
+            foreach ($galleries as $gallery) {
+                $data['galleries'][] = array(
+                'images' => $this->image->get_images_by_content_id($gallery['content_id']),
+                'content_id' => $gallery['content_id'],
+                'content_type_id' => $gallery['content_type_id'],
+                'title' =>$gallery['title'],
+                'description' =>$gallery['description'],
+                'is_active' => $gallery['is_active'],
+
+                );
+            }
+        }
+
+
         $content = $this->load->view($this->type . '/tabular.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }

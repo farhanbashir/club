@@ -17,44 +17,45 @@
 
             <?php
             foreach ($galleries as $gallery) {
-
-                $data = unserialize($gallery['data']);
                 ?>
 
-                <div class="row">
-                    <div class="col-md-4">
+                <div class="col-sm-4">
                         <!-- USERS LIST -->
                         <div class="box box-danger">
                             <div class="box-header with-border">
                                 <h3 class="box-title"><?php echo $gallery['title']; ?></h3>
                                 <div class="box-tools pull-right">
-                                    <span class="label label-danger">8 New Members</span>
+                                    <!--<span class="label label-danger">8 New Members</span>-->
                                     <a href="<?php echo base_url(); ?>index.php/admin/galleries/edit/<?php echo $gallery['content_id']; ?>"><button class="btn btn-warning" data-widget="collapse"></i>Edit</button></a>
                                     <a href="<?php echo base_url(); ?>index.php/admin/galleries/delete/<?php echo $gallery['content_id']; ?>"><button class="btn btn-danger" data-widget="remove">Delete</button></a>
                                 </div>
                             </div><!-- /.box-header -->
                             <div class="box-body no-padding">
-                                <p><?php echo(strlen($gallery['description']) > 100) ? substr($gallery['description'], 0, 97) . '...' : $gallery['description']; ?></p>
+                                <br/> 
+                                <div class="col-sm-12">
+                                    <p><?php echo(strlen($gallery['description']) > 200) ? substr($gallery['description'], 0, 197) . '...' : $gallery['description']; ?></p>
+                                </div>
                                 <ul class="users-list clearfix">
-                                    <li>
-                                        <img src="dist/img/user1-128x128.jpg" alt="User Image">
-                                    </li>
-                                    <li>
-                                        <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                                    </li>
-                                    <li>
-                                        <img src="dist/img/user7-128x128.jpg" alt="User Image">
-                                    </li>
-                                    <li>
-                                        <img src="dist/img/user6-128x128.jpg" alt="User Image">
-                                    </li>
+
+                                    <?php
+                                    if (!empty($gallery['images'])) {
+
+                                        foreach ($gallery['images'] as $image) {
+                                            ?>
+                                            <li>
+                                                <img src="<?php echo $image['path'] . $image['name'] ?>" alt="User Image">
+                                            </li>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </ul><!-- /.users-list -->
                             </div><!-- /.box-body -->
                             <div class="box-footer text-center">
                                 <a href="<?php echo base_url(); ?>index.php/admin/galleries/view/<?php echo $gallery['content_id']; ?>"><button class="btn btn-primary" data-widget="collapse"></i>View all</button></a>
                             </div><!-- /.box-footer -->
                         </div><!--/.box -->
-                    </div>
+                    
 
 
                 </div>
