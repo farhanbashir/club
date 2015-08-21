@@ -49,7 +49,7 @@ class Page extends MY_Controller {
             'accumulator',
             'about_us',
             'contact_us',
-            'membership_enquiries', 
+            'membership_enquiries',
             'guest_policy_fees',
             'fringe_benefits_salon_barbers',
             'library',
@@ -70,7 +70,7 @@ class Page extends MY_Controller {
             'squash_and_racketball',
             'badminton',
             'gym_personal_training'
-            );
+        );
         if (in_array($page_slug, $pages)) {
             $page = $this->pagemodel->get_page_by_key($page_slug);
             if (!empty($page)) {
@@ -119,14 +119,15 @@ class Page extends MY_Controller {
 
 
         $data = array(
-        'key' => $_POST['page']['key'],
-        'content' => $_POST['page']['content'],
-        'data' => !empty($_POST['page']['data'])? serialize($_POST['page']['data']):'',
+            'key' => $_POST['page']['key'],
+            'content' => $_POST['page']['content'],
+            'data' => !empty($_POST['page']['data']) ? serialize($_POST['page']['data']) : '',
         );
-        
-        $page_id = $this->pagemodel->update_page_by_id($_POST['page']['id'], $data);
-        $image_data = $this->uploadPageImageFile($_POST['page']['id'], $_POST['page']['key']);
 
+        $page_id = $this->pagemodel->update_page_by_id($_POST['page']['id'], $data);
+        if (!empty($_FILES['userfile'])) {
+            $image_data = $this->uploadPageImageFile($_POST['page']['id'], $_POST['page']['key']);
+        }
         if ($this->uploadSuccess) {
             $this->image->add_images($image_data);
         }
