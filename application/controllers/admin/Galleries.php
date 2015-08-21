@@ -52,13 +52,12 @@ class Galleries extends MY_Controller {
         if (!empty($galleries)) {
             foreach ($galleries as $gallery) {
                 $data['galleries'][] = array(
-                'images' => $this->image->get_images_by_content_id($gallery['content_id']),
-                'content_id' => $gallery['content_id'],
-                'content_type_id' => $gallery['content_type_id'],
-                'title' =>$gallery['title'],
-                'description' =>$gallery['description'],
-                'is_active' => $gallery['is_active'],
-
+                    'images' => $this->image->get_images_by_content_id($gallery['content_id']),
+                    'content_id' => $gallery['content_id'],
+                    'content_type_id' => $gallery['content_type_id'],
+                    'title' => $gallery['title'],
+                    'description' => $gallery['description'],
+                    'is_active' => $gallery['is_active'],
                 );
             }
         }
@@ -98,16 +97,10 @@ class Galleries extends MY_Controller {
 
     public function update() {
 
-        $data_content = array(
-            'guest_dining_policy' => $_POST['gallery']['guest_dining_policy'],
-            'dress_code' => $_POST['gallery']['dress_code']
-        );
-
 
         $data = array(
             'title' => $_POST['gallery']['title'],
             'description' => $_POST['gallery']['description'],
-            'data' => serialize($data_content)
         );
 
         $gallery_id = $this->content->update_content_by_id($_POST['gallery']['id'], $data);
@@ -126,16 +119,11 @@ class Galleries extends MY_Controller {
     }
 
     public function submit() {
-        $data_content = array(
-            'guest_dining_policy' => $_POST['gallery']['guest_dining_policy'],
-            'dress_code' => $_POST['gallery']['dress_code']
-        );
 
 
         $data = array(
             'title' => $_POST['gallery']['title'],
             'description' => $_POST['gallery']['description'],
-            'data' => serialize($data_content)
         );
 
         $gallery_id = $this->content->add_content($data, $this->type);
