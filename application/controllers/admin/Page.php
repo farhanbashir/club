@@ -68,7 +68,8 @@ class Page extends MY_Controller {
             'bus_schedule',
             'tennis',
             'squash_and_racketball',
-            'badminton'
+            'badminton',
+            'gym_personal_training'
             );
         if (in_array($page_slug, $pages)) {
             $page = $this->pagemodel->get_page_by_key($page_slug);

@@ -16,10 +16,11 @@
         <div class="col-xs-12">
 
             <?php
-            foreach ($galleries as $gallery) {
-                ?>
+            if (!empty($galleries)) {
+                foreach ($galleries as $gallery) {
+                    ?>
 
-                <div class="col-sm-4">
+                    <div class="col-sm-4">
                         <!-- USERS LIST -->
                         <div class="box box-danger">
                             <div class="box-header with-border">
@@ -55,14 +56,15 @@
                                 <a href="<?php echo base_url(); ?>index.php/admin/galleries/view/<?php echo $gallery['content_id']; ?>"><button class="btn btn-primary" data-widget="collapse"></i>View all</button></a>
                             </div><!-- /.box-footer -->
                         </div><!--/.box -->
-                    
-
-
-                </div>
 
 
 
-                <?php
+                    </div>
+
+
+
+                    <?php
+                }
             }
             ?>
 

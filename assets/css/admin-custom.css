@@ -22,3 +22,9 @@
     margin: 0;
     padding: 0;
 }
+
+.border-bottom{
+    border-bottom: 1px solid #D8D0D0;
+    margin: 1px;
+    padding: 10px;
+}

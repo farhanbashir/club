@@ -30,7 +30,44 @@ $(document).ready(function () {
     });
 
 
+    $(function () {
+        var addDiv = $('#professional-div');
+        var i = $('#professional-div div.professional-packet').size() + 1;
 
+        $('#addnew-professional').on('click', function (e) {
+            if (i < 99999) {
+                e.preventDefault();
+                $('<div class="row border-bottom professional-packet">' +
+                        '<div class="col-lg-4">' +
+                        '<div class="input-group">' +
+                        '<label>Fitness Professional</label>' +
+                        '<input type="text" class="form-control" name="page[data][gym][' + i + '][professional]">' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="col-lg-4">' +
+                        '<div class="input-group">' +
+                        '<label>Enquire now</label>' +
+                        '<input type="text" class="form-control" name="page[data][gym][' + i + '][enquire_now]">' +
+                        '</div>' +
+                        '</div>' +
+                        '<span class="input-group-btn col-lg-2" style="margin-top: 25px;">' +
+                        '<button class="btn remove-professional btn-danger btn-flat" type="button"><i class="glyphicon glyphicon-remove"></i></button>' +
+                        '</span>' +
+                        '</div>').appendTo(addDiv);
+
+                $('.remove-professional').on('click', function () {
+                    $(this).parents('div.professional-packet').remove();
+                });
+
+                i++;
+            }
+            return false;
+        });
+
+        $('.remove-professional').on('click', function () {
+            $(this).parents('div.professional-packet').remove();
+        });
+    });
 
 
 

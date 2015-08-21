@@ -71,7 +71,7 @@
                 <i class="fa pull-right fa-angle-left"></i>
             </a>
             <ul class="treeview-menu" style="display: none;">
-                <!--<li><a href="<?php // echo site_url('welcome/parents') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Personal Training</a></li>-->
+                <li><a href="<?php echo site_url('admin/page/gym_personal_training') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Personal Training</a></li>
                 <li><a href="<?php echo site_url('admin/classes') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Classes</a></li>
             </ul>
         </li>
