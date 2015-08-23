@@ -36,12 +36,18 @@ Class Content extends CI_Model {
     }
 
     function get_content_by_type($type, $page = 0) {
-        $sql = "select * from content
-            WHERE content_type_id =
-            (
-                    SELECT content_type_id FROM content_type
-                    WHERE content = '$type'
-            )";
+        // $sql = "select * from content
+        //     WHERE content_type_id =
+        //     (
+        //             SELECT content_type_id FROM content_type
+        //             WHERE content = '$type'
+        //     )";
+        
+        $sql = "select c.*,ct.content as content_type_name from content c
+                inner join content_type ct on ct.content_type_id=c.content_type_id 
+                where ct.content = '$type'
+                ";     
+        
 
         if ($page >= 0) {
             $start = $page;

@@ -28,7 +28,7 @@ class Api extends REST_Controller {
 	   $this->load->model('user','',TRUE);
        $this->load->model('device','',TRUE);
        $this->load->model('image','',TRUE);
-	   $this->load->model('page','',TRUE);
+	   $this->load->model('pagemodel','',TRUE);
 	   //$this->load->model('news','',TRUE);
 	 }
 
@@ -411,7 +411,7 @@ class Api extends REST_Controller {
             $this->response($data,400);
         }
 
-        $result = $this->page->get_page_by_key($key);
+        $result = $this->pagemodel->get_page_by_key($key);
         
         if(count($result) > 0)
         {
