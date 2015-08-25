@@ -19,7 +19,7 @@
     <body class="bg-black">
 
         <div class="form-box" id="login-box">
-            <img src="http://localhost/club/assets/img/logo.png" class="logo icon"style="margin: -29px 0px 30px 109px;F" alt="User Image">
+             <img src="<?php echo asset_img('logo.png');?>" class="logo icon" style="margin: -29px 0px 30px 109px;"alt="User Image" />
             <br/>
             <div class="header">Sign In</div>
             <form action="<?php echo base_url(); ?>index.php/auth/check_database" method="post">

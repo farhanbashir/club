@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <a href="<?php echo site_url('admin/pools/addnew') ?>"><button class="btn btn-info pull-right" style="margin:10px ">Add New</button></a>
         </div>
 
@@ -46,28 +46,30 @@
 
                         </tr>
                         <?php
-                        foreach ($pools as $pool) {
-                            $data = unserialize($pool['data']);
+                        if (!empty($pools)) {
+                            foreach ($pools as $pool) {
+                                $data = unserialize($pool['data']);
 
-                            if (!empty($data['type'])) {
-                                $type = $data['type'];
+                                if (!empty($data['type'])) {
+                                    $type = $data['type'];
+                                }
+                                ?>
+                                <tr>
+                                    <td><?php echo $pool['content_id']; ?></td>
+                                    <td><?php echo $pool['title']; ?></td>
+                                    <td><?php echo $type; ?></td>
+                                    <td><?php echo(strlen($pool['description']) > 100) ? substr($pool['description'], 0, 97) . '...' : $pool['description']; ?></td>
+
+                                    <td>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/pools/view/<?php echo $pool['content_id']; ?>">View</a>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <a href="<?php echo base_url(); ?>index.php/admin/pools/edit/<?php echo $pool['content_id']; ?>">Edit</a>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <a href="<?php echo base_url(); ?>index.php/admin/pools/delete/<?php echo $pool['content_id']; ?>" class="delete_anything">Delete</a>
+                                    </td> 
+                                </tr>
+                                <?php
                             }
-                            ?>
-                            <tr>
-                                <td><?php echo $pool['content_id']; ?></td>
-                                <td><?php echo $pool['title']; ?></td>
-                                <td><?php echo $type; ?></td>
-                                <td><?php echo(strlen($pool['description']) > 100) ? substr($pool['description'], 0, 97) . '...' : $pool['description']; ?></td>
-
-                                <td>
-                                    <a href="<?php echo base_url(); ?>index.php/admin/pools/view/<?php echo $pool['content_id']; ?>">View</a>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <a href="<?php echo base_url(); ?>index.php/admin/pools/edit/<?php echo $pool['content_id']; ?>">Edit</a>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <a href="<?php echo base_url(); ?>index.php/admin/pools/delete/<?php echo $pool['content_id']; ?>" class="delete_anything">Delete</a>
-                                </td> 
-                            </tr>
-                            <?php
                         }
                         ?>
 
@@ -78,7 +80,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                <?php echo $links; ?>
+<?php echo $links; ?>
             </div></div>
     </div>
 </section><!-- /.content

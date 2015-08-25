@@ -65,7 +65,7 @@ class Pools extends MY_Controller {
         $this->pagination->initialize($pagination_config);
         $data["links"] = $this->pagination->create_links();
         $data['key'] = 'kid';
-        $pools = $filter_data['pool'];
+        $pools = !empty($filter_data['pool']) ? ($filter_data['pool']) : "";
         $data['pools'] = $pools;
         $content = $this->load->view($this->type . '/tabular.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
@@ -85,7 +85,7 @@ class Pools extends MY_Controller {
 
         $data["links"] = $this->pagination->create_links();
 
-        $pools = $filter_data['pool'];
+        $pools = !empty($filter_data['pool']) ? ($filter_data['pool']) : "";
         $data['key'] = 'main';
         $data['pools'] = $pools;
         $content = $this->load->view($this->type . '/tabular.php', $data, true);
@@ -101,7 +101,7 @@ class Pools extends MY_Controller {
                 $filter['pool'][] = $pool;
             }
         }
-        $filter['count'] = count($filter['pool']);
+        $filter['count'] = !empty($filter['pool']) ? count($filter['pool']) : '';
         return $filter;
     }
 

@@ -52,7 +52,6 @@ class Beaches extends MY_Controller {
         $this->load->view('welcome_message', array('content' => $content));
     }
 
- 
     public function adults() {
         $data = array();
         $this->load->library("pagination");
@@ -66,7 +65,7 @@ class Beaches extends MY_Controller {
         $this->pagination->initialize($pagination_config);
         $data["links"] = $this->pagination->create_links();
         $data['key'] = 'adult';
-        $beaches = $filter_data['beach'];
+        $beaches = !empty($filter_data['beach']) ? $filter_data['beach'] : '';
         $data['beaches'] = $beaches;
         $content = $this->load->view($this->type . '/tabular.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
@@ -86,7 +85,7 @@ class Beaches extends MY_Controller {
 
         $data["links"] = $this->pagination->create_links();
 
-        $beaches = $filter_data['beach'];
+        $beaches = !empty($filter_data['beach']) ? $filter_data['beach'] : '';
         $data['key'] = 'main';
         $data['beaches'] = $beaches;
         $content = $this->load->view($this->type . '/tabular.php', $data, true);
@@ -102,7 +101,7 @@ class Beaches extends MY_Controller {
                 $filter['beach'][] = $beach;
             }
         }
-        $filter['count'] = count($filter['beach']);
+        $filter['count'] = !empty($filter['beach']) ? count($filter['beach']) : '';
         return $filter;
     }
 
