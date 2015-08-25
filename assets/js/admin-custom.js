@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    $('#filter').on('change', function () {
+        var slug = $('#filter').val();
+        window.location.href = slug;
+    });
+
+
 
     $(function () {
         var addDiv = $('#news_input_div');

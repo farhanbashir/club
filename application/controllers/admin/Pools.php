@@ -46,9 +46,63 @@ class Pools extends MY_Controller {
         $data["links"] = $this->pagination->create_links();
 
         $pools = $this->content->get_content_by_type($this->type, $page);
+        $data['key'] = 'all';
         $data['pools'] = $pools;
         $content = $this->load->view($this->type . '/tabular.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
+    }
+
+    public function kid() {
+        $data = array();
+        $this->load->library("pagination");
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $filter_data = $this->filter_data_and_count('Kid Pool', $page);
+
+        $total_rows = $filter_data['count'];
+
+        $pagination_config = get_pagination_config($this->type . '/kid', $total_rows, $this->config->item('pagination_limit'), 4);
+
+        $this->pagination->initialize($pagination_config);
+        $data["links"] = $this->pagination->create_links();
+        $data['key'] = 'kid';
+        $pools = $filter_data['pool'];
+        $data['pools'] = $pools;
+        $content = $this->load->view($this->type . '/tabular.php', $data, true);
+        $this->load->view('welcome_message', array('content' => $content));
+    }
+
+    public function main() {
+        $data = array();
+        $this->load->library("pagination");
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $filter_data = $this->filter_data_and_count('Main Pool', $page);
+
+        $total_rows = $filter_data['count'];
+
+        $pagination_config = get_pagination_config($this->type . '/main', $total_rows, $this->config->item('pagination_limit'), 4);
+
+        $this->pagination->initialize($pagination_config);
+
+        $data["links"] = $this->pagination->create_links();
+
+        $pools = $filter_data['pool'];
+        $data['key'] = 'main';
+        $data['pools'] = $pools;
+        $content = $this->load->view($this->type . '/tabular.php', $data, true);
+        $this->load->view('welcome_message', array('content' => $content));
+    }
+
+    public function filter_data_and_count($type, $page) {
+        $filter = array();
+        $pools = $this->content->get_content_by_type($this->type, $page);
+        foreach ($pools as $pool) {
+            $ser_data = unserialize($pool['data']);
+            if ($ser_data['type'] == $type) {
+                $filter['pool'][] = $pool;
+            }
+        }
+        $filter['count'] = count($filter['pool']);
+        return $filter;
     }
 
     public function view($id) {

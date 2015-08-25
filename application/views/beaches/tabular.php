@@ -10,7 +10,22 @@
 <section class="content">
 
     <div class="row">
+
+
+
         <div class="col-xs-12">
+            <div class="col-xs-4" style="margin: 10px;">
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label" style="margin: 6px 0px 0px -27px;">Filter</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="" id="filter" >
+                            <option value="<?php echo base_url(); ?>index.php/admin/beaches" <?php echo ($key == 'all') ? 'selected' : ''; ?>>All Beaches</option>
+                            <option value="<?php echo base_url(); ?>index.php/admin/beaches/main" <?php echo ($key == 'main') ? 'selected' : ''; ?>>Main Beaches</option>
+                            <option value="<?php echo base_url(); ?>index.php/admin/beaches/adults" <?php echo ($key == 'adult') ? 'selected' : ''; ?>>Kid Beaches</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
             <a href="<?php echo site_url('admin/beaches/addnew') ?>"><button class="btn btn-info pull-right" style="margin:10px ">Add New</button></a>
         </div>
 

@@ -45,10 +45,65 @@ class Beaches extends MY_Controller {
 
         $data["links"] = $this->pagination->create_links();
 
-        $beaches = $this->content->get_content_by_type($this->type, $page);
+        $pools = $this->content->get_content_by_type($this->type, $page);
+        $data['key'] = 'all';
+        $data['beaches'] = $pools;
+        $content = $this->load->view($this->type . '/tabular.php', $data, true);
+        $this->load->view('welcome_message', array('content' => $content));
+    }
+
+ 
+    public function adults() {
+        $data = array();
+        $this->load->library("pagination");
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $filter_data = $this->filter_data_and_count('Adults Beach', $page);
+
+        $total_rows = $filter_data['count'];
+
+        $pagination_config = get_pagination_config($this->type . '/kid', $total_rows, $this->config->item('pagination_limit'), 4);
+
+        $this->pagination->initialize($pagination_config);
+        $data["links"] = $this->pagination->create_links();
+        $data['key'] = 'adult';
+        $beaches = $filter_data['beach'];
         $data['beaches'] = $beaches;
         $content = $this->load->view($this->type . '/tabular.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
+    }
+
+    public function main() {
+        $data = array();
+        $this->load->library("pagination");
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $filter_data = $this->filter_data_and_count('Main Beach', $page);
+
+        $total_rows = $filter_data['count'];
+
+        $pagination_config = get_pagination_config($this->type . '/main', $total_rows, $this->config->item('pagination_limit'), 4);
+
+        $this->pagination->initialize($pagination_config);
+
+        $data["links"] = $this->pagination->create_links();
+
+        $beaches = $filter_data['beach'];
+        $data['key'] = 'main';
+        $data['beaches'] = $beaches;
+        $content = $this->load->view($this->type . '/tabular.php', $data, true);
+        $this->load->view('welcome_message', array('content' => $content));
+    }
+
+    public function filter_data_and_count($type, $page) {
+        $filter = array();
+        $beaches = $this->content->get_content_by_type($this->type, $page);
+        foreach ($beaches as $beach) {
+            $ser_data = unserialize($beach['data']);
+            if ($ser_data['type'] == $type) {
+                $filter['beach'][] = $beach;
+            }
+        }
+        $filter['count'] = count($filter['beach']);
+        return $filter;
     }
 
     public function view($id) {

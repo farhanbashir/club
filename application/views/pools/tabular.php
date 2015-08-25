@@ -11,6 +11,19 @@
 
     <div class="row">
         <div class="col-xs-12">
+            <div class="col-xs-4" style="margin: 10px;">
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label" style="margin: 6px 0px 0px -27px;">Filter</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="" id="filter" >
+                            <option value="<?php echo base_url(); ?>index.php/admin/pools" <?php echo ($key == 'all') ? 'selected' : ''; ?>>All Pools</option>
+                            <option value="<?php echo base_url(); ?>index.php/admin/pools/main" <?php echo ($key == 'main') ? 'selected' : ''; ?>>Main Pools</option>
+                            <option value="<?php echo base_url(); ?>index.php/admin/pools/kid" <?php echo ($key == 'kid') ? 'selected' : ''; ?>>Kid Pools</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
             <a href="<?php echo site_url('admin/pools/addnew') ?>"><button class="btn btn-info pull-right" style="margin:10px ">Add New</button></a>
         </div>
 
