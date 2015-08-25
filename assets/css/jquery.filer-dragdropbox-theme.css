@@ -6,7 +6,7 @@
 */
 
 /*-------------------------
-	Input
+        Input
 -------------------------*/
 .jFiler-input-dragDrop {
     display: block;
@@ -19,11 +19,11 @@
     border: 2px dashed #C8CBCE;
     text-align: center;
     -webkit-transition: box-shadow 0.3s,
-                        border-color 0.3s;
+        border-color 0.3s;
     -moz-transition: box-shadow 0.3s,
-                        border-color 0.3s;
+        border-color 0.3s;
     transition: box-shadow 0.3s,
-                        border-color 0.3s;
+        border-color 0.3s;
 }
 
 .jFiler.dragged .jFiler-input-dragDrop {
@@ -119,12 +119,13 @@
 
 /* blue */
 .jFiler-input-choose-btn.blue {
-    color: #008BFF;
-    border: 1px solid #008BFF;
+    background-color: #dad189;
+    border-color: #9E933C;
+    color: #ffffff !important;
 }
 
 .jFiler-input-choose-btn.blue:hover {
-    background: #008BFF;
+    background: #9E933C;
 }
 
 .jFiler-input-choose-btn.blue:active {

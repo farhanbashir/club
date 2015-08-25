@@ -21,7 +21,7 @@
                         <select class="form-control" name="" id="filter" >
                             <option value="<?php echo base_url(); ?>index.php/admin/beaches" <?php echo ($key == 'all') ? 'selected' : ''; ?>>All Beaches</option>
                             <option value="<?php echo base_url(); ?>index.php/admin/beaches/main" <?php echo ($key == 'main') ? 'selected' : ''; ?>>Main Beaches</option>
-                            <option value="<?php echo base_url(); ?>index.php/admin/beaches/adults" <?php echo ($key == 'adult') ? 'selected' : ''; ?>>Kid Beaches</option>
+                            <option value="<?php echo base_url(); ?>index.php/admin/beaches/adults" <?php echo ($key == 'adult') ? 'selected' : ''; ?>>Adults Beaches</option>
                         </select>
                     </div>
                 </div>
