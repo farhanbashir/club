@@ -132,7 +132,7 @@ class Api extends REST_Controller {
 
         if(count($result) > 0)
         {
-            $return = $this->__makeData($type, $result);
+            $return = $this->__makeContentData($type, $result);
             $data["header"]["error"] = "0";
             $data["body"] = $return;
         }
@@ -144,9 +144,17 @@ class Api extends REST_Controller {
         $this->response($data);
     }
 
-    function getImagesArray($content_id)
+    function getImagesArray($id, $type='content')
     {
-        $images = $this->image->get_images_by_content_id($content_id);
+        if($type == 'content')
+        {
+            $images = $this->image->get_images_by_content_id($id);
+        }   
+        else
+        {
+            $images = $this->image->get_images_by_page_id($id);
+        } 
+        
         if(count($images) > 0)
         {
             $return = array();
@@ -163,7 +171,7 @@ class Api extends REST_Controller {
         
     }
 
-    function __makeData($type, $data)
+    function __makeContentData($type, $data)
     {
         $return = array();
         switch ($type) {
@@ -357,6 +365,148 @@ class Api extends REST_Controller {
         return $return;
     }
 
+    function __makePageData($type, $data)
+    {
+        $return = array();
+        switch ($type) {
+            case 'accumulator':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['page_id'],'page');
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }    
+                    
+                    unset($return[$i]['data']);
+                    $i++;
+                }
+                //$return = $data;
+                break;
+            case 'tv_schedule':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['page_id'],'page');
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['data']);
+                    $i++;
+                }
+                break;
+            case 'contact_us':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['page_id'],'page');
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['data']);
+                    $i++;
+                }
+                break;
+            case 'about_us':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['page_id'],'page');
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['data']);
+                    $i++;
+                }
+                break;    
+            case 'guest_policy_fees':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['page_id'],'page');
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+                    unset($return[$i]['data']);
+                    $i++;
+                }
+                break;
+            case 'membership_enquiries':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['page_id'],'page');
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['data']);
+                    $i++;
+                }
+                break;
+            case 'gym_personal_training':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['page_id'], 'page');
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    //if(is_array($additional_fields))
+                    if(isset($additional_fields['gym']) && is_array($additional_fields['gym']))
+                    {
+                        $gyms = array();
+                        foreach($additional_fields['gym'] as $gym)
+                        {
+                            $gyms[] = $gym;
+                        }    
+                        $return[$i]['trainers'] = $gyms;
+                        //$return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['data']);
+                    $i++;
+                }
+                break;
+            default:
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['page_id'], 'page');
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    $i++;
+                }
+                break;
+        }
+        return $return;
+    }
+
     function getCourseById_post()
     {
         $content_id = $this->post('id');
@@ -415,8 +565,19 @@ class Api extends REST_Controller {
         
         if(count($result) > 0)
         {
+            $return = $this->__makePageData($key, $result);
+            // $images = $this->image->get_images_by_page_id($result[0]['page_id']);
+            // $result_images = array();
+            // if(count($images) > 0)
+            // {
+            //     foreach ($images as $key => $value) {
+            //         $result_images[] = $value['path'].$value['name'];
+            //     }
+            // }
+            // $result['images'] = $result_images;
+
             $data["header"]["error"] = "0";
-            $data["body"] = $result;
+            $data["body"] = $return;
         }
         else
         {
