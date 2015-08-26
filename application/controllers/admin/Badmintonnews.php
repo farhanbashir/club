@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Tennisnews extends MY_Controller {
+class Badmintonnews extends MY_Controller {
 
     /**
      * Index Page for this controller.
@@ -20,7 +20,7 @@ class Tennisnews extends MY_Controller {
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
-    public $type = 'tennisnews';
+    public $type = 'badmintonnews';
 
     function __construct() {
         parent::__construct();
@@ -45,19 +45,19 @@ class Tennisnews extends MY_Controller {
 
         $data["links"] = $this->pagination->create_links();
 
-        $tennisnews = $this->content->get_content_by_type($this->type, $page);
-        $data['tennisnews'] = $tennisnews;
+        $badmintonnews = $this->content->get_content_by_type($this->type, $page);
+        $data['badmintonnews'] = $badmintonnews;
         $content = $this->load->view($this->type . '/tabular.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
     public function view($id) {
-        $tennisnew = $this->content->get_content_by_id($this->type, $id);
-        $data['tennisnew'] = $tennisnew[0];
+        $badmintonnew = $this->content->get_content_by_id($this->type, $id);
+        $data['badmintonnew'] = $badmintonnew[0];
         $images = $this->image->get_images_by_content_id($id);
 
         foreach ($images as $image) {
-            $data['tennisnew']['images'][] = $image['path'] . $image['name'];
+            $data['badmintonnew']['images'][] = $image['path'] . $image['name'];
         }
 
         $content = $this->load->view($this->type . '/view.php', $data, true);
@@ -65,12 +65,12 @@ class Tennisnews extends MY_Controller {
     }
 
     public function edit($id) {
-        $tennisnew = $this->content->get_content_by_id($this->type, $id);
-        $data['tennisnew'] = $tennisnew[0];
+        $badmintonnew = $this->content->get_content_by_id($this->type, $id);
+        $data['badmintonnew'] = $badmintonnew[0];
         $images = $this->image->get_images_by_content_id($id);
 
         foreach ($images as $image) {
-            $data['tennisnew']['images'][] = array(
+            $data['badmintonnew']['images'][] = array(
                 'path' => $image['path'] . $image['name'],
                 'id' => $image['image_id']
             );
@@ -82,21 +82,21 @@ class Tennisnews extends MY_Controller {
     public function update() {
 
         $data = array(
-            'title' => $_POST['tennisnew']['title'],
-            'description' => $_POST['tennisnew']['description'],
-            'detail_description' => $_POST['tennisnew']['detail_description'],
+            'title' => $_POST['badmintonnew']['title'],
+            'description' => $_POST['badmintonnew']['description'],
+            'detail_description' => $_POST['badmintonnew']['detail_description'],
         );
 
-        $tennisnew_id = $this->content->update_content_by_id($_POST['tennisnew']['id'], $data);
+        $badmintonnew_id = $this->content->update_content_by_id($_POST['badmintonnew']['id'], $data);
 
-        $image_data = $this->uploadImageFile($tennisnew_id, $this->type);
+        $image_data = $this->uploadImageFile($badmintonnew_id, $this->type);
 
         if ($this->uploadSuccess) {
-            $this->image->delete_content_images($tennisnew_id);
+            $this->image->delete_content_images($badmintonnew_id);
             $this->image->add_images($image_data);
         }
 
-        redirect(site_url('admin/page/tennis'));
+        redirect(site_url('admin/page/badminton'));
     }
 
     public function addnew() {
@@ -107,25 +107,25 @@ class Tennisnews extends MY_Controller {
     public function submit() {
 
         $data = array(
-            'title' => $_POST['tennisnew']['title'],
-            'description' => $_POST['tennisnew']['description'],
-            'detail_description' => $_POST['tennisnew']['detail_description'],
+            'title' => $_POST['badmintonnew']['title'],
+            'description' => $_POST['badmintonnew']['description'],
+            'detail_description' => $_POST['badmintonnew']['detail_description'],
         );
 
-        $tennisnew_id = $this->content->add_content($data, $this->type);
-        $image_data = $this->uploadImageFile($tennisnew_id, $this->type);
+        $badmintonnew_id = $this->content->add_content($data, $this->type);
+        $image_data = $this->uploadImageFile($badmintonnew_id, $this->type);
 
         if ($this->uploadSuccess) {
             $this->image->add_images($image_data);
         }
 
-        redirect(site_url('admin/page/tennis'));
+        redirect(site_url('admin/page/badminton'));
     }
 
     public function delete($id) {
         $flag = $this->content->delete_content($id);
         $this->image->delete_content_images($id);
-        redirect(site_url('admin/page/tennis'));
+        redirect(site_url('admin/page/badminton'));
     }
 
     public function delete_image($id, $content_id) {

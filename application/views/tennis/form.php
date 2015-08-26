@@ -49,7 +49,7 @@ $data = unserialize($page['data']);
                                     </div>
 
                                     <label>News</label><br/>
-                                    <a href="" id="addnews"><i class="glyphicon glyphicon-plus"></i> Add News</a>
+                                    <a href="<?php echo site_url('admin/tennisnews/addnew'); ?>" id=""><i class="glyphicon glyphicon-plus"></i> Add News</a>
 
 
                                     <?php

@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <p class="lead">News # <?php echo ucfirst($tennisnew['content_id']); ?></p>
+            <p class="lead">News # <?php echo ucfirst($squash_and_racketballnew['content_id']); ?></p>
 
             <div class="col-xs-12">
                 <div class="col-xs-9">
@@ -12,27 +12,27 @@
                         <div class="box box-primary">
 
                             <!-- form start -->
-                            <form name="edit_tennisnew" id="club_tennisnew" action="<?php echo base_url(); ?>index.php/admin/tennisnews/update" method="POST"  enctype="multipart/form-data">
-                                <input name="tennisnew[is_submit]" id="is_submit" value="1" type="hidden" />
-                                <input name="tennisnew[id]" id="uniqid" value="<?php echo $tennisnew['content_id']; ?>" type="hidden" />
+                            <form name="edit_squash_and_racketballnew" id="club_squash_and_racketballnew" action="<?php echo base_url(); ?>index.php/admin/squash_and_racketballnews/update" method="POST"  enctype="multipart/form-data">
+                                <input name="squash_and_racketballnew[is_submit]" id="is_submit" value="1" type="hidden" />
+                                <input name="squash_and_racketballnew[id]" id="uniqid" value="<?php echo $squash_and_racketballnew['content_id']; ?>" type="hidden" />
                                 <div class="box-body">
 
 
 
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input type="text" class="form-control" name="tennisnew[title]" placeholder="Enter ..." value="<?php echo $tennisnew['title']; ?>">
+                                        <input type="text" class="form-control" name="squash_and_racketballnew[title]" placeholder="Enter ..." value="<?php echo $squash_and_racketballnew['title']; ?>">
                                     </div>
 
 
                                     <div class="form-group">
-                                        <label for="tennisnew_short_description">Short Text</label>
-                                        <textarea class="form-control" id="tennisnew_short_description" name="tennisnew[description]" rows="3" placeholder="Enter ..."><?php echo $tennisnew['description']; ?></textarea>
+                                        <label for="squash_and_racketballnew_short_description">Short Text</label>
+                                        <textarea class="form-control" id="squash_and_racketballnew_short_description" name="squash_and_racketballnew[description]" rows="3" placeholder="Enter ..."><?php echo $squash_and_racketballnew['description']; ?></textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="tennisnew_detail_description">Detail Description</label>
-                                        <textarea class="form-control" id="tennisnew_detail_description" name="tennisnew[detail_description]" rows="3" placeholder="Enter ..."><?php echo $tennisnew['detail_description']; ?></textarea>
+                                        <label for="squash_and_racketballnew_detail_description">Detail Description</label>
+                                        <textarea class="form-control" id="squash_and_racketballnew_detail_description" name="squash_and_racketballnew[detail_description]" rows="3" placeholder="Enter ..."><?php echo $squash_and_racketballnew['detail_description']; ?></textarea>
                                     </div>
 
 
@@ -61,11 +61,11 @@
 
 
                         <?php
-                        if (!empty($tennisnew['images'])) {
+                        if (!empty($squash_and_racketballnew['images'])) {
                             ?>
                             <ul class="jFiler-item-list box-body ">
                                 <?php
-                                foreach ($tennisnew['images'] as $image) {
+                                foreach ($squash_and_racketballnew['images'] as $image) {
                                     ?>
                                     <li class="jFiler-item" data-jfiler-index="3" style="">    
                                         <div class="jFiler-item-container">               
@@ -92,7 +92,7 @@
                                                         </li>                             
                                                     </ul>                                        
                                                     <ul class="list-inline pull-right">   
-                                                        <li><a href="<?php echo base_url(); ?>index.php/admin/tennisnews/delete_image/<?php echo $image['id'] . '/' . $tennisnew['content_id']; ?>" class="icon-jfi-trash jFiler-item-trash-action delete_anything"></a>
+                                                        <li><a href="<?php echo base_url(); ?>index.php/admin/squash_and_racketballnews/delete_image/<?php echo $image['id'] . '/' . $squash_and_racketballnew['content_id']; ?>" class="icon-jfi-trash jFiler-item-trash-action delete_anything"></a>
                                                         </li>                                       
                                                     </ul>                                
                                                 </div>
