@@ -2,6 +2,25 @@
     color: #C52929;
     font-size: 13px;
 }
+.products-list .product-img img {
+    width: 50px;
+    height: 50px;
+}
+.products-list .product-title {
+    font-weight: 600;
+}
+
+.products-list .product-info {
+    margin-left: 60px;
+}
+.products-list .product-img {
+    float: left;
+}
+
+ul.products-list
+{
+list-style-type: none;
+}
 
 .users-list>li img {
     border-radius: 50%;

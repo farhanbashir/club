@@ -50,24 +50,47 @@ $data = unserialize($page['data']);
 
                                     <label>News</label><br/>
                                     <a href="" id="addnews"><i class="glyphicon glyphicon-plus"></i> Add News</a>
-                                    <div id="news_input_div">
-                                        <?php
-                                        if (!empty($data['news'])) {
-                                            foreach ($data['news'] as $news) {
-                                                if (!empty($news)) {
-                                                    ?>
-                                                    <div class="input-group margin newpacket" id="">
-                                                        <input type="text" class="form-control" value="<?php echo $news; ?>" name="page[data][news][]">
-                                                        <span class="input-group-btn">
-                                                            <button class="btn removenews btn-danger btn-flat" type="button"><i class="glyphicon glyphicon-remove"></i></button>
-                                                        </span>
+
+
+                                    <?php
+                                    if (!empty($page['tennisnews'])) {
+                                        foreach ($page['tennisnews'] as $news) {
+                                            ?>
+
+                                            <div class="box box-primary" style="min-height: 130px;">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title"><?php echo!empty($news['title']) ? $news['title'] : ''; ?></h3>
+                                                    <div class="box-tools pull-right">
+                                                        <a href="<?php echo base_url('index.php/admin/tennisnews/edit/'.$news['content_id']);?>">Edit</a> | 
+                                                        <a href="<?php echo base_url('index.php/admin/tennisnews/delete/'.$news['content_id']);?>">Delete</a>
                                                     </div>
-                                                    <?php
-                                                }
-                                            }
+                                                </div><!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <ul class="products-list product-list-in-box">
+                                                        <li class="item">
+                                                            <div class="product-img">
+                                                                <img src="<?php echo!empty($news['image']) ? ($news['image']['path'] . $news['image']['name']) : asset_img('no_image.png'); ?>" alt="Product Image">
+                                                            </div>
+                                                            <div class="product-info">
+                                                                <p class="product-title"><?php echo(strlen($news['description']) > 100) ? substr($news['description'], 0, 97) . '...' : $news['description']; ?></p>
+                                                                <span class="product-description">
+                                                                    <?php echo(strlen($news['detail_description']) > 200) ? substr($news['detail_description'], 0, 197) . '...' : $news['detail_description']; ?>
+                                                                </span>
+                                                            </div>
+                                                        </li><!-- /.item -->
+
+
+                                                    </ul>
+                                                </div><!-- /.box-body -->
+
+                                            </div>
+
+
+
+                                            <?php
                                         }
-                                        ?>
-                                    </div>
+                                    }
+                                    ?>
                                     <div style="clear: both"></div>
                                 </div>
                                 <div class="box-footer">
