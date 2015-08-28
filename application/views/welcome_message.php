@@ -10,7 +10,7 @@
         <link href="<?php echo asset_css('bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
         <link href="<?php echo asset_css('font-awesome.min.css'); ?>" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
-        <link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <!--<link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />-->
         <!-- Morris chart -->
         <link href="<?php echo asset_css('morris/morris.css'); ?>" rel="stylesheet" type="text/css" />
         <!-- jvectormap -->

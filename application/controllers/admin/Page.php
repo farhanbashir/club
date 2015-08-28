@@ -24,6 +24,7 @@ class Page extends MY_Controller {
         parent::__construct();
         $this->load->model('pagemodel', '', TRUE);
         $this->load->model('image', '', TRUE);
+        $this->load->model('content', '', TRUE);
 
         if (!$this->session->userdata('logged_in')) {
             redirect(base_url());
@@ -78,10 +79,24 @@ class Page extends MY_Controller {
 
                 $images = $this->image->get_images_by_page_id($page[0]['page_id']);
 
+                if ($page_slug == 'tennis' || $page_slug == 'squash_and_racketball' || $page_slug == 'badminton') {
+                    $news = $this->content->get_content_by_type($page_slug . 'news');
+                    foreach ($news as $new) {
+                        $image = $this->image->get_images_by_content_id($new['content_id']);
+                        $data['page'][$page_slug . 'news'][] = array(
+                            'image' => !empty($image[0]) ? $image[0] : '',
+                            'content_id' => $new['content_id'],
+                            'title' => $new['title'],
+                            'description' => $new['description'],
+                            'detail_description' => $new['detail_description'],
+                        );
+                    }
+                }
+
                 foreach ($images as $image) {
                     $data['page']['images'][] = array(
                         'path' => $image['path'] . $image['name'],
-                        'id' => $image['image_id']
+                        'id' => $image['image_id'],
                     );
                 }
 

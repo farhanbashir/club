@@ -29,7 +29,7 @@ Class Image extends CI_Model {
     }
 
     function delete_image($id) {
-        return $this->db->delete('image', array('imagess_id' => $id));
+        return $this->db->delete('image', array('image_id' => $id));
     }
 
     function deactivate_image($id) {
