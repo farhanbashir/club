@@ -70,7 +70,8 @@ class Page extends MY_Controller {
             'tennis',
             'squash_and_racketball',
             'badminton',
-            'gym_personal_training'
+            'gym_personal_training',
+            'private_parties'
         );
         if (in_array($page_slug, $pages)) {
             $page = $this->pagemodel->get_page_by_key($page_slug);
