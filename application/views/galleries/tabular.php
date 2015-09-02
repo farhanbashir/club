@@ -57,10 +57,10 @@
                             </div><!-- /.box-footer -->
                         </div><!--/.box -->
 
+                    <div style="clear: both;"></div>
 
 
                     </div>
-
 
 
                     <?php
