@@ -23,8 +23,22 @@ $data = unserialize($gallery['data']);
 
 
                                     <div class="form-group">
-                                        <label>Title</label>
-                                        <input type="text" class="form-control" name="gallery[title]" placeholder="Enter ..." value="<?php echo $gallery['title']; ?>">
+                                        <label>Event</label>
+                                        <select class="form-control" name="gallery[title]">
+
+                                            <option value="<?php echo $gallery['title']; ?>"><?php echo $gallery['title']; ?></option>
+                                            <?php
+                                            if (!empty($remaining_title)) {
+                                                foreach ($remaining_title as $title) {
+                                                    ?>
+                                                    <option value="<?php echo $title; ?>"><?php echo $title ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+
+                                        </select>
+
                                     </div>
 
 
@@ -80,8 +94,8 @@ $data = unserialize($gallery['data']);
 
                                                     </div>                                        
                                                     <div class="jFiler-item-thumb-image">
-                                                        <img src="<?php echo  $image['path']; ?>" draggable="false">
-                                                   
+                                                        <img src="<?php echo $image['path']; ?>" draggable="false">
+
                                                     </div>    
 
                                                 </div>   

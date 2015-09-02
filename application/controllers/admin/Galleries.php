@@ -91,6 +91,26 @@ class Galleries extends MY_Controller {
                 'id' => $image['image_id']
             );
         }
+
+        $event_title = array();
+        $gallery_title = array();
+
+        $events_data = $this->content->get_content_by_type('events');
+        if (!empty($events_data)) {
+            foreach ($events_data as $event) {
+                $event_title[] = $event['title'];
+            }
+        }
+        $galleries_data = $this->content->get_content_by_type('galleries');
+        if (!empty($galleries_data)) {
+            foreach ($galleries_data as $gallery) {
+                $gallery_title[] = $gallery['title'];
+            }
+        }
+        $data['remaining_title'] = array_diff($event_title, $gallery_title);
+
+
+
         $content = $this->load->view($this->type . '/edit.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
@@ -114,7 +134,26 @@ class Galleries extends MY_Controller {
     }
 
     public function addnew() {
-        $content = $this->load->view($this->type . '/new.php', $data = NULL, true);
+        $event_title = array();
+        $gallery_title = array();
+
+        $events_data = $this->content->get_content_by_type('events');
+        if (!empty($events_data)) {
+            foreach ($events_data as $event) {
+                $event_title[] = $event['title'];
+            }
+        }
+        $galleries_data = $this->content->get_content_by_type('galleries');
+        if (!empty($galleries_data)) {
+            foreach ($galleries_data as $gallery) {
+                $gallery_title[] = $gallery['title'];
+            }
+        }
+        $data['remaining_title'] = array_diff($event_title, $gallery_title);
+
+
+
+        $content = $this->load->view($this->type . '/new.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
