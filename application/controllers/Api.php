@@ -384,6 +384,28 @@ class Api extends REST_Controller {
                     $i++;
                 }
                 break;    
+            case 'sponsors':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['content_id']);
+                    $return[$i]['images'] = $images;
+                    $return[$i]['link'] = $return[$i]['description'];
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['data']);
+                    unset($return[$i]['description']);
+                    unset($return[$i]['start_date']);
+                    unset($return[$i]['end_date']);
+                    unset($return[$i]['content_type_id']);
+                    unset($return[$i]['detail_description']);
+                    $i++;
+                }
+                break;        
             default:
                 $i=0;
                 $return = $data;
@@ -1122,6 +1144,53 @@ class Api extends REST_Controller {
             //removing unwanted fields
             //unset($return['start_date']);
             unset($return['end_date']);
+            unset($return['data']);
+            unset($return['content_type_id']);
+            unset($return['detail_description']);
+
+            $data["header"]["error"] = "0";
+            $data["body"] = $return;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+    }
+
+    function getSponsorById_post()
+    {
+        $content_id = $this->post('id');
+        $type = 'sponsors';
+        $return = array();
+
+        if(!$content_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide id";
+            $this->response($data,400);
+        }
+
+        $result = $this->content->get_content_by_id($type, $content_id);
+        $images = $this->image->get_images_by_content_id($content_id);
+
+        if(count($result) > 0)
+        {
+            $return = $result[0];
+            $result_images = array();
+            if(count($images) > 0)
+            {
+                foreach ($images as $key => $value) {
+                    $result_images[] = $value['path'].$value['name'];
+                }
+            }    
+            $return['images'] = $result_images;
+            $return['link'] = $result[0]['description'];
+            //removing unwanted fields
+            //unset($return['start_date']);
+            unset($return['end_date']);
+            unset($return['description']);
             unset($return['data']);
             unset($return['content_type_id']);
             unset($return['detail_description']);
