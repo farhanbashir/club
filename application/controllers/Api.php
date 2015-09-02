@@ -171,6 +171,24 @@ class Api extends REST_Controller {
         
     }
 
+    function __removePastContent($data)
+    {
+        // debug(strtotime('2015-08-22 21:23:49'));
+        // debug(strtotime('2015-08-22'),1);
+        
+        $return = array();
+        foreach($data as $val)
+        {
+            $end_date = date('Y-m-d', strtotime($val['end_date']));
+            if($val['end_date'] >= date('Y-m-d'))
+            {
+                $return[] = $val;
+            }    
+            //if($val['end_date'])
+        }    
+        return $return;
+    }
+
     function __makeContentData($type, $data)
     {
         $return = array();
@@ -192,7 +210,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
-                //$return = $data;
+                $return = $this->__removePastContent($return);
                 break;
             case 'courses':
                 $i=0;
