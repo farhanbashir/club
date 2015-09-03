@@ -82,20 +82,18 @@ class Sponsors extends MY_Controller {
     public function update() {
 
         $data = array(
-            'title' => $_POST['event']['title'],
-            'start_date' => $_POST['event']['start_date'],
-            'end_date' => $_POST['event']['end_date'],
-            'description' => $_POST['event']['description'],
+            'title' => $_POST['sponsor']['title'],
+            'description' => $_POST['sponsor']['link'],
         );
 
-        $event_id = $this->content->update_content_by_id($_POST['event']['id'], $data);
-        $image_data = $this->uploadImageFile($event_id, $this->type);
+        $sponsor_id = $this->content->update_content_by_id($_POST['sponsor']['id'], $data);
+        $image_data = $this->uploadImageFile($sponsor_id, $this->type);
 
         if ($this->uploadSuccess) {
             $this->image->add_images($image_data);
         }
 
-        redirect(site_url('admin/' . $this->type . '/edit/' . $event_id));
+        redirect(site_url('admin/' . $this->type . '/edit/' . $sponsor_id));
     }
 
     public function addnew() {

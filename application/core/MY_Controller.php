@@ -126,6 +126,65 @@ class MY_Controller extends CI_Controller {
         }
     }
 
+    public function uploadPagePdfFile($id, $page_name) {
+
+        $path = './assets/uploads/pdf/' . $page_name . '/';
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        $files = $_FILES;
+
+        $config['upload_path'] = $path;
+        $config['allowed_types'] = 'pdf';
+        $config['max_size'] = '999999999';
+        $config['max_width'] = '10024';
+        $config['max_height'] = '10768';
+
+
+        if (!file_exists('path/to/directory')) {
+            mkdir('path/to/directory', 0777, true);
+        }
+
+
+//        for ($i = $cpt - 1; $i >= 0; $i--) {
+
+        $_FILES['userfile']['name'] = $files['pdf']['name'];
+        $_FILES['userfile']['type'] = $files['pdf']['type'];
+        $_FILES['userfile']['tmp_name'] = $files['pdf']['tmp_name'];
+        $_FILES['userfile']['error'] = $files['pdf']['error'];
+        $_FILES['userfile']['size'] = $files['pdf']['size'];
+
+
+
+        $this->upload->initialize($config);
+        $uploaded = $this->upload->do_upload();
+        $this->load->library('upload', $config);
+        $pdf_data = $this->upload->data();
+
+
+        $data = array(
+            'page_id' => $id,
+//                'name' => $image_data['file_name'],
+            'file' => base_url() . 'assets/uploads/pdf/' . $page_name . '/' . $pdf_data['file_name'],
+//                'is_active' => 1
+        );
+//        }
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+
+        if (!$uploaded) {
+            $this->uploadSuccess = false;
+            $this->uploadError = array('error' => $this->upload->display_errors());
+        } else {
+            $this->uploadSuccess = true;
+            $this->uploadData = $this->upload->data();
+            return $data;
+        }
+    }
+
 }
 
 ?>

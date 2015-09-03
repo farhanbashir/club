@@ -47,3 +47,10 @@ list-style-type: none;
     margin: 1px;
     padding: 10px;
 }
+
+.pdf_delete {
+    top: -40px;
+    position: relative;
+    left: 40px;
+    color: #E42D2D !important;
+}

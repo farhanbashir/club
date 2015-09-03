@@ -26,7 +26,8 @@
 
                                     <div class="form-group">
                                         <label for="sponsor_link">Link</label>
-                                        <textarea class="form-control" id="sponsor_link" name="sponsor[link]" rows="3" placeholder="Enter ..."><?php echo $sponsor['description']; ?></textarea>
+                                        <input type="text" class="form-control" id="sponsor_link" name="sponsor[link]" rows="3" placeholder="Enter ..." value="<?php echo $sponsor['description']; ?>">
+
                                     </div>
 
                                     <div class="form-group">

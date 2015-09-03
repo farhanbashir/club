@@ -31,7 +31,30 @@ jQuery(document).ready(function () {
         },
     });
 
-
+    jQuery("#club_sponsor").validate({
+        rules: {
+            "sponsor[title]": {
+                required: true,
+                minlength: 2,
+                maxlength: 255
+            },
+            "sponsor[link]": {
+                required: true,
+                url: true
+            },
+        },
+        messages: {
+            "sponsor[title]": {
+                required: "Please provide a title.",
+                minlength: "The title should be at least 2 characters long.",
+                maxlength: "Title can be a maximum of 255 characters in length."
+            },
+            "sponsor[link]": {
+                required: "Please provide a url.",
+                url: "Please provide a valid url."
+            },
+        },
+    });
 
     jQuery("#club_event").validate({
         rules: {
@@ -312,9 +335,9 @@ jQuery(document).ready(function () {
             },
         },
     });
-    
-    
-       jQuery("#club_gallery").validate({
+
+
+    jQuery("#club_gallery").validate({
         rules: {
             "gallery[title]": {
                 required: true,

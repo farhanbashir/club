@@ -1,3 +1,6 @@
+<?php
+$pdf = unserialize($page['data']);
+?>
 <!-- Main content -->
 <section class="content">
 
@@ -22,6 +25,22 @@
                                         <textarea class="form-control" name="page[content]" id="page_description" placeholder="Enter ..."><?php echo $page['content']; ?></textarea>
                                     </div>
                                     <div class="form-group">
+                                        <label>PDF File</label>
+                                        <input type="file" multiple="multiple" name="pdf">
+                                    </div>
+
+                                    <?php if (!empty($pdf)) { ?>
+                                        <div style="background: #f7f8fa;padding: 50px;">
+                                            <a class="pull-right pdf_delete delete_anything" href="<?php echo base_url() . 'index.php/admin/page/remove_pdf/' . $page['page_id'] . '/' . $page['key'] ?>">Delete</a>
+                                            <div style="margin: 0 auto 25px auto; width: 600px" >
+                                                <embed style="overflow: hidden; border: 2px #C8CBCE dashed; margin: 0 auto 0 auto;"  src="<?php echo $pdf['file']; ?>" width="600" height="350" type='application/pdf'>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+
+                                    <div style="clear: both"></div>
+                                    <div class="form-group">
+                                        <label>Images</label>
                                         <div style="background: #f7f8fa;padding: 50px;">
 
                                             <input type="file" multiple="multiple" name="userfile" id="input2">
@@ -81,7 +100,7 @@
                                                             </li>                             
                                                         </ul>                                        
                                                         <ul class="list-inline pull-right">   
-                                                            <li><a href="<?php echo base_url(); ?>index.php/admin/page/delete_image/<?php echo $image['id'] . '/'.$page['key'] ?>" class="icon-jfi-trash jFiler-item-trash-action delete_anything"></a>
+                                                            <li><a href="<?php echo base_url(); ?>index.php/admin/page/delete_image/<?php echo $image['id'] . '/' . $page['key'] ?>" class="icon-jfi-trash jFiler-item-trash-action delete_anything"></a>
                                                             </li>                                       
                                                         </ul>                                
                                                     </div>

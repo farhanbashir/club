@@ -133,22 +133,34 @@ class Page extends MY_Controller {
 
     public function update() {
 
+        $data = !empty($_POST['page']['data']) ? $_POST['page']['data'] : '';
+
+        if (!empty($_FILES['pdf'])) {
+            $pdf_data = $this->uploadPagePdfFile($_POST['page']['id'], $_POST['page']['key']);
+            $data = $pdf_data;
+        }
 
         $data = array(
             'key' => $_POST['page']['key'],
             'content' => $_POST['page']['content'],
-            'data' => !empty($_POST['page']['data']) ? serialize($_POST['page']['data']) : '',
+            'data' => !empty($data) ? serialize($data) : '',
         );
 
         $page_id = $this->pagemodel->update_page_by_id($_POST['page']['id'], $data);
         if (!empty($_FILES['userfile'])) {
             $image_data = $this->uploadPageImageFile($_POST['page']['id'], $_POST['page']['key']);
         }
+
         if ($this->uploadSuccess) {
             $this->image->add_images($image_data);
         }
 
         redirect(site_url('admin/page/' . $_POST['page']['key']));
+    }
+
+    public function remove_pdf($param) {
+        $page_id = $this->pagemodel->update_page_by_id($param[0], $data = array('data' => ''));
+        redirect(site_url('admin/page/' . $param[1]));
     }
 
 }
