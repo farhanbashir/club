@@ -312,5 +312,25 @@ jQuery(document).ready(function () {
             },
         },
     });
+    
+    
+       jQuery("#club_gallery").validate({
+        rules: {
+            "gallery[title]": {
+                required: true,
+            },
+            "gallery[description]": {
+                required: true,
+            },
+        },
+        messages: {
+            "gallery[title]": {
+                required: "Please select a event title, if empty add another event",
+            },
+            "gallery[description]": {
+                required: "Please provide discription.",
+            },
+        },
+    });
 
 });

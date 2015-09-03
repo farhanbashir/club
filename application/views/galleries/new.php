@@ -15,11 +15,27 @@
 
                         <div class="box-body">
 
-
-
                             <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" class="form-control" name="gallery[title]" placeholder="Enter ..." value="">
+                                <label>Event</label>
+                                <select class="form-control" name="gallery[title]">
+                                    <?php
+                                    if (!empty($remaining_title)) {
+                                        ?>
+                                        <option value="">--Select--</option>
+                                        <?php
+                                        foreach ($remaining_title as $title) {
+                                            ?>
+                                            <option value="<?php echo $title; ?>"><?php echo $title ?></option>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <option value="">No event available</option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+
                             </div>
 
 
@@ -28,7 +44,7 @@
                                 <textarea class="form-control" id="gallery_short_description" name="gallery[description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
-                           
+
                             <div class="form-group">
                                 <div style="background: #f7f8fa;padding: 50px;">
 
