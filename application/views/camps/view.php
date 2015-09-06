@@ -1,3 +1,6 @@
+<?php
+$data = unserialize($camp['data']);
+?>
 <!-- Main content -->
 <section class="content">
     <div class="row  col-xs-12">
@@ -29,6 +32,10 @@
                             <td><?php echo $camp['description']; ?></td>
                         </tr>
 
+                        <tr>
+                            <th>Enquire Now</th>
+                            <td><?php echo $data; ?></td>
+                        </tr>
                     </tbody></table>
 
 

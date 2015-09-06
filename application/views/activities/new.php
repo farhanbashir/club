@@ -26,7 +26,7 @@
                                 <label for="activity_date">Start Date</label>
                                 <input id="start_date"  class="form-control" name="activity[start_date]" placeholder="Enter ..." value="">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="activity_date">End Date</label>
                                 <input id="end_date"  class="form-control" name="activity[end_date]" placeholder="Enter ..." value="">
@@ -37,6 +37,10 @@
                                 <textarea class="form-control" id="activity_short_description" name="activity[description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
+                            <div class="form-group">
+                                <label>Enquire Now</label>
+                                <input type="text" class="form-control" name="activity[data][enquire]" placeholder="Enter ..." value="">
+                            </div>
 
 
                             <div class="form-group">

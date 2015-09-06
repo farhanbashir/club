@@ -29,11 +29,13 @@
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Short Description</th>
+                            <th>Enquire Now</th>
                             <th>Action</th>
 
                         </tr>
                         <?php
                         foreach ($camps as $camp) {
+                            $data = unserialize($camp['data']);
                             ?>
                             <tr>
                                 <td><?php echo $camp['content_id']; ?></td>
@@ -41,6 +43,7 @@
                                 <td><?php echo $camp['start_date']; ?></td>
                                 <td><?php echo $camp['end_date']; ?></td>
                                 <td><?php echo(strlen($camp['description']) > 100) ? substr($camp['description'], 0, 97) . '...' : $camp['description']; ?></td>
+                                <td><?php echo $data; ?></td>
 
                                 <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/camps/view/<?php echo $camp['content_id']; ?>">View</a>
