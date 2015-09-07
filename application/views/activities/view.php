@@ -1,3 +1,6 @@
+<?php
+$data = unserialize($activity['data']);
+?>
 <!-- Main content -->
 <section class="content">
     <div class="row  col-xs-12">
@@ -27,6 +30,10 @@
                         <tr>
                             <th>Short Description</th>
                             <td><?php echo $activity['description']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Enquire Now</th>
+                            <td><?php echo $data; ?></td>
                         </tr>
 
                     </tbody></table>

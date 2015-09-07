@@ -1,3 +1,6 @@
+<?php
+$data = unserialize($camp['data']);
+?>
 <!-- Main content -->
 <section class="content">
 
@@ -38,6 +41,11 @@
                                     <div class="form-group">
                                         <label for="camp_short_description">Short Description</label>
                                         <textarea class="form-control" id="camp_short_description" name="camp[description]" rows="3" placeholder="Enter ..."><?php echo $camp['description']; ?></textarea>
+                                    </div>
+                                    
+                                      <div class="form-group">
+                                        <label>Enquire Now</label>
+                                        <input type="text" class="form-control" name="camp[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data) ? $data : ''; ?>">
                                     </div>
 
                                     <div class="form-group">

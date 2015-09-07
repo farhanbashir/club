@@ -1,3 +1,6 @@
+<?php
+$data = unserialize($activity['data']);
+?>
 <!-- Main content -->
 <section class="content">
 
@@ -38,6 +41,10 @@
                                     <div class="form-group">
                                         <label for="activity_short_description">Short Description</label>
                                         <textarea class="form-control" id="activity_short_description" name="activity[description]" rows="3" placeholder="Enter ..."><?php echo $activity['description']; ?></textarea>
+                                    </div>
+                                      <div class="form-group">
+                                        <label>Enquire Now</label>
+                                        <input type="text" class="form-control" name="activity[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data) ? $data : ''; ?>">
                                     </div>
 
                                     <div class="form-group">

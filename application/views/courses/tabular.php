@@ -29,10 +29,12 @@
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Detailed Description</th>
+                            <th>Enquire Now</th>
                             <th>Action</th>
                         </tr>
                         <?php
                         foreach ($courses as $course) {
+                            $data = unserialize($course['data']);
                             ?>
                             <tr>
                                 <td><?php echo $course['content_id']; ?></td>
@@ -40,6 +42,7 @@
                                 <td><?php echo $course['start_date']; ?></td>
                                 <td><?php echo $course['end_date']; ?></td>
                                 <td><?php echo(strlen($course['detail_description']) > 100) ? substr($course['detail_description'], 0, 97) . '...' : $course['detail_description']; ?></td>
+                                <td><?php echo $data; ?></td>
                                 <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/courses/view/<?php echo $course['content_id']; ?>">View</a>
                                     &nbsp;&nbsp;&nbsp;

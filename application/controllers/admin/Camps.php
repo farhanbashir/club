@@ -86,6 +86,7 @@ class Camps extends MY_Controller {
             'start_date' => $_POST['camp']['start_date'],
             'end_date' => $_POST['camp']['end_date'],
             'description' => $_POST['camp']['description'],
+            'data' => serialize($_POST['camp']['data']['enquire']),
         );
 
         $camp_id = $this->content->update_content_by_id($_POST['camp']['id'], $data);
@@ -110,6 +111,7 @@ class Camps extends MY_Controller {
             'start_date' => $_POST['camp']['start_date'],
             'end_date' => $_POST['camp']['end_date'],
             'description' => $_POST['camp']['description'],
+            'data' => serialize($_POST['camp']['data']['enquire']),
         );
 
         $camp_id = $this->content->add_content($data, $this->type);

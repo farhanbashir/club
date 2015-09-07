@@ -86,6 +86,7 @@ class Activities extends MY_Controller {
             'start_date' => $_POST['activity']['start_date'],
             'end_date' => $_POST['activity']['end_date'],
             'description' => $_POST['activity']['description'],
+            'data' => serialize($_POST['activity']['data']['enquire']),
         );
 
         $activity_id = $this->content->update_content_by_id($_POST['activity']['id'], $data);
@@ -110,6 +111,7 @@ class Activities extends MY_Controller {
             'start_date' => $_POST['activity']['start_date'],
             'end_date' => $_POST['activity']['end_date'],
             'description' => $_POST['activity']['description'],
+            'data' => serialize($_POST['activity']['data']['enquire']),
         );
 
         $activity_id = $this->content->add_content($data, $this->type);

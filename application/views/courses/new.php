@@ -36,7 +36,11 @@
                                 <label for="course_short_description">Detailed Description</label>
                                 <textarea class="form-control" id="course_short_description" name="course[detail_description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
-
+                            
+                            <div class="form-group">
+                                <label>Enquire Now</label>
+                                <input type="text" class="form-control" name="course[data][enquire]" placeholder="Enter ..." value="">
+                            </div>
 
 
                             <div class="form-group">
