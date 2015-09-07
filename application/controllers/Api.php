@@ -224,6 +224,8 @@ class Api extends REST_Controller {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
 
+                    $return[$i]['description'] = $return[$i]['detail_description'];
+
                     unset($return[$i]['data']);
                     unset($return[$i]['content_type_id']);
                     unset($return[$i]['detail_description']);
@@ -364,7 +366,7 @@ class Api extends REST_Controller {
                     $i++;
                 }
                 break;
-            case 'galleries':
+            case 'event_galleries':
                 $i=0;
                 $return = $data;
                 foreach ($return as $key => $value) {
