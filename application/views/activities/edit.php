@@ -44,7 +44,7 @@ $data = unserialize($activity['data']);
                                     </div>
                                       <div class="form-group">
                                         <label>Enquire Now</label>
-                                        <input type="text" class="form-control" name="activity[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data) ? $data : ''; ?>">
+                                        <input type="text" class="form-control" name="activity[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data) ? $data['enquire'] : ''; ?>">
                                     </div>
 
                                     <div class="form-group">

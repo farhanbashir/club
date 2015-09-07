@@ -43,7 +43,7 @@
                                 <td><?php echo $activity['start_date']; ?></td>
                                 <td><?php echo $activity['end_date']; ?></td>
                                 <td><?php echo(strlen($activity['description']) > 100) ? substr($activity['description'], 0, 97) . '...' : $activity['description']; ?></td>
-                                <td><?php echo $data; ?></td>
+                                <td><?php echo $data['enquire']; ?></td>
                                 <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/activities/view/<?php echo $activity['content_id']; ?>">View</a>
                                     &nbsp;&nbsp;&nbsp;

@@ -81,12 +81,14 @@ class Activities extends MY_Controller {
 
     public function update() {
 
+        $serialize_data = array();
+        $serialize_data['enquire'] = $_POST['activity']['data']['enquire'];
         $data = array(
             'title' => $_POST['activity']['title'],
             'start_date' => $_POST['activity']['start_date'],
             'end_date' => $_POST['activity']['end_date'],
             'description' => $_POST['activity']['description'],
-            'data' => serialize($_POST['activity']['data']['enquire']),
+            'data' => serialize($serialize_data),
         );
 
         $activity_id = $this->content->update_content_by_id($_POST['activity']['id'], $data);
@@ -105,13 +107,14 @@ class Activities extends MY_Controller {
     }
 
     public function submit() {
-
+        $serialize_data = array();
+        $serialize_data['enquire'] = $_POST['activity']['data']['enquire'];    
         $data = array(
             'title' => $_POST['activity']['title'],
             'start_date' => $_POST['activity']['start_date'],
             'end_date' => $_POST['activity']['end_date'],
             'description' => $_POST['activity']['description'],
-            'data' => serialize($_POST['activity']['data']['enquire']),
+            'data' => serialize($serialize_data),
         );
 
         $activity_id = $this->content->add_content($data, $this->type);

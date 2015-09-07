@@ -80,13 +80,14 @@ class Courses extends MY_Controller {
     }
 
     public function update() {
-
+        $serialize_data = array();
+        $serialize_data['enquire'] = $_POST['course']['data']['enquire'];    
         $data = array(
             'title' => $_POST['course']['title'],
             'start_date' => $_POST['course']['start_date'],
             'end_date' => $_POST['course']['end_date'],
             'detail_description' => $_POST['course']['detail_description'],
-            'data' => serialize($_POST['course']['data']['enquire']),
+            'data' => serialize($serialize_data),
         );
 
         $course_id = $this->content->update_content_by_id($_POST['course']['id'], $data);
@@ -105,13 +106,14 @@ class Courses extends MY_Controller {
     }
 
     public function submit() {
-
+        $serialize_data = array();
+        $serialize_data['enquire'] = $_POST['course']['data']['enquire'];    
         $data = array(
             'title' => $_POST['course']['title'],
             'start_date' => $_POST['course']['start_date'],
             'end_date' => $_POST['course']['end_date'],
             'detail_description' => $_POST['course']['detail_description'],
-            'data' => serialize($_POST['course']['data']['enquire']),
+            'data' => serialize($serialize_data),
         );
 
         $course_id = $this->content->add_content($data, $this->type);

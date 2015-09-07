@@ -45,7 +45,7 @@ $data = unserialize($camp['data']);
                                     
                                       <div class="form-group">
                                         <label>Enquire Now</label>
-                                        <input type="text" class="form-control" name="camp[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data) ? $data : ''; ?>">
+                                        <input type="text" class="form-control" name="camp[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data) ? $data['enquire'] : ''; ?>">
                                     </div>
 
                                     <div class="form-group">

@@ -34,7 +34,7 @@ $data = unserialize($camp['data']);
 
                         <tr>
                             <th>Enquire Now</th>
-                            <td><?php echo $data; ?></td>
+                            <td><?php echo $data['enquire']; ?></td>
                         </tr>
                     </tbody></table>
 

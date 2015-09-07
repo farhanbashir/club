@@ -80,13 +80,14 @@ class Camps extends MY_Controller {
     }
 
     public function update() {
-
+        $serialize_data = array();
+        $serialize_data['enquire'] = $_POST['camp']['data']['enquire'];    
         $data = array(
             'title' => $_POST['camp']['title'],
             'start_date' => $_POST['camp']['start_date'],
             'end_date' => $_POST['camp']['end_date'],
             'description' => $_POST['camp']['description'],
-            'data' => serialize($_POST['camp']['data']['enquire']),
+            'data' => serialize($serialize_data),
         );
 
         $camp_id = $this->content->update_content_by_id($_POST['camp']['id'], $data);
@@ -105,13 +106,14 @@ class Camps extends MY_Controller {
     }
 
     public function submit() {
-
+        $serialize_data = array();
+        $serialize_data['enquire'] = $_POST['camp']['data']['enquire'];    
         $data = array(
             'title' => $_POST['camp']['title'],
             'start_date' => $_POST['camp']['start_date'],
             'end_date' => $_POST['camp']['end_date'],
             'description' => $_POST['camp']['description'],
-            'data' => serialize($_POST['camp']['data']['enquire']),
+            'data' => serialize($serialize_data),
         );
 
         $camp_id = $this->content->add_content($data, $this->type);

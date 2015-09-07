@@ -42,7 +42,7 @@
                                 <td><?php echo $course['start_date']; ?></td>
                                 <td><?php echo $course['end_date']; ?></td>
                                 <td><?php echo(strlen($course['detail_description']) > 100) ? substr($course['detail_description'], 0, 97) . '...' : $course['detail_description']; ?></td>
-                                <td><?php echo $data; ?></td>
+                                <td><?php echo $data['enquire']; ?></td>
                                 <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/courses/view/<?php echo $course['content_id']; ?>">View</a>
                                     &nbsp;&nbsp;&nbsp;
