@@ -21,7 +21,7 @@ class Galleries extends MY_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public $type = 'galleries';
-
+    
     function __construct() {
         parent::__construct();
         $this->load->model('content', '', TRUE);
@@ -35,7 +35,7 @@ class Galleries extends MY_Controller {
     public function index() {
         $data = array();
         $this->load->library("pagination");
-        $total_rows = $this->content->get_total_content_by_type($this->type);
+        $total_rows = $this->content->get_total_content_by_type('event_galleries');
 
         $pagination_config = get_pagination_config($this->type . '/index', $total_rows, $this->config->item('pagination_limit'), 4);
 
@@ -45,7 +45,7 @@ class Galleries extends MY_Controller {
 
         $data["links"] = $this->pagination->create_links();
 
-        $galleries = $this->content->get_content_by_type($this->type, $page);
+        $galleries = $this->content->get_content_by_type('event_galleries', $page);
 //        $data['galleries'] = $galleries;
 
 
@@ -68,7 +68,7 @@ class Galleries extends MY_Controller {
     }
 
     public function view($id) {
-        $gallery = $this->content->get_content_by_id($this->type, $id);
+        $gallery = $this->content->get_content_by_id('event_galleries', $id);
         $data['gallery'] = $gallery[0];
         $images = $this->image->get_images_by_content_id($id);
 
@@ -81,7 +81,7 @@ class Galleries extends MY_Controller {
     }
 
     public function edit($id) {
-        $gallery = $this->content->get_content_by_id($this->type, $id);
+        $gallery = $this->content->get_content_by_id('event_galleries', $id);
         $data['gallery'] = $gallery[0];
         $images = $this->image->get_images_by_content_id($id);
 
@@ -101,7 +101,7 @@ class Galleries extends MY_Controller {
                 $event_title[] = $event['title'];
             }
         }
-        $galleries_data = $this->content->get_content_by_type('galleries');
+        $galleries_data = $this->content->get_content_by_type('event_galleries');
         if (!empty($galleries_data)) {
             foreach ($galleries_data as $gallery) {
                 $gallery_title[] = $gallery['title'];
@@ -143,7 +143,7 @@ class Galleries extends MY_Controller {
                 $event_title[] = $event['title'];
             }
         }
-        $galleries_data = $this->content->get_content_by_type('galleries');
+        $galleries_data = $this->content->get_content_by_type('event_galleries');
         if (!empty($galleries_data)) {
             foreach ($galleries_data as $gallery) {
                 $gallery_title[] = $gallery['title'];
@@ -165,8 +165,8 @@ class Galleries extends MY_Controller {
             'description' => $_POST['gallery']['description'],
         );
 
-        $gallery_id = $this->content->add_content($data, $this->type);
-        $image_data = $this->uploadImageFile($gallery_id, $this->type);
+        $gallery_id = $this->content->add_content($data, 'event_galleries');
+        $image_data = $this->uploadImageFile($gallery_id, 'event_galleries');
 
         if ($this->uploadSuccess) {
             $this->image->add_images($image_data);
