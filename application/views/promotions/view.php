@@ -1,4 +1,7 @@
 <!-- Main content -->
+<?php
+$data = unserialize($promotion['data']);
+?>
 <section class="content">
     <div class="row  col-xs-12">
         <div class="col-xs-6">
@@ -19,6 +22,11 @@
                         <tr>
                             <th>Short Description</th>
                             <td><?php echo $promotion['description']; ?></td>
+                        </tr>
+
+                        <tr>
+                            <th>Enquire Now:</th>
+                            <td><?php echo $data['enquire']; ?></td>
                         </tr>
 
                     </tbody></table>

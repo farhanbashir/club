@@ -80,10 +80,12 @@ class Promotions extends MY_Controller {
     }
 
     public function update() {
-
+        $serialize_data = array();
+        $serialize_data['enquire'] = $_POST['promotion']['data']['enquire'];    
         $data = array(
             'title' => $_POST['promotion']['title'],
             'description' => $_POST['promotion']['description'],
+            'data' => serialize($serialize_data),
         );
 
         $promotion_id = $this->content->update_content_by_id($_POST['promotion']['id'], $data);
@@ -102,10 +104,12 @@ class Promotions extends MY_Controller {
     }
 
     public function submit() {
-
+        $serialize_data = array();
+        $serialize_data['enquire'] = $_POST['promotion']['data']['enquire'];    
         $data = array(
             'title' => $_POST['promotion']['title'],
             'description' => $_POST['promotion']['description'],
+            'data' => serialize($serialize_data),
         );
 
         $promotion_id = $this->content->add_content($data, $this->type);

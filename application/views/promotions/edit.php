@@ -1,3 +1,6 @@
+<?php
+$data = unserialize($promotion['data']);
+?>
 <!-- Main content -->
 <section class="content">
 
@@ -28,6 +31,11 @@
                                     <div class="form-group">
                                         <label for="promotion_short_description">Short Description</label>
                                         <textarea class="form-control" id="promotion_short_description" name="promotion[description]" rows="3" placeholder="Enter ..."><?php echo $promotion['description']; ?></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Enquire Now</label>
+                                        <input type="text" class="form-control" name="promotion[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data) ? $data['enquire'] : ''; ?>">
                                     </div>
 
                                     <div class="form-group">

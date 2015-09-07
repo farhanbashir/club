@@ -28,7 +28,10 @@
                                 <textarea class="form-control" id="promotion_short_description" name="promotion[description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
-
+                            <div class="form-group">
+                                <label>Enquire Now</label>
+                                <input type="text" class="form-control" name="promotion[data][enquire]" placeholder="Enter ..." value="">
+                            </div>
 
                             <div class="form-group">
                                 <div style="background: #f7f8fa;padding: 50px;">

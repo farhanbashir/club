@@ -27,17 +27,19 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Short Description</th>
+                            <th>Enquire Now</th>
                             <th>Action</th>
 
                         </tr>
                         <?php
                         foreach ($promotions as $promotion) {
+                            $data = unserialize($promotion['data']);
                             ?>
                             <tr>
                                 <td><?php echo $promotion['content_id']; ?></td>
                                 <td><?php echo $promotion['title']; ?></td>
                                 <td><?php echo(strlen($promotion['description']) > 100) ? substr($promotion['description'], 0, 97) . '...' : $promotion['description']; ?></td>
-
+                                <td><?php echo $data['enquire']; ?></td>
                                 <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/promotions/view/<?php echo $promotion['content_id']; ?>">View</a>
                                     &nbsp;&nbsp;&nbsp;
