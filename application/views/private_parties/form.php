@@ -26,7 +26,7 @@ $pdf = unserialize($page['data']);
                                     </div>
                                     <div class="form-group">
                                         <label>PDF File</label>
-                                        <input type="file" multiple="multiple" name="pdf">
+                                        <input type="file" name="pdf">
                                     </div>
 
                                     <?php if (!empty($pdf)) { ?>

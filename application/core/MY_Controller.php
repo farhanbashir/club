@@ -149,16 +149,16 @@ class MY_Controller extends CI_Controller {
 
 //        for ($i = $cpt - 1; $i >= 0; $i--) {
 
-        $_FILES['userfile']['name'] = $files['pdf']['name'];
-        $_FILES['userfile']['type'] = $files['pdf']['type'];
-        $_FILES['userfile']['tmp_name'] = $files['pdf']['tmp_name'];
-        $_FILES['userfile']['error'] = $files['pdf']['error'];
-        $_FILES['userfile']['size'] = $files['pdf']['size'];
+        // $_FILES['userfile']['name'] = $files['pdf']['name'];
+        // $_FILES['userfile']['type'] = $files['pdf']['type'];
+        // $_FILES['userfile']['tmp_name'] = $files['pdf']['tmp_name'];
+        // $_FILES['userfile']['error'] = $files['pdf']['error'];
+        // $_FILES['userfile']['size'] = $files['pdf']['size'];
 
 
 
         $this->upload->initialize($config);
-        $uploaded = $this->upload->do_upload();
+        $uploaded = $this->upload->do_upload('pdf');
         $this->load->library('upload', $config);
         $pdf_data = $this->upload->data();
 

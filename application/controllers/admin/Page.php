@@ -134,17 +134,36 @@ class Page extends MY_Controller {
     public function update() {
 
         $data = !empty($_POST['page']['data']) ? $_POST['page']['data'] : '';
-
-        if (!empty($_FILES['pdf'])) {
-            $pdf_data = $this->uploadPagePdfFile($_POST['page']['id'], $_POST['page']['key']);
-            $data = $pdf_data;
-        }
-
-        $data = array(
-            'key' => $_POST['page']['key'],
-            'content' => $_POST['page']['content'],
-            'data' => !empty($data) ? serialize($data) : '',
-        );
+        
+        if($_POST['page']['key'] === 'private_parties')
+        {
+            if (!empty($_FILES['pdf']['name'])) {
+                $pdf_data = $this->uploadPagePdfFile($_POST['page']['id'], $_POST['page']['key']);
+                //$data = $pdf_data;
+                $data = array(
+                    'key' => $_POST['page']['key'],
+                    'content' => $_POST['page']['content'],
+                    'data' => serialize($pdf_data),
+                );
+            }
+            else
+            {
+                $data = array(
+                    'key' => $_POST['page']['key'],
+                    'content' => $_POST['page']['content'],
+                    //'data' => serialize($pdf_data),
+                );   
+            }    
+        }   
+        else
+        {
+            $data = array(
+                'key' => $_POST['page']['key'],
+                'content' => $_POST['page']['content'],
+                'data' => !empty($data) ? serialize($data) : '',
+            );
+        } 
+        
 
         $page_id = $this->pagemodel->update_page_by_id($_POST['page']['id'], $data);
         if (!empty($_FILES['userfile']['name'])) {
