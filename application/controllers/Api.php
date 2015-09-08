@@ -658,6 +658,10 @@ class Api extends REST_Controller {
                         $return[$i]['trainers'] = $gyms;
                         //$return[$i] = array_merge($return[$i],$additional_fields);    
                     }
+                    if(isset($additional_fields['enquire']))
+                    {
+                        $return[$i]['enquire'] = $additional_fields['enquire'];
+                    }    
 
                     unset($return[$i]['data']);
                     $i++;
@@ -842,6 +846,16 @@ class Api extends REST_Controller {
             $data["header"]["message"] = "No record found for this key.";
         }
         $this->response($data);
+    }
+
+    function reservationForm_post()
+    {
+        $type = $this->post('key');
+        $form_data = $this->post('data');
+
+        $data["header"]["error"] = "0";
+        $data["header"]["message"] = "Admin will contact you";
+        $this->response($data,200);
     }
 
     function getEventById_post()
