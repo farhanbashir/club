@@ -52,8 +52,8 @@ $(document).ready(function () {
                         '</div>' +
                         '<div class="col-lg-4">' +
                         '<div class="input-group">' +
-                        '<label>Enquire now</label>' +
-                        '<input type="text" class="form-control" name="page[data][gym][' + i + '][enquire_now]">' +
+                        '<label>Specialized</label>' +
+                        '<input type="text" class="form-control" name="page[data][gym][' + i + '][specialized]">' +
                         '</div>' +
                         '</div>' +
                         '<span class="input-group-btn col-lg-2" style="margin-top: 25px;">' +

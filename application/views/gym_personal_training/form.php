@@ -27,7 +27,10 @@ $data = unserialize($page['data']);
                                     </div>
 
 
-
+                                    <div class="form-group">
+                                        <label>Enquire Now</label>
+                                        <input type="text" class="form-control" name="page[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : '' ?>">
+                                    </div>    
 
 
 
@@ -51,8 +54,8 @@ $data = unserialize($page['data']);
                                                         </div><!-- /.col-lg-6 -->
                                                         <div class="col-lg-4">
                                                             <div class="input-group">
-                                                                <label>Enquire now</label>
-                                                                <input type="text" class="form-control" name="page[data][gym][<?php echo $count; ?>][enquire_now]"  value="<?php echo !empty($pro['enquire_now']) ? $pro['enquire_now'] : '' ?>">
+                                                                <label>Specialized</label>
+                                                                <input type="text" class="form-control" name="page[data][gym][<?php echo $count; ?>][specialized]"  value="<?php echo !empty($pro['specialized']) ? $pro['specialized'] : '' ?>">
                                                             </div><!-- /input-group -->
                                                         </div><!-- /.col-lg-6 -->
                                                         <span class="input-group-btn col-lg-2" style="margin-top: 25px;">
