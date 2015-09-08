@@ -147,7 +147,7 @@ class Page extends MY_Controller {
         );
 
         $page_id = $this->pagemodel->update_page_by_id($_POST['page']['id'], $data);
-        if (!empty($_FILES['userfile'])) {
+        if (!empty($_FILES['userfile']['name'])) {
             $image_data = $this->uploadPageImageFile($_POST['page']['id'], $_POST['page']['key']);
         }
 
