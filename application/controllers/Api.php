@@ -179,8 +179,8 @@ class Api extends REST_Controller {
         $return = array();
         foreach($data as $val)
         {
-            $end_date = date('Y-m-d', strtotime($val['end_date']));
-            if($val['end_date'] >= date('Y-m-d'))
+            $end_date = date('Y-m-d', strtotime($val['start_date']));
+            if($val['start_date'] >= date('Y-m-d'))
             {
                 $return[] = $val;
             }    
@@ -231,6 +231,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
+                $return = $this->__removePastContent($return);
                 break;
             case 'restaurants':
                 $i=0;
