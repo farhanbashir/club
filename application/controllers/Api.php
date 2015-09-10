@@ -684,7 +684,7 @@ class Api extends REST_Controller {
                         $image = $this->image->get_images_by_content_id($new['content_id']);
                         $return[$i]['news'][] = array(
                             'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
-                            //'content_id' => $new['content_id'],
+                            'content_id' => $new['content_id'],
                             'title' => $new['title'],
                             'description' => $new['description'],
                             'detail_description' => $new['detail_description'],
@@ -711,7 +711,7 @@ class Api extends REST_Controller {
                         $image = $this->image->get_images_by_content_id($new['content_id']);
                         $return[$i]['news'][] = array(
                             'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
-                            //'content_id' => $new['content_id'],
+                            'content_id' => $new['content_id'],
                             'title' => $new['title'],
                             'description' => $new['description'],
                             'detail_description' => $new['detail_description'],
@@ -738,7 +738,7 @@ class Api extends REST_Controller {
                         $image = $this->image->get_images_by_content_id($new['content_id']);
                         $return[$i]['news'][] = array(
                             'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
-                            //'content_id' => $new['content_id'],
+                            'content_id' => $new['content_id'],
                             'title' => $new['title'],
                             'description' => $new['description'],
                             'detail_description' => $new['detail_description'],
