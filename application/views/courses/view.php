@@ -22,10 +22,10 @@ $data = unserialize($course['data']);
                             <th>Start Date:</th>
                             <td><?php echo $course['start_date']; ?></td>
                         </tr>
-                        <tr>
+<!--                        <tr>
                             <th>End Date:</th>
                             <td><?php echo $course['end_date']; ?></td>
-                        </tr>
+                        </tr>-->
                         <tr>
                             <th>Detailed Description:</th>
                             <td><?php echo $course['detail_description']; ?></td>

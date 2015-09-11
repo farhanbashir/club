@@ -27,10 +27,10 @@
                                 <input id="start_date"  class="form-control" name="event[start_date]" placeholder="Enter ..." value="">
                             </div>
 
-                            <div class="form-group">
+<!--                            <div class="form-group">
                                 <label for="event_date">End Date</label>
                                 <input id="end_date"  class="form-control" name="event[end_date]" placeholder="Enter ..." value="">
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <label for="event_short_description">Short Description</label>
                                 <textarea class="form-control" id="event_short_description" name="event[description]" rows="3" placeholder="Enter ..."></textarea>

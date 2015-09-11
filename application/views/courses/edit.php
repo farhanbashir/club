@@ -32,10 +32,10 @@ $data = unserialize($course['data']);
                                         <input id="start_date" class="form-control" name="course[start_date]" placeholder="Enter ..." value="<?php echo $course['start_date']; ?>">
                                     </div>
 
-                                    <div class="form-group">
+<!--                                    <div class="form-group">
                                         <label for="course_date">Start Date</label>
-                                        <input id="end_date" class="form-control" name="course[end_date]" placeholder="Enter ..." value="<?php echo $course['end_date']; ?>">
-                                    </div>
+                                        <input id="end_date" class="form-control" name="course[end_date]" placeholder="Enter ..." value="<?php // echo $course['end_date']; ?>">
+                                    </div>-->
 
                                     <div class="form-group">
                                         <label for="course_short_description">Detailed Description</label>

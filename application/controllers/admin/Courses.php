@@ -85,7 +85,7 @@ class Courses extends MY_Controller {
         $data = array(
             'title' => $_POST['course']['title'],
             'start_date' => $_POST['course']['start_date'],
-            'end_date' => $_POST['course']['end_date'],
+//            'end_date' => $_POST['course']['end_date'],
             'detail_description' => $_POST['course']['detail_description'],
             'data' => serialize($serialize_data),
         );
@@ -111,7 +111,7 @@ class Courses extends MY_Controller {
         $data = array(
             'title' => $_POST['course']['title'],
             'start_date' => $_POST['course']['start_date'],
-            'end_date' => $_POST['course']['end_date'],
+//            'end_date' => $_POST['course']['end_date'],
             'detail_description' => $_POST['course']['detail_description'],
             'data' => serialize($serialize_data),
         );

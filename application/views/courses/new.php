@@ -27,10 +27,10 @@
                                 <input id="start_date" class="form-control" name="course[start_date]" placeholder="Enter ..." value="">
                             </div>
 
-                            <div class="form-group">
+<!--                            <div class="form-group">
                                 <label for="course_date">End Date</label>
                                 <input id="end_date" class="form-control" name="course[end_date]" placeholder="Enter ..." value="">
-                            </div>
+                            </div>-->
 
                             <div class="form-group">
                                 <label for="course_short_description">Detailed Description</label>

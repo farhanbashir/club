@@ -19,10 +19,10 @@
                             <th>Start Date:</th>
                             <td><?php echo $event['start_date']; ?></td>
                         </tr>
-                        <tr>
+<!--                        <tr>
                             <th>End Date:</th>
-                            <td><?php echo $event['end_date']; ?></td>
-                        </tr>
+                            <td><?php // echo $event['end_date']; ?></td>
+                        </tr>-->
                         <tr>
                             <th>Short Description</th>
                             <td><?php echo $event['description']; ?></td>
