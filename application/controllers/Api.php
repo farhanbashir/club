@@ -695,6 +695,33 @@ class Api extends REST_Controller {
                     $i++;
                 }
                 break;    
+            case 'snooker':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['page_id'], 'page');
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+                    $news = $this->content->get_content_by_type('snookernews');
+                    foreach ($news as $new) {
+                        $image = $this->image->get_images_by_content_id($new['content_id']);
+                        $return[$i]['news'][] = array(
+                            'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
+                            'content_id' => $new['content_id'],
+                            'title' => $new['title'],
+                            'description' => $new['description'],
+                            'detail_description' => $new['detail_description'],
+                        );
+                    }
+                    //$return[$i]['news'] = $news;
+                    unset($return[$i]['data']);
+                    $i++;
+                }
+                break;        
             case 'badminton':
                 $i=0;
                 $return = $data;
