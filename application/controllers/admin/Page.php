@@ -71,7 +71,8 @@ class Page extends MY_Controller {
             'squash_and_racketball',
             'badminton',
             'gym_personal_training',
-            'private_parties'
+            'private_parties',
+            'snooker'
         );
         if (in_array($page_slug, $pages)) {
             $page = $this->pagemodel->get_page_by_key($page_slug);
@@ -80,7 +81,7 @@ class Page extends MY_Controller {
 
                 $images = $this->image->get_images_by_page_id($page[0]['page_id']);
 
-                if ($page_slug == 'tennis' || $page_slug == 'squash_and_racketball' || $page_slug == 'badminton') {
+                if ($page_slug == 'tennis' || $page_slug == 'squash_and_racketball' || $page_slug == 'badminton' || $page_slug == 'snooker') {
                     $news = $this->content->get_content_by_type($page_slug . 'news');
                     foreach ($news as $new) {
                         $image = $this->image->get_images_by_content_id($new['content_id']);

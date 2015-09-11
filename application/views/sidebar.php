@@ -57,7 +57,7 @@
                 <li><a href="<?php echo site_url('admin/page/football') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Football</a></li>
                 <li><a href="<?php echo site_url('admin/page/sailing') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Sailing</a></li>
                 <li><a href="<?php echo site_url('admin/page/photography') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Photography</a></li>
-                <li><a href="<?php // echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Snooker</a></li>
+                <li><a href="<?php echo site_url('admin/page/snooker') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Snooker</a></li>
                 <li><a href="<?php echo site_url('admin/page/the_gallery') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>The Gallery</a></li>
                 <li><a href="<?php echo site_url('admin/page/creche') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Creche</a></li>
                 <li><a href="<?php echo site_url('admin/page/goodies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Goodies</a></li>
