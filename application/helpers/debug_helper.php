@@ -209,3 +209,31 @@ function xml_to_array($deXml,$main_heading = '') {
 
       return $config;
   }
+
+  function doCurl($url, $options = array())
+  {
+      $headers = isset($options['headers']) && is_array($options['headers']) ? $options['headers'] : null;
+      // Initialize cURL
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_HEADER, 0);
+      curl_setopt($ch, CURLOPT_POST, 0);
+      //curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+      if (!empty($headers)) {
+      //debug($headers);
+          curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+      }
+
+      $response_json = curl_exec($ch);
+      //debug(curl_error($ch));
+      //debug(curl_getinfo($ch));
+      curl_close($ch);
+
+      return $response_json;
+  }
+
+  

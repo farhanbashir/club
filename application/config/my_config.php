@@ -6,3 +6,5 @@ $config["REMOTE_SOCKET_APPLE"] = 'ssl://gateway.push.apple.com:2195';
 $config['pagination_limit'] = 10;
 $config["pem_en"] = "ck_dist_en.pem";
 $config["pem_ar"] = "ck_dist_ar.pem";
+$config["instagram_client"] = "20fedafd752f4516995ec9c50027a41b";
+$config["instagram_secret"] = "e5bbf066b12e44cea3d00b1e00c25643";
