@@ -12,6 +12,7 @@
                     <!-- form start -->
                     <form name="add_sponsor" id="club_sponsor_page" action="<?php echo base_url(); ?>index.php/admin/sponsors_relation/update" method="POST"  enctype="multipart/form-data">
                         <input name="sponsor[is_submit]" id="is_submit" value="1" type="hidden" />
+                        <input name="sponsor_relation[id]" id="id" value="<?php echo $id;?>" type="hidden" />
 
                         <div class="box-body">
 

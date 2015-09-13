@@ -75,8 +75,8 @@ Class Sponsor_relation_model extends CI_Model {
     }
 
     public function update_content_by_id($id, $data) {
-        $this->db->where('content_id', $id);
-        $this->db->update('content', $data);
+        $this->db->where('id', $id);
+        $this->db->update('sponsor_relation', $data);
         return $id;
     }
 

@@ -62,7 +62,7 @@ class Sponsors_relation extends MY_Controller {
     public function edit($id) {
         $data['sponsor_relation'] = $this->sponsor_relation_model->get_content_by_id($id);
         $data['sponsor_relation']['sponsor'] = $this->sponsor_relation_model->get_sponsor_content();
-
+        $data['id'] = $id;
         
         $content = $this->load->view($this->type . '/edit.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
@@ -71,12 +71,13 @@ class Sponsors_relation extends MY_Controller {
     public function update() {
 
         $data = array(
-            'title' => $_POST['sponsor_relation']['title'],
-            'description' => $_POST['sponsor_relation']['link'],
+            'name' => $_POST['sponsor_relation']['title'],
+            'page' => $_POST['sponsor_relation']['page'],
+            'sponsor_content_id' => $_POST['sponsor_relation']['sponsor'],
         );
 
         $sponsor_relation_id = $this->sponsor_relation_model->update_content_by_id($_POST['sponsor_relation']['id'], $data);
-        $image_data = $this->uploadImageFile($sponsor_relation_id, $this->type);
+        //$image_data = $this->uploadImageFile($sponsor_relation_id, $this->type);
 
         if ($this->uploadSuccess) {
             $this->image->add_images($image_data);
