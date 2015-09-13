@@ -3542,3 +3542,6 @@ fieldset[disabled] .btn-vk.active {
 a{
     color: #837c17 !important;
 }
+.dropdown a{
+    color: white !important;
+}
