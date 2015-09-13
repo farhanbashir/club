@@ -3545,3 +3545,6 @@ a{
 .dropdown a{
     color: white !important;
 }
+.pull-right a{
+    color: #837c17 !important;   
+}
