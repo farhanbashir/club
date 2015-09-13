@@ -1,5 +1,25 @@
 jQuery(document).ready(function () {
 
+    jQuery.validator.addMethod("noSpace", function (value, element) {
+        return value.indexOf(" ") < 0 && value != "";
+    }, "Not Valid");
+
+    jQuery("#club_members_gallery").validate({
+        rules: {
+            "members_gallery[hash_tag]": {
+                required: true,
+                noSpace: true
+            },
+        },
+        messages: {
+            "sponsor_relation[title]": {
+                required: "Please provide a title.",
+                noSpace: "Not a valid Hash Tag.",
+            },
+        },
+    });
+
+
 
     jQuery("#club_sponsor_page").validate({
         rules: {

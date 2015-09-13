@@ -1,4 +1,26 @@
 $(document).ready(function () {
+    $("#search_images").click(function ()
+    {
+        if (jQuery("#club_members_gallery").valid() == true) {
+
+
+
+            $.ajax({
+                type: "POST",
+                url: BASE_URL + "index.php/admin/members_galleries/search_instagram_images/" + $("#search_tag").val(),
+                dataType: "text",
+                cache: false,
+                success:
+                        function (data) {
+                            $("#searched_images").empty().append(data);  //as a debugging message.
+                        }
+            });// you have missed this bracket
+            return false;
+        }
+    });
+
+
+
 
     $('#filter').on('change', function () {
         var slug = $('#filter').val();

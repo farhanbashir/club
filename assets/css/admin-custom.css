@@ -19,7 +19,7 @@
 
 ul.products-list
 {
-list-style-type: none;
+    list-style-type: none;
 }
 
 .users-list>li img {
@@ -53,4 +53,10 @@ list-style-type: none;
     position: relative;
     left: 40px;
     color: #E42D2D !important;
+}
+
+.checkbox_images{
+    position: relative;
+    top: -58px;
+    left: 20px;
 }
