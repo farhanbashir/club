@@ -21,7 +21,7 @@
                                 <label>Title</label>
                                 <input type="text" class="form-control" name="pool[title]" placeholder="Enter ..." value="">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label>Pool Type</label>
                                 <div class="radio">
@@ -44,6 +44,11 @@
                                 <label for="pool_short_description">Short Description</label>
                                 <textarea class="form-control" id="pool_short_description" name="pool[description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
+                            <div class="form-group">
+                                <label>Enquire Now</label>
+                                <input type="text" class="form-control" name="pool[enquire]" placeholder="Enter ..." value="">
+                            </div>
+
 
 
 

@@ -21,7 +21,7 @@
                                 <label>Title</label>
                                 <input type="text" class="form-control" name="beach[title]" placeholder="Enter ..." value="">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label>Beach Type</label>
                                 <div class="radio">
@@ -45,6 +45,10 @@
                                 <textarea class="form-control" id="beach_short_description" name="beach[description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
+                            <div class="form-group">
+                                <label>Enquire Now</label>
+                                <input type="text" class="form-control" name="beach[enquire]" placeholder="Enter ..." value="">
+                            </div>
 
 
                             <div class="form-group">

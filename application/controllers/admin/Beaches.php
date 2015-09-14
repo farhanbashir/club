@@ -134,7 +134,10 @@ class Beaches extends MY_Controller {
     }
 
     public function update() {
-        $beach_type = array('type' => $_POST['beach']['type']);
+        $beach_type = array(
+            'type' => $_POST['beach']['type'],
+            'enquire' => !empty($_POST['beach']['enquire']) ? $_POST['beach']['enquire'] : ''
+        );
         $data = array(
             'title' => $_POST['beach']['title'],
             'description' => $_POST['beach']['description'],
@@ -156,7 +159,10 @@ class Beaches extends MY_Controller {
     }
 
     public function submit() {
-        $beach_type = array('type' => $_POST['beach']['type']);
+        $beach_type = array(
+            'type' => $_POST['beach']['type'],
+            'enquire' => !empty($_POST['beach']['enquire']) ? $_POST['beach']['enquire'] : ''
+        );
         $data = array(
             'title' => $_POST['beach']['title'],
             'description' => $_POST['beach']['description'],

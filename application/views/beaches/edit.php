@@ -1,9 +1,8 @@
 <?php
 $data = unserialize($beach['data']);
 
-if (!empty($data['type'])) {
-    $type = $data['type'];
-}
+$type = !empty($data['type']) ? $data['type'] : '';
+$enquire = !empty($data['enquire']) ? $data['enquire'] : '';
 ?>
 <!-- Main content -->
 <section class="content">
@@ -51,6 +50,11 @@ if (!empty($data['type'])) {
                                     <div class="form-group">
                                         <label for="beach_short_description">Short Description</label>
                                         <textarea class="form-control" id="beach_short_description" name="beach[description]" rows="3" placeholder="Enter ..."><?php echo $beach['description']; ?></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Enquire Now</label>
+                                        <input type="text" class="form-control" name="beach[enquire]" placeholder="Enter ..." value="<?php echo!empty($enquire) ? $enquire : '' ?>">
                                     </div>
 
                                     <div class="form-group">

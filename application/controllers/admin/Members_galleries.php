@@ -136,7 +136,7 @@ class Members_galleries extends MY_Controller {
             $image_link = $item['images']['thumbnail']['url'];
             echo '<div  class="checkbox-wrapper col-md-6">'
             . '<input class="checkbox_images" name="members_gallery[images][]" value="' . $image_link . '" form-control" id="checkbox_' . $count . '" type="checkbox">'
-            . '<img for="checkbox_' . $count . '" src="' . $image_link . '" />'
+            . '<img class="image_instagram" for="checkbox_' . $count . '" src="' . $image_link . '" />'
             . '</div>';
         }
     }

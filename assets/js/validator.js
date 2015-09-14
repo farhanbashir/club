@@ -211,6 +211,9 @@ jQuery(document).ready(function () {
             "pool[type]": {
                 required: true,
             },
+            "pool[enquire]": {
+                required: true,
+            },
         },
         messages: {
             "pool[title]": {
@@ -223,6 +226,9 @@ jQuery(document).ready(function () {
             },
             "pool[type]": {
                 required: "Please provide dress code.",
+            },
+            "pool[enquire]": {
+                required: "Please provide Enquire No.",
             },
         },
     });
@@ -241,6 +247,9 @@ jQuery(document).ready(function () {
             "beach[type]": {
                 required: true,
             },
+            "beach[enquire]": {
+                required: true,
+            },
         },
         messages: {
             "beach[title]": {
@@ -253,6 +262,9 @@ jQuery(document).ready(function () {
             },
             "beach[type]": {
                 required: "Please provide dress code.",
+            },
+            "beach[enquire]": {
+                required: "Please provide Enquire No.",
             },
         },
     });

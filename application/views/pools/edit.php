@@ -1,9 +1,8 @@
 <?php
 $data = unserialize($pool['data']);
 
-if (!empty($data['type'])) {
-    $type = $data['type'];
-}
+$type = !empty($data['type']) ? $data['type'] : '';
+$enquire = !empty($data['enquire']) ? $data['enquire'] : '';
 ?>
 <!-- Main content -->
 <section class="content">
@@ -51,6 +50,11 @@ if (!empty($data['type'])) {
                                     <div class="form-group">
                                         <label for="pool_short_description">Short Description</label>
                                         <textarea class="form-control" id="pool_short_description" name="pool[description]" rows="3" placeholder="Enter ..."><?php echo $pool['description']; ?></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Enquire Now</label>
+                                        <input type="text" class="form-control" name="pool[enquire]" placeholder="Enter ..." value="<?php echo!empty($enquire) ? $enquire : '' ?>">
                                     </div>
 
                                     <div class="form-group">

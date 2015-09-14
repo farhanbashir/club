@@ -42,6 +42,7 @@
                             <th>Title</th>
                             <th>Type</th>
                             <th>Short Description</th>
+                            <th>Enquire Now</th>
                             <th>Action</th>
 
                         </tr>
@@ -50,16 +51,16 @@
                             foreach ($pools as $pool) {
                                 $data = unserialize($pool['data']);
 
-                                if (!empty($data['type'])) {
-                                    $type = $data['type'];
-                                }
+                                $type = !empty($data['type']) ? $data['type'] : '';
+                                $enquire = !empty($data['enquire']) ? $data['enquire'] : '';
                                 ?>
                                 <tr>
                                     <td><?php echo $pool['content_id']; ?></td>
                                     <td><?php echo $pool['title']; ?></td>
                                     <td><?php echo $type; ?></td>
-                                    <td><?php echo(strlen($pool['description']) > 100) ? substr($pool['description'], 0, 97) . '...' : $pool['description']; ?></td>
 
+                                    <td><?php echo(strlen($pool['description']) > 100) ? substr($pool['description'], 0, 97) . '...' : $pool['description']; ?></td>
+                                    <td><?php echo $enquire; ?></td>
                                     <td>
                                         <a href="<?php echo base_url(); ?>index.php/admin/pools/view/<?php echo $pool['content_id']; ?>">View</a>
                                         &nbsp;&nbsp;&nbsp;
@@ -80,7 +81,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-<?php echo $links; ?>
+                <?php echo $links; ?>
             </div></div>
     </div>
 </section><!-- /.content

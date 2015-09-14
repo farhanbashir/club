@@ -58,5 +58,10 @@ ul.products-list
 .checkbox_images{
     position: relative;
     top: -58px;
-    left: 20px;
+    left: 37px;
+}
+
+.image_instagram{
+    border: 7px solid #DAD189;
+    margin: 10px;
 }

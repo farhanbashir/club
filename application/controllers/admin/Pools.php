@@ -134,7 +134,10 @@ class Pools extends MY_Controller {
     }
 
     public function update() {
-        $pool_type = array('type' => $_POST['pool']['type']);
+        $pool_type = array(
+            'type' => $_POST['pool']['type'],
+            'enquire' => !empty($_POST['pool']['enquire']) ? $_POST['pool']['enquire'] : ''
+        );
         $data = array(
             'title' => $_POST['pool']['title'],
             'description' => $_POST['pool']['description'],
@@ -156,7 +159,10 @@ class Pools extends MY_Controller {
     }
 
     public function submit() {
-        $pool_type = array('type' => $_POST['pool']['type']);
+        $pool_type = array(
+            'type' => $_POST['pool']['type'],
+            'enquire' => !empty($_POST['pool']['enquire']) ? $_POST['pool']['enquire'] : ''
+        );
         $data = array(
             'title' => $_POST['pool']['title'],
             'description' => $_POST['pool']['description'],

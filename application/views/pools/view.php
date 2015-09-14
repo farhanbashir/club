@@ -1,9 +1,8 @@
 <?php
 $data = unserialize($pool['data']);
 
-if (!empty($data['type'])) {
-    $type = $data['type'];
-}
+$type = !empty($data['type']) ? $data['type'] : '';
+$enquire = !empty($data['enquire']) ? $data['enquire'] : '';
 ?>
 <!-- Main content -->
 <section class="content">
@@ -31,6 +30,10 @@ if (!empty($data['type'])) {
                         <tr>
                             <th>Short Description</th>
                             <td><?php echo $pool['description']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Enquire Now</th>
+                            <td><?php echo $enquire; ?></td>
                         </tr>
 
                     </tbody></table>
