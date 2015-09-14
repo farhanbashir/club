@@ -24,9 +24,9 @@
                                 <label for="sponsor_page">Pages</label>
                                 <select class="form-control" id="sponsor_page" name="sponsor_relation[page]" >
                                     <option value="">Select</option>
-                                    <option value="page 1">Page 1</option>
-                                    <option value="page 2">Page 2</option>
-                                    <option value="page 3">Page 3</option>
+                                    <?php foreach($pages as $key=>$val) {?>
+                                    <option value="<?php echo $val;?>"><?php echo $val;?></option>
+                                    <?php }?>
                                 </select>
                             </div>
 

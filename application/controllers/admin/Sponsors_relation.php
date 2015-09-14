@@ -21,6 +21,7 @@ class Sponsors_relation extends MY_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public $type = 'sponsors_relation';
+    public $pages =  array('Splash Page','Information Page',"What's On Page");
 
     function __construct() {
         parent::__construct();
@@ -62,6 +63,7 @@ class Sponsors_relation extends MY_Controller {
     public function edit($id) {
         $data['sponsor_relation'] = $this->sponsor_relation_model->get_content_by_id($id);
         $data['sponsor_relation']['sponsor'] = $this->sponsor_relation_model->get_sponsor_content();
+        $data['pages'] = $this->pages;
         $data['id'] = $id;
         
         $content = $this->load->view($this->type . '/edit.php', $data, true);
@@ -88,7 +90,7 @@ class Sponsors_relation extends MY_Controller {
 
     public function addnew() {
         $data['sponsor_relation']['sponsor'] = $this->sponsor_relation_model->get_sponsor_content();
-
+        $data['pages'] = $this->pages;
 
         $content = $this->load->view($this->type . '/new.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));

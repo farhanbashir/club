@@ -25,9 +25,10 @@
                                 <label for="sponsor_page">Pages</label>
                                 <select class="form-control" id="sponsor_page" name="sponsor_relation[page]" >
                                     <option value="">Select</option>
-                                    <option value="page 1" <?php echo ($sponsor_relation[0]['page'] == 'page 1') ? 'selected="selected"' : ''; ?> >Page 1</option>
-                                    <option value="page 2"<?php echo ($sponsor_relation[0]['page'] == 'page 2') ? 'selected="selected"' : ''; ?> >Page 2</option>
-                                    <option value="page 3" <?php echo ($sponsor_relation[0]['page'] == 'page 3') ? 'selected="selected"' : ''; ?>>Page 3</option>
+                                    <?php foreach($pages as $key=>$val) {?>
+                                    <option <?php echo ($sponsor_relation[0]['page'] == $val) ? 'selected="selected"' : ''; ?> value="<?php echo $val;?>"><?php echo $val;?></option>
+                                    <?php }?>
+                                    
                                 </select>
                             </div>
 
