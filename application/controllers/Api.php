@@ -1284,6 +1284,85 @@ class Api extends REST_Controller {
         $this->response($data);
     }
 
+    function test_post()
+    {
+        $string = file_get_contents(asset_url('availability.xml'));
+        $xml = simplexml_load_string($string);
+        $json = json_encode($xml);
+        $array = json_decode($json,TRUE);
+        if(isset($array['reply']['error']))
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = $array['reply']['error'];
+            $this->response($data,400);   
+        }    
+        else
+        {
+            $data["header"]["error"] = "0";
+            $data["body"] = $array['reply'];
+            $this->response($data,400);   
+        }    
+        //debug($array['reply'],1);
+    }
+
+    function checkReservationAvailability_post()
+    {
+        $queryString = array();
+        $queryString['apikey'] = $this->config->item('club_apiKey');
+        $queryString['membership'] = $this->post('membership');
+        $queryString['date'] = $this->post('date');
+        $queryString['action'] = $this->post('action');
+
+        $url = $this->config->item('club_availability_url').'?'.http_build_query($queryString);
+        
+        $result = doCurl($url);//echo $result;
+        $xml = simplexml_load_string($result);
+        $json = json_encode($xml);
+        $array = json_decode($json,TRUE);
+
+        if(isset($array['reply']['error']))
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = $array['reply']['error'];
+            $this->response($data,400);   
+        }    
+        else
+        {
+            $data["header"]["error"] = "0";
+            $data["body"] = $array['reply'];
+            $this->response($data,400);   
+        }
+    }
+
+    function reservation_post()
+    {
+        $queryString = array();
+        $queryString['apikey'] = $this->config->item('club_apiKey');
+        $queryString['membership'] = $this->post('membership');
+        $queryString['reservationkey'] = $this->post('reservationkey');
+        
+
+        $url = $this->config->item('club_reservation_url').'?'.http_build_query($queryString);
+        
+        $result = doCurl($url);//echo $result;
+        $xml = simplexml_load_string($result);
+        $json = json_encode($xml);
+        $array = json_decode($json,TRUE);
+        
+        if(isset($array['reply']['error']))
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = $array['reply']['error'];
+            $this->response($data,400);   
+        }    
+        else
+        {
+            $data["header"]["error"] = "0";
+            $data["body"] = $array['reply'];
+            $this->response($data,400);   
+        }
+    }
+
     function getSponsorById_post()
     {
         $content_id = $this->post('id');

@@ -8,3 +8,6 @@ $config["pem_en"] = "ck_dist_en.pem";
 $config["pem_ar"] = "ck_dist_ar.pem";
 $config["instagram_client"] = "20fedafd752f4516995ec9c50027a41b";
 $config["instagram_secret"] = "e5bbf066b12e44cea3d00b1e00c25643";
+$config["club_apiKey"] = "vg8rt93ff0q";
+$config["club_availability_url"] = "https://cdn.nonweiler.com/tcad/availability";
+$config["club_reservation_url"] = "https://cdn.nonweiler.com/tcad/reservation";
