@@ -9,15 +9,7 @@
 
                 <div class="box box-primary">
 
-                    <!-- form start -->
-                    <form name="add_members_gallery" id="club_members_gallery" action="<?php echo base_url(); ?>index.php/admin/members_galleries/submit" method="POST"  enctype="multipart/form-data">
-                        <input name="members_gallery[is_submit]" id="is_submit" value="1" type="hidden" />
-
-                        <div class="box-body">
-
-
-
-                            <div class="form-group">
+                    <div class="form-group">
                                 <label>Tag</label>
 
                                 <div class="input-group input-group-sm">
@@ -27,6 +19,16 @@
                                     </span>
                                 </div>
                             </div>
+                                
+                    <!-- form start -->
+                    <form name="add_members_gallery" id="club_members_gallery" action="<?php echo base_url(); ?>index.php/admin/members_galleries/submit" method="POST"  enctype="multipart/form-data">
+                        <input name="members_gallery[is_submit]" id="is_submit" value="1" type="hidden" />
+
+                        <div class="box-body">
+
+
+
+                            
 
                             <div id="searched_images" class="form-group">
                                 
