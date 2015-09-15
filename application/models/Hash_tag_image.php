@@ -68,6 +68,16 @@ Class Hash_tag_image extends CI_Model {
         return $result;
     }
 
+    public function get_hashtag_images()
+    {
+        $sql = 'select ht.id,ht.hash_tag,hti.image from hash_tags_image hti  
+                inner join hash_tag ht on ht.id=hti.hash_tag_id';
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
+
     public function update_content_by_id($id, $data) {
         $this->db->where('content_id', $id);
         $this->db->update('content', $data);

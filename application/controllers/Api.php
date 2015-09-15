@@ -28,7 +28,9 @@ class Api extends REST_Controller {
 	   $this->load->model('user','',TRUE);
        $this->load->model('device','',TRUE);
        $this->load->model('image','',TRUE);
-	   $this->load->model('pagemodel','',TRUE);
+       $this->load->model('pagemodel','',TRUE);
+       $this->load->model('sponsor_relation_model','',TRUE);
+	   $this->load->model('hash_tag_image','',TRUE);
 	   //$this->load->model('news','',TRUE);
 	 }
 
@@ -1408,6 +1410,60 @@ class Api extends REST_Controller {
             $data["header"]["message"] = "No record found.";
         }
         $this->response($data);
+    }
+
+    function getSponsorByPage_post()
+    {
+        $page = $this->post('page');
+        
+        if(!$page)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide key";
+            $this->response($data,400);
+        }
+
+        $result = $this->sponsor_relation_model->get_sponsor_by_page($page);
+        
+        if(count($result) > 0)
+        {
+            $data["header"]["error"] = "0";
+            
+            $data["body"] = $result;
+        }
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";
+        }
+        $this->response($data);
+
+    }
+
+    function getInstagramImages_post()
+    {
+        $result = $this->hash_tag_image->get_hashtag_images();
+        if(count($result) > 0)
+        {
+            $return = array();
+            foreach($result as $res)
+            {
+                $return[$res['hash_tag']][] = $res['image'];
+            }    
+
+            $data["header"]["error"] = "0";
+            
+            $data["body"] = $return;
+        }   
+        else
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No record found.";   
+        } 
+
+        $this->response($data);
+        
+        debug($result,1);
     }
 
 

@@ -80,6 +80,17 @@ Class Sponsor_relation_model extends CI_Model {
         return $id;
     }
 
+    public function get_sponsor_by_page($page)
+    {
+        $sql = 'select s.page,s.name,CONCAT(i.path,i.name) as image from sponsor_relation s 
+                inner join image i on i.content_id=s.sponsor_content_id  
+                where page="'.$page.'"';
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    } 
+
     function get_contents($page) {
         $start = $page;
         $limit = $this->config->item('pagination_limit');
