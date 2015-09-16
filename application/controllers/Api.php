@@ -1332,7 +1332,7 @@ class Api extends REST_Controller {
         {
             $data["header"]["error"] = "0";
             $data["body"] = $array['reply'];
-            $this->response($data,400);   
+            $this->response($data,200);   
         }
     }
 
@@ -1361,7 +1361,7 @@ class Api extends REST_Controller {
         {
             $data["header"]["error"] = "0";
             $data["body"] = $array['reply'];
-            $this->response($data,400);   
+            $this->response($data,200);   
         }
     }
 
@@ -1409,7 +1409,7 @@ class Api extends REST_Controller {
             $data["header"]["error"] = "1";
             $data["header"]["message"] = "No record found.";
         }
-        $this->response($data);
+        $this->response($data,200);
     }
 
     function getSponsorByPage_post()
