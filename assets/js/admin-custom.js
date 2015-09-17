@@ -4,7 +4,8 @@ $(document).ready(function () {
         if (jQuery("#club_members_gallery").valid() == true) {
 
 
-
+            $("#search_images").attr("disabled", "disabled");
+            $("#searched_images").empty().append('<img id="loader" src="http://localhost/club/assets/img/loader_loading.gif">');
             $.ajax({
                 type: "POST",
                 url: BASE_URL + "index.php/admin/members_galleries/search_instagram_images/" + $("#search_tag").val(),
@@ -13,6 +14,7 @@ $(document).ready(function () {
                 success:
                         function (data) {
                             $("#searched_images").empty().append(data);  //as a debugging message.
+                            $("#search_images").removeAttr("disabled");
                         }
             });// you have missed this bracket
             return false;
@@ -117,7 +119,11 @@ $(document).ready(function () {
 
     });
 
-    $('textarea').wysihtml5();
+    $("textarea").attr('rows', '10');
+
+    $('textarea').wysihtml5({
+        "image": false
+    });
 
 
 
@@ -197,7 +203,7 @@ $(document).ready(function () {
         limit: null,
         maxSize: null,
         extensions: null,
-        changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Drag & Drop images here</h3> <span style="display:inline-block; margin: 15px 0">or</span></div><a class="jFiler-input-choose-btn blue">Browse Images</a></div></div>',
+        changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Upload Images here</h3> <span style="display:inline-block; margin: 15px 0"></span></div><a class="jFiler-input-choose-btn blue">Browse</a></div></div>',
         showThumbs: true,
         appendTo: null,
         theme: "dragdropbox",

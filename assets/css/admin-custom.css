@@ -1,3 +1,11 @@
+img#loader {
+    margin: 60px auto;
+    display: block;
+}
+
+ul.wysihtml5-toolbar > li > a {
+    color: #837C17 !important;
+}
 .error{
     color: #C52929;
     font-size: 13px;

@@ -16,15 +16,15 @@
                                 <input name="members_gallery[is_submit]" id="is_submit" value="1" type="hidden" />
                                 <input name="members_gallery[id]" id="uniqid" value="<?php echo $members_gallery['id']; ?>" type="hidden" />
                                 <div class="box-body">
-
-
-                                    <div class="input-group input-group-sm">
-                                        <input type="text" class="form-control" id="search_tag" name="members_gallery[hash_tag]" placeholder="Enter ..." value="<?php echo $members_gallery['hash_tag'] ?>">
-                                        <span class="input-group-btn">
-                                            <button id="search_images" class="btn btn-info btn-flat" type="button">Search!</button>
-                                        </span>
+                                    <div class="form-group">
+                                        <label>Tag</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control" id="search_tag" name="members_gallery[hash_tag]" placeholder="Enter ..." value="<?php echo $members_gallery['hash_tag'] ?>">
+                                            <span class="input-group-btn">
+                                                <button id="search_images" class="btn btn-info btn-flat" type="button">Search!</button>
+                                            </span>
+                                        </div>
                                     </div>
-
 
                                     <div id="searched_images" class="form-group">
 
@@ -84,7 +84,7 @@
                                                         </li>                             
                                                     </ul>                                        
                                                     <ul class="list-inline pull-right">   
-                                                        <li><a href="<?php echo base_url(); ?>index.php/admin/members_galleries/delete_image/<?php echo $image['id'].'/'.$members_gallery['id']; ?>" class="icon-jfi-trash jFiler-item-trash-action delete_anything"></a>
+                                                        <li><a href="<?php echo base_url(); ?>index.php/admin/members_galleries/delete_image/<?php echo $image['id'] . '/' . $members_gallery['id']; ?>" class="icon-jfi-trash jFiler-item-trash-action delete_anything"></a>
                                                         </li>                                       
                                                     </ul>                                
                                                 </div>
