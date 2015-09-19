@@ -56,6 +56,14 @@ class Api extends REST_Controller {
         }
         else
         {
+            $postdata = array();
+            $postdata['apikey'] = $this->config->item('club_apiKey');
+            $postdata['username'] = $username;
+            $postdata['userpass'] = $password;
+            $postdata['post'] = true;
+            $url = $this->config->item('club_authentication_url');
+
+            $result = doCurl($url,$postdata); 
 
             $result = $this->user->login($username, $password, 0);
 
