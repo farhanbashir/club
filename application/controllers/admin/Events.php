@@ -75,12 +75,12 @@ class Events extends MY_Controller {
                 'id' => $image['image_id']
             );
         }
+
         $content = $this->load->view($this->type . '/edit.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
     public function update() {
-
         $data = array(
             'title' => $_POST['event']['title'],
             'start_date' => $_POST['event']['start_date'],
@@ -90,6 +90,7 @@ class Events extends MY_Controller {
 
         $event_id = $this->content->update_content_by_id($_POST['event']['id'], $data);
         $image_data = $this->uploadImageFile($event_id, $this->type);
+
 
         if ($this->uploadSuccess) {
             $this->image->add_images($image_data);
