@@ -27,9 +27,9 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
-                            <th>Date</th>
                             <th>Days</th>
                             <th>Time</th>
+                            <th>Date</th>
                             <th>Short Description</th>
                             <th>Action</th>
 

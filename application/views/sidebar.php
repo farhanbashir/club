@@ -92,8 +92,8 @@
                 <i class="fa pull-right fa-angle-left"></i>
             </a>
             <ul class="treeview-menu" style="display: none;">
-                <li><a href="<?php echo site_url('admin/sponsors/') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>All Sponsors</a></li>
-                <li><a href="<?php echo site_url('admin/sponsors_relation') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Sponser Page</a></li>
+                <!--<li><a href="<?php // echo site_url('admin/sponsors/') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>All Sponsors</a></li>-->
+                <li><a href="<?php echo site_url('admin/sponsor_pages') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Sponser Page</a></li>
                 <!--<li><a href="<?php // echo site_url('welcome/babies') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Babies List</a></li>-->
             </ul>
         </li>

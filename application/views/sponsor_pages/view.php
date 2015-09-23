@@ -1,44 +1,28 @@
 <?php
-$data = unserialize($class['data']);
-
-if (!empty($data['day'])) {
-    $days = implode($data['day'], ', ');
-}
+$data = unserialize($sponsor_page['data']);
 ?>
 <!-- Main content -->
 <section class="content">
     <div class="row  col-xs-12">
         <div class="col-xs-6">
 
-            <p class="lead col-xs-6">Class # <?php echo ucfirst($class['content_id']); ?></p>
+            <p class="lead col-xs-6">Sponsor Page # <?php echo ucfirst($sponsor_page['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/classes/delete/' . $class['content_id']) ?>"><button class="btn btn-danger pull-right delete_anything" style="margin:10px ">Delete</button></a>
+            <a href="<?php echo site_url('admin/sponsor_pages/delete/' . $sponsor_page['content_id']) ?>"><button class="btn btn-danger pull-right" style="margin:10px ">Delete</button></a>
 
             <div class="table-responsive">
                 <table class="table">
                     <tbody>
                         <tr>
                             <th>Title:</th>
-                            <td><?php echo $class['title']; ?></td>
+                            <td><?php echo $sponsor_page['title']; ?></td>
                         </tr>
                         <tr>
-                            <th>Date:</th>
-                            <td><?php echo $class['start_date']; ?></td>
+                            <th>Page</th>
+                            <td><?php echo!empty($data['page']) ? $data['page'] : ''; ?></td>
                         </tr>
-                        <tr>
-                            <th>Short Description</th>
-                            <td><?php echo $class['description']; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Days</th>
-                            <td><?php echo!empty($days) ? $days : ''; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Time</th>
-                            <td><?php echo!empty($data['time']) ? $data['time'] : ''; ?></td>
-                        </tr>
-
+                       
                     </tbody></table>
 
 
@@ -56,11 +40,11 @@ if (!empty($data['day'])) {
 
 
                     <?php
-                    if (!empty($class['images'])) {
+                    if (!empty($sponsor_page['images'])) {
                         ?>
                         <ul class="jFiler-item-list box-body ">
                             <?php
-                            foreach ($class['images'] as $image) {
+                            foreach ($sponsor_page['images'] as $image) {
                                 ?>
                                 <li class="jFiler-item" data-jfiler-index="3" style="">    
                                     <div class="jFiler-item-container">               
@@ -71,7 +55,8 @@ if (!empty($data['day'])) {
 
                                                 </div>                                        
                                                 <div class="jFiler-item-thumb-image">
-                                                    <img src="<?php echo $image; ?>" draggable="false">
+                                                    <img src="<?php echo  $image; ?>" draggable="false">
+                                                
                                                 </div>                                    
                                             </div>                                   
 
@@ -90,32 +75,6 @@ if (!empty($data['day'])) {
                     <div style="clear: both"></div>
 
                 </div><!-- /.box-body -->
-
-
-
-                <div class="box-header">
-                    <h3 class="box-title">PDF</h3>
-                </div>
-                <div class="box-body">
-                    <?php if (!empty($class['pdf'])) { ?>
-
-
-
-
-                        <div style="background: #f7f8fa;padding: 50px;">
-                            <a class="pull-right pdf_delete delete_anything" href="<?php echo base_url() . 'index.php/admin/classes/remove_pdf/' . $class['pdf']['pdf_id'] . '/' . $class['content_id'].'/view' ?>">Delete</a>
-                            <div style="margin: 0 auto 25px auto; width: 600px" >
-                                <embed style="overflow: hidden; border: 2px #C8CBCE dashed; margin: 0 auto 0 auto;"  src="<?php echo $class['pdf']['path']; ?>" width="400" height="350" type='application/pdf'>
-                            </div>
-                        </div>
-                    <?php } else {
-                        ?>
-                        <p>No Images so far.</p>
-                    <?php }
-                    ?>
-
-
-                </div><!-- /.box -->
             </div><!-- /.box -->
 
 

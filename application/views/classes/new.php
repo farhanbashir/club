@@ -45,7 +45,7 @@
                                 </select>
                             </div>
 
-                            
+
                             <div class="form-group">
                                 <label>Time</label>
                                 <div class="input-group">
@@ -56,7 +56,10 @@
                                 </div><!-- /.input group -->
                             </div>
 
-                            
+                            <div class="form-group">
+                                <label>PDF File</label>
+                                <input type="file" name="pdf">
+                            </div>                            
 
                             <div class="form-group">
                                 <div style="background: #f7f8fa;padding: 50px;">

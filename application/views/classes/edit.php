@@ -10,7 +10,7 @@ $data = unserialize($class['data']);
             <p class="lead">Class # <?php echo ucfirst($class['content_id']); ?></p>
 
             <div class="col-xs-12">
-                <div class="col-xs-6">
+                <div class="col-xs-9">
                     <div class="table-responsive">
 
                         <div class="box box-primary">
@@ -63,6 +63,22 @@ $data = unserialize($class['data']);
                                         </div><!-- /.input group -->
                                     </div>
 
+                                    <div class="form-group">
+                                        <label>PDF File</label>
+                                        <input type="file" name="pdf">
+                                    </div>
+
+                                    <?php if (!empty($class['pdf'])) { ?>
+                                        <div style="background: #f7f8fa;padding: 50px;">
+                                            <a class="pull-right pdf_delete delete_anything" href="<?php echo base_url() . 'index.php/admin/classes/remove_pdf/' . $class['pdf']['pdf_id'] . '/' . $class['content_id'].'/edit'   ?>">Delete</a>
+                                            <div style="margin: 0 auto 25px auto; width: 600px" >
+                                                <embed style="overflow: hidden; border: 2px #C8CBCE dashed; margin: 0 auto 0 auto;"  src="<?php echo $class['pdf']['path']; ?>" width="600" height="350" type='application/pdf'>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+
+                                    <div style="clear: both"></div>
+
 
 
                                     <div class="form-group">
@@ -84,7 +100,7 @@ $data = unserialize($class['data']);
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="box box-primary">
                     <div class="box-header">
                         <h3 class="box-title">Uploaded Images</h3>

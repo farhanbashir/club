@@ -46,6 +46,13 @@ Class Image extends CI_Model {
         $this->db->delete('image');
     }
 
+    function add_single_images($content_id, $image_data) {
+        $this->db->where('content_id', $content_id);
+        $this->db->update('image', array('is_active' => 0));
+
+        $this->db->insert('image', $image_data);
+    }
+
 }
 
 ?>

@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Classes extends MY_Controller {
+class Sponsor_pages extends MY_Controller {
 
     /**
      * Index Page for this controller.
@@ -20,13 +20,13 @@ class Classes extends MY_Controller {
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
-    public $type = 'classes';
+    public $type = 'sponsor_pages';
+    public $pages = array('Splash Page', 'Information Page', "What's On Page");
 
     function __construct() {
         parent::__construct();
         $this->load->model('content', '', TRUE);
         $this->load->model('image', '', TRUE);
-        $this->load->model('pdf', '', TRUE);
 
         if (!$this->session->userdata('logged_in')) {
             redirect(base_url());
@@ -46,25 +46,19 @@ class Classes extends MY_Controller {
 
         $data["links"] = $this->pagination->create_links();
 
-        $classes = $this->content->get_content_by_type($this->type, $page);
-        $data['classes'] = $classes;
+        $sponsor_pages = $this->content->get_content_by_type($this->type, $page);
+        $data['sponsor_pages'] = $sponsor_pages;
         $content = $this->load->view($this->type . '/tabular.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
     public function view($id) {
-        $class = $this->content->get_content_by_id($this->type, $id);
-        $data['class'] = $class[0];
+        $sponsor_page = $this->content->get_content_by_id($this->type, $id);
+        $data['sponsor_page'] = $sponsor_page[0];
         $images = $this->image->get_images_by_content_id($id);
 
         foreach ($images as $image) {
-            $data['class']['images'][] = $image['path'] . $image['name'];
-        }
-
-        $pdf = $this->pdf->get_pdf($id);
-
-        if (!empty($pdf)) {
-            $data['class']['pdf'] = $pdf[0];
+            $data['sponsor_page']['images'][] = $image['path'] . $image['name'];
         }
 
         $content = $this->load->view($this->type . '/view.php', $data, true);
@@ -72,17 +66,13 @@ class Classes extends MY_Controller {
     }
 
     public function edit($id) {
-        $class = $this->content->get_content_by_id($this->type, $id);
-        $data['class'] = $class[0];
+        $sponsor_page = $this->content->get_content_by_id($this->type, $id);
+        $data['sponsor_page'] = $sponsor_page[0];
         $images = $this->image->get_images_by_content_id($id);
-        $pdf = $this->pdf->get_pdf($id);
-
-        if (!empty($pdf)) {
-            $data['class']['pdf'] = $pdf[0];
-        }
+        $data['pages'] = $this->pages;
 
         foreach ($images as $image) {
-            $data['class']['images'][] = array(
+            $data['sponsor_page']['images'][] = array(
                 'path' => $image['path'] . $image['name'],
                 'id' => $image['image_id']
             );
@@ -93,66 +83,48 @@ class Classes extends MY_Controller {
 
     public function update() {
 
-        $data['day'] = $_POST['class']['days'];
-        $data['time'] = $_POST['class']['time'];
-
-
-        $data = array(
-            'title' => $_POST['class']['title'],
-            'start_date' => $_POST['class']['start_date'],
-            'description' => $_POST['class']['description'],
-            'data' => serialize($data)
+         $data_page = array(
+            'page' => $_POST['sponsor_page']['page']
         );
+        $data = array(
+            'title' => $_POST['sponsor_page']['title'],
+            'data' => serialize($data_page)
+        );
+        
 
-        $class_id = $this->content->update_content_by_id($_POST['class']['id'], $data);
-
-        if (!empty($_FILES['pdf']['name'])) {
-            $pdf_data = $this->uploadContentPdfFile($class_id, $this->type);
-            $this->pdf->add_pdf($pdf_data);
-        }
-
-        $image_data = $this->uploadImageFile($class_id, $this->type);
+        $sponsor_page_id = $this->content->update_content_by_id($_POST['sponsor_page']['id'], $data);
+        $image_data = $this->uploadSingleImageFile($sponsor_page_id, $this->type);
 
         if ($this->uploadSuccess) {
-            $this->image->add_images($image_data);
+            $this->image->add_single_images($sponsor_page_id,$image_data);
         }
 
-        redirect(site_url('admin/' . $this->type . '/edit/' . $class_id));
+        redirect(site_url('admin/' . $this->type . '/edit/' . $sponsor_page_id));
     }
 
     public function addnew() {
-        $content = $this->load->view($this->type . '/new.php', $data = NULL, true);
+        $data['pages'] = $this->pages;
+        $content = $this->load->view($this->type . '/new.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }
 
     public function submit() {
-
-        $data['day'] = $_POST['class']['days'];
-        $data['time'] = $_POST['class']['time'];
-
-
+        $data_page = array(
+            'page' => $_POST['sponsor_page']['page']
+        );
         $data = array(
-            'title' => $_POST['class']['title'],
-            'start_date' => $_POST['class']['start_date'],
-            'description' => $_POST['class']['description'],
-            'data' => serialize($data)
+            'title' => $_POST['sponsor_page']['title'],
+            'data' => serialize($data_page)
         );
 
-        $class_id = $this->content->add_content($data, $this->type);
-
-        if (!empty($_FILES['pdf']['name'])) {
-            $pdf_data = $this->uploadContentPdfFile($class_id, $this->type);
-            $this->pdf->add_pdf($pdf_data);
-        }
-
-
-        $image_data = $this->uploadImageFile($class_id, $this->type);
+        $sponsor_page_id = $this->content->add_content($data, $this->type);
+        $image_data = $this->uploadSingleImageFile($sponsor_page_id, $this->type);
 
         if ($this->uploadSuccess) {
-            $this->image->add_images($image_data);
+            $this->image->add_single_images($sponsor_page_id,$image_data);
         }
 
-        redirect(site_url('admin/' . $this->type . '/view/' . $class_id));
+        redirect(site_url('admin/' . $this->type . '/view/' . $sponsor_page_id));
     }
 
     public function delete($id) {
@@ -165,11 +137,6 @@ class Classes extends MY_Controller {
         $this->image->deactivate_image($id);
 
         redirect(site_url('admin/' . $this->type . '/edit/' . $content_id));
-    }
-
-    public function remove_pdf($pdf_id, $content_id, $action) {
-        $this->pdf->deactive_pdf($pdf_id);
-        redirect(site_url('admin/' . $this->type . '/' . $action . '/' . $content_id));
     }
 
 }
