@@ -222,8 +222,8 @@ function xml_to_array($deXml,$main_heading = '') {
       {
         unset($options['post']);
         curl_setopt($ch, CURLOPT_POST, TRUE);
-        //curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);  
-      }  debug($url);debug($options,1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $options);  
+      }  
       //curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
