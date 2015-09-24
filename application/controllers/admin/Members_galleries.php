@@ -111,9 +111,14 @@ class Members_galleries extends MY_Controller {
         redirect(site_url('admin/' . $this->type . '/view/' . $members_gallery_id));
     }
 
-    public function delete($id) {
-        $flag = $this->hash_tag->delete_content($id);
-        redirect(site_url('admin/' . $this->type . '/index'));
+    public function delete($id, $status, $view = NULL) {
+        $flag = $this->hash_tag->delete_content($id, $status);
+//        $this->image->delete_content_images($id);
+        if (empty($view)) {
+            redirect(site_url('admin/' . $this->type . '/index'));
+        } else {
+            redirect(site_url('admin/' . $this->type . '/view/' . $id));
+        }
     }
 
     public function delete_image($id, $hash_tag_id) {

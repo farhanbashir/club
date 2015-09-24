@@ -9,7 +9,7 @@ $data = unserialize($sponsor_page['data']);
             <p class="lead col-xs-6">Sponsor Page # <?php echo ucfirst($sponsor_page['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/sponsor_pages/delete/' . $sponsor_page['content_id']) ?>"><button class="btn btn-danger pull-right" style="margin:10px ">Delete</button></a>
+            <a href="<?php echo site_url('admin/sponsor_pages/delete/' . $sponsor_page['content_id'].'/'. (($sponsor_page['is_active'] == 1) ? '0' : '1').'/view'); ?>"><button class="btn <?php echo ($sponsor_page['is_active'] == 1) ? "btn-danger" : "btn-primary";?> pull-right status_confirm" style="margin:10px "><?php echo ($sponsor_page['is_active'] == 1) ? "Deactivate" : "Activate";?></button></a>
 
             <div class="table-responsive">
                 <table class="table">

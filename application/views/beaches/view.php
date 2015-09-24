@@ -12,7 +12,7 @@ $enquire = !empty($data['enquire']) ? $data['enquire'] : '';
             <p class="lead col-xs-6">Beach # <?php echo ucfirst($beach['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/beaches/delete/' . $beach['content_id']) ?>"><button class="btn btn-danger pull-right delete_anything" style="margin:10px ">Delete</button></a>
+                      <a href="<?php echo site_url('admin/beaches/delete/' . $beach['content_id'] . '/' . (($beach['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($beach['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($beach['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
 
             <div class="table-responsive">
                 <table class="table">

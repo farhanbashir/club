@@ -9,7 +9,9 @@ $data = unserialize($restaurant['data']);
             <p class="lead col-xs-6">Restaurant # <?php echo ucfirst($restaurant['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/restaurants/delete/' . $restaurant['content_id']) ?>"><button class="btn btn-danger pull-right" style="margin:10px ">Delete</button></a>
+
+            <a href="<?php echo site_url('admin/restaurants/delete/' . $restaurant['content_id'] . '/' . (($restaurant['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($restaurant['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($restaurant['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
+
 
             <div class="table-responsive">
                 <table class="table">
@@ -65,8 +67,8 @@ $data = unserialize($restaurant['data']);
 
                                                 </div>                                        
                                                 <div class="jFiler-item-thumb-image">
-                                                    <img src="<?php echo  $image; ?>" draggable="false">
-                                                
+                                                    <img src="<?php echo $image; ?>" draggable="false">
+
                                                 </div>                                    
                                             </div>                                   
 

@@ -83,20 +83,20 @@ class Sponsor_pages extends MY_Controller {
 
     public function update() {
 
-         $data_page = array(
+        $data_page = array(
             'page' => $_POST['sponsor_page']['page']
         );
         $data = array(
             'title' => $_POST['sponsor_page']['title'],
             'data' => serialize($data_page)
         );
-        
+
 
         $sponsor_page_id = $this->content->update_content_by_id($_POST['sponsor_page']['id'], $data);
         $image_data = $this->uploadSingleImageFile($sponsor_page_id, $this->type);
 
         if ($this->uploadSuccess) {
-            $this->image->add_single_images($sponsor_page_id,$image_data);
+            $this->image->add_single_images($sponsor_page_id, $image_data);
         }
 
         redirect(site_url('admin/' . $this->type . '/edit/' . $sponsor_page_id));
@@ -121,16 +121,20 @@ class Sponsor_pages extends MY_Controller {
         $image_data = $this->uploadSingleImageFile($sponsor_page_id, $this->type);
 
         if ($this->uploadSuccess) {
-            $this->image->add_single_images($sponsor_page_id,$image_data);
+            $this->image->add_single_images($sponsor_page_id, $image_data);
         }
 
         redirect(site_url('admin/' . $this->type . '/view/' . $sponsor_page_id));
     }
 
-    public function delete($id) {
-        $flag = $this->content->delete_content($id);
-        $this->image->delete_content_images($id);
-        redirect(site_url('admin/' . $this->type . '/index'));
+    public function delete($id, $status, $view = NULL) {
+        $flag = $this->content->delete_content($id, $status);
+//        $this->image->delete_content_images($id);
+        if (empty($view)) {
+            redirect(site_url('admin/' . $this->type . '/index'));
+        } else {
+            redirect(site_url('admin/' . $this->type . '/view/' . $id));
+        }
     }
 
     public function delete_image($id, $content_id) {

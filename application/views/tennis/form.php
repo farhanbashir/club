@@ -60,39 +60,41 @@ $data = unserialize($page['data']);
                                     <?php
                                     if (!empty($page['tennisnews'])) {
                                         foreach ($page['tennisnews'] as $news) {
-                                            ?>
+                                            if ($news['is_active'] != 0) {
+                                                ?>
 
-                                            <div class="box box-primary" style="min-height: 130px;">
-                                                <div class="box-header with-border">
-                                                    <h3 class="box-title"><?php echo!empty($news['title']) ? $news['title'] : ''; ?></h3>
-                                                    <div class="box-tools pull-right">
-                                                        <a href="<?php echo base_url('index.php/admin/tennisnews/edit/' . $news['content_id']); ?>">Edit</a> | 
-                                                        <a href="<?php echo base_url('index.php/admin/tennisnews/delete/' . $news['content_id']); ?>">Delete</a>
-                                                    </div>
-                                                </div><!-- /.box-header -->
-                                                <div class="box-body">
-                                                    <ul class="products-list product-list-in-box">
-                                                        <li class="item">
-                                                            <div class="product-img">
-                                                                <img src="<?php echo!empty($news['image']) ? ($news['image']['path'] . $news['image']['name']) : asset_img('no_image.png'); ?>" alt="Product Image">
-                                                            </div>
-                                                            <div class="product-info">
-                                                                <p class="product-title"><?php echo(strlen($news['description']) > 100) ? substr($news['description'], 0, 97) . '...' : $news['description']; ?></p>
-                                                                <span class="product-description">
-                                                                    <?php echo(strlen($news['detail_description']) > 200) ? substr($news['detail_description'], 0, 197) . '...' : $news['detail_description']; ?>
-                                                                </span>
-                                                            </div>
-                                                        </li><!-- /.item -->
-
-
-                                                    </ul>
-                                                </div><!-- /.box-body -->
-
-                                            </div>
+                                                <div class="box box-primary" style="min-height: 130px;">
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title"><?php echo!empty($news['title']) ? $news['title'] : ''; ?></h3>
+                                                        <div class="box-tools pull-right">
+                                                            <a href="<?php echo base_url('index.php/admin/tennisnews/edit/' . $news['content_id']); ?>">Edit</a> | 
+                                                            <a href="<?php echo base_url('index.php/admin/tennisnews/delete/' . $news['content_id']); ?>">Delete</a>
+                                                        </div>
+                                                    </div><!-- /.box-header -->
+                                                    <div class="box-body">
+                                                        <ul class="products-list product-list-in-box">
+                                                            <li class="item">
+                                                                <div class="product-img">
+                                                                    <img src="<?php echo!empty($news['image']) ? ($news['image']['path'] . $news['image']['name']) : asset_img('no_image.png'); ?>" alt="Product Image">
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <p class="product-title"><?php echo(strlen($news['description']) > 100) ? substr($news['description'], 0, 97) . '...' : $news['description']; ?></p>
+                                                                    <span class="product-description">
+                                                                        <?php echo(strlen($news['detail_description']) > 200) ? substr($news['detail_description'], 0, 197) . '...' : $news['detail_description']; ?>
+                                                                    </span>
+                                                                </div>
+                                                            </li><!-- /.item -->
 
 
+                                                        </ul>
+                                                    </div><!-- /.box-body -->
 
-                                            <?php
+                                                </div>
+
+
+
+                                                <?php
+                                            }
                                         }
                                     }
                                     ?>

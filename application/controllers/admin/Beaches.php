@@ -179,10 +179,14 @@ class Beaches extends MY_Controller {
         redirect(site_url('admin/' . $this->type . '/view/' . $beach_id));
     }
 
-    public function delete($id) {
-        $flag = $this->content->delete_content($id);
-        $this->image->delete_content_images($id);
-        redirect(site_url('admin/' . $this->type . '/index'));
+    public function delete($id, $status, $view = NULL) {
+        $flag = $this->content->delete_content($id, $status);
+//        $this->image->delete_content_images($id);
+        if (empty($view)) {
+            redirect(site_url('admin/' . $this->type . '/index'));
+        } else {
+            redirect(site_url('admin/' . $this->type . '/view/' . $id));
+        }
     }
 
     public function delete_image($id, $content_id) {

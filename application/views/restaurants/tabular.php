@@ -29,6 +29,7 @@
                             <th>Short Description</th>
                             <th>Dress Code</th>
                             <th>Guest's Dining Policy</th>
+                            <th>Status</th>
                             <th>Action</th>
 
                         </tr>
@@ -44,11 +45,21 @@
                                 <td><?php echo!empty($data['dress_code']) ? $data['dress_code'] : ''; ?></td>
                                 <td><?php echo!empty($data['guest_dining_policy']) ? $data['guest_dining_policy'] : ''; ?></td>
                                 <td>
+                                    <?php
+                                    echo ($restaurant['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";
+                                    ?>
+                                </td>
+
+                                <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/restaurants/view/<?php echo $restaurant['content_id']; ?>">View</a>
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/restaurants/edit/<?php echo $restaurant['content_id']; ?>">Edit</a>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a href="<?php echo base_url(); ?>index.php/admin/restaurants/delete/<?php echo $restaurant['content_id']; ?>">Delete</a>
+                                    <a href="<?php echo base_url(); ?>index.php/admin/restaurants/delete/<?php echo $restaurant['content_id']; ?>/<?php echo ($restaurant['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
+                                        <?php
+                                        echo ($restaurant['is_active'] == 1) ? "Deactivate" : "Activate";
+                                        ?>
+                                    </a>
                                 </td> 
                             </tr>
                             <?php
