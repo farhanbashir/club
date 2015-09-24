@@ -39,6 +39,19 @@ class Api extends REST_Controller {
 		$this->load->view('welcome_message');
 	}
 
+    function test_post()
+    {
+        $postdata = array();
+            $postdata['apikey'] = $this->config->item('club_apiKey');
+            $postdata['username'] = 'tcadmuser';
+            $postdata['userpass'] = 'LauraDunn';
+            $postdata['post'] = true;
+            $url = $this->config->item('club_authentication_url');
+
+            $result = doCurl($url,$postdata); 
+            echo $result;die;
+    }
+
 	function login_post()
     {
     	$data = array();
@@ -56,35 +69,46 @@ class Api extends REST_Controller {
         }
         else
         {
+            $postdata = array();
+            $postdata['apikey'] = $this->config->item('club_apiKey');
+            $postdata['username'] = $username;
+            $postdata['userpass'] = $password;
+            $postdata['post'] = true;
+            $url = $this->config->item('club_authentication_url');
 
-            $result = $this->user->login($username, $password, 0);
+            $result = doCurl($url,$postdata); 
+            $xml = simplexml_load_string($result);
+            $json = json_encode($xml);
+            $array = json_decode($json,TRUE);
+            //$result = $this->user->login($username, $password, 0);
 
-            if(is_array($result))
+            if(isset($array['reply']['membership']))
             {
-                $device = $this->device->get_user_device($result[0]->user_id);
-                if(count($device) > 0)
-                {
-                    //update device table
-                    $device_data = array('uid'=>$device_id, 'type'=>$device_type);
-                    $this->device->edit_device($result[0]->user_id, $device_data);
-                }
-                else
-                {
-                    if(isset($device_type) && isset($device_id))
-                    {
+                // $device = $this->device->get_user_device($result[0]->user_id);
+                // if(count($device) > 0)
+                // {
+                //     //update device table
+                //     $device_data = array('uid'=>$device_id, 'type'=>$device_type);
+                //     $this->device->edit_device($result[0]->user_id, $device_data);
+                // }
+                // else
+                // {
+                //     if(isset($device_type) && isset($device_id))
+                //     {
 
-                        //insert device table
-                        $device_data = array('user_id'=>$result[0]->user_id,'uid'=>$device_id, 'type'=>$device_type);
-                        $this->device->insert_device($device_data);
-                    }
-                }
+                //         //insert device table
+                //         $device_data = array('user_id'=>$result[0]->user_id,'uid'=>$device_id, 'type'=>$device_type);
+                //         $this->device->insert_device($device_data);
+                //     }
+                // }
                 $data["header"]["error"] = "0";
                 $data["header"]["message"] = "Login successfully";
+                $data['body'] = $array['reply'];
             }
             else
             {
                 $data["header"]["error"] = "1";
-                $data["header"]["message"] = "Username or password is incorrect";
+                $data["header"]["message"] = $array['reply']['loginInfo'];//"Username or password is incorrect";
             }
 
             $this->response($data);
@@ -880,8 +904,12 @@ class Api extends REST_Controller {
 
     function reservationForm_post()
     {
-        $type = $this->post('key');
-        $form_data = $this->post('data');
+        $type = $this->post('type');
+        $membership = $this->post('membership');
+        $email = $this->post('email');
+        $first_name = $this->post('first_name');
+        $last_name = $this->post('last_name');
+        $content_id = $this->post('content_id');
 
         $data["header"]["error"] = "0";
         $data["header"]["message"] = "Admin will contact you";
@@ -1286,7 +1314,7 @@ class Api extends REST_Controller {
         $this->response($data);
     }
 
-    function test_post()
+    function test1_post()
     {
         $string = file_get_contents(asset_url('availability.xml'));
         $xml = simplexml_load_string($string);

@@ -218,6 +218,12 @@ function xml_to_array($deXml,$main_heading = '') {
       curl_setopt($ch, CURLOPT_URL, $url);
       curl_setopt($ch, CURLOPT_HEADER, 0);
       curl_setopt($ch, CURLOPT_POST, 0);
+      if(isset($options['post']))
+      {
+        unset($options['post']);
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $options);  
+      }  
       //curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);

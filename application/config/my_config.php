@@ -11,3 +11,4 @@ $config["instagram_secret"] = "e5bbf066b12e44cea3d00b1e00c25643";
 $config["club_apiKey"] = "vg8rt93ff0q";
 $config["club_availability_url"] = "https://cdn.nonweiler.com/tcad/availability";
 $config["club_reservation_url"] = "https://cdn.nonweiler.com/tcad/reservation";
+$config["club_authentication_url"] = "https://cdn.nonweiler.com/tcad/authenticate";
