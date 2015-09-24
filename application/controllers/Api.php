@@ -888,8 +888,12 @@ class Api extends REST_Controller {
 
     function reservationForm_post()
     {
-        $type = $this->post('key');
-        $form_data = $this->post('data');
+        $type = $this->post('type');
+        $membership = $this->post('membership');
+        $email = $this->post('email');
+        $first_name = $this->post('first_name');
+        $last_name = $this->post('last_name');
+        $content_id = $this->post('content_id');
 
         $data["header"]["error"] = "0";
         $data["header"]["message"] = "Admin will contact you";
