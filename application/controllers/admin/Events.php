@@ -123,9 +123,9 @@ class Events extends MY_Controller {
         redirect(site_url('admin/' . $this->type . '/view/' . $event_id));
     }
 
-    public function delete($id) {
-        $flag = $this->content->delete_content($id);
-        $this->image->delete_content_images($id);
+    public function delete($id, $status) {
+        $flag = $this->content->delete_content($id, $status);
+        //$this->image->delete_content_images($id);
         redirect(site_url('admin/' . $this->type . '/index'));
     }
 

@@ -28,7 +28,7 @@ Class Content extends CI_Model {
                 (
                         SELECT content_type_id FROM content_type
                         WHERE content = '$type'
-                ) AND is_active=1 ";
+                )";// AND is_active=1 
         $query = $this->db->query($sql);
         $result = $query->result_array();
         $query->free_result();
@@ -45,8 +45,8 @@ Class Content extends CI_Model {
 
         $sql = "select c.*,ct.content as content_type_name from content c
                 inner join content_type ct on ct.content_type_id=c.content_type_id 
-                where ct.content = '$type' AND c.is_active = 1
-                ";
+                where ct.content = '$type'
+                ";// AND c.is_active = 1
 
 
         if ($page >= 0) {
@@ -105,10 +105,10 @@ Class Content extends CI_Model {
         return $this->db->insert_id();
     }
 
-    public function delete_content($id) {
+    public function delete_content($id, $status) {
 //        return $this->db->delete('content', array('content_id' => $id));
         $this->db->where('content_id', $id);
-        $this->db->update('content', array('is_active' => 0));
+        $this->db->update('content', array('is_active' => $status));
     }
 
 }
