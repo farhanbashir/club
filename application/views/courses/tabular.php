@@ -30,6 +30,7 @@
                             <!--<th>End Date</th>-->
                             <th>Detailed Description</th>
                             <th>Enquire Now</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         <?php
@@ -40,15 +41,25 @@
                                 <td><?php echo $course['content_id']; ?></td>
                                 <td><?php echo $course['title']; ?></td>
                                 <td><?php echo $course['start_date']; ?></td>
-                                <!--<td><?php // echo $course['end_date']; ?></td>-->
+                                <!--<td><?php // echo $course['end_date'];   ?></td>-->
                                 <td><?php echo(strlen($course['detail_description']) > 100) ? substr($course['detail_description'], 0, 97) . '...' : $course['detail_description']; ?></td>
                                 <td><?php echo $data['enquire']; ?></td>
+                                <td>
+                                    <?php
+                                    echo ($course['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";
+                                    ?>
+                                </td>
+
                                 <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/courses/view/<?php echo $course['content_id']; ?>">View</a>
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/courses/edit/<?php echo $course['content_id']; ?>">Edit</a>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a href="<?php echo base_url(); ?>index.php/admin/courses/delete/<?php echo $course['content_id']; ?>" class="delete_anything">Delete</a>
+                                    <a href="<?php echo base_url(); ?>index.php/admin/courses/delete/<?php echo $course['content_id']; ?>/<?php echo ($course['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
+                                        <?php
+                                        echo ($course['is_active'] == 1) ? "Deactivate" : "Activate";
+                                        ?>
+                                    </a>
                                 </td> 
                             </tr>
                             <?php

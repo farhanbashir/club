@@ -34,12 +34,11 @@
                             </div>
 
                             <div class="form-group">
-                                <div style="background: #f7f8fa;padding: 50px;">
+                                <label>Image</label>
+                                <input type="file" name="userfile">
 
-                                    <input type="file" multiple="multiple" name="userfile" id="input2">
+                            </div><!-- /.box-body -->
 
-                                </div>
-                            </div> 
                         </div><!-- /.box-body -->
 
                         <div class="box-footer">

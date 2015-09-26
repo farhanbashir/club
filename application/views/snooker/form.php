@@ -60,6 +60,7 @@ $data = unserialize($page['data']);
                                     <?php
                                     if (!empty($page['snookernews'])) {
                                         foreach ($page['snookernews'] as $news) {
+                                            if ($news['is_active'] != 0) {
                                             ?>
 
                                             <div class="box box-primary" style="min-height: 130px;">
@@ -93,6 +94,7 @@ $data = unserialize($page['data']);
 
 
                                             <?php
+                                            }
                                         }
                                     }
                                     ?>

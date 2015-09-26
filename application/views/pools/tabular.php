@@ -43,6 +43,7 @@
                             <th>Type</th>
                             <th>Short Description</th>
                             <th>Enquire Now</th>
+                            <th>Status</th>
                             <th>Action</th>
 
                         </tr>
@@ -62,11 +63,20 @@
                                     <td><?php echo(strlen($pool['description']) > 100) ? substr($pool['description'], 0, 97) . '...' : $pool['description']; ?></td>
                                     <td><?php echo $enquire; ?></td>
                                     <td>
+                                        <?php
+                                        echo ($pool['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";
+                                        ?>
+                                    </td>
+                                    <td>
                                         <a href="<?php echo base_url(); ?>index.php/admin/pools/view/<?php echo $pool['content_id']; ?>">View</a>
                                         &nbsp;&nbsp;&nbsp;
                                         <a href="<?php echo base_url(); ?>index.php/admin/pools/edit/<?php echo $pool['content_id']; ?>">Edit</a>
                                         &nbsp;&nbsp;&nbsp;
-                                        <a href="<?php echo base_url(); ?>index.php/admin/pools/delete/<?php echo $pool['content_id']; ?>" class="delete_anything">Delete</a>
+                                        <a href="<?php echo base_url(); ?>index.php/admin/pools/delete/<?php echo $pool['content_id']; ?>/<?php echo ($pool['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
+                                            <?php
+                                            echo ($pool['is_active'] == 1) ? "Deactivate" : "Activate";
+                                            ?>
+                                        </a>
                                     </td> 
                                 </tr>
                                 <?php

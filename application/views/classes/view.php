@@ -13,7 +13,7 @@ if (!empty($data['day'])) {
             <p class="lead col-xs-6">Class # <?php echo ucfirst($class['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/classes/delete/' . $class['content_id']) ?>"><button class="btn btn-danger pull-right delete_anything" style="margin:10px ">Delete</button></a>
+            <a href="<?php echo site_url('admin/classes/delete/' . $class['content_id'] . '/' . (($class['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($class['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($class['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
 
             <div class="table-responsive">
                 <table class="table">
@@ -103,7 +103,7 @@ if (!empty($data['day'])) {
 
 
                         <div style="background: #f7f8fa;padding: 50px;">
-                            <a class="pull-right pdf_delete delete_anything" href="<?php echo base_url() . 'index.php/admin/classes/remove_pdf/' . $class['pdf']['pdf_id'] . '/' . $class['content_id'].'/view' ?>">Delete</a>
+                            <a class="pull-right pdf_delete delete_anything" href="<?php echo base_url() . 'index.php/admin/classes/remove_pdf/' . $class['pdf']['pdf_id'] . '/' . $class['content_id'] . '/view' ?>">Delete</a>
                             <div style="margin: 0 auto 25px auto; width: 600px" >
                                 <embed style="overflow: hidden; border: 2px #C8CBCE dashed; margin: 0 auto 0 auto;"  src="<?php echo $class['pdf']['path']; ?>" width="400" height="350" type='application/pdf'>
                             </div>

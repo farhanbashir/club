@@ -51,7 +51,7 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/events/edit/<?php echo $event['content_id']; ?>">Edit</a>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a href="<?php echo base_url(); ?>index.php/admin/events/delete/<?php echo $event['content_id']; ?>/<?php echo ($event['is_active'] == 1) ? '0' : '1'; ?>" class="delete_anything">
+                                    <a href="<?php echo base_url(); ?>index.php/admin/events/delete/<?php echo $event['content_id']; ?>/<?php echo ($event['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                     <?php
                                         echo ($event['is_active'] == 1) ? "Deactivate" : "Activate";
                                     ?>

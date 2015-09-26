@@ -54,8 +54,9 @@ Class Hash_tag extends CI_Model {
         return $this->db->insert_id();
     }
 
-    public function delete_content($id) {
-        return $this->db->delete('hash_tag', array('id' => $id));
+    public function delete_content($id, $status) {
+        $this->db->where('id', $id);
+        $this->db->update('hash_tag', array('is_active' => $status));
     }
 
 }

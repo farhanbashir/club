@@ -91,6 +91,7 @@ class Page extends MY_Controller {
                             'title' => $new['title'],
                             'description' => $new['description'],
                             'detail_description' => $new['detail_description'],
+                            'is_active' => $new['is_active']
                         );
                     }
                 }
@@ -142,7 +143,7 @@ class Page extends MY_Controller {
                 //$data = $pdf_data;
                 $data = array(
                     'key' => $_POST['page']['key'],
-                'content' => !empty($_POST['page']['content'])?$_POST['page']['content']:'',
+                    'content' => !empty($_POST['page']['content']) ? $_POST['page']['content'] : '',
                     'data' => serialize($pdf_data),
                 );
             } else {

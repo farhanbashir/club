@@ -104,7 +104,15 @@ $(document).ready(function () {
 
 
 
+    $(".status_confirm").on('click', function (e) {
+        var r = confirm("Are you sure you want to change the status?");
+        if (r == true) {
 
+        } else {
+            e.preventDefault();
+        }
+
+    });
 
 
 

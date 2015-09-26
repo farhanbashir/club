@@ -99,21 +99,28 @@ class Members_galleries extends MY_Controller {
         );
 
         $members_gallery_id = $this->hash_tag->add_content($data);
-        foreach ($_POST['members_gallery']['images'] as $image) {
-            $image_data[] = array(
-                'hash_tag_id' => $members_gallery_id,
-                'image' => $image
-            );
+        if (!empty($_POST['members_gallery']['images'])) {
+            foreach ($_POST['members_gallery']['images'] as $image) {
+                $image_data[] = array(
+                    'hash_tag_id' => $members_gallery_id,
+                    'image' => $image
+                );
+            }
+
+
+            $this->hash_tag_image->add_content($image_data);
         }
-
-        $this->hash_tag_image->add_content($image_data);
-
         redirect(site_url('admin/' . $this->type . '/view/' . $members_gallery_id));
     }
 
-    public function delete($id) {
-        $flag = $this->hash_tag->delete_content($id);
-        redirect(site_url('admin/' . $this->type . '/index'));
+    public function delete($id, $status, $view = NULL) {
+        $flag = $this->hash_tag->delete_content($id, $status);
+//        $this->image->delete_content_images($id);
+        if (empty($view)) {
+            redirect(site_url('admin/' . $this->type . '/index'));
+        } else {
+            redirect(site_url('admin/' . $this->type . '/view/' . $id));
+        }
     }
 
     public function delete_image($id, $hash_tag_id) {

@@ -123,10 +123,14 @@ class Events extends MY_Controller {
         redirect(site_url('admin/' . $this->type . '/view/' . $event_id));
     }
 
-    public function delete($id, $status) {
+    public function delete($id, $status, $view = NULL) {
         $flag = $this->content->delete_content($id, $status);
-        //$this->image->delete_content_images($id);
-        redirect(site_url('admin/' . $this->type . '/index'));
+//        $this->image->delete_content_images($id);
+        if (empty($view)) {
+            redirect(site_url('admin/' . $this->type . '/index'));
+        } else {
+            redirect(site_url('admin/' . $this->type . '/view/' . $id));
+        }
     }
 
     public function delete_image($id, $content_id) {
