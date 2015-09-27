@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 
             $("#search_images").attr("disabled", "disabled");
-            $("#searched_images").empty().append('<img id="loader" src="http://localhost/club/assets/img/loader_loading.gif">');
+            $("#searched_images").empty().append('<img id="loader" src="' + BASE_URL + '/assets/img/loader_loading.gif">');
             $.ajax({
                 type: "POST",
                 url: BASE_URL + "index.php/admin/members_galleries/search_instagram_images/" + $("#search_tag").val(),
