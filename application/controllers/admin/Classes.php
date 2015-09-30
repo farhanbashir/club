@@ -101,7 +101,8 @@ class Classes extends MY_Controller {
             'title' => $_POST['class']['title'],
             'start_date' => $_POST['class']['start_date'],
             'description' => $_POST['class']['description'],
-            'data' => serialize($data)
+            'data' => serialize($data),
+            'modified_time'=>date('Y-m-d H:i:s')
         );
 
         $class_id = $this->content->update_content_by_id($_POST['class']['id'], $data);
@@ -135,7 +136,8 @@ class Classes extends MY_Controller {
             'title' => $_POST['class']['title'],
             'start_date' => $_POST['class']['start_date'],
             'description' => $_POST['class']['description'],
-            'data' => serialize($data)
+            'data' => serialize($data),
+            'modified_time'=>date('Y-m-d H:i:s')
         );
 
         $class_id = $this->content->add_content($data, $this->type);
