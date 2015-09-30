@@ -347,7 +347,7 @@ class Api extends REST_Controller {
                     $pdf = $this->pdf->get_pdf($value['content_id']);
                     if(count($pdf) > 0)
                     {
-                        $return[$i]['pdf'] = $pdf[0]['path'];    
+                        $return[$i]['file'] = $pdf[0]['path'];    
                     }    
                     $return[$i]['images'] = $images;
                     $additional_fields = unserialize($return[$i]['data']);
@@ -1304,7 +1304,7 @@ class Api extends REST_Controller {
             $return['images'] = $result_images;
             if(count($pdf) > 0)
             {
-                $return['pdf'] = $pdf[0]['path'];    
+                $return['file'] = $pdf[0]['path'];    
             }
             //removing unwanted fields
             //unset($return['start_date']);
