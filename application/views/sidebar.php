@@ -68,7 +68,7 @@
         </li>
         <li class="treeview">
             <a href="#">
-                <i class="fa fa-edit"></i> <span>Gym</span>
+                <i class="fa fa-edit"></i> <span>Gym & Classes</span>
                 <i class="fa pull-right fa-angle-left"></i>
             </a>
             <ul class="treeview-menu" style="display: none;">
@@ -84,6 +84,7 @@
             <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo site_url('admin/activities/') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Activities</a></li>
                 <li><a href="<?php echo site_url('admin/camps/') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Camps</a></li>
+                <li><a href="<?php echo site_url('admin/page/parties/') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Parties</a></li>
             </ul>
         </li>
         <li class="treeview">
