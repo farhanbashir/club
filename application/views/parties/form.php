@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <p class="lead">Guest Policy & Fees</p>
+            <p class="lead">Parties</p>
             <div class="col-xs-12">
                 <div class="col-xs-9">
                     <div class="table-responsive">
@@ -77,7 +77,7 @@
                                                             </li>                             
                                                         </ul>                                        
                                                         <ul class="list-inline pull-right">   
-                                                            <li><a href="<?php echo base_url(); ?>index.php/admin/page/delete_image/<?php echo $image['id'] . '/' . $page['key'] ?>" class="icon-jfi-trash jFiler-item-trash-action delete_anything"></a>
+                                                            <li><a href="<?php echo base_url(); ?>index.php/admin/page/delete_image/<?php echo $image['id'] . '/'.$page['key'] ?>" class="icon-jfi-trash jFiler-item-trash-action delete_anything"></a>
                                                             </li>                                       
                                                         </ul>                                
                                                     </div>

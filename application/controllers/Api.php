@@ -31,6 +31,7 @@ class Api extends REST_Controller {
        $this->load->model('pagemodel','',TRUE);
        $this->load->model('sponsor_relation_model','',TRUE);
 	   $this->load->model('hash_tag_image','',TRUE);
+       $this->load->model('pdf', '', TRUE);
 	   //$this->load->model('news','',TRUE);
 	 }
 
@@ -343,6 +344,11 @@ class Api extends REST_Controller {
                 $return = $data;
                 foreach ($return as $key => $value) {
                     $images = $this->getImagesArray($value['content_id']);
+                    $pdf = $this->pdf->get_pdf($value['content_id']);
+                    if(count($pdf) > 0)
+                    {
+                        $return[$i]['file'] = $pdf[0]['path'];    
+                    }    
                     $return[$i]['images'] = $images;
                     $additional_fields = unserialize($return[$i]['data']);
                     if(is_array($additional_fields))
@@ -1282,7 +1288,8 @@ class Api extends REST_Controller {
 
         $result = $this->content->get_content_by_id($type, $content_id);
         $images = $this->image->get_images_by_content_id($content_id);
-
+        $pdf = $this->pdf->get_pdf($content_id);
+                    
         if(count($result) > 0)
         {
             $additional_fields = unserialize($result[0]['data']);
@@ -1295,7 +1302,10 @@ class Api extends REST_Controller {
                 }
             }    
             $return['images'] = $result_images;
-
+            if(count($pdf) > 0)
+            {
+                $return['file'] = $pdf[0]['path'];    
+            }
             //removing unwanted fields
             //unset($return['start_date']);
             unset($return['end_date']);

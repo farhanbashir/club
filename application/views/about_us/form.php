@@ -21,13 +21,13 @@
                                         <label>Content</label>
                                         <textarea class="form-control" name="page[content]" id="page_description" placeholder="Enter ..."><?php echo $page['content']; ?></textarea>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <div style="background: #f7f8fa;padding: 50px;">
 
                                             <input type="file" multiple="multiple" name="userfile" id="input2">
 
                                         </div>
-                                    </div> 
+                                    </div> --> 
 
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -40,17 +40,13 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="box box-primary">
-                        <div class="box-header">
+                    <!-- <div class="box box-primary"> -->
+                        <!-- <div class="box-header">
                             <h3 class="box-title">Uploaded Images</h3>
-                        </div>
-
-
-                        <div class="box-body">
-
-
+                        </div> -->
+                        <!-- <div class="box-body"> -->
                             <?php
-                            if (!empty($page['images'])) {
+                            /*if (!empty($page['images'])) {
                                 ?>
                                 <ul class="jFiler-item-list box-body ">
                                     <?php
@@ -96,12 +92,12 @@
                                 ?>
                                 <p>No Images so far.</p>
                                 <?php
-                            }
+                            }*/
                             ?>
 
-                            <div style="clear: both"></div>
-                        </div><!-- /.box-body -->
-                    </div><!-- /.box -->
+                            <!-- <div style="clear: both"></div> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
 
                 </div>
             </div>
