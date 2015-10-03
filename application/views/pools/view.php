@@ -3,6 +3,7 @@ $data = unserialize($pool['data']);
 
 $type = !empty($data['type']) ? $data['type'] : '';
 $enquire = !empty($data['enquire']) ? $data['enquire'] : '';
+$email = !empty($data['email']) ? $data['email'] : '';
 ?>
 <!-- Main content -->
 <section class="content">
@@ -34,6 +35,10 @@ $enquire = !empty($data['enquire']) ? $data['enquire'] : '';
                         <tr>
                             <th>Enquire Now</th>
                             <td><?php echo $enquire; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><?php echo $email; ?></td>
                         </tr>
 
                     </tbody></table>

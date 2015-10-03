@@ -43,6 +43,7 @@
                             <th>Type</th>
                             <th>Short Description</th>
                             <th>Enquire Now</th>
+                            <th>Email</th>
                             <th>Status</th>
                             <th>Action</th>
 
@@ -54,6 +55,7 @@
 
                                 $type = !empty($data['type']) ? $data['type'] : '';
                                 $enquire = !empty($data['enquire']) ? $data['enquire'] : '';
+                                $email = !empty($data['email']) ? $data['email'] : '';
                                 ?>
                                 <tr>
                                     <td><?php echo $pool['content_id']; ?></td>
@@ -62,6 +64,7 @@
 
                                     <td><?php echo(strlen($pool['description']) > 100) ? substr($pool['description'], 0, 97) . '...' : $pool['description']; ?></td>
                                     <td><?php echo $enquire; ?></td>
+                                    <td><?php echo $email; ?></td>
                                     <td>
                                         <?php
                                         echo ($pool['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";

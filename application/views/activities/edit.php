@@ -32,19 +32,24 @@ $data = unserialize($activity['data']);
                                         <input id="start_date" class="form-control" name="activity[start_date]" placeholder="Enter ..." value="<?php echo $activity['start_date']; ?>">
                                     </div>
 
-                                    
+
                                     <div class="form-group">
                                         <label for="activity_date">End Date</label>
                                         <input id="end_date" class="form-control" name="activity[end_date]" placeholder="Enter ..." value="<?php echo $activity['end_date']; ?>">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="activity_short_description">Short Description</label>
                                         <textarea class="form-control" id="activity_short_description" name="activity[description]" rows="3" placeholder="Enter ..."><?php echo $activity['description']; ?></textarea>
                                     </div>
-                                      <div class="form-group">
+                                    <div class="form-group">
                                         <label>Enquire Now</label>
-                                        <input type="text" class="form-control" name="activity[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data) ? $data['enquire'] : ''; ?>">
+                                        <input type="text" class="form-control" name="activity[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?>">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" name="activity[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
                                     </div>
 
                                     <div class="form-group">

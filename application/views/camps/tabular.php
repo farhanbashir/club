@@ -30,6 +30,7 @@
                             <th>End Date</th>
                             <th>Short Description</th>
                             <th>Enquire Now</th>
+                            <th>Email</th>
                             <th>Status</th>
                             <th>Action</th>
 
@@ -45,6 +46,7 @@
                                 <td><?php echo $camp['end_date']; ?></td>
                                 <td><?php echo(strlen($camp['description']) > 100) ? substr($camp['description'], 0, 97) . '...' : $camp['description']; ?></td>
                                 <td><?php echo $data['enquire']; ?></td>
+                                <td><?php echo!empty($data['email']) ? $data['email'] : ''; ?></td>
 
                                 <td>
                                     <?php

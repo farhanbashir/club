@@ -33,6 +33,10 @@ $data = unserialize($page['data']);
                                         <input type="text" class="form-control" name="page[data][enquire_now]" placeholder="Enter ..." value="<?php echo!empty($data['enquire_now']) ? $data['enquire_now'] : ''; ?>">
                                     </div>
                                     <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" name="page[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
                                         <div style="background: #f7f8fa;padding: 50px;">
 
                                             <input type="file" multiple="multiple" name="userfile" id="input2">

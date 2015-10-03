@@ -3,6 +3,7 @@ $data = unserialize($pool['data']);
 
 $type = !empty($data['type']) ? $data['type'] : '';
 $enquire = !empty($data['enquire']) ? $data['enquire'] : '';
+$email = !empty($data['email']) ? $data['email'] : '';
 ?>
 <!-- Main content -->
 <section class="content">
@@ -55,6 +56,11 @@ $enquire = !empty($data['enquire']) ? $data['enquire'] : '';
                                     <div class="form-group">
                                         <label>Enquire Now</label>
                                         <input type="text" class="form-control" name="pool[enquire]" placeholder="Enter ..." value="<?php echo!empty($enquire) ? $enquire : '' ?>">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" name="pool[email]" placeholder="Enter ..." value="<?php echo!empty($email) ? $email : '' ?>">
                                     </div>
 
                                     <div class="form-group">

@@ -32,20 +32,26 @@ $data = unserialize($camp['data']);
                                         <input id="start_date" class="form-control" name="camp[start_date]" placeholder="Enter ..." value="<?php echo $camp['start_date']; ?>">
                                     </div>
 
-                                    
+
                                     <div class="form-group">
                                         <label for="camp_date">End Date</label>
                                         <input id="end_date" class="form-control" name="camp[end_date]" placeholder="Enter ..." value="<?php echo $camp['end_date']; ?>">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="camp_short_description">Short Description</label>
                                         <textarea class="form-control" id="camp_short_description" name="camp[description]" rows="3" placeholder="Enter ..."><?php echo $camp['description']; ?></textarea>
                                     </div>
-                                    
-                                      <div class="form-group">
+
+                                    <div class="form-group">
                                         <label>Enquire Now</label>
                                         <input type="text" class="form-control" name="camp[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data) ? $data['enquire'] : ''; ?>">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" name="camp[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
                                     </div>
 
                                     <div class="form-group">

@@ -83,6 +83,7 @@ class Activities extends MY_Controller {
 
         $serialize_data = array();
         $serialize_data['enquire'] = $_POST['activity']['data']['enquire'];
+        $serialize_data['email'] = $_POST['activity']['data']['email'];
         $data = array(
             'title' => $_POST['activity']['title'],
             'start_date' => $_POST['activity']['start_date'],
@@ -108,7 +109,9 @@ class Activities extends MY_Controller {
 
     public function submit() {
         $serialize_data = array();
-        $serialize_data['enquire'] = $_POST['activity']['data']['enquire'];    
+        $serialize_data['enquire'] = $_POST['activity']['data']['enquire'];
+        $serialize_data['email'] = $_POST['activity']['data']['email'];
+
         $data = array(
             'title' => $_POST['activity']['title'],
             'start_date' => $_POST['activity']['start_date'],

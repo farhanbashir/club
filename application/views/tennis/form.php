@@ -52,6 +52,10 @@ $data = unserialize($page['data']);
                                         <label>Enquire Now</label>
                                         <input type="text" class="form-control" name="page[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : '' ?>">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" name="page[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
+                                    </div>
 
                                     <label>News</label><br/>
                                     <a href="<?php echo site_url('admin/tennisnews/addnew'); ?>" id=""><i class="glyphicon glyphicon-plus"></i> Add News</a>

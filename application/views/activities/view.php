@@ -9,7 +9,7 @@ $data = unserialize($activity['data']);
             <p class="lead col-xs-6">Activity # <?php echo ucfirst($activity['content_id']); ?></p>
 
 
-                      <a href="<?php echo site_url('admin/activities/delete/' . $activity['content_id'].'/'. (($activity['is_active'] == 1) ? '0' : '1').'/view'); ?>"><button class="btn <?php echo ($activity['is_active'] == 1) ? "btn-danger" : "btn-primary";?> pull-right status_confirm" style="margin:10px "><?php echo ($activity['is_active'] == 1) ? "Deactivate" : "Activate";?></button></a>
+            <a href="<?php echo site_url('admin/activities/delete/' . $activity['content_id'] . '/' . (($activity['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($activity['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($activity['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
 
             <div class="table-responsive">
                 <table class="table">
@@ -34,6 +34,10 @@ $data = unserialize($activity['data']);
                         <tr>
                             <th>Enquire Now</th>
                             <td><?php echo $data['enquire']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><?php echo!empty($data['email']) ? $data['email'] : ''; ?></td>
                         </tr>
 
                     </tbody></table>

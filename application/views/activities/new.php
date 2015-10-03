@@ -42,6 +42,10 @@
                                 <input type="text" class="form-control" name="activity[data][enquire]" placeholder="Enter ..." value="">
                             </div>
 
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="activity[data][email]" placeholder="Enter ..." value="">
+                            </div>
 
                             <div class="form-group">
                                 <div style="background: #f7f8fa;padding: 50px;">

@@ -49,7 +49,10 @@
                                 <input type="text" class="form-control" name="pool[enquire]" placeholder="Enter ..." value="">
                             </div>
 
-
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="pool[email]" placeholder="Enter ..." value="">
+                            </div>
 
 
                             <div class="form-group">

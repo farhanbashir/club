@@ -30,6 +30,7 @@
                             <th>End Date</th>
                             <th>Short Description</th>
                             <th>Enquire Now</th>
+                            <th>Email</th>
                             <th>Status</th>
                             <th>Action</th>
 
@@ -45,6 +46,7 @@
                                 <td><?php echo $activity['end_date']; ?></td>
                                 <td><?php echo(strlen($activity['description']) > 100) ? substr($activity['description'], 0, 97) . '...' : $activity['description']; ?></td>
                                 <td><?php echo $data['enquire']; ?></td>
+                                <td><?php echo!empty($data['email']) ? $data['email'] : ''; ?></td>
                                 <td>
                                     <?php
                                     echo ($activity['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";
