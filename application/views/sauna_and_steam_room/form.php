@@ -6,7 +6,7 @@ $pdf = $data['pdf'];
 
     <div class="row">
         <div class="col-xs-12">
-            <p class="lead">Fringe Benefits Salon & Barber's</p>
+            <p class="lead">Sauna and Steam Room</p>
             <div class="col-xs-12">
                 <div class="col-xs-9">
                     <div class="table-responsive">
@@ -21,12 +21,8 @@ $pdf = $data['pdf'];
                                 <div class="box-body">
 
                                     <div class="form-group">
-                                        <label>Detailed description of salon</label>
+                                        <label>Detailed description of Sauna and Steam Room</label>
                                         <textarea class="form-control" name="page[data][salon]" id="page_description" placeholder="Enter ..."><?php echo!empty($data['salon']) ? $data['salon'] : ''; ?></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Detailed description of barber's</label>
-                                        <textarea class="form-control" name="page[data][barber]" id="page_description" placeholder="Enter ..."><?php echo!empty($data['barber']) ? $data['barber'] : ''; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Enquire now</label>

@@ -73,7 +73,8 @@ class Page extends MY_Controller {
             'gym_personal_training',
             'private_parties',
             'snooker',
-            'parties'
+            'parties',
+            'sauna_and_steam_room'
         );
         if (in_array($page_slug, $pages)) {
             $page = $this->pagemodel->get_page_by_key($page_slug);
@@ -136,32 +137,32 @@ class Page extends MY_Controller {
 
     public function update() {
 
-        $data = !empty($_POST['page']['data']) ? $_POST['page']['data'] : '';
+        $data_serialize = !empty($_POST['page']['data']) ? $_POST['page']['data'] : '';
 
-        if ($_POST['page']['key'] === 'private_parties') {
+        if ($_POST['page']['key'] == 'private_parties' || $_POST['page']['key'] == 'fringe_benefits_salon_barbers' || $_POST['page']['key'] == 'sauna_and_steam_room') {
             if (!empty($_FILES['pdf']['name'])) {
                 $pdf_data = $this->uploadPagePdfFile($_POST['page']['id'], $_POST['page']['key']);
-                //$data = $pdf_data;
+                $data_serialize['pdf'] = $pdf_data['file'];
                 $data = array(
                     'key' => $_POST['page']['key'],
                     'content' => !empty($_POST['page']['content']) ? $_POST['page']['content'] : '',
-                    'data' => serialize($pdf_data),
+                    'data' => serialize($data_serialize),
                 );
             } else {
+                $data_serialize['pdf'] = $_POST['page']['pdf_file'];
                 $data = array(
                     'key' => $_POST['page']['key'],
                     'content' => !empty($_POST['page']['content']) ? $_POST['page']['content'] : '',
-                        //'data' => serialize($pdf_data),
+                    'data' => serialize($data_serialize),
                 );
             }
         } else {
             $data = array(
                 'key' => $_POST['page']['key'],
                 'content' => !empty($_POST['page']['content']) ? $_POST['page']['content'] : '',
-                'data' => !empty($data) ? serialize($data) : '',
+                'data' => !empty($data_serialize) ? serialize($data_serialize) : '',
             );
         }
-
 
         $page_id = $this->pagemodel->update_page_by_id($_POST['page']['id'], $data);
         if (!empty($_FILES['userfile']['name'])) {
