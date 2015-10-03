@@ -1,3 +1,6 @@
+<?php
+$data = unserialize($event['data']);
+?>
 <!-- Main content -->
 <section class="content">
     <div class="row  col-xs-12">
@@ -6,7 +9,7 @@
             <p class="lead col-xs-6">Event # <?php echo ucfirst($event['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/events/delete/' . $event['content_id'].'/'. (($event['is_active'] == 1) ? '0' : '1').'/view'); ?>"><button class="btn <?php echo ($event['is_active'] == 1) ? "btn-danger" : "btn-primary";?> pull-right status_confirm" style="margin:10px "><?php echo ($event['is_active'] == 1) ? "Deactivate" : "Activate";?></button></a>
+            <a href="<?php echo site_url('admin/events/delete/' . $event['content_id'] . '/' . (($event['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($event['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($event['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
 
             <div class="table-responsive">
                 <table class="table">
@@ -19,13 +22,17 @@
                             <th>Start Date:</th>
                             <td><?php echo $event['start_date']; ?></td>
                         </tr>
-<!--                        <tr>
+                        <tr>
                             <th>End Date:</th>
-                            <td><?php // echo $event['end_date']; ?></td>
-                        </tr>-->
+                            <td><?php echo $event['end_date']; ?></td>
+                        </tr>
                         <tr>
                             <th>Short Description</th>
                             <td><?php echo $event['description']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><?php echo $data['email']; ?></td>
                         </tr>
 
                     </tbody></table>

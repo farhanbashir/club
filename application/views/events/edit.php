@@ -1,4 +1,7 @@
-<!-- Main content -->
+
+<?php
+$data = unserialize($event['data']);
+?><!-- Main content -->
 <section class="content">
 
     <div class="row">
@@ -29,14 +32,19 @@
                                         <input id="start_date" class="form-control" name="event[start_date]" placeholder="Enter ..." value="<?php echo $event['start_date']; ?>">
                                     </div>
 
-<!--                                    <div class="form-group">
+                                    <div class="form-group">
                                         <label for="event_date">End Date</label>
-                                        <input id="end_date" class="form-control" name="event[end_date]" placeholder="Enter ..." value="<?php // echo $event['end_date']; ?>">
-                                    </div>-->
+                                        <input id="end_date" class="form-control" name="event[end_date]" placeholder="Enter ..." value="<?php echo $event['end_date']; ?>">
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="event_short_description">Short Description</label>
                                         <textarea class="form-control" id="event_short_description" name="event[description]" rows="3" placeholder="Enter ..."><?php echo $event['description']; ?></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" name="event[email]" placeholder="Enter ..." value="<?php echo $data['email']; ?>">
                                     </div>
 
                                     <div class="form-group">

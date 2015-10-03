@@ -64,6 +64,13 @@ jQuery(document).ready(function () {
             "course[detail_description]": {
                 required: true,
             },
+            "course[data][enquire]": {
+                required: true,
+            },
+            "course[data][email]": {
+                required: true,
+                email: true
+            },
         },
         messages: {
             "course[title]": {
@@ -77,6 +84,13 @@ jQuery(document).ready(function () {
             },
             "course[detail_description]": {
                 required: "Please provide discription.",
+            },
+            "course[data][enquire]": {
+                required: "Please provide enquire now.",
+            },
+            "course[data][email]": {
+                required: "Please provide email.",
+                email: "Please provide valid email."
             },
         },
     });
@@ -120,6 +134,10 @@ jQuery(document).ready(function () {
             "event[description]": {
                 required: true,
             },
+            "event[email]": {
+                required: true,
+                email: true
+            },
         },
         messages: {
             "event[title]": {
@@ -133,6 +151,10 @@ jQuery(document).ready(function () {
             },
             "event[description]": {
                 required: "Please provide discription.",
+            },
+            "event[email]": {
+                required: "Please provide email",
+                email: "Please provide a valid email",
             },
         },
     });

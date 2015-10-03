@@ -26,24 +26,28 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Start Date</th>
-                            <!--<th>End Date</th>-->
+                            <th>End Date</th>
                             <th>Short Description</th>
+                            <th>Email</th>
                             <th>Status</th>
                             <th>Action</th>
 
                         </tr>
                         <?php
                         foreach ($events as $event) {
+                            $data = unserialize($event['data']);
                             ?>
                             <tr>
                                 <td><?php echo $event['content_id']; ?></td>
                                 <td><?php echo $event['title']; ?></td>
                                 <td><?php echo $event['start_date']; ?></td>
-                                <!--<td><?php // echo $event['end_date']; ?></td>-->
+                                <td><?php echo $event['end_date']; ?></td>
                                 <td><?php echo(strlen($event['description']) > 100) ? substr($event['description'], 0, 97) . '...' : $event['description']; ?></td>
+                                <td><?php echo $data['email']; ?></td>
+
                                 <td>
                                     <?php
-                                        echo ($event['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";
+                                    echo ($event['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";
                                     ?>
                                 </td>
                                 <td>
@@ -52,9 +56,9 @@
                                     <a href="<?php echo base_url(); ?>index.php/admin/events/edit/<?php echo $event['content_id']; ?>">Edit</a>
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/events/delete/<?php echo $event['content_id']; ?>/<?php echo ($event['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
-                                    <?php
+                                        <?php
                                         echo ($event['is_active'] == 1) ? "Deactivate" : "Activate";
-                                    ?>
+                                        ?>
                                     </a>
                                 </td> 
                             </tr>

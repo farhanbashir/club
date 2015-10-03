@@ -9,7 +9,7 @@ $data = unserialize($course['data']);
             <p class="lead col-xs-6">Course # <?php echo ucfirst($course['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/courses/delete/' . $course['content_id'].'/'. (($course['is_active'] == 1) ? '0' : '1').'/view'); ?>"><button class="btn <?php echo ($course['is_active'] == 1) ? "btn-danger" : "btn-primary";?> pull-right status_confirm" style="margin:10px "><?php echo ($course['is_active'] == 1) ? "Deactivate" : "Activate";?></button></a>
+            <a href="<?php echo site_url('admin/courses/delete/' . $course['content_id'] . '/' . (($course['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($course['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($course['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
 
             <div class="table-responsive">
                 <table class="table">
@@ -22,10 +22,10 @@ $data = unserialize($course['data']);
                             <th>Start Date:</th>
                             <td><?php echo $course['start_date']; ?></td>
                         </tr>
-<!--                        <tr>
+                        <tr>
                             <th>End Date:</th>
                             <td><?php echo $course['end_date']; ?></td>
-                        </tr>-->
+                        </tr>
                         <tr>
                             <th>Detailed Description:</th>
                             <td><?php echo $course['detail_description']; ?></td>
@@ -33,6 +33,10 @@ $data = unserialize($course['data']);
                         <tr>
                             <th>Enquire Now:</th>
                             <td><?php echo $data['enquire']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><?php echo $data['email']; ?></td>
                         </tr>
 
                     </tbody></table>

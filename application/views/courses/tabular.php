@@ -27,9 +27,10 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Start Date</th>
-                            <!--<th>End Date</th>-->
+                            <th>End Date</th>
                             <th>Detailed Description</th>
                             <th>Enquire Now</th>
+                            <th>Email</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -41,9 +42,11 @@
                                 <td><?php echo $course['content_id']; ?></td>
                                 <td><?php echo $course['title']; ?></td>
                                 <td><?php echo $course['start_date']; ?></td>
-                                <!--<td><?php // echo $course['end_date'];   ?></td>-->
+                                <td><?php echo $course['end_date']; ?></td>
                                 <td><?php echo(strlen($course['detail_description']) > 100) ? substr($course['detail_description'], 0, 97) . '...' : $course['detail_description']; ?></td>
                                 <td><?php echo $data['enquire']; ?></td>
+                                <td><?php echo!empty($data['email']) ? $data['email'] : ''; ?></td>
+
                                 <td>
                                     <?php
                                     echo ($course['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";
