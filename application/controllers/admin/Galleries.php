@@ -177,7 +177,7 @@ class Galleries extends MY_Controller {
 
     public function delete($id) {
         $flag = $this->content->delete_content($id);
-        $this->image->delete_content_images($id);
+//        $this->image->delete_content_images($id);
         redirect(site_url('admin/' . $this->type . '/index'));
     }
 

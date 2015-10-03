@@ -6,7 +6,7 @@ $data = unserialize($gallery['data']);
 
     <div class="row">
         <div class="col-xs-12">
-            <p class="lead">Gallery # <?php echo ucfirst($gallery['content_id']); ?></p>
+            <p class="lead">Recent Event Gallery # <?php echo ucfirst($gallery['content_id']); ?></p>
 
             <div class="col-xs-12">
                 <div class="col-xs-6">

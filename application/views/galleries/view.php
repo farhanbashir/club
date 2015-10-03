@@ -6,7 +6,7 @@ $data = unserialize($gallery['data']);
     <div class="row  col-xs-12">
         <div class="col-xs-6">
 
-            <p class="lead col-xs-6">Gallery # <?php echo ucfirst($gallery['content_id']); ?></p>
+            <p class="lead col-xs-6">Recent Event Gallery # <?php echo ucfirst($gallery['content_id']); ?></p>
 
 
             <a href="<?php echo site_url('admin/galleries/delete/' . $gallery['content_id']) ?>"><button class="btn btn-danger pull-right" style="margin:10px ">Delete</button></a>
@@ -15,7 +15,7 @@ $data = unserialize($gallery['data']);
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th>Title:</th>
+                            <th>Event:</th>
                             <td><?php echo $gallery['title']; ?></td>
                         </tr>
 

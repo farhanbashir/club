@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <p class="lead">Create Gallery</p>
+            <p class="lead">Create Recent Event Gallery</p>
 
             <div class="table-responsive">
 
