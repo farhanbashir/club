@@ -119,7 +119,7 @@
             </a>
             <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo site_url('admin/galleries') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Recent Events</a></li>
-                <li><a href="<?php echo site_url('admin/members_galleries') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Members Gallery</a></li>
+                <li><a href="<?php echo site_url('admin/page/members_gallery') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Members Gallery</a></li>
             </ul>
         </li>
         <!--        <li class="active">-->

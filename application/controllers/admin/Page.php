@@ -25,6 +25,7 @@ class Page extends MY_Controller {
         $this->load->model('pagemodel', '', TRUE);
         $this->load->model('image', '', TRUE);
         $this->load->model('content', '', TRUE);
+        $this->load->model('members_gallery_images_model', '', TRUE);
 
         if (!$this->session->userdata('logged_in')) {
             redirect(base_url());
@@ -33,6 +34,11 @@ class Page extends MY_Controller {
 
     public function delete_image($param) {
         $this->image->deactivate_image($param[0]);
+        redirect(site_url('admin/page/' . $param[1]));
+    }
+
+    public function delete_member_gallery_image($param) {
+        $this->members_gallery_images_model->delete_image($param[0]);
         redirect(site_url('admin/page/' . $param[1]));
     }
 
@@ -74,7 +80,8 @@ class Page extends MY_Controller {
             'private_parties',
             'snooker',
             'parties',
-            'sauna_and_steam_room'
+            'sauna_and_steam_room',
+            'members_gallery'
         );
         if (in_array($page_slug, $pages)) {
             $page = $this->pagemodel->get_page_by_key($page_slug);
@@ -96,6 +103,8 @@ class Page extends MY_Controller {
                             'is_active' => $new['is_active']
                         );
                     }
+                } elseif ($page_slug == 'members_gallery') {
+                    $data['page']['images'] = $this->members_gallery_images_model->get_all_images();
                 }
 
                 foreach ($images as $image) {
@@ -156,6 +165,12 @@ class Page extends MY_Controller {
                     'data' => serialize($data_serialize),
                 );
             }
+        } elseif ($_POST['page']['key'] == 'members_gallery') {
+            $data = array(
+                'key' => $_POST['page']['key'],
+                'content' => !empty($_POST['page']['content']) ? $_POST['page']['content'] : '',
+            );
+            $this->members_gallery_images_model->add_images($_POST['members_gallery']['images']);
         } else {
             $data = array(
                 'key' => $_POST['page']['key'],
