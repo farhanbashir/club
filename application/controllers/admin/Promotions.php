@@ -81,7 +81,7 @@ class Promotions extends MY_Controller {
 
     public function update() {
         $serialize_data = array();
-        $serialize_data['enquire'] = $_POST['promotion']['data']['enquire'];
+        $serialize_data= $_POST['promotion']['data'];
         $data = array(
             'title' => $_POST['promotion']['title'],
             'description' => $_POST['promotion']['description'],
@@ -105,7 +105,7 @@ class Promotions extends MY_Controller {
 
     public function submit() {
         $serialize_data = array();
-        $serialize_data['enquire'] = $_POST['promotion']['data']['enquire'];
+        $serialize_data = $_POST['promotion']['data'];
         $data = array(
             'title' => $_POST['promotion']['title'],
             'description' => $_POST['promotion']['description'],

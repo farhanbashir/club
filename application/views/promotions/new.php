@@ -22,7 +22,7 @@
                                 <input type="text" class="form-control" name="promotion[title]" placeholder="Enter ..." value="">
                             </div>
 
-                           
+
                             <div class="form-group">
                                 <label for="promotion_short_description">Short Description</label>
                                 <textarea class="form-control" id="promotion_short_description" name="promotion[description]" rows="3" placeholder="Enter ..."></textarea>
@@ -30,8 +30,30 @@
 
                             <div class="form-group">
                                 <label>Enquire Now</label>
-                                <input type="text" class="form-control" name="promotion[data][enquire]" placeholder="Enter ..." value="">
+                                <input type="text" class="form-control" name="promotion[data][enquire]" placeholder="Enter ..." >
                             </div>
+                            <div class="form-group">
+                                <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                <input type="checkbox" class="form-control" name="promotion[data][enquire_status]" placeholder="Enter ..." > ON/OFF
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Label</label>
+                                <input type="text" class="form-control" name="promotion[data][enquire_label]" placeholder="Enter ..." >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="promotion[data][email]" placeholder="Enter ..." >
+                            </div>
+                            <div class="form-group">
+                                <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                <input type="checkbox" class="form-control" name="promotion[data][email_status]" placeholder="Enter ..."> ON/OFF
+                            </div>
+                            <div class="form-group">
+                                <label>Email Label</label>
+                                <input type="text" class="form-control" name="promotion[data][email_label]" placeholder="Enter ..." >
+                            </div>
+
 
                             <div class="form-group">
                                 <div style="background: #f7f8fa;padding: 50px;">
@@ -41,7 +63,10 @@
                                 </div>
                             </div> 
                         </div><!-- /.box-body -->
-
+                        <div class="form-group">
+                            <label for="publish_date">Publish Date</label>
+                            <input id="publish_date" class="form-control" name="promotion[data][publish_date]" placeholder="Enter ..." value="<?php echo!empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
+                        </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

@@ -134,15 +134,12 @@ class Beaches extends MY_Controller {
     }
 
     public function update() {
-        $beach_type = array(
-            'type' => $_POST['beach']['type'],
-            'enquire' => !empty($_POST['beach']['enquire']) ? $_POST['beach']['enquire'] : '',
-            'email' => !empty($_POST['beach']['email']) ? $_POST['beach']['email'] : ''
-        );
+        $serialize_data = array();
+        $serialize_data = $_POST['beach']['data'];
         $data = array(
             'title' => $_POST['beach']['title'],
             'description' => $_POST['beach']['description'],
-            'data' => serialize($beach_type)
+            'data' => serialize($serialize_data)
         );
         $beach_id = $this->content->update_content_by_id($_POST['beach']['id'], $data);
         $image_data = $this->uploadImageFile($beach_id, $this->type);
@@ -160,15 +157,12 @@ class Beaches extends MY_Controller {
     }
 
     public function submit() {
-        $beach_type = array(
-            'type' => $_POST['beach']['type'],
-            'enquire' => !empty($_POST['beach']['enquire']) ? $_POST['beach']['enquire'] : '',
-            'email' => !empty($_POST['beach']['email']) ? $_POST['beach']['email'] : ''
-        );
+        $serialize_data = array();
+        $serialize_data = $_POST['beach']['data'];
         $data = array(
             'title' => $_POST['beach']['title'],
             'description' => $_POST['beach']['description'],
-            'data' => serialize($beach_type)
+            'data' => serialize($serialize_data)
         );
 
         $beach_id = $this->content->add_content($data, $this->type);

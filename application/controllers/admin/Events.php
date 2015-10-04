@@ -82,16 +82,15 @@ class Events extends MY_Controller {
 
     public function update() {
 
-        $data_serialize = array(
-            'email' => $_POST['event']['email']
-        );
+        $serialize_data = array();
+        $serialize_data = $_POST['event']['data'];
 
         $data = array(
             'title' => $_POST['event']['title'],
             'start_date' => $_POST['event']['start_date'],
             'end_date' => $_POST['event']['end_date'],
             'description' => $_POST['event']['description'],
-            'data' => serialize($data_serialize)
+            'data' => serialize($serialize_data)
         );
 
 
@@ -113,16 +112,15 @@ class Events extends MY_Controller {
 
     public function submit() {
 
-        $data_serialize = array(
-            'email' => $_POST['event']['email']
-        );
+        $serialize_data = array();
+        $serialize_data = $_POST['event']['data'];
 
         $data = array(
             'title' => $_POST['event']['title'],
             'start_date' => $_POST['event']['start_date'],
             'end_date' => $_POST['event']['end_date'],
             'description' => $_POST['event']['description'],
-            'data' => serialize($data_serialize)
+            'data' => serialize($serialize_data)
         );
 
         $event_id = $this->content->add_content($data, $this->type);

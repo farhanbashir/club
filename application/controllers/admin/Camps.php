@@ -81,8 +81,7 @@ class Camps extends MY_Controller {
 
     public function update() {
         $serialize_data = array();
-        $serialize_data['enquire'] = $_POST['camp']['data']['enquire'];
-        $serialize_data['email'] = $_POST['camp']['data']['email'];
+        $serialize_data = $_POST['camp']['data'];
         $data = array(
             'title' => $_POST['camp']['title'],
             'start_date' => $_POST['camp']['start_date'],
@@ -108,8 +107,7 @@ class Camps extends MY_Controller {
 
     public function submit() {
         $serialize_data = array();
-        $serialize_data['enquire'] = $_POST['camp']['data']['enquire'];
-        $serialize_data['email'] = $_POST['camp']['data']['email'];
+        $serialize_data = $_POST['camp']['data'];
 
         $data = array(
             'title' => $_POST['camp']['title'],

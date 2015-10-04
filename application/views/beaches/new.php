@@ -26,13 +26,13 @@
                                 <label>Beach Type</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="beach[type]" id="optionsRadios1" value="Main Beach" checked="checked">
+                                        <input type="radio" name="beach[data][type]" id="optionsRadios1" value="Main Beach" checked="checked">
                                         Main Beach
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="beach[type]" id="optionsRadios2" value="Adults Beach">
+                                        <input type="radio" name="beach[data][type]" id="optionsRadios2" value="Adults Beach">
                                         Adults Beach
                                     </label>
                                 </div>
@@ -47,13 +47,31 @@
 
                             <div class="form-group">
                                 <label>Enquire Now</label>
-                                <input type="text" class="form-control" name="beach[enquire]" placeholder="Enter ..." value="">
+                                <input type="text" class="form-control" name="beach[data][enquire]" placeholder="Enter ..." >
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                <input type="checkbox" class="form-control" name="beach[data][enquire_status]" placeholder="Enter ..." > ON/OFF
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Label</label>
+                                <input type="text" class="form-control" name="beach[data][enquire_label]" placeholder="Enter ..." >
                             </div>
 
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" class="form-control" name="beach[email]" placeholder="Enter ..." value="">
+                                <input type="text" class="form-control" name="beach[data][email]" placeholder="Enter ..." >
                             </div>
+                            <div class="form-group">
+                                <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                <input type="checkbox" class="form-control" name="beach[data][email_status]" placeholder="Enter ..."> ON/OFF
+                            </div>
+                            <div class="form-group">
+                                <label>Email Label</label>
+                                <input type="text" class="form-control" name="beach[data][email_label]" placeholder="Enter ..." >
+                            </div>
+
+
 
                             <div class="form-group">
                                 <div style="background: #f7f8fa;padding: 50px;">
@@ -61,7 +79,11 @@
                                     <input type="file" multiple="multiple" name="userfile" id="input2">
 
                                 </div>
-                            </div> 
+                            </div>
+                            <div class="form-group">
+                                <label for="publish_date">Publish Date</label>
+                                <input id="publish_date" class="form-control" name="beach[data][publish_date]" placeholder="Enter ..." value="<?php echo!empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
+                            </div>
                         </div><!-- /.box-body -->
 
                         <div class="box-footer">

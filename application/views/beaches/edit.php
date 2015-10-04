@@ -1,9 +1,7 @@
 <?php
 $data = unserialize($beach['data']);
-
 $type = !empty($data['type']) ? $data['type'] : '';
-$enquire = !empty($data['enquire']) ? $data['enquire'] : '';
-$email = !empty($data['email']) ? $data['email'] : '';
+
 ?>
 <!-- Main content -->
 <section class="content">
@@ -35,13 +33,13 @@ $email = !empty($data['email']) ? $data['email'] : '';
                                         <label>Beach Type</label>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="beach[type]" id="optionsRadios1" value="Main Beach" <?php echo ($type == 'Main Beach') ? 'checked="checked"' : ''; ?>>
+                                                <input type="radio" name="beach[data][type]" id="optionsRadios1" value="Main Beach" <?php echo ($type == 'Main Beach') ? 'checked="checked"' : ''; ?>>
                                                 Main Beach
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="beach[type]" id="optionsRadios2" value="Adults Beach" <?php echo ($type == 'Adults Beach') ? 'checked="checked"' : ''; ?>>
+                                                <input type="radio" name="beach[data][type]" id="optionsRadios2" value="Adults Beach" <?php echo ($type == 'Adults Beach') ? 'checked="checked"' : ''; ?>>
                                                 Adults Beach
                                             </label>
                                         </div>
@@ -55,12 +53,28 @@ $email = !empty($data['email']) ? $data['email'] : '';
 
                                     <div class="form-group">
                                         <label>Enquire Now</label>
-                                        <input type="text" class="form-control" name="beach[enquire]" placeholder="Enter ..." value="<?php echo!empty($enquire) ? $enquire : '' ?>">
+                                        <input type="text" class="form-control" name="beach[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?>">
                                     </div>
-                                    
+                                    <div class="form-group">
+                                        <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                        <input type="checkbox" class="form-control" name="beach[data][enquire_status]" placeholder="Enter ..." <?php echo(!empty($data['enquire_status']) && ($data['enquire_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Label</label>
+                                        <input type="text" class="form-control" name="beach[data][enquire_label]" placeholder="Enter ..." value="<?php echo!empty($data['enquire_label']) ? $data['enquire_label'] : ''; ?>">
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="text" class="form-control" name="beach[email]" placeholder="Enter ..." value="<?php echo!empty($email) ? $email : '' ?>">
+                                        <input type="text" class="form-control" name="beach[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                        <input type="checkbox" class="form-control" name="beach[data][email_status]" placeholder="Enter ..." <?php echo(!empty($data['email_status']) && ($data['email_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Label</label>
+                                        <input type="text" class="form-control" name="beach[data][email_label]" placeholder="Enter ..." value="<?php echo!empty($data['email_label']) ? $data['email_label'] : ''; ?>">
                                     </div>
 
                                     <div class="form-group">
@@ -71,7 +85,10 @@ $email = !empty($data['email']) ? $data['email'] : '';
                                         </div>
 
                                     </div><!-- /.box-body -->
-
+                                    <div class="form-group">
+                                        <label for="publish_date">Publish Date</label>
+                                        <input id="publish_date" class="form-control" name="beach[data][publish_date]" placeholder="Enter ..." value="<?php echo!empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
+                                    </div>
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
