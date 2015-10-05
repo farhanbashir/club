@@ -6,7 +6,7 @@ $data = unserialize($restaurant['data']);
 
     <div class="row">
         <div class="col-xs-12">
-            <p class="lead">Restaurant # <?php echo ucfirst($restaurant['content_id']); ?></p>
+            <p class="lead">Outlet # <?php echo ucfirst($restaurant['content_id']); ?></p>
 
             <div class="col-xs-12">
                 <div class="col-xs-6">
@@ -35,13 +35,31 @@ $data = unserialize($restaurant['data']);
 
                                     <div class="form-group">
                                         <label for="restaurant_dress_code">Dress Code</label>
-                                        <textarea class="form-control" id="restaurant_dress_code" name="restaurant[dress_code]" rows="3" placeholder="Enter ..."><?php echo!empty($data['dress_code']) ? $data['dress_code'] : ''; ?></textarea>
+                                        <textarea class="form-control" id="restaurant_dress_code" name="restaurant[data][dress_code]" rows="3" placeholder="Enter ..."><?php echo!empty($data['dress_code']) ? $data['dress_code'] : ''; ?></textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="restaurant_guest_dining_policy">Guest's Dining Policy</label>
-                                        <textarea class="form-control" id="restaurant_guest_dining_policy" name="restaurant[guest_dining_policy]" rows="3" placeholder="Enter ..."><?php echo!empty($data['guest_dining_policy']) ? $data['guest_dining_policy'] : ''; ?></textarea>
+                                        <textarea class="form-control" id="restaurant_guest_dining_policy" name="restaurant[data][guest_dining_policy]" rows="3" placeholder="Enter ..."><?php echo!empty($data['guest_dining_policy']) ? $data['guest_dining_policy'] : ''; ?></textarea>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label>Enquire Now - Phone No.</label>
+                                        <input type="text" class="form-control" name="restaurant[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Now - Email</label>
+                                        <input type="text" class="form-control" name="restaurant[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                        <input type="checkbox" class="form-control" name="restaurant[data][enquire_status]" placeholder="Enter ..." <?php echo(!empty($data['enquire_status']) && ($data['enquire_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Label</label>
+                                        <input type="text" class="form-control" name="restaurant[data][enquire_label]" placeholder="Enter ..." value="<?php echo!empty($data['enquire_label']) ? $data['enquire_label'] : ''; ?>">
+                                    </div>
+
 
                                     <div class="form-group">
                                         <div style="background: #f7f8fa;padding: 50px;">
@@ -51,6 +69,10 @@ $data = unserialize($restaurant['data']);
                                         </div>
 
                                     </div><!-- /.box-body -->
+                                    <div class="form-group">
+                                        <label for="publish_date">Publish Date</label>
+                                        <input id="publish_date" class="form-control" name="restaurant[data][publish_date]" placeholder="Enter ..." value="<?php echo!empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
+                                    </div>
 
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -88,8 +110,8 @@ $data = unserialize($restaurant['data']);
 
                                                     </div>                                        
                                                     <div class="jFiler-item-thumb-image">
-                                                        <img src="<?php echo  $image['path']; ?>" draggable="false">
-                                                   
+                                                        <img src="<?php echo $image['path']; ?>" draggable="false">
+
                                                     </div>    
 
                                                 </div>   

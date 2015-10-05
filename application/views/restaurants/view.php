@@ -6,7 +6,7 @@ $data = unserialize($restaurant['data']);
     <div class="row  col-xs-12">
         <div class="col-xs-6">
 
-            <p class="lead col-xs-6">Restaurant # <?php echo ucfirst($restaurant['content_id']); ?></p>
+            <p class="lead col-xs-6">Outlet # <?php echo ucfirst($restaurant['content_id']); ?></p>
 
 
 
@@ -34,8 +34,33 @@ $data = unserialize($restaurant['data']);
                             <td><?php echo!empty($data['guest_dining_policy']) ? $data['guest_dining_policy'] : ''; ?></td>
                         </tr>
 
+                        <tr>
+                            <th>Enquire Now - Phone No.</th>
+                            <td><?php echo $data['enquire']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Enquire Now - Email</th>
+                            <td><?php echo $data['email']; ?></td>
+                        </tr>
 
-                    </tbody></table>
+
+                        <tr>
+                            <th>Enquire Status:</th>
+                            <td><?php echo (!empty($data['enquire_status']) && ($data['enquire_status'] == 'on')) ? 'ON' : 'OFF'; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Enquire Label:</th>
+                            <td><?php echo $data['enquire_label']; ?></td>
+                        </tr>
+
+                        <tr>
+                            <th>Publish Date</th>
+                            <td><?php echo $data['publish_date']; ?></td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
 
 
 

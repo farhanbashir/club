@@ -31,7 +31,7 @@ $data = unserialize($event['data']);
                             <td><?php echo $event['description']; ?></td>
                         </tr>
                         <tr>
-                            <th>Email</th>
+                            <th>Reservation Email</th>
                             <td><?php echo $data['email']; ?></td>
                         </tr>
 

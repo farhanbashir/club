@@ -42,15 +42,15 @@ $data = unserialize($event['data']);
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Email</label>
+                                        <label>Reservation Email</label>
                                         <input type="text" class="form-control" name="event[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                        <label>Reservation Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                                         <input type="checkbox" class="form-control" name="event[data][email_status]" placeholder="Enter ..." <?php echo(!empty($data['email_status']) && ($data['email_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
                                     </div>
                                     <div class="form-group">
-                                        <label>Email Label</label>
+                                        <label>Reservation Email Label</label>
                                         <input type="text" class="form-control" name="event[data][email_label]" placeholder="Enter ..." value="<?php echo!empty($data['email_label']) ? $data['email_label'] : ''; ?>">
                                     </div>
 

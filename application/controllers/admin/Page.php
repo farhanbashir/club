@@ -169,6 +169,7 @@ class Page extends MY_Controller {
             $data = array(
                 'key' => $_POST['page']['key'],
                 'content' => !empty($_POST['page']['content']) ? $_POST['page']['content'] : '',
+                'data' => serialize($data_serialize),
             );
             $this->members_gallery_images_model->add_images($_POST['members_gallery']['images']);
         } else {

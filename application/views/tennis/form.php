@@ -74,7 +74,7 @@ $data = unserialize($page['data']);
                                         <input type="text" class="form-control" name="page[data][email_label]" placeholder="Enter ..." value="<?php echo!empty($data['email_label']) ? $data['email_label'] : ''; ?>">
                                     </div>
 
-                                    <label>News</label><br/>
+                                    <label>Section News</label><br/>
                                     <a href="<?php echo site_url('admin/tennisnews/addnew'); ?>" id=""><i class="glyphicon glyphicon-plus"></i> Add News</a>
 
 

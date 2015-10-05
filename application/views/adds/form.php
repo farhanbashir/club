@@ -6,7 +6,7 @@ $data = unserialize($page['data']);
 
     <div class="row">
         <div class="col-xs-12">
-            <p class="lead">ADDS</p>
+            <p class="lead">Drama</p>
             <div class="col-xs-12">
                 <div class="col-xs-9">
                     <div class="table-responsive">
@@ -21,7 +21,7 @@ $data = unserialize($page['data']);
                                 <div class="box-body">
 
                                     <div class="form-group">
-                                        <label>Detailed description of ADDS</label>
+                                        <label>Detailed description of Drama</label>
                                         <textarea class="form-control" name="page[content]" id="page_description" placeholder="Enter ..."><?php echo!empty($page['content']) ? $page['content'] : ''; ?></textarea>
                                     </div>
                                     <div class="form-group">

@@ -75,7 +75,7 @@ $data = unserialize($page['data']);
                                     </div>
 
 
-                                    <label>News</label><br/>
+                                    <label>Section News</label><br/>
                                     <a href="<?php echo site_url('admin/squash_and_racketballnews/addnew'); ?>" id=""><i class="glyphicon glyphicon-plus"></i> Add News</a>
 
 

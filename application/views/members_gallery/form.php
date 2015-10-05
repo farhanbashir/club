@@ -1,3 +1,6 @@
+<?php
+$data = unserialize($page['data']);
+?>
 <!-- Main content -->
 <section class="content">
 
@@ -5,7 +8,7 @@
         <div class="col-xs-12">
             <p class="lead">Member Gallery</p>
             <div class="col-xs-12">
-                <div class="col-xs-9">
+                <div class="col-xs-6">
                     <div class="table-responsive">
 
                         <div class="box box-primary">
@@ -28,7 +31,10 @@
                                         </div>
                                     </div>
 
-
+                                    <div class="form-group">
+                                        <label>Detailed description</label>
+                                        <textarea class="form-control" name="page[data][description]" id="page_description" placeholder="Enter ..."><?php echo!empty($data['description']) ? $data['description'] : ''; ?></textarea>
+                                    </div>
 
 
                                     <div id="searched_images" class="form-group">
@@ -47,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="box box-primary">
                         <div class="box-header">
                             <h3 class="box-title">Uploaded Images</h3>

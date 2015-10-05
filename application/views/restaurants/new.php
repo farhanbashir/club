@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <p class="lead">Create Restaurant</p>
+            <p class="lead">Create Outlet</p>
 
             <div class="table-responsive">
 
@@ -30,12 +30,28 @@
 
                             <div class="form-group">
                                 <label for="restaurant_dress_code">Dress Code</label>
-                                <textarea class="form-control" id="restaurant_dress_code" name="restaurant[dress_code]" rows="3" placeholder="Enter ..."></textarea>
+                                <textarea class="form-control" id="restaurant_dress_code" name="restaurant[data][dress_code]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="restaurant_guest_dining_policy">Guest's Dining Policy</label>
-                                <textarea class="form-control" id="restaurant_guest_dining_policy" name="restaurant[guest_dining_policy]" rows="3" placeholder="Enter ..."></textarea>
+                                <textarea class="form-control" id="restaurant_guest_dining_policy" name="restaurant[data][guest_dining_policy]" rows="3" placeholder="Enter ..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Now - Phone No.</label>
+                                <input type="text" class="form-control" name="restaurant[data][enquire]" placeholder="Enter ..." >
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Now - Email</label>
+                                <input type="text" class="form-control" name="restaurant[data][email]" placeholder="Enter ..." >
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                <input type="checkbox" class="form-control" name="restaurant[data][enquire_status]" placeholder="Enter ..." > ON/OFF
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Label</label>
+                                <input type="text" class="form-control" name="restaurant[data][enquire_label]" placeholder="Enter ..." >
                             </div>
 
 
@@ -46,6 +62,11 @@
 
                                 </div>
                             </div> 
+                            <div class="form-group">
+                                <label for="publish_date">Publish Date</label>
+                                <input id="publish_date" class="form-control" name="restaurant[data][publish_date]" placeholder="Enter ..." value="">
+                            </div>
+
                         </div><!-- /.box-body -->
 
                         <div class="box-footer">
