@@ -501,8 +501,8 @@ class Api extends REST_Controller {
                 $i=0;
                 $return = $data;
                 foreach ($return as $key => $value) {
-                    $images = $this->getImagesArray($value['page_id'],'page');
-                    $return[$i]['images'] = $images;
+                    // $images = $this->getImagesArray($value['page_id'],'page');
+                    // $return[$i]['images'] = $images;
                     $additional_fields = unserialize($return[$i]['data']);
                     if(is_array($additional_fields))
                     {
@@ -517,8 +517,8 @@ class Api extends REST_Controller {
                 $i=0;
                 $return = $data;
                 foreach ($return as $key => $value) {
-                    $images = $this->getImagesArray($value['page_id'],'page');
-                    $return[$i]['images'] = $images;
+                    // $images = $this->getImagesArray($value['page_id'],'page');
+                    // $return[$i]['images'] = $images;
                     $additional_fields = unserialize($return[$i]['data']);
                     if(is_array($additional_fields))
                     {
@@ -533,8 +533,8 @@ class Api extends REST_Controller {
                 $i=0;
                 $return = $data;
                 foreach ($return as $key => $value) {
-                    $images = $this->getImagesArray($value['page_id'],'page');
-                    $return[$i]['images'] = $images;
+                    // $images = $this->getImagesArray($value['page_id'],'page');
+                    // $return[$i]['images'] = $images;
                     $additional_fields = unserialize($return[$i]['data']);
                     if(is_array($additional_fields))
                     {
@@ -548,8 +548,8 @@ class Api extends REST_Controller {
                 $i=0;
                 $return = $data;
                 foreach ($return as $key => $value) {
-                    $images = $this->getImagesArray($value['page_id'],'page');
-                    $return[$i]['images'] = $images;
+                    // $images = $this->getImagesArray($value['page_id'],'page');
+                    // $return[$i]['images'] = $images;
                     $additional_fields = unserialize($return[$i]['data']);
                     if(is_array($additional_fields))
                     {
@@ -560,6 +560,22 @@ class Api extends REST_Controller {
                     $i++;
                 }
                 break;
+            case 'parties':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    // $images = $this->getImagesArray($value['page_id'],'page');
+                    // $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+
+                    unset($return[$i]['data']);
+                    $i++;
+                }
+                break;    
             case 'fringe_benefits_salon_barbers':
                 $i=0;
                 $return = $data;
@@ -571,12 +587,39 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
+                    if(isset($return[$i]['pdf']))
+                    {
+                        $return[$i]['file'] = $return[$i]['pdf'];
+                        unset($return[$i]['pdf']);    
+                    }
 
                     unset($return[$i]['data']);
                     unset($return[$i]['content']);
                     $i++;
                 }
                 break;    
+            case 'sauna_and_steam_room':
+                $i=0;
+                $return = $data;
+                foreach ($return as $key => $value) {
+                    $images = $this->getImagesArray($value['page_id'],'page');
+                    $return[$i]['images'] = $images;
+                    $additional_fields = unserialize($return[$i]['data']);
+                    if(is_array($additional_fields))
+                    {
+                        $return[$i] = array_merge($return[$i],$additional_fields);    
+                    }
+                    if(isset($return[$i]['pdf']))
+                    {
+                        $return[$i]['file'] = $return[$i]['pdf'];
+                        unset($return[$i]['pdf']);    
+                    }
+
+                    unset($return[$i]['data']);
+                    unset($return[$i]['content']);
+                    $i++;
+                }
+                break;        
             case 'library':
                 $i=0;
                 $return = $data;

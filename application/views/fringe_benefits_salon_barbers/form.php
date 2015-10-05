@@ -1,6 +1,6 @@
 <?php
 $data = unserialize($page['data']);
-$pdf = $data['pdf'];
+$pdf = (isset($data['pdf'])) ? $data['pdf'] : '';
 ?>
 <section class="content">
 
