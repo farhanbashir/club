@@ -21,7 +21,7 @@ $data = unserialize($page['data']);
                                 <div class="box-body">
 
                                     <div class="form-group">
-                                        <label>Tag</label>
+                                        <label>Tag  (without #)</label>
 
                                         <div class="input-group input-group-sm">
                                             <input type="text" class="form-control" id="search_tag" name="page[content]" placeholder="Enter ..." value="<?php echo $page['content']; ?>">
