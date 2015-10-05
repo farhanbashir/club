@@ -41,8 +41,8 @@
                                 <td><?php echo $promotion['content_id']; ?></td>
                                 <td><?php echo $promotion['title']; ?></td>
                                 <td><?php echo(strlen($promotion['description']) > 100) ? substr($promotion['description'], 0, 97) . '...' : $promotion['description']; ?></td>
-                                <td><?php echo $data['enquire']; ?></td>
-                                <td><?php echo $data['email']; ?></td>
+                                <td><?php echo (isset($data['enquire'])) ? $data['enquire'] : ''; ?></td>
+                                <td><?php echo (isset($data['email'])) ? $data['email'] : ''; ?></td>
                                 <td>
                                     <?php
                                     echo ($promotion['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";

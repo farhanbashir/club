@@ -93,15 +93,17 @@ class Classes extends MY_Controller {
 
     public function update() {
 
-        $data['day'] = $_POST['class']['days'];
-        $data['time'] = $_POST['class']['time'];
+        $serialize_data = array();
+        $serialize_data = $_POST['class']['data'];
+        $serialize_data['day'] = $_POST['class']['days'];
+        $serialize_data['time'] = $_POST['class']['time'];
 
 
         $data = array(
             'title' => $_POST['class']['title'],
             'start_date' => $_POST['class']['start_date'],
             'description' => $_POST['class']['description'],
-            'data' => serialize($data),
+            'data' => serialize($serialize_data),
             'modified_time'=>date('Y-m-d H:i:s')
         );
 
@@ -128,15 +130,17 @@ class Classes extends MY_Controller {
 
     public function submit() {
 
-        $data['day'] = $_POST['class']['days'];
-        $data['time'] = $_POST['class']['time'];
+        $serialize_data = array();
+        $serialize_data = $_POST['class']['data'];
+        $serialize_data['day'] = $_POST['class']['days'];
+        $serialize_data['time'] = $_POST['class']['time'];
 
 
         $data = array(
             'title' => $_POST['class']['title'],
             'start_date' => $_POST['class']['start_date'],
             'description' => $_POST['class']['description'],
-            'data' => serialize($data),
+            'data' => serialize($serialize_data),
             'modified_time'=>date('Y-m-d H:i:s')
         );
 

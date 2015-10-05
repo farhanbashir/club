@@ -110,7 +110,7 @@ if (!empty($data['day'])) {
                         </div>
                     <?php } else {
                         ?>
-                        <p>No Images so far.</p>
+                        <p>No pdf so far.</p>
                     <?php }
                     ?>
 

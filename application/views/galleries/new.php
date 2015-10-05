@@ -53,7 +53,10 @@
                                 </div>
                             </div> 
                         </div><!-- /.box-body -->
-
+                        <div class="form-group">
+                            <label for="publish_date">Publish Date</label>
+                            <input id="publish_date" class="form-control" name="gallery[data][publish_date]" placeholder="Enter ..." value="<?php echo !empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
+                        </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

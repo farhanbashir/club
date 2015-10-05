@@ -117,10 +117,14 @@ class Galleries extends MY_Controller {
 
     public function update() {
 
+        $serialize_data = array();
+        $serialize_data = $_POST['gallery']['data'];
 
         $data = array(
             'title' => $_POST['gallery']['title'],
             'description' => $_POST['gallery']['description'],
+            'data' => serialize($serialize_data),
+            'modified_time'=>date('Y-m-d H:i:s')
         );
 
         $gallery_id = $this->content->update_content_by_id($_POST['gallery']['id'], $data);
@@ -159,10 +163,13 @@ class Galleries extends MY_Controller {
 
     public function submit() {
 
-
+        $serialize_data = array();
+        $serialize_data = $_POST['gallery']['data'];
         $data = array(
             'title' => $_POST['gallery']['title'],
             'description' => $_POST['gallery']['description'],
+            'data' => serialize($serialize_data),
+            'modified_time'=>date('Y-m-d H:i:s')
         );
 
         $gallery_id = $this->content->add_content($data, 'event_galleries');
