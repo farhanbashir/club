@@ -134,15 +134,12 @@ class Pools extends MY_Controller {
     }
 
     public function update() {
-        $pool_type = array(
-            'type' => $_POST['pool']['type'],
-            'enquire' => !empty($_POST['pool']['enquire']) ? $_POST['pool']['enquire'] : '',
-            'email' => !empty($_POST['pool']['email']) ? $_POST['pool']['email'] : ''
-        );
+        $serialize_data = array();
+        $serialize_data = $_POST['pool']['data'];
         $data = array(
             'title' => $_POST['pool']['title'],
             'description' => $_POST['pool']['description'],
-            'data' => serialize($pool_type)
+            'data' => serialize($serialize_data)
         );
         $pool_id = $this->content->update_content_by_id($_POST['pool']['id'], $data);
         $image_data = $this->uploadImageFile($pool_id, $this->type);
@@ -160,15 +157,12 @@ class Pools extends MY_Controller {
     }
 
     public function submit() {
-        $pool_type = array(
-            'type' => $_POST['pool']['type'],
-            'enquire' => !empty($_POST['pool']['enquire']) ? $_POST['pool']['enquire'] : '',
-            'email' => !empty($_POST['pool']['email']) ? $_POST['pool']['email'] : ''
-        );
+        $serialize_data = array();
+        $serialize_data = $_POST['pool']['data'];
         $data = array(
             'title' => $_POST['pool']['title'],
             'description' => $_POST['pool']['description'],
-            'data' => serialize($pool_type)
+            'data' => serialize($serialize_data)
         );
 
         $pool_id = $this->content->add_content($data, $this->type);

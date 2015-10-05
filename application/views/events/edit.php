@@ -1,4 +1,3 @@
-
 <?php
 $data = unserialize($event['data']);
 ?><!-- Main content -->
@@ -44,7 +43,15 @@ $data = unserialize($event['data']);
 
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="text" class="form-control" name="event[email]" placeholder="Enter ..." value="<?php echo $data['email']; ?>">
+                                        <input type="text" class="form-control" name="event[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                        <input type="checkbox" class="form-control" name="event[data][email_status]" placeholder="Enter ..." <?php echo(!empty($data['email_status']) && ($data['email_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Label</label>
+                                        <input type="text" class="form-control" name="event[data][email_label]" placeholder="Enter ..." value="<?php echo!empty($data['email_label']) ? $data['email_label'] : ''; ?>">
                                     </div>
 
                                     <div class="form-group">
@@ -56,6 +63,10 @@ $data = unserialize($event['data']);
 
                                     </div><!-- /.box-body -->
 
+                                    <div class="form-group">
+                                        <label for="publish_date">Publish Date</label>
+                                        <input id="publish_date" class="form-control" name="event[data][publish_date]" placeholder="Enter ..." value="<?php echo!empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
+                                    </div>
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>

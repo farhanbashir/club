@@ -39,11 +39,28 @@
 
                             <div class="form-group">
                                 <label>Enquire Now</label>
-                                <input type="text" class="form-control" name="course[data][enquire]" placeholder="Enter ..." value="">
+                                <input type="text" class="form-control" name="course[data][enquire]" placeholder="Enter ..." >
                             </div>
                             <div class="form-group">
+                                <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                <input type="checkbox" class="form-control" name="course[data][enquire_status]" placeholder="Enter ..." > ON/OFF
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Label</label>
+                                <input type="text" class="form-control" name="course[data][enquire_label]" placeholder="Enter ..." >
+                            </div>
+
+                            <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" class="form-control" name="course[data][email]" placeholder="Enter ..." value="">
+                                <input type="text" class="form-control" name="course[data][email]" placeholder="Enter ..." >
+                            </div>
+                            <div class="form-group">
+                                <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                <input type="checkbox" class="form-control" name="course[data][email_status]" placeholder="Enter ..."> ON/OFF
+                            </div>
+                            <div class="form-group">
+                                <label>Email Label</label>
+                                <input type="text" class="form-control" name="course[data][email_label]" placeholder="Enter ..." >
                             </div>
 
                             <div class="form-group">
@@ -54,7 +71,10 @@
                                 </div>
                             </div> 
                         </div><!-- /.box-body -->
-
+                        <div class="form-group">
+                            <label for="publish_date">Publish Date</label>
+                            <input id="publish_date" class="form-control" name="course[data][publish_date]" placeholder="Enter ..." value="<?php echo!empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
+                        </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

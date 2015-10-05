@@ -81,8 +81,7 @@ class Courses extends MY_Controller {
 
     public function update() {
         $serialize_data = array();
-        $serialize_data['enquire'] = $_POST['course']['data']['enquire'];
-        $serialize_data['email'] = $_POST['course']['data']['email'];
+        $serialize_data = $_POST['course']['data'];
 
         $data = array(
             'title' => $_POST['course']['title'],
@@ -109,8 +108,8 @@ class Courses extends MY_Controller {
 
     public function submit() {
         $serialize_data = array();
-        $serialize_data['enquire'] = $_POST['course']['data']['enquire'];
-        $serialize_data['email'] = $_POST['course']['data']['email'];
+        $serialize_data = $_POST['course']['data'];
+      
         $data = array(
             'title' => $_POST['course']['title'],
             'start_date' => $_POST['course']['start_date'],

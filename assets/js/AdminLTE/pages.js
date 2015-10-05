@@ -16,6 +16,9 @@ $(function ($) {
 // edit event
     $('#start_date').datetimepicker({format: 'Y-m-d H:i:s'});
     $('#end_date').datetimepicker({format: 'Y-m-d H:i:s'});
+    $('#publish_date').datetimepicker({format: 'Y-m-d H:i:s'});
+
+
 
 
 

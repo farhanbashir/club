@@ -2,9 +2,6 @@
 $data = unserialize($beach['data']);
 
 $type = !empty($data['type']) ? $data['type'] : '';
-$enquire = !empty($data['enquire']) ? $data['enquire'] : '';
-$email = !empty($data['email']) ? $data['email'] : '';
-
 ?>
 <!-- Main content -->
 <section class="content">
@@ -14,7 +11,7 @@ $email = !empty($data['email']) ? $data['email'] : '';
             <p class="lead col-xs-6">Beach # <?php echo ucfirst($beach['content_id']); ?></p>
 
 
-                      <a href="<?php echo site_url('admin/beaches/delete/' . $beach['content_id'] . '/' . (($beach['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($beach['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($beach['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
+            <a href="<?php echo site_url('admin/beaches/delete/' . $beach['content_id'] . '/' . (($beach['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($beach['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($beach['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
 
             <div class="table-responsive">
                 <table class="table">
@@ -35,15 +32,35 @@ $email = !empty($data['email']) ? $data['email'] : '';
                         </tr>
 
                         <tr>
-                            <th>Enquire Now</th>
-                            <td><?php echo $enquire; ?></td>
-                        </tr>
-                        
-                        <tr>
-                            <th>Email</th>
-                            <td><?php echo $email; ?></td>
+                            <th>Enquire Now:</th>
+                            <td><?php echo $data['enquire']; ?></td>
                         </tr>
 
+                        <tr>
+                            <th>Enquire Status:</th>
+                            <td><?php echo (!empty($data['enquire_status']) && ($data['enquire_status'] == 'on')) ? 'ON' : 'OFF'; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Enquire Label:</th>
+                            <td><?php echo $data['enquire_label']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><?php echo $data['email']; ?></td>
+                        </tr>
+
+                        <tr>
+                            <th>Email Status:</th>
+                            <td><?php echo (!empty($data['email_status']) && ($data['email_status'] == 'on')) ? 'ON' : 'OFF'; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Email Label:</th>
+                            <td><?php echo $data['email_label']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Publish Date</th>
+                            <td><?php echo $data['publish_date']; ?></td>
+                        </tr>
 
                     </tbody></table>
 

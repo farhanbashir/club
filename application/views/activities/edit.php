@@ -42,15 +42,33 @@ $data = unserialize($activity['data']);
                                         <label for="activity_short_description">Short Description</label>
                                         <textarea class="form-control" id="activity_short_description" name="activity[description]" rows="3" placeholder="Enter ..."><?php echo $activity['description']; ?></textarea>
                                     </div>
+
                                     <div class="form-group">
                                         <label>Enquire Now</label>
                                         <input type="text" class="form-control" name="activity[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                        <input type="checkbox" class="form-control" name="activity[data][enquire_status]" placeholder="Enter ..." <?php echo(!empty($data['enquire_status']) && ($data['enquire_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Label</label>
+                                        <input type="text" class="form-control" name="activity[data][enquire_label]" placeholder="Enter ..." value="<?php echo!empty($data['enquire_label']) ? $data['enquire_label'] : ''; ?>">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="text" class="form-control" name="activity[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                        <input type="checkbox" class="form-control" name="activity[data][email_status]" placeholder="Enter ..." <?php echo(!empty($data['email_status']) && ($data['email_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Label</label>
+                                        <input type="text" class="form-control" name="activity[data][email_label]" placeholder="Enter ..." value="<?php echo!empty($data['email_label']) ? $data['email_label'] : ''; ?>">
+                                    </div>
+
 
                                     <div class="form-group">
                                         <div style="background: #f7f8fa;padding: 50px;">
@@ -60,7 +78,10 @@ $data = unserialize($activity['data']);
                                         </div>
 
                                     </div><!-- /.box-body -->
-
+                                    <div class="form-group">
+                                        <label for="publish_date">Publish Date</label>
+                                        <input id="publish_date" class="form-control" name="activity[data][publish_date]" placeholder="Enter ..." value="<?php echo!empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
+                                    </div>
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>

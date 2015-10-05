@@ -36,9 +36,18 @@
                                 <textarea class="form-control" id="event_short_description" name="event[description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
+
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" class="form-control" name="event[email]" placeholder="Enter ..." value="">
+                                <input type="text" class="form-control" name="event[data][email]" placeholder="Enter ..." value="">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                <input type="checkbox" class="form-control" name="event[data][email_status]" placeholder="Enter ..."> ON/OFF
+                            </div>
+                            <div class="form-group">
+                                <label>Email Label</label>
+                                <input type="text" class="form-control" name="event[data][email_label]" placeholder="Enter ..." value="">
                             </div>
 
 
@@ -50,6 +59,12 @@
 
                                 </div>
                             </div> 
+
+
+                            <div class="form-group">
+                                <label for="publish_date">Publish Date</label>
+                                <input id="publish_date" class="form-control" name="event[data][publish_date]" placeholder="Enter ..." value="">
+                            </div>
                         </div><!-- /.box-body -->
 
                         <div class="box-footer">

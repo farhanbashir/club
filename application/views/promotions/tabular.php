@@ -28,6 +28,7 @@
                             <th>Title</th>
                             <th>Short Description</th>
                             <th>Enquire Now</th>
+                            <th>Email</th>
                             <th>Status</th>
                             <th>Action</th>
 
@@ -41,6 +42,7 @@
                                 <td><?php echo $promotion['title']; ?></td>
                                 <td><?php echo(strlen($promotion['description']) > 100) ? substr($promotion['description'], 0, 97) . '...' : $promotion['description']; ?></td>
                                 <td><?php echo $data['enquire']; ?></td>
+                                <td><?php echo $data['email']; ?></td>
                                 <td>
                                     <?php
                                     echo ($promotion['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";
