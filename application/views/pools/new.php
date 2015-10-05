@@ -45,8 +45,12 @@
                                 <textarea class="form-control" id="pool_short_description" name="pool[description]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Enquire Now</label>
+                                <label>Enquire Now - Phone No.</label>
                                 <input type="text" class="form-control" name="pool[data][enquire]" placeholder="Enter ..." >
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Now - Email</label>
+                                <input type="text" class="form-control" name="pool[data][email]" placeholder="Enter ..." >
                             </div>
                             <div class="form-group">
                                 <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
@@ -56,22 +60,6 @@
                                 <label>Enquire Label</label>
                                 <input type="text" class="form-control" name="pool[data][enquire_label]" placeholder="Enter ..." >
                             </div>
-
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" name="pool[data][email]" placeholder="Enter ..." >
-                            </div>
-                            <div class="form-group">
-                                <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                                <input type="checkbox" class="form-control" name="pool[data][email_status]" placeholder="Enter ..."> ON/OFF
-                            </div>
-                            <div class="form-group">
-                                <label>Email Label</label>
-                                <input type="text" class="form-control" name="pool[data][email_label]" placeholder="Enter ..." >
-                            </div>
-
-
-
 
                             <div class="form-group">
                                 <div style="background: #f7f8fa;padding: 50px;">

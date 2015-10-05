@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-xs-6">
-            <p class="lead">Create Camp</p>
+            <p class="lead">Create Camp and Course</p>
 
             <div class="table-responsive">
 
@@ -38,8 +38,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Enquire Now</label>
+                                <label>Enquire Now - Enquire Now</label>
                                 <input type="text" class="form-control" name="camp[data][enquire]" placeholder="Enter ..." >
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Now - Email</label>
+                                <input type="text" class="form-control" name="camp[data][email]" placeholder="Enter ..." >
                             </div>
                             <div class="form-group">
                                 <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
@@ -49,23 +53,6 @@
                                 <label>Enquire Label</label>
                                 <input type="text" class="form-control" name="camp[data][enquire_label]" placeholder="Enter ..." >
                             </div>
-
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" name="camp[data][email]" placeholder="Enter ..." >
-                            </div>
-                            <div class="form-group">
-                                <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                                <input type="checkbox" class="form-control" name="camp[data][email_status]" placeholder="Enter ..."> ON/OFF
-                            </div>
-                            <div class="form-group">
-                                <label>Email Label</label>
-                                <input type="text" class="form-control" name="camp[data][email_label]" placeholder="Enter ..." >
-                            </div>
-
-
-
-
 
                             <div class="form-group">
                                 <div style="background: #f7f8fa;padding: 50px;">

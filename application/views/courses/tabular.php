@@ -29,8 +29,8 @@
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Detailed Description</th>
-                            <th>Enquire Now</th>
-                            <th>Email</th>
+                            <th>Enquire Now - Phone No.</th>
+                            <th>Enquire Now - Email</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>

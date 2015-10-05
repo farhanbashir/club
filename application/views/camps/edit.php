@@ -6,7 +6,7 @@ $data = unserialize($camp['data']);
 
     <div class="row">
         <div class="col-xs-12">
-            <p class="lead">Camp # <?php echo ucfirst($camp['content_id']); ?></p>
+            <p class="lead">Camp and Course # <?php echo ucfirst($camp['content_id']); ?></p>
 
             <div class="col-xs-12">
                 <div class="col-xs-6">
@@ -43,8 +43,12 @@ $data = unserialize($camp['data']);
                                         <textarea class="form-control" id="camp_short_description" name="camp[description]" rows="3" placeholder="Enter ..."><?php echo $camp['description']; ?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Enquire Now</label>
+                                        <label>Enquire Now - Phone No.</label>
                                         <input type="text" class="form-control" name="camp[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Now - Email</label>
+                                        <input type="text" class="form-control" name="camp[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
@@ -54,21 +58,6 @@ $data = unserialize($camp['data']);
                                         <label>Enquire Label</label>
                                         <input type="text" class="form-control" name="camp[data][enquire_label]" placeholder="Enter ..." value="<?php echo!empty($data['enquire_label']) ? $data['enquire_label'] : ''; ?>">
                                     </div>
-
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control" name="camp[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                                        <input type="checkbox" class="form-control" name="camp[data][email_status]" placeholder="Enter ..." <?php echo(!empty($data['email_status']) && ($data['email_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Label</label>
-                                        <input type="text" class="form-control" name="camp[data][email_label]" placeholder="Enter ..." value="<?php echo!empty($data['email_label']) ? $data['email_label'] : ''; ?>">
-                                    </div>
-
-
                                     <div class="form-group">
                                         <div style="background: #f7f8fa;padding: 50px;">
 

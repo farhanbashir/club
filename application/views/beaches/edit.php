@@ -52,8 +52,12 @@ $type = !empty($data['type']) ? $data['type'] : '';
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Enquire Now</label>
+                                        <label>Enquire Now - Phone No.</label>
                                         <input type="text" class="form-control" name="beach[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Now - Email</label>
+                                        <input type="text" class="form-control" name="beach[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
@@ -62,19 +66,6 @@ $type = !empty($data['type']) ? $data['type'] : '';
                                     <div class="form-group">
                                         <label>Enquire Label</label>
                                         <input type="text" class="form-control" name="beach[data][enquire_label]" placeholder="Enter ..." value="<?php echo!empty($data['enquire_label']) ? $data['enquire_label'] : ''; ?>">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control" name="beach[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                                        <input type="checkbox" class="form-control" name="beach[data][email_status]" placeholder="Enter ..." <?php echo(!empty($data['email_status']) && ($data['email_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Label</label>
-                                        <input type="text" class="form-control" name="beach[data][email_label]" placeholder="Enter ..." value="<?php echo!empty($data['email_label']) ? $data['email_label'] : ''; ?>">
                                     </div>
 
                                     <div class="form-group">
