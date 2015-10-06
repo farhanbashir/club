@@ -81,16 +81,13 @@ class Restaurants extends MY_Controller {
 
     public function update() {
 
-        $data_content = array(
-            'guest_dining_policy' => $_POST['restaurant']['guest_dining_policy'],
-            'dress_code' => $_POST['restaurant']['dress_code']
-        );
 
-
+        $serialize_data = array();
+        $serialize_data = $_POST['restaurant']['data'];
         $data = array(
             'title' => $_POST['restaurant']['title'],
             'description' => $_POST['restaurant']['description'],
-            'data' => serialize($data_content)
+            'data' => serialize($serialize_data)
         );
 
         $restaurant_id = $this->content->update_content_by_id($_POST['restaurant']['id'], $data);
@@ -109,16 +106,12 @@ class Restaurants extends MY_Controller {
     }
 
     public function submit() {
-        $data_content = array(
-            'guest_dining_policy' => $_POST['restaurant']['guest_dining_policy'],
-            'dress_code' => $_POST['restaurant']['dress_code']
-        );
-
-
+        $serialize_data = array();
+        $serialize_data = $_POST['restaurant']['data'];
         $data = array(
             'title' => $_POST['restaurant']['title'],
             'description' => $_POST['restaurant']['description'],
-            'data' => serialize($data_content)
+            'data' => serialize($serialize_data)
         );
 
         $restaurant_id = $this->content->add_content($data, $this->type);

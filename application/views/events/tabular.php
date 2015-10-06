@@ -28,7 +28,7 @@
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Short Description</th>
-                            <th>Email</th>
+                            <th>Reservation Email</th>
                             <th>Status</th>
                             <th>Action</th>
 

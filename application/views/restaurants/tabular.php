@@ -1,6 +1,6 @@
 <section class="content-header">
     <h1>
-        Restaurants
+        Outlets
     </h1>
 
 </section>
@@ -29,6 +29,8 @@
                             <th>Short Description</th>
                             <th>Dress Code</th>
                             <th>Guest's Dining Policy</th>
+                            <th>Enquire Now - Phone</th>
+                            <th>Enquire Now - Email </th>
                             <th>Status</th>
                             <th>Action</th>
 
@@ -44,6 +46,8 @@
                                 <td><?php echo(strlen($restaurant['description']) > 100) ? substr($restaurant['description'], 0, 97) . '...' : $restaurant['description']; ?></td>
                                 <td><?php echo!empty($data['dress_code']) ? $data['dress_code'] : ''; ?></td>
                                 <td><?php echo!empty($data['guest_dining_policy']) ? $data['guest_dining_policy'] : ''; ?></td>
+                                <td><?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?></td>
+                                <td><?php echo!empty($data['email']) ? $data['email'] : ''; ?></td>
                                 <td>
                                     <?php
                                     echo ($restaurant['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";

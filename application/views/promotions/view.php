@@ -25,10 +25,13 @@ $data = unserialize($promotion['data']);
                         </tr>
 
                         <tr>
-                            <th>Enquire Now:</th>
+                            <th>Enquire Now - Phone No.</th>
                             <td><?php echo $data['enquire']; ?></td>
                         </tr>
-
+                        <tr>
+                            <th>Enquire Now - Email</th>
+                            <td><?php echo $data['email']; ?></td>
+                        </tr>
                         <tr>
                             <th>Enquire Status:</th>
                             <td><?php echo (!empty($data['enquire_status']) && ($data['enquire_status'] == 'on')) ? 'ON' : 'OFF'; ?></td>
@@ -37,19 +40,7 @@ $data = unserialize($promotion['data']);
                             <th>Enquire Label:</th>
                             <td><?php echo $data['enquire_label']; ?></td>
                         </tr>
-                        <tr>
-                            <th>Email</th>
-                            <td><?php echo $data['email']; ?></td>
-                        </tr>
 
-                        <tr>
-                            <th>Email Status:</th>
-                            <td><?php echo (!empty($data['email_status']) && ($data['email_status'] == 'on')) ? 'ON' : 'OFF'; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Email Label:</th>
-                            <td><?php echo $data['email_label']; ?></td>
-                        </tr>
                         <tr>
                             <th>Publish Date</th>
                             <td><?php echo $data['publish_date']; ?></td>

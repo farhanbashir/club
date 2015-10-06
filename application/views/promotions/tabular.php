@@ -27,8 +27,8 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Short Description</th>
-                            <th>Enquire Now</th>
-                            <th>Email</th>
+                            <th>Enquire Now - Phone No.</th>
+                            <th>Enquire Now - Email</th>
                             <th>Status</th>
                             <th>Action</th>
 

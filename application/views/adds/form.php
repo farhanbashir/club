@@ -6,7 +6,7 @@ $data = unserialize($page['data']);
 
     <div class="row">
         <div class="col-xs-12">
-            <p class="lead">ADDS</p>
+            <p class="lead">Drama</p>
             <div class="col-xs-12">
                 <div class="col-xs-9">
                     <div class="table-responsive">
@@ -21,7 +21,7 @@ $data = unserialize($page['data']);
                                 <div class="box-body">
 
                                     <div class="form-group">
-                                        <label>Detailed description of ADDS</label>
+                                        <label>Detailed description of Drama</label>
                                         <textarea class="form-control" name="page[content]" id="page_description" placeholder="Enter ..."><?php echo!empty($page['content']) ? $page['content'] : ''; ?></textarea>
                                     </div>
                                     <div class="form-group">
@@ -29,32 +29,21 @@ $data = unserialize($page['data']);
                                         <textarea class="form-control" name="page[data][coming_up]" id="page_description" placeholder="Enter ..."><?php echo!empty($data['coming_up']) ? $data['coming_up'] : ''; ?></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label>Contact us</label>
+                                        <label>Enquire Now - Contact us</label>
                                         <input type="text" class="form-control" name="page[data][contact_us]" placeholder="Enter ..." value="<?php echo!empty($data['contact_us']) ? $data['contact_us'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Now - Email</label>
+                                        <input type="text" class="form-control" name="page[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Contact Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                        <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                                         <input type="checkbox" class="form-control" name="page[data][contact_status]" placeholder="Enter ..." <?php echo(!empty($data['contact_status']) && ($data['contact_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
                                     </div>
                                     <div class="form-group">
-                                        <label>Contact Label</label>
+                                        <label>Enquire Label</label>
                                         <input type="text" class="form-control" name="page[data][contact_label]" placeholder="Enter ..." value="<?php echo!empty($data['contact_label']) ? $data['contact_label'] : ''; ?>">
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control" name="page[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                                        <input type="checkbox" class="form-control" name="page[data][email_status]" placeholder="Enter ..." <?php echo(!empty($data['email_status']) && ($data['email_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Label</label>
-                                        <input type="text" class="form-control" name="page[data][email_label]" placeholder="Enter ..." value="<?php echo!empty($data['email_label']) ? $data['email_label'] : ''; ?>">
                                     </div>
                                     <div class="form-group">
                                         <div style="background: #f7f8fa;padding: 50px;">

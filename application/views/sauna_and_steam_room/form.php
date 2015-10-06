@@ -26,8 +26,12 @@ $pdf = $data['pdf'];
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Enquire Now</label>
+                                        <label>Enquire Now - Phone No.</label>
                                         <input type="text" class="form-control" name="page[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Now - Email</label>
+                                        <input type="text" class="form-control" name="page[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
@@ -37,37 +41,6 @@ $pdf = $data['pdf'];
                                         <label>Enquire Label</label>
                                         <input type="text" class="form-control" name="page[data][enquire_label]" placeholder="Enter ..." value="<?php echo!empty($data['enquire_label']) ? $data['enquire_label'] : ''; ?>">
                                     </div>
-
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control" name="page[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                                        <input type="checkbox" class="form-control" name="page[data][email_status]" placeholder="Enter ..." <?php echo(!empty($data['email_status']) && ($data['email_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Label</label>
-                                        <input type="text" class="form-control" name="page[data][email_label]" placeholder="Enter ..." value="<?php echo!empty($data['email_label']) ? $data['email_label'] : ''; ?>">
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label>PDF File</label>
-                                        <input type="file" name="pdf">
-                                    </div>
-
-                                    <?php if (!empty($pdf)) { ?>
-                                        <input type="hidden" name="page[pdf_file]" value="<?php echo $pdf ?>">
-                                        <div style="background: #f7f8fa;padding: 50px;">
-                                            <a class="pull-right pdf_delete delete_anything" href="<?php echo base_url() . 'index.php/admin/page/remove_pdf/' . $page['page_id'] . '/' . $page['key'] ?>">Delete</a>
-                                            <div style="margin: 0 auto 25px auto; width: 600px" >
-                                                <embed style="overflow: hidden; border: 2px #C8CBCE dashed; margin: 0 auto 0 auto;"  src="<?php echo $pdf; ?>" width="600" height="350" type='application/pdf'>
-                                            </div>
-                                        </div>
-                                    <?php } ?>
-
-                                    <div style="clear: both"></div>
 
                                     <div class="form-group">
                                         <div style="background: #f7f8fa;padding: 50px;">
