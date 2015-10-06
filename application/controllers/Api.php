@@ -217,6 +217,43 @@ class Api extends REST_Controller {
         return $return;
     }
 
+    function __enquireObject($data)
+    {
+        if(isset($data['email']) || isset($data['enquire']))
+        {
+            $temp = $data;
+            if(isset($temp['email']))
+            {
+                $data['enquire']['email'] = $temp['email'];
+                unset($data['email']);
+            }    
+                
+
+            if(isset($temp['enquire']))
+            {
+                $data['enquire']['phone'] = $temp['enquire'];
+                //unset($data['email']);
+            }    
+                
+
+            if(isset($temp['email_label']))
+            {
+                $data['enquire']['label'] = $temp['email_label'];
+                unset($data['email_label']);
+            }
+
+            if(isset($temp['email_status']))
+            {
+                $data['enquire']['status'] = $temp['email_status'];
+                unset($data['email_status']);
+            }    
+                
+        }   
+        
+        return $data;
+         
+    }
+
     function __makeContentData($type, $data)
     {
         $return = array();
@@ -1524,7 +1561,10 @@ class Api extends REST_Controller {
 
     function getInstagramImages_post()
     {
+        $key = 'members_gallery';
         $result = $this->members_gallery_images_model->get_all_images();
+        $post = $this->pagemodel->get_page_by_key($key);
+        
         //$result = $this->hash_tag_image->get_hashtag_images();
         
         if(count($result) > 0)
@@ -1533,6 +1573,12 @@ class Api extends REST_Controller {
             foreach($result as $res)
             {
                 $return['images'][] = $res['image'];
+            }
+
+            if(count($post) > 0)
+            {
+                $post = unserialize($post[0]['data']);
+                $return['description'] = $post['description'];
             }    
 
             $data["header"]["error"] = "0";
