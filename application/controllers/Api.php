@@ -222,31 +222,48 @@ class Api extends REST_Controller {
         if(isset($data['email']) || isset($data['enquire']))
         {
             $temp = $data;
+            
+            if(isset($temp['enquire']))
+            {
+                $data['enquiry']['phone'] = $temp['enquire'];
+                unset($data['enquire']);
+            }
+
             if(isset($temp['email']))
             {
-                $data['enquire']['email'] = $temp['email'];
+                $data['enquiry']['email'] = $temp['email'];
                 unset($data['email']);
             }    
                 
 
-            if(isset($temp['enquire']))
-            {
-                $data['enquire']['phone'] = $temp['enquire'];
-                //unset($data['email']);
-            }    
-                
-
+            
             if(isset($temp['email_label']))
             {
-                $data['enquire']['label'] = $temp['email_label'];
+                $data['enquiry']['label'] = $temp['email_label'];
                 unset($data['email_label']);
+            }
+
+            if(isset($temp['enquire_label']))
+            {
+                $data['enquiry']['label'] = $temp['enquire_label'];
+                unset($data['enquire_label']);
             }
 
             if(isset($temp['email_status']))
             {
-                $data['enquire']['status'] = $temp['email_status'];
+                $data['enquiry']['status'] = $temp['email_status'];
                 unset($data['email_status']);
+            }
+
+            if(isset($temp['enquire_status']))
+            {
+                $data['enquiry']['status'] = $temp['enquire_status'];
+                unset($data['enquire_status']);
             }    
+
+            //if status is not set
+            if(!isset($data['status']))
+                $data['enquiry']['status'] = 'off';
                 
         }   
         
@@ -269,7 +286,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }    
-                    
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     unset($return[$i]['content_type_id']);
                     unset($return[$i]['detail_description']);
@@ -290,7 +307,7 @@ class Api extends REST_Controller {
                     }
 
                     $return[$i]['description'] = $return[$i]['detail_description'];
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     unset($return[$i]['content_type_id']);
                     unset($return[$i]['detail_description']);
@@ -309,7 +326,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['start_date']);
                     unset($return[$i]['end_date']);
                     unset($return[$i]['data']);
@@ -329,6 +346,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['start_date']);
                     unset($return[$i]['end_date']);
                     unset($return[$i]['data']);
@@ -348,7 +366,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['start_date']);
                     unset($return[$i]['end_date']);
                     unset($return[$i]['data']);
@@ -368,7 +386,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['start_date']);
                     unset($return[$i]['end_date']);
                     unset($return[$i]['data']);
@@ -393,7 +411,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['end_date']);
                     unset($return[$i]['data']);
                     unset($return[$i]['content_type_id']);
@@ -412,7 +430,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     unset($return[$i]['content_type_id']);
                     unset($return[$i]['detail_description']);
@@ -430,7 +448,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     unset($return[$i]['content_type_id']);
                     unset($return[$i]['detail_description']);
@@ -448,7 +466,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     unset($return[$i]['start_date']);
                     unset($return[$i]['end_date']);
@@ -469,7 +487,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     unset($return[$i]['description']);
                     unset($return[$i]['start_date']);
@@ -490,7 +508,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     $i++;
                 }
                 break;
@@ -936,6 +954,14 @@ class Api extends REST_Controller {
                 }
             }    
             $return['images'] = $result_images;
+            
+            $additional_fields = unserialize($return['data']);
+            if(is_array($additional_fields))
+            {
+                $return = array_merge($return,$additional_fields);    
+            }
+
+            $return = $this->__enquireObject($return);
 
             unset($return['data']);
             unset($return['content_type_id']);
@@ -1028,6 +1054,14 @@ class Api extends REST_Controller {
                     $result_images[] = $value['path'].$value['name'];
                 }
             }    
+
+            $additional_fields = unserialize($return['data']);
+            if(is_array($additional_fields))
+            {
+                $return = array_merge($return,$additional_fields);    
+            }
+
+            $return = $this->__enquireObject($return);
             $return['images'] = $result_images;
             unset($return['data']);
             unset($return['content_type_id']);
@@ -1071,6 +1105,9 @@ class Api extends REST_Controller {
                 }
             }    
             $return['images'] = $result_images;
+            
+
+            $return = $this->__enquireObject($return);
 
             //removing unwanted fields
             unset($return['start_date']);
@@ -1119,7 +1156,13 @@ class Api extends REST_Controller {
                 }
             }    
             $return['images'] = $result_images;
+            $additional_fields = unserialize($return['data']);
+            if(is_array($additional_fields))
+            {
+                $return = array_merge($return,$additional_fields);    
+            }
 
+            $return = $this->__enquireObject($return);
             //removing unwanted fields
             unset($return['start_date']);
             unset($return['end_date']);
@@ -1164,6 +1207,14 @@ class Api extends REST_Controller {
                 }
             }    
             $return['images'] = $result_images;
+            $additional_fields = unserialize($return['data']);
+            if(is_array($additional_fields))
+            {
+                $return = array_merge($return,$additional_fields);    
+            }
+
+            $return = $this->__enquireObject($return);
+
             unset($return['data']);
             unset($return['content_type_id']);
             unset($return['detail_description']);
@@ -1204,6 +1255,14 @@ class Api extends REST_Controller {
                 }
             }    
             $return['images'] = $result_images;
+            $additional_fields = unserialize($return['data']);
+            if(is_array($additional_fields))
+            {
+                $return = array_merge($return,$additional_fields);    
+            }
+
+            $return = $this->__enquireObject($return);
+
             unset($return['data']);
             unset($return['start_date']);
             unset($return['end_date']);
@@ -1246,6 +1305,14 @@ class Api extends REST_Controller {
                 }
             }    
             $return['images'] = $result_images;
+            $additional_fields = unserialize($return['data']);
+            if(is_array($additional_fields))
+            {
+                $return = array_merge($return,$additional_fields);    
+            }
+
+            $return = $this->__enquireObject($return);
+
             unset($return['data']);
             unset($return['content_type_id']);
             unset($return['detail_description']);
@@ -1288,6 +1355,8 @@ class Api extends REST_Controller {
                 }
             }    
             $return['images'] = $result_images;
+            
+            $return = $this->__enquireObject($return);
 
             //removing unwanted fields
             unset($return['start_date']);
@@ -1335,6 +1404,8 @@ class Api extends REST_Controller {
                 }
             }    
             $return['images'] = $result_images;
+            
+            $return = $this->__enquireObject($return);
 
             //removing unwanted fields
             unset($return['start_date']);
@@ -1387,6 +1458,10 @@ class Api extends REST_Controller {
             {
                 $return['file'] = $pdf[0]['path'];    
             }
+
+            
+            $return = $this->__enquireObject($return);
+
             //removing unwanted fields
             //unset($return['start_date']);
             unset($return['end_date']);
@@ -1512,6 +1587,15 @@ class Api extends REST_Controller {
             }    
             $return['images'] = $result_images;
             $return['link'] = $result[0]['description'];
+            
+            $additional_fields = unserialize($return['data']);
+            if(is_array($additional_fields))
+            {
+                $return = array_merge($return,$additional_fields);    
+            }
+
+            $return = $this->__enquireObject($return);
+
             //removing unwanted fields
             //unset($return['start_date']);
             unset($return['end_date']);
@@ -1593,7 +1677,7 @@ class Api extends REST_Controller {
 
         $this->response($data);
         
-        debug($result,1);
+        
     }
 
 
