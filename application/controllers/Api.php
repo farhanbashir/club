@@ -31,6 +31,7 @@ class Api extends REST_Controller {
        $this->load->model('pagemodel','',TRUE);
        $this->load->model('sponsor_relation_model','',TRUE);
 	   $this->load->model('hash_tag_image','',TRUE);
+       $this->load->model('members_gallery_images_model', '', TRUE);
        $this->load->model('pdf', '', TRUE);
 	   //$this->load->model('news','',TRUE);
 	 }
@@ -1523,13 +1524,15 @@ class Api extends REST_Controller {
 
     function getInstagramImages_post()
     {
-        $result = $this->hash_tag_image->get_hashtag_images();
+        $result = $this->members_gallery_images_model->get_all_images();
+        //$result = $this->hash_tag_image->get_hashtag_images();
+        
         if(count($result) > 0)
         {
             $return = array();
             foreach($result as $res)
             {
-                $return[$res['hash_tag']][] = $res['image'];
+                $return['images'][] = $res['image'];
             }    
 
             $data["header"]["error"] = "0";
