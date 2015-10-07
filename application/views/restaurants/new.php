@@ -21,7 +21,28 @@
                                 <label>Title</label>
                                 <input type="text" class="form-control" name="restaurant[title]" placeholder="Enter ..." value="">
                             </div>
+                            <?php
+                            $outlet_types = array(
+                                1 => 'Vista Restaurant',
+                                2 => 'Waves Restaurant',
+                                3 => 'Main Restaurant',
+                                4 => 'None'
+                            );
+                            ?>
 
+
+                            <div class="form-group">
+                                <label>Reservation Outlet Type</label>
+
+                                <?php foreach ($outlet_types as $key => $val) { ?>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="restaurant[data][outlet_type]" id="optionsRadios1" value="<?php echo $key; ?>" <?php echo($key == 1) ? 'checked="checked"' : ''; ?>>
+                                            <?php echo $val; ?>
+                                        </label>
+                                    </div>                                
+                                <?php } ?>
+                            </div>
 
                             <div class="form-group">
                                 <label for="restaurant_short_description">Short Description</label>
@@ -37,6 +58,8 @@
                                 <label for="restaurant_guest_dining_policy">Guest's Dining Policy</label>
                                 <textarea class="form-control" id="restaurant_guest_dining_policy" name="restaurant[data][guest_dining_policy]" rows="3" placeholder="Enter ..."></textarea>
                             </div>
+
+
                             <div class="form-group">
                                 <label>Enquire Now - Phone No.</label>
                                 <input type="text" class="form-control" name="restaurant[data][enquire]" placeholder="Enter ..." >
