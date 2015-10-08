@@ -219,7 +219,7 @@ class Api extends REST_Controller {
 
     function __enquireObject($data)
     {
-        if(isset($data['email']) || isset($data['enquire']))
+        if(isset($data['email']) || isset($data['enquire']) || isset($data['enquire_now']))
         {
             $temp = $data;
             
@@ -227,6 +227,12 @@ class Api extends REST_Controller {
             {
                 $data['enquiry']['phone'] = $temp['enquire'];
                 unset($data['enquire']);
+            }
+
+            if(isset($temp['enquire_now']))
+            {
+                $data['enquiry']['phone'] = $temp['enquire_now'];
+                unset($data['enquire_now']);
             }
 
             if(isset($temp['email']))
@@ -262,7 +268,7 @@ class Api extends REST_Controller {
             }    
 
             //if status is not set
-            if(!isset($data['status']))
+            if(!isset($data['enquiry']['status']))
                 $data['enquiry']['status'] = 'off';
                 
         }   
@@ -627,7 +633,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     $i++;
                 }
@@ -648,7 +654,7 @@ class Api extends REST_Controller {
                         $return[$i]['file'] = $return[$i]['pdf'];
                         unset($return[$i]['pdf']);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     unset($return[$i]['content']);
                     $i++;
@@ -670,7 +676,7 @@ class Api extends REST_Controller {
                         $return[$i]['file'] = $return[$i]['pdf'];
                         unset($return[$i]['pdf']);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     unset($return[$i]['content']);
                     $i++;
@@ -687,7 +693,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     $i++;
                 }
@@ -703,7 +709,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     $i++;
                 }
@@ -719,7 +725,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     $i++;
                 }
@@ -735,7 +741,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     $i++;
                 }
@@ -751,7 +757,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     $i++;
                 }
@@ -767,7 +773,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     $i++;
                 }
@@ -794,7 +800,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i]['enquire'] = $additional_fields['enquire'];
                     }    
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
                     $i++;
                 }
@@ -821,6 +827,7 @@ class Api extends REST_Controller {
                             'detail_description' => $new['detail_description'],
                         );
                     }
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     //$return[$i]['news'] = $news;
                     unset($return[$i]['data']);
                     $i++;
@@ -848,6 +855,7 @@ class Api extends REST_Controller {
                             'detail_description' => $new['detail_description'],
                         );
                     }
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     //$return[$i]['news'] = $news;
                     unset($return[$i]['data']);
                     $i++;
@@ -875,6 +883,7 @@ class Api extends REST_Controller {
                             'detail_description' => $new['detail_description'],
                         );
                     }
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     //$return[$i]['news'] = $news;
                     unset($return[$i]['data']);
                     $i++;
@@ -902,6 +911,7 @@ class Api extends REST_Controller {
                             'detail_description' => $new['detail_description'],
                         );
                     }
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     //$return[$i]['news'] = $news;
                     unset($return[$i]['data']);
                     $i++;
@@ -918,7 +928,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-
+                    $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);    
                     $i++;
                 }
