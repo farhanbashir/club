@@ -1,5 +1,11 @@
 <?php
 $data = unserialize($restaurant['data']);
+$outlet_types = array(
+    1 => 'Vista Restaurant',
+    2 => 'Waves Restaurant',
+    3 => 'Main Restaurant',
+    4 => 'None'
+);
 ?>
 <!-- Main content -->
 <section class="content">
@@ -17,10 +23,14 @@ $data = unserialize($restaurant['data']);
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th>Title:</th>
+                            <th>Title</th>
                             <td><?php echo $restaurant['title']; ?></td>
                         </tr>
 
+                        <tr>
+                            <th>Reservation Outlet Type</th>
+                            <td><?php echo!empty($data['outlet_type']) ? $outlet_types[$data['outlet_type']] : ''; ?></td>
+                        </tr>
                         <tr>
                             <th>Short Description</th>
                             <td><?php echo $restaurant['description']; ?></td>

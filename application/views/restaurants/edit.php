@@ -27,7 +27,27 @@ $data = unserialize($restaurant['data']);
                                         <input type="text" class="form-control" name="restaurant[title]" placeholder="Enter ..." value="<?php echo $restaurant['title']; ?>">
                                     </div>
 
+                                    <?php
+                                    $outlet_types = array(
+                                        1 => 'Vista Restaurant',
+                                        2 => 'Waves Restaurant',
+                                        3 => 'Main Restaurant',
+                                        4 => 'None'
+                                    );
+                                    ?>
 
+                                    <div class="form-group">
+                                        <label>Reservation Outlet Type</label>
+
+                                        <?php foreach ($outlet_types as $key => $val) { ?>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="restaurant[data][outlet_type]" id="optionsRadios1" value="<?php echo $key; ?>" <?php echo((!empty($data['outlet_type']) && $data['outlet_type'] == $key)) ? 'checked="checked"' : ''; ?>>
+                                                    <?php echo $val; ?>
+                                                </label>
+                                            </div>                                
+                                        <?php } ?>
+                                    </div>
                                     <div class="form-group">
                                         <label for="restaurant_short_description">Short Description</label>
                                         <textarea class="form-control" id="restaurant_short_description" name="restaurant[description]" rows="3" placeholder="Enter ..."><?php echo $restaurant['description']; ?></textarea>
@@ -42,6 +62,8 @@ $data = unserialize($restaurant['data']);
                                         <label for="restaurant_guest_dining_policy">Guest's Dining Policy</label>
                                         <textarea class="form-control" id="restaurant_guest_dining_policy" name="restaurant[data][guest_dining_policy]" rows="3" placeholder="Enter ..."><?php echo!empty($data['guest_dining_policy']) ? $data['guest_dining_policy'] : ''; ?></textarea>
                                     </div>
+
+
 
                                     <div class="form-group">
                                         <label>Enquire Now - Phone No.</label>
