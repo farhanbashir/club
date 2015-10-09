@@ -626,8 +626,8 @@ class Api extends REST_Controller {
                 $i=0;
                 $return = $data;
                 foreach ($return as $key => $value) {
-                    // $images = $this->getImagesArray($value['page_id'],'page');
-                    // $return[$i]['images'] = $images;
+                     $images = $this->getImagesArray($value['page_id'],'page');
+                     $return[$i]['images'] = $images;
                     $additional_fields = unserialize($return[$i]['data']);
                     if(is_array($additional_fields))
                     {
@@ -1636,13 +1636,51 @@ class Api extends REST_Controller {
             $this->response($data,400);
         }
 
-        $result = $this->sponsor_relation_model->get_sponsor_by_page($page);
-        
+        //$result = $this->sponsor_relation_model->get_sponsor_by_page($page);
+        $result = $this->content->get_content_by_type('sponsor_pages');
+
         if(count($result) > 0)
         {
-            $data["header"]["error"] = "0";
+            $return = array();
+            foreach($result as $res)
+            {
+                $temp = unserialize($res['data']);
+                if($temp['page'] == $page)
+                {
+                    $images = $this->image->get_images_by_content_id($res['content_id']);
+                    // unset($res['content_id']);
+                    // unset($res['content_type_id']);
+                    // unset($res['description']);
+                    // unset($res['detail_description']);
+                    // unset($res['end_date']);
+                    // unset($res['start_date']);
+                    // unset($res['data']);
+                    // unset($res['content_type_name']);
+                    $return['page'] = $page;
+                    $return['name'] = $res['title'];
+                    $return['is_active'] = $res['is_active'];
+                    
+
+                    foreach ($images as $image) {
+                        $return['images'] = $image['path'] . $image['name'];
+                    }
+                    
+                }    
+            }
+
+            if(count($return) > 0)
+            {
+                $data["header"]["error"] = "0";
             
-            $data["body"] = $result;
+                $data["body"] = $return;    
+            }   
+            else
+            {
+                $data["header"]["error"] = "1";
+                $data["header"]["message"] = "No record found.";       
+            }    
+            
+            
         }
         else
         {
