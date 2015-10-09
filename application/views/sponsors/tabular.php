@@ -27,6 +27,7 @@
                             <th>Title</th>
                             <th>Detailed Description</th>
                             <th>Link</th>
+                            <th>Status</th>
                             <th>Action</th>
 
                         </tr>
@@ -38,6 +39,11 @@
                                 <td><?php echo $sponsor['title']; ?></td>
                                 <td><?php echo $sponsor['detail_description']; ?></td>
                                 <td><?php echo $sponsor['description']; ?></td>
+                                <td>
+                                    <?php
+                                    echo ($sponsor['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";
+                                    ?>
+                                </td>
 
                                 <td>
                                     <a href="<?php echo base_url(); ?>index.php/admin/sponsors/view/<?php echo $sponsor['content_id']; ?>">View</a>
