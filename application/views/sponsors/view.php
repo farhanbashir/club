@@ -7,7 +7,7 @@
             <p class="lead col-xs-6">Sponsor # <?php echo ucfirst($sponsor['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/sponsors/delete/' . $sponsor['content_id']) ?>"><button class="btn btn-danger pull-right delete_anything" style="margin:10px ">Delete</button></a>
+                 <a href="<?php echo site_url('admin/sponsors/delete/' . $sponsor['content_id'] . '/' . (($sponsor['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($sponsor['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($sponsor['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
 
             <div class="table-responsive">
                 <table class="table">

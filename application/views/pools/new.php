@@ -26,13 +26,13 @@
                                 <label>Pool Type</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="pool[type]" id="optionsRadios1" value="Main Pool" checked="checked">
+                                        <input type="radio" name="pool[data][type]" id="optionsRadios1" value="Main Pool" checked="checked">
                                         Main Pool
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="pool[type]" id="optionsRadios2" value="Kid Pool">
+                                        <input type="radio" name="pool[data][type]" id="optionsRadios2" value="Kid Pool">
                                         Kid Pool
                                     </label>
                                 </div>

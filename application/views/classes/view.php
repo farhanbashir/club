@@ -64,7 +64,6 @@ if (!empty($data['day'])) {
                     </tbody></table>
 
 
-
             </div>
         </div>
         <div class="col-md-6">

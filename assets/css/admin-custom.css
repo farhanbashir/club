@@ -73,3 +73,12 @@ ul.products-list
     border: 7px solid #DAD189;
     margin: 10px;
 }
+
+.dropdown-menu > li > a {
+        color: #987C17 !important;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #DAD189 !important;
+    color: #ffffff !important;
+}

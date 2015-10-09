@@ -50,7 +50,11 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/sponsors/edit/<?php echo $sponsor['content_id']; ?>">Edit</a>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a href="<?php echo base_url(); ?>index.php/admin/sponsors/delete/<?php echo $sponsor['content_id']; ?>" class="delete_anything">Delete</a>
+                                    <a href="<?php echo base_url(); ?>index.php/admin/sponsors/delete/<?php echo $sponsor['content_id']; ?>/<?php echo ($sponsor['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
+                                        <?php
+                                        echo ($sponsor['is_active'] == 1) ? "Deactivate" : "Activate";
+                                        ?>
+                                    </a>
                                 </td> 
                             </tr>
                             <?php
