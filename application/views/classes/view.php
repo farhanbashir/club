@@ -38,6 +38,28 @@ if (!empty($data['day'])) {
                             <th>Time</th>
                             <td><?php echo!empty($data['time']) ? $data['time'] : ''; ?></td>
                         </tr>
+                        
+                        <tr>
+                            <th>Enquire Now - Phone No.</th>
+                            <td><?php echo $data['enquire']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Enquire Now - Email</th>
+                            <td><?php echo $data['email']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Enquire Status:</th>
+                            <td><?php echo (!empty($data['enquire_status']) && ($data['enquire_status'] == 'on')) ? 'ON' : 'OFF'; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Enquire Label:</th>
+                            <td><?php echo $data['enquire_label']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Publish Date</th>
+                            <td><?php echo $data['publish_date']; ?></td>
+                        </tr>
+
 
                     </tbody></table>
 

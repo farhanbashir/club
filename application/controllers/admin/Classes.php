@@ -95,8 +95,6 @@ class Classes extends MY_Controller {
 
         $serialize_data = array();
         $serialize_data = $_POST['class']['data'];
-        $serialize_data['day'] = $_POST['class']['days'];
-        $serialize_data['time'] = $_POST['class']['time'];
 
 
         $data = array(
@@ -132,9 +130,6 @@ class Classes extends MY_Controller {
 
         $serialize_data = array();
         $serialize_data = $_POST['class']['data'];
-        $serialize_data['day'] = $_POST['class']['days'];
-        $serialize_data['time'] = $_POST['class']['time'];
-
 
         $data = array(
             'title' => $_POST['class']['title'],
