@@ -27,6 +27,7 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Page</th>
+                            <th>Detailed Description</th>
                             <th>Action</th>
 
                         </tr>
@@ -39,6 +40,7 @@
                             <td><?php echo $sponsor_page['content_id']; ?></td>
                             <td><?php echo $sponsor_page['title']; ?></td>
                             <td><?php echo!empty($data['page']) ? $data['page'] : ''; ?></td>
+                            <td><?php echo $sponsor_page['detail_description']; ?></td>
                             <td>
                                 <?php
                                 echo ($sponsor_page['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";

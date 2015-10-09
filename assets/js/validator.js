@@ -64,13 +64,6 @@ jQuery(document).ready(function () {
             "course[detail_description]": {
                 required: true,
             },
-            "course[data][enquire]": {
-                required: true,
-            },
-            "course[data][email]": {
-                required: true,
-                email: true
-            },
         },
         messages: {
             "course[title]": {
@@ -84,13 +77,6 @@ jQuery(document).ready(function () {
             },
             "course[detail_description]": {
                 required: "Please provide discription.",
-            },
-            "course[data][enquire]": {
-                required: "Please provide enquire now.",
-            },
-            "course[data][email]": {
-                required: "Please provide email.",
-                email: "Please provide valid email."
             },
         },
     });
@@ -233,9 +219,6 @@ jQuery(document).ready(function () {
             "pool[type]": {
                 required: true,
             },
-            "pool[enquire]": {
-                required: true,
-            },
         },
         messages: {
             "pool[title]": {
@@ -248,9 +231,6 @@ jQuery(document).ready(function () {
             },
             "pool[type]": {
                 required: "Please provide dress code.",
-            },
-            "pool[enquire]": {
-                required: "Please provide Enquire No.",
             },
         },
     });
@@ -269,9 +249,6 @@ jQuery(document).ready(function () {
             "beach[type]": {
                 required: true,
             },
-            "beach[enquire]": {
-                required: true,
-            },
         },
         messages: {
             "beach[title]": {
@@ -284,9 +261,6 @@ jQuery(document).ready(function () {
             },
             "beach[type]": {
                 required: "Please provide dress code.",
-            },
-            "beach[enquire]": {
-                required: "Please provide Enquire No.",
             },
         },
     });
