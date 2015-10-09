@@ -38,10 +38,10 @@ $data = unserialize($sponsor_page['data']);
                                         </select>
                                     </div>
                                     
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="sponsor_page_short_description">Detailed Description</label>
                                         <textarea class="form-control" id="sponsor_page_short_description" name="sponsor_page[detail_description]" rows="3" placeholder="Enter ..."><?php echo $sponsor_page['detail_description']; ?></textarea>
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <label>Image</label>

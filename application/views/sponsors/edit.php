@@ -31,6 +31,11 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="sponsor_page_short_description">Detailed Description</label>
+                                        <textarea class="form-control" id="sponsor_page_short_description" name="sponsor[detail_description]" rows="3" placeholder="Enter ..."><?php echo $sponsor['detail_description']; ?></textarea>
+                                    </div>
+
+                                    <div class="form-group">
                                         <div style="background: #f7f8fa;padding: 50px;">
 
                                             <input type="file" multiple="multiple" name="userfile" id="input2">

@@ -23,10 +23,10 @@ $data = unserialize($sponsor_page['data']);
                             <td><?php echo!empty($data['page']) ? $data['page'] : ''; ?></td>
                         </tr>
                       
-                        <tr>
+                        <!-- <tr>
                             <th>Detailed Description</th>
                             <td> <?php echo $sponsor_page['detail_description']; ?></td>
-                        </tr>
+                        </tr> -->
                     </tbody></table>
 
 

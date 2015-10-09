@@ -25,6 +25,7 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
+                            <th>Detailed Description</th>
                             <th>Link</th>
                             <th>Action</th>
 
@@ -35,6 +36,7 @@
                             <tr>
                                 <td><?php echo $sponsor['content_id']; ?></td>
                                 <td><?php echo $sponsor['title']; ?></td>
+                                <td><?php echo $sponsor['detail_description']; ?></td>
                                 <td><?php echo $sponsor['description']; ?></td>
 
                                 <td>

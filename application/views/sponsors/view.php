@@ -17,6 +17,10 @@
                             <td><?php echo $sponsor_relation['title']; ?></td>
                         </tr>
                         <tr>
+                            <th>Detailed Description</th>
+                            <td> <?php echo $sponsor_relation['detail_description']; ?></td>
+                        </tr>
+                        <tr>
                             <th>Link</th>
                             <td><?php echo $sponsor_relation['description']; ?></td>
                         </tr>

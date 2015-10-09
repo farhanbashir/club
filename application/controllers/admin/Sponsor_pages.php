@@ -88,7 +88,7 @@ class Sponsor_pages extends MY_Controller {
         );
         $data = array(
             'title' => $_POST['sponsor_page']['title'],
-            'detail_description' => $_POST['sponsor_page']['detail_description'],
+            //'detail_description' => $_POST['sponsor_page']['detail_description'],
             'data' => serialize($data_page)
         );
 
@@ -115,7 +115,7 @@ class Sponsor_pages extends MY_Controller {
         );
         $data = array(
             'title' => $_POST['sponsor_page']['title'],
-            'detail_description' => $_POST['sponsor_page']['detail_description'],
+            //'detail_description' => $_POST['sponsor_page']['detail_description'],
             'data' => serialize($data_page)
         );
 

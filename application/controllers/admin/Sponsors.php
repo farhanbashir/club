@@ -84,6 +84,7 @@ class Sponsors extends MY_Controller {
         $data = array(
             'title' => $_POST['sponsor']['title'],
             'description' => $_POST['sponsor']['link'],
+            'detail_description' => $_POST['sponsor']['detail_description'],
         );
 
         $sponsor_id = $this->content->update_content_by_id($_POST['sponsor']['id'], $data);
@@ -106,6 +107,7 @@ class Sponsors extends MY_Controller {
         $data = array(
             'title' => $_POST['sponsor']['title'],
             'description' => $_POST['sponsor']['link'],
+            'detail_description' => $_POST['sponsor']['detail_description'],
         );
 
         $sponsor_id = $this->content->add_content($data, $this->type);

@@ -27,6 +27,10 @@
                                 <input type="text" class="form-control" id="sponsor_link" name="sponsor[link]" rows="3" placeholder="Enter ...">
                             </div>
 
+                            <div class="form-group">
+                                <label for="sponsor_page_short_description">Detailed Description</label>
+                                <textarea class="form-control" id="sponsor_page_short_description" name="sponsor[detail_description]" rows="3" placeholder="Enter ..."></textarea>
+                            </div>
 
 
                             <div class="form-group">
