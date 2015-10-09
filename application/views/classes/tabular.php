@@ -31,6 +31,8 @@
                             <th>Time</th>
                             <th>Date</th>
                             <th>Short Description</th>
+                            <th>Enquire Now - Phone No.</th>
+                            <th>Enquire Now - Email</th>
                             <th>Status</th>
                             <th>Action</th>
 
@@ -50,6 +52,8 @@
                                 <td><?php echo!empty($data['time']) ? $data['time'] : ''; ?></td>
                                 <td><?php echo $class['start_date']; ?></td>
                                 <td><?php echo(strlen($class['description']) > 100) ? substr($class['description'], 0, 97) . '...' : $class['description']; ?></td>
+                                 <td><?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?></td>
+                                <td><?php echo!empty($data['email']) ? $data['email'] : ''; ?></td>
                                 <td>
                                     <?php
                                     echo ($class['is_active'] == 1) ? "<span class='label label-success'>Active</span>" : "<span class='label label-danger'>Inactive</span>";

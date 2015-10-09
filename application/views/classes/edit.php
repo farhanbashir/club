@@ -45,9 +45,9 @@ $data = unserialize($class['data']);
 
                                     <div class="form-group">
                                         <label>Days</label>
-                                        <select id="multiple_select" name="class[days][]" class="form-control select2" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        <select id="multiple_select" name="class[data][day][]" class="form-control select2" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                             <?php foreach ($days as $day) { ?>
-                                                <option value="<?php echo $day ?>" <?php echo in_array($day, $data['day']) ? 'selected' : '' ?>><?php echo $day ?></option>
+                                                <option value="<?php echo $day ?>" <?php echo!empty($data['day']) ? (in_array($day, $data['day']) ? 'selected' : '') : '' ?>><?php echo $day ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -56,13 +56,30 @@ $data = unserialize($class['data']);
                                     <div class="form-group">
                                         <label>Time</label>
                                         <div class="input-group">
-                                            <input id="time_picker" name="class[time]" type="text" class="form-control timepicker"value="<?php echo!empty($data['time']) ? $data['time'] : '' ?>">
+                                            <input id="time_picker" name="class[data][time]" type="text" class="form-control timepicker"value="<?php echo!empty($data['time']) ? $data['time'] : '' ?>">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-clock-o"></i>
                                             </div>
                                         </div><!-- /.input group -->
                                     </div>
 
+                                     <div class="form-group">
+                                        <label>Enquire Now - Phone No.</label>
+                                        <input type="text" class="form-control" name="class[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Now - Email</label>
+                                        <input type="text" class="form-control" name="class[data][email]" placeholder="Enter ..." value="<?php echo!empty($data['email']) ? $data['email'] : ''; ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                        <input type="checkbox" class="form-control" name="class[data][enquire_status]" placeholder="Enter ..." <?php echo(!empty($data['enquire_status']) && ($data['enquire_status'] == 'on')) ? 'checked="checked"' : ''; ?>> ON/OFF
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enquire Label</label>
+                                        <input type="text" class="form-control" name="class[data][enquire_label]" placeholder="Enter ..." value="<?php echo!empty($data['enquire_label']) ? $data['enquire_label'] : ''; ?>">
+                                    </div>
+                                    
                                     <div class="form-group">
                                         <label>PDF File</label>
                                         <input type="file" name="pdf">
@@ -70,7 +87,7 @@ $data = unserialize($class['data']);
 
                                     <?php if (!empty($class['pdf'])) { ?>
                                         <div style="background: #f7f8fa;padding: 50px;">
-                                            <a class="pull-right pdf_delete delete_anything" href="<?php echo base_url() . 'index.php/admin/classes/remove_pdf/' . $class['pdf']['pdf_id'] . '/' . $class['content_id'].'/edit'   ?>">Delete</a>
+                                            <a class="pull-right pdf_delete delete_anything" href="<?php echo base_url() . 'index.php/admin/classes/remove_pdf/' . $class['pdf']['pdf_id'] . '/' . $class['content_id'] . '/edit' ?>">Delete</a>
                                             <div style="margin: 0 auto 25px auto; width: 600px" >
                                                 <embed style="overflow: hidden; border: 2px #C8CBCE dashed; margin: 0 auto 0 auto;"  src="<?php echo $class['pdf']['path']; ?>" width="600" height="350" type='application/pdf'>
                                             </div>
@@ -91,7 +108,7 @@ $data = unserialize($class['data']);
                                     </div><!-- /.box-body -->
                                     <div class="form-group">
                                         <label for="publish_date">Publish Date</label>
-                                        <input id="publish_date" class="form-control" name="class[data][publish_date]" placeholder="Enter ..." value="<?php echo !empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
+                                        <input id="publish_date" class="form-control" name="class[data][publish_date]" placeholder="Enter ..." value="<?php echo!empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
                                     </div>
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Submit</button>

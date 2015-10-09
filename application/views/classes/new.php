@@ -34,7 +34,7 @@
 
                             <div class="form-group">
                                 <label>Days</label>
-                                <select id="multiple_select" name="class[days][]" class="form-control select2" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <select id="multiple_select" name="class[data][day][]" class="form-control select2" multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                     <option value="Monday" >Monday</option>
                                     <option value="Tuesday">Tuesday</option>
                                     <option value="Wednesday">Wednesday</option>
@@ -49,13 +49,32 @@
                             <div class="form-group">
                                 <label>Time</label>
                                 <div class="input-group">
-                                    <input id="time_picker" name="class[time]" type="text" class="form-control timepicker">
+                                    <input id="time_picker" name="class[data][time]" type="text" class="form-control timepicker">
                                     <div class="input-group-addon">
                                         <i class="fa fa-clock-o"></i>
                                     </div>
                                 </div><!-- /.input group -->
                             </div>
 
+                            
+                            <div class="form-group">
+                                <label>Enquire Now - Enquire Now</label>
+                                <input type="text" class="form-control" name="class[data][enquire]" placeholder="Enter ..." >
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Now - Email</label>
+                                <input type="text" class="form-control" name="class[data][email]" placeholder="Enter ..." >
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Status</label> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                <input type="checkbox" class="form-control" name="class[data][enquire_status]" placeholder="Enter ..." > ON/OFF
+                            </div>
+                            <div class="form-group">
+                                <label>Enquire Label</label>
+                                <input type="text" class="form-control" name="class[data][enquire_label]" placeholder="Enter ..." >
+                            </div>
+
+                            
                             <div class="form-group">
                                 <label>PDF File</label>
                                 <input type="file" name="pdf">
