@@ -488,6 +488,7 @@ class Api extends REST_Controller {
                     $images = $this->getImagesArray($value['content_id']);
                     $return[$i]['images'] = $images;
                     $return[$i]['link'] = $return[$i]['description'];
+                    $return[$i]['description'] = $return[$i]['detail_description'];
                     $additional_fields = unserialize($return[$i]['data']);
                     if(is_array($additional_fields))
                     {
@@ -495,7 +496,7 @@ class Api extends REST_Controller {
                     }
                     $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['data']);
-                    unset($return[$i]['description']);
+                    //unset($return[$i]['description']);
                     unset($return[$i]['start_date']);
                     unset($return[$i]['end_date']);
                     unset($return[$i]['content_type_id']);
@@ -1642,6 +1643,7 @@ class Api extends REST_Controller {
         if(count($result) > 0)
         {
             $return = array();
+            $i=0;
             foreach($result as $res)
             {
                 $temp = unserialize($res['data']);
@@ -1656,16 +1658,17 @@ class Api extends REST_Controller {
                     // unset($res['start_date']);
                     // unset($res['data']);
                     // unset($res['content_type_name']);
-                    $return['page'] = $page;
-                    $return['name'] = $res['title'];
-                    $return['is_active'] = $res['is_active'];
+                    $return[$i]['page'] = $page;
+                    $return[$i]['name'] = $res['title'];
+                    $return[$i]['is_active'] = $res['is_active'];
                     
 
                     foreach ($images as $image) {
-                        $return['images'] = $image['path'] . $image['name'];
+                        $return[$i]['images'] = $image['path'] . $image['name'];
                     }
                     
                 }    
+                $i++;
             }
 
             if(count($return) > 0)
