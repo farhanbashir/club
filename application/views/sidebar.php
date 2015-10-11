@@ -59,7 +59,7 @@
                 <li><a href="<?php echo site_url('admin/page/library') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Library</a></li>
                 <li><a href="<?php echo site_url('admin/page/tennis') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Tennis</a></li>
                 <li><a href="<?php echo site_url('admin/page/squash_and_racketball') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Squash & Racketball</a></li>
-                <li><a href="<?php echo site_url('admin/page/badminton') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Bedminton</a></li>
+                <li><a href="<?php echo site_url('admin/page/badminton') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Badminton</a></li>
                 <li><a href="<?php echo site_url('admin/page/sailing') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Sailing</a></li>
                 <li><a href="<?php echo site_url('admin/page/diving') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Diving</a></li>
                 <li><a href="<?php echo site_url('admin/page/football') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Football</a></li>
@@ -100,12 +100,12 @@
         </li>
         <li class="treeview">
             <a href="#">
-                <i class="fa fa-edit"></i> <span>Sponsers</span>
+                <i class="fa fa-edit"></i> <span>Sponsors</span>
                 <i class="fa pull-right fa-angle-left"></i>
             </a>
             <ul class="treeview-menu" style="display: none;">
                 <li><a href="<?php echo site_url('admin/sponsors/') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>All Sponsors</a></li>
-                <li><a href="<?php echo site_url('admin/sponsor_pages') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Sponser Page</a></li>
+                <li><a href="<?php echo site_url('admin/sponsor_pages') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Sponsor Page</a></li>
                 <!--<li><a href="<?php // echo site_url('welcome/babies')   ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Babies List</a></li>-->
             </ul>
         </li>
