@@ -1666,9 +1666,9 @@ class Api extends REST_Controller {
                     foreach ($images as $image) {
                         $return[$i]['images'] = $image['path'] . $image['name'];
                     }
-                    
+                $i++;    
                 }    
-                $i++;
+                
             }
 
             if(count($return) > 0)
