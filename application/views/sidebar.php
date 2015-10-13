@@ -131,6 +131,15 @@
                 <li><a href="<?php echo site_url('admin/page/members_gallery') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Member's Snaps</a></li>
             </ul>
         </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-edit"></i> <span>Notifications</span>
+                <i class="fa pull-right fa-angle-left"></i>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+                <li><a href="<?php echo site_url('admin/notification') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Send Notification</a></li>
+            </ul>
+        </li>
         <!--        <li class="active">-->
         <!--            <a href="--><?php //echo site_url('admin/pages')   ?><!--">-->
         <!--                <i class="fa fa-dashboard"></i> <span>Pages</span>-->
