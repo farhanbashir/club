@@ -21,6 +21,7 @@ class Notification extends MY_Controller {
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
     public $type = 'classes';
+    public $receivers = array("All Users","Android Only","Iphone Only");
 
     function __construct() {
         parent::__construct();
@@ -46,6 +47,7 @@ class Notification extends MY_Controller {
 
         $notifications = $this->notifications->get_notifications($page);
         $data['notifications'] = $notifications;
+        $data['receivers'] = $this->receivers;
         $content = $this->load->view('notifications/tabular.php', $data, true);
         $this->load->view('welcome_message', array('content' => $content));
     }

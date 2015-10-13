@@ -38,7 +38,7 @@
                             <tr>
                                 <td><?php echo $notification['notification_id']; ?></td>
                                 <td><?php echo $notification['datetime']; ?></td>
-                                <td><?php echo $notification['send_to']; ?></td>
+                                <td><?php echo $receivers[$notification['send_to']]; ?></td>
                                 <td><?php echo $notification['notification']; ?></td>
                             </tr>
                             <?php
