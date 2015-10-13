@@ -1029,11 +1029,71 @@ class Api extends REST_Controller {
     function reservationForm_post()
     {
         $type = $this->post('type');
-        $membership = $this->post('membership');
-        $email = $this->post('email');
-        $first_name = $this->post('first_name');
-        $last_name = $this->post('last_name');
-        $content_id = $this->post('content_id');
+        
+        if(!$type)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide reservation type";
+            $this->response($data,400);
+        }
+
+        switch($type){
+            case 'outlet':
+                $outlet_type = $this->post('outlet_type');
+                if(!$outlet_type)
+                {
+                    $data["header"]["error"] = "1";
+                    $data["header"]["message"] = "Please provide outlet type";
+                    $this->response($data,400);
+                }
+                switch ($outlet_type) {
+                    case 'vista':
+                        # code...
+                        $name = $this->post('name');
+                        $membership = $this->post('membership');
+                        $date_time = $this->post('date_time');
+                        $seating_option = $this->post('seating_option');
+                        $adults = $this->post('adults');
+                        $juniors = $this->post('juniors');
+                        $special_ocassion = $this->post('special_ocassion');
+                        break;
+
+                    case 'waves':
+                        # code...
+                        $name = $this->post('name');
+                        $membership = $this->post('membership');
+                        $date_time = $this->post('date_time');
+                        $seating_option = $this->post('seating_option');
+                        $adults = $this->post('adults');
+                        $juniors = $this->post('juniors');
+                        $special_ocassion = $this->post('special_ocassion');
+                        break; 
+                        
+                    case 'main':
+                        # code...
+                        $name = $this->post('name');
+                        $membership = $this->post('membership');
+                        $date_time = $this->post('date_time');
+                        $seating_option = $this->post('seating_option');
+                        $adults = $this->post('adults');
+                        $juniors = $this->post('juniors');
+                        $special_ocassion = $this->post('special_ocassion');
+                        break;       
+                    
+                    default:
+                        # code...
+                        break;
+                }
+                break;
+            default:
+            break;
+        }
+        
+        // $membership = $this->post('membership');
+        // $email = $this->post('email');
+        // $first_name = $this->post('first_name');
+        // $last_name = $this->post('last_name');
+        // $content_id = $this->post('content_id');
 
         $data["header"]["error"] = "0";
         $data["header"]["message"] = "Admin will contact you";
