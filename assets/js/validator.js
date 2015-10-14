@@ -414,4 +414,20 @@ jQuery(document).ready(function () {
         },
     });
 
+    jQuery("#add_notification").validate({
+        rules: {
+            "notification": {
+                required: true,
+                maxlength: 160
+            },
+        },
+        messages: {
+            "notification": {
+                required: "Please provide text for notification",
+                maxlength: "Only 160 characters allowed"
+            },
+        },
+    });
+
+
 });

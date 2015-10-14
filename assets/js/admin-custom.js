@@ -1,4 +1,27 @@
 $(document).ready(function () {
+    counter = function () {
+        var value = $('#notification_short_description').val();
+
+        if (value.length == 0) {
+            $('#totalChars').html(0);
+            return;
+        }
+
+        var totalChars = value.length;
+        $('#totalChars').html(totalChars);
+
+    };
+
+    $(document).ready(function () {
+        $('#count').click(counter);
+        $('#notification_short_description').change(counter);
+        $('#notification_short_description').keydown(counter);
+        $('#notification_short_description').keypress(counter);
+        $('#notification_short_description').keyup(counter);
+        $('#notification_short_description').blur(counter);
+        $('#notification_short_description').focus(counter);
+    });
+
     $("#search_images").click(function ()
     {
         if (jQuery("#club_members_gallery").valid() == true) {
@@ -129,7 +152,7 @@ $(document).ready(function () {
 
     $("textarea").attr('rows', '10');
 
-    $('textarea').wysihtml5({
+    $('textarea').not("#notification_short_description").wysihtml5({
         "image": false
     });
 
