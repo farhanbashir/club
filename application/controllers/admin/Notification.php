@@ -26,6 +26,7 @@ class Notification extends MY_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('notifications', '', TRUE);
+        $this->load->model('device', '', TRUE);
         
         if (!$this->session->userdata('logged_in')) {
             redirect(base_url());
@@ -59,6 +60,7 @@ class Notification extends MY_Controller {
 
     public function submit() {
 
+        set_time_limit(0);
         $data = array(
             'send_to' => $_POST['send_to'],
             'notification' => $_POST['notification'],
@@ -66,7 +68,62 @@ class Notification extends MY_Controller {
 
         $notification_id = $this->notifications->add_notification($data);
 
+        //$this->send_notifications($data['send_to'],$data['notification']);
+
         redirect(site_url('admin/notification'));
+    }
+
+    private function send_notifications($send_to, $notification)
+    {
+        $file_url = asset_url("files/".$this->config->item('pem'));
+        
+        if($send_to == 0)
+        {
+            $devices = $this->device->get_all_devices();
+            if(count($devices) > 0)
+            {
+                foreach ($devices as $device) {
+                       if($device['type'] == 0 && isset($device['uid']))
+                       {
+                            send_notification_iphone($device['uid'], $notification, $file_url);
+                       } 
+                       elseif($device['type'] == 1 && isset($device['uid']))
+                       {
+                            send_notification_android($device['uid'], $notification);
+                       } 
+                       
+                }
+            }    
+        }   
+        elseif($send_to == 1)
+        {
+            $devices = $this->device->get_android_devices();
+            if(count($devices) > 0)
+            {
+                foreach ($devices as $device) {
+                    if(isset($device['uid']))
+                    {
+                        send_notification_iphone($device['uid'], $notification, $file_url);
+                    }    
+                       
+                }   
+            }
+        } 
+        elseif($send_to == 2) 
+        {
+            $devices = $this->device->get_iphone_devices();
+            if(count($devices) > 0)
+            {
+                foreach ($devices as $device) {
+                    if(isset($device['uid']))
+                    {
+                       send_notification_android($device['uid'], $notification, $file_url); 
+                    }    
+                       
+                }             
+            }
+        }
+
     }
 
     public function delete($id, $status, $view = NULL) {

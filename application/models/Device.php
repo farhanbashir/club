@@ -7,6 +7,33 @@ Class Device extends CI_Model
         return $this->db->count_all('devices');
     }
 
+    function get_all_devices()
+    {
+        $sql = "select * from devices" ;
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
+
+    function get_iphone_devices()
+    {
+        $sql = "select * from devices where `type`=0" ;
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
+
+    function get_android_devices()
+    {
+        $sql = "select * from devices where `type`=1" ;
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
+
     function get_user_device($user_id)
     {
         $sql = "select * from devices where user_id=$user_id" ;

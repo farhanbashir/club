@@ -20,7 +20,7 @@ Class Notifications extends CI_Model {
         $start = $page;
         $limit = $this->config->item('pagination_limit');
 
-        $sql = "select * from notifications limit $start,$limit";
+        $sql = "select * from notifications order by datetime desc limit $start,$limit";
         $query = $this->db->query($sql);
         $result = $query->result_array();
         $query->free_result();
