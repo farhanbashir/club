@@ -6,8 +6,8 @@ $CI =& get_instance();
         $url = $CI->config->item("REMOTE_SOCKET_GOOGLE");
 
         $fields = array(
-            'registration_ids' => $registatoin_ids,
-            'data' => $message,
+            'registration_ids' => array($registatoin_ids),
+            'data' => array("message"=>$message),
         );
 
     //print_r($fields);die;

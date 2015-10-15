@@ -218,6 +218,23 @@ class Api extends REST_Controller {
         return $return;
     }
 
+    function testNotification_post()
+    {
+        $type = $this->post('type');
+        $message = $this->post('message');
+        $token = $this->post('token');
+        $file_url = asset_url("files/".$this->config->item('pem'));
+        
+        if($type == 0)//iphone
+        {
+            send_notification_iphone($token, $message, $file_url);
+        }
+        elseif($type == 1)//android
+        {
+            send_notification_android($token, $message);
+        }    
+    }
+
     function __removeFutureContent($data)
     {
         //debug($data,1);
