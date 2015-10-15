@@ -214,6 +214,32 @@ class Api extends REST_Controller {
             }    
             //if($val['end_date'])
         }    
+        
+        return $return;
+    }
+
+    function __removeFutureContent($data)
+    {
+        //debug($data,1);
+        // debug(strtotime('2015-08-22'),1);
+        
+        $return = array();
+        foreach($data as $val)
+        {
+            if(isset($val['publish_date']) && $val['publish_date'] !='')
+            {
+                $publish_date = date('Y-m-d', strtotime($val['publish_date']));
+                if($publish_date <= date('Y-m-d'))
+                {
+                    $return[] = $val;
+                }    
+            }
+            else
+            {
+                $return[] = $val;   
+            }    
+            //if($val['end_date'])
+        }    
         return $return;
     }
 
@@ -299,6 +325,7 @@ class Api extends REST_Controller {
                     $i++;
                 }
                 $return = $this->__removePastContent($return);
+                $return = $this->__removeFutureContent($return);
                 break;
             case 'courses':
                 $i=0;
@@ -320,6 +347,7 @@ class Api extends REST_Controller {
                     $i++;
                 }
                 $return = $this->__removePastContent($return);
+                $return = $this->__removeFutureContent($return);
                 break;
             case 'restaurants':
                 $i=0;
@@ -340,6 +368,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
+                $return = $this->__removeFutureContent($return);
                 break;
             case 'promotions':
                 $i=0;
@@ -360,6 +389,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
+                $return = $this->__removeFutureContent($return);
                 break;
             case 'pools':
                 $i=0;
@@ -380,6 +410,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
+                $return = $this->__removeFutureContent($return);
                 break;
             case 'beaches':
                 $i=0;
@@ -400,6 +431,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
+                $return = $this->__removeFutureContent($return);
                 break;
             case 'classes':
                 $i=0;
@@ -424,6 +456,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
+                $return = $this->__removeFutureContent($return);
                 break;
             case 'activities':
                 $i=0;
@@ -442,6 +475,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
+                $return = $this->__removeFutureContent($return);
                 break;
             case 'camps':
                 $i=0;
@@ -460,6 +494,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
+                $return = $this->__removeFutureContent($return);
                 break;
             case 'event_galleries':
                 $i=0;
@@ -480,6 +515,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
+                $return = $this->__removeFutureContent($return);
                 break;    
             case 'sponsors':
                 $i=0;
@@ -503,6 +539,7 @@ class Api extends REST_Controller {
                     unset($return[$i]['detail_description']);
                     $i++;
                 }
+                $return = $this->__removeFutureContent($return);
                 break;        
             default:
                 $i=0;
@@ -518,6 +555,7 @@ class Api extends REST_Controller {
                     $return[$i] = $this->__enquireObject($return[$i]);
                     $i++;
                 }
+                $return = $this->__removeFutureContent($return);
                 break;
         }
         return $return;
