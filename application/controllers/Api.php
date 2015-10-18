@@ -86,23 +86,33 @@ class Api extends REST_Controller {
 
             if(isset($array['reply']['membership']))
             {
-                // $device = $this->device->get_user_device($result[0]->user_id);
-                // if(count($device) > 0)
-                // {
-                //     //update device table
-                //     $device_data = array('uid'=>$device_id, 'type'=>$device_type);
-                //     $this->device->edit_device($result[0]->user_id, $device_data);
-                // }
-                // else
-                // {
-                //     if(isset($device_type) && isset($device_id))
-                //     {
+                $user_present = $this->user->checkUser($username);
+                if($user_present == false)
+                {
+                    $user_id = $this->user->add_user(array('username'=>$username,'password'=>$password));
+                }   
+                else
+                {
+                    $user_id = $user_present[0]->user_id;
+                }
 
-                //         //insert device table
-                //         $device_data = array('user_id'=>$result[0]->user_id,'uid'=>$device_id, 'type'=>$device_type);
-                //         $this->device->insert_device($device_data);
-                //     }
-                // }
+                $device = $this->device->get_user_device($user_id);
+                if(count($device) > 0)
+                {
+                    //update device table
+                    $device_data = array('uid'=>$device_id, 'type'=>$device_type);
+                    $this->device->edit_device($user_id, $device_data);
+                }
+                else
+                {
+                    if(isset($device_type) && isset($device_id))
+                    {
+
+                        //insert device table
+                        $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$device_type);
+                        $this->device->insert_device($device_data);
+                    }
+                }
                 $data["header"]["error"] = "0";
                 $data["header"]["message"] = "Login successfully";
                 $data['body'] = $array['reply'];
@@ -1141,6 +1151,11 @@ class Api extends REST_Controller {
                 }
                 break;
             default:
+                $membership = $this->post('membership');
+                $email = $this->post('email');
+                $first_name = $this->post('first_name');
+                $last_name = $this->post('last_name');
+                $content_id = $this->post('content_id');    
             break;
         }
         
@@ -1608,23 +1623,22 @@ class Api extends REST_Controller {
 
     function test1_post()
     {
-        $string = file_get_contents(asset_url('availability.xml'));
-        $xml = simplexml_load_string($string);
-        $json = json_encode($xml);
-        $array = json_decode($json,TRUE);
-        if(isset($array['reply']['error']))
+        $username = 'ffdfarhan.bashir2002@gmail.com';//$this->post('username');
+        $password = 'armaan';//$this->post('password');
+        //$device_id = $this->post('device_id');
+        //$device_type = $this->post('device_type');
+
+        $user_present = $this->user->checkUser($username);
+        if($user_present == false)
         {
-            $data["header"]["error"] = "1";
-            $data["header"]["message"] = $array['reply']['error'];
-            $this->response($data,400);   
-        }    
+            $user_id = $this->user->add_user(array('username'=>$username,'password'=>$password));
+            debug($user_id,1);
+        }   
         else
         {
-            $data["header"]["error"] = "0";
-            $data["body"] = $array['reply'];
-            $this->response($data,400);   
-        }    
-        //debug($array['reply'],1);
+            $user_id = $user_present[0]->user_id;
+            debug($user_id,1);
+        } 
     }
 
     function checkReservationAvailability_post()
