@@ -61,6 +61,15 @@ Class Content extends CI_Model {
         return $result;
     }
 
+    public function get_content_data($id)
+    {
+        $sql = "select * from content where content_id=$id";
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
+
     public function get_content_by_id($type, $id) {
         $sql = "SELECT * FROM content
                 WHERE content_type_id =

@@ -1094,6 +1094,8 @@ class Api extends REST_Controller {
     function reservationForm_post()
     {
         $type = $this->post('type');
+        $email_data = array();
+        $email_data['to'] = $this->config->item('admin_emails');
         
         if(!$type)
         {
@@ -1114,35 +1116,48 @@ class Api extends REST_Controller {
                 switch ($outlet_type) {
                     case 'vista':
                         # code...
-                        $name = $this->post('name');
-                        $membership = $this->post('membership');
-                        $date_time = $this->post('date_time');
-                        $seating_option = $this->post('seating_option');
-                        $adults = $this->post('adults');
-                        $juniors = $this->post('juniors');
-                        $special_ocassion = $this->post('special_ocassion');
+                        
+                        $email_data['outlet_type'] = $outlet_type;
+                        $email_data['name'] = $this->post('name');
+                        $email_data['membership'] = $this->post('membership');
+                        $email_data['date_time'] = $this->post('date_time');
+                        $email_data['seating_option'] = $this->post('seating_option');
+                        $email_data['adults'] = $this->post('adults');
+                        $email_data['juniors'] = $this->post('juniors');
+                        $email_data['special_ocassion'] = $this->post('special_ocassion');
+                        $email_data = $this->__makeEmailMessageForOutlet($email_data);
+                        //debug($email_data,1);
+                        sendEmail($email_data);
                         break;
 
                     case 'waves':
                         # code...
-                        $name = $this->post('name');
-                        $membership = $this->post('membership');
-                        $date_time = $this->post('date_time');
-                        $seating_option = $this->post('seating_option');
-                        $adults = $this->post('adults');
-                        $juniors = $this->post('juniors');
-                        $special_ocassion = $this->post('special_ocassion');
+                        $email_data['outlet_type'] = $outlet_type;
+                        $email_data['name'] = $this->post('name');
+                        $email_data['membership'] = $this->post('membership');
+                        $email_data['date_time'] = $this->post('date_time');
+                        $email_data['seating_option'] = $this->post('seating_option');
+                        $email_data['adults'] = $this->post('adults');
+                        $email_data['juniors'] = $this->post('juniors');
+                        $email_data['special_ocassion'] = $this->post('special_ocassion');
+                        $email_data = $this->__makeEmailMessageForOutlet($email_data);
+                        //debug($email_data,1);
+                        sendEmail($email_data);
                         break; 
                         
                     case 'main':
                         # code...
-                        $name = $this->post('name');
-                        $membership = $this->post('membership');
-                        $date_time = $this->post('date_time');
-                        $seating_option = $this->post('seating_option');
-                        $adults = $this->post('adults');
-                        $juniors = $this->post('juniors');
-                        $special_ocassion = $this->post('special_ocassion');
+                        $email_data['outlet_type'] = $outlet_type;
+                        $email_data['name'] = $this->post('name');
+                        $email_data['membership'] = $this->post('membership');
+                        $email_data['date_time'] = $this->post('date_time');
+                        $email_data['seating_option'] = $this->post('seating_option');
+                        $email_data['adults'] = $this->post('adults');
+                        $email_data['juniors'] = $this->post('juniors');
+                        $email_data['special_ocassion'] = $this->post('special_ocassion');
+                        $email_data = $this->__makeEmailMessageForOutlet($email_data);
+                        //debug($email_data,1);
+                        sendEmail($email_data);
                         break;       
                     
                     default:
@@ -1151,23 +1166,59 @@ class Api extends REST_Controller {
                 }
                 break;
             default:
-                $membership = $this->post('membership');
-                $email = $this->post('email');
-                $first_name = $this->post('first_name');
-                $last_name = $this->post('last_name');
+                $email_data['membership'] = $this->post('membership');
+                $email_data['email'] = $this->post('email');
+                $email_data['first_name'] = $this->post('first_name');
+                $email_data['last_name'] = $this->post('last_name');
                 $content_id = $this->post('content_id');    
+                $content_data = $this->content->get_content_data($content_id);
+                $email_data = $this->__makeEmailMessage($email_data, $content_data);
+                //debug($email_data,1);
+                $email_data['from'] = $email_data['email'];
+                sendEmail($email_data);
             break;
         }
         
-        // $membership = $this->post('membership');
-        // $email = $this->post('email');
-        // $first_name = $this->post('first_name');
-        // $last_name = $this->post('last_name');
-        // $content_id = $this->post('content_id');
-
         $data["header"]["error"] = "0";
         $data["header"]["message"] = "Admin will contact you";
         $this->response($data,200);
+    }
+
+    function __makeEmailMessage($email_data, $data)
+    {
+        $subject = 'Reservation Request';
+        $message = "Hello Admin \n" ;
+        $message .= $email_data['first_name'].' '.$email_data['last_name']." wants to reserve ".$data[0]['title'].'. ';
+        //$message .= "\nYou can contact ".$email_data['first_name']." at this email ".$email_data['from'];
+        $message .= "\nBelow is the detail";
+        foreach($email_data as $key=>$value)
+        {
+            if($key != "to")
+            {
+                $message .= "\n".ucfirst(str_replace("_", " ", $key)).":  ".$value;    
+            }    
+        }
+        $email_data['subject'] = $subject;
+        $email_data['message'] = $message;
+        return $email_data;
+    }
+
+    function __makeEmailMessageForOutlet($email_data)
+    {
+        $subject = 'Reservation Request For Outlet';
+        $message = "Hello Admin \n" ;
+        $message .= $email_data['name']." wants to reserve ".$email_data['outlet_type'].' Outlet. ';
+        $message .= "\nBelow is the detail";
+        foreach($email_data as $key=>$value)
+        {
+            if($key != "to")
+            {
+                $message .= "\n".ucfirst(str_replace("_", " ", $key)).":  ".$value;    
+            }    
+        }    
+        $email_data['subject'] = $subject;
+        $email_data['message'] = $message;
+        return $email_data;
     }
 
     function getEventById_post()
