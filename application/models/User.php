@@ -44,6 +44,27 @@ Class User extends CI_Model
         }
     }
 
+    function checkUserById($user_id)
+    {
+        $this -> db -> select('user_id, username, password');
+        $this -> db -> from('users');
+        $this -> db -> where('user_id', $user_id);
+        //$this -> db -> where('is_admin', $is_admin);
+        //$this -> db -> where('password', $password);
+        $this -> db -> limit(1);
+
+        $query = $this -> db -> get();
+
+        if($query -> num_rows() == 1)
+        {
+            return $query->result();
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     function get_total_users()
     {
         return $this->db->count_all('users');

@@ -54,6 +54,66 @@ class Api extends REST_Controller {
             echo $result;die;
     }
 
+    function updateDevice_post()
+    {
+        $device_id = $this->post('device_id');
+        $user_id = $this->post('user_id');     
+        $type = $this->post('type');     
+        
+        if(!$device_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide device id";
+            $this->response($data, 400);
+        }
+
+        if(!$user_id)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide user id";
+            $this->response($data, 400);
+        }
+
+        $user_present = $this->user->checkUserById($user_id);
+        
+        
+
+        if($user_present == false)
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "No user present with this id.";
+            $this->response($data, 400);
+        }   
+        else
+        {
+            
+            $device = $this->device->get_user_device($user_id);
+            if(count($device) > 0)
+            {
+                //update device table
+                $device_data = array('uid'=>$device_id, 'type'=>$type);
+                $this->device->edit_device($user_id, $device_data);
+            }
+            else
+            {
+                if(isset($type) && isset($device_id))
+                {
+
+                    //insert device table
+                    $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$type);
+                    $this->device->insert_device($device_data);
+                }
+            }
+
+            $data["header"]["error"] = "0";
+            $data["header"]["message"] = "Device id updated.";
+            $this->response($data, 200);
+        }
+
+        
+            
+    }
+
 	function login_post()
     {
     	$data = array();
@@ -113,6 +173,7 @@ class Api extends REST_Controller {
                         $this->device->insert_device($device_data);
                     }
                 }
+                $array['reply']['user_id'] = $user_id;
                 $data["header"]["error"] = "0";
                 $data["header"]["message"] = "Login successfully";
                 $data['body'] = $array['reply'];
