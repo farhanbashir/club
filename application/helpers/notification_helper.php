@@ -46,6 +46,7 @@ $CI =& get_instance();
         $CI =& get_instance();
         //$deviceToken = '7229e0f7cc34bd639a31e81802def2c02945b0a89d01ce52c7528f8671ef8f32';
 
+        $file_url = getcwd().$CI->config->item('pem');
         // Put your private key's passphrase here:
         //$passphrase = 'developmentc2gapns';
 
