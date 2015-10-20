@@ -58,7 +58,7 @@ class Api extends REST_Controller {
     {
         $device_id = $this->post('device_id');
         $user_id = $this->post('user_id');     
-        $type = $this->post('type');     
+        $type = $this->post('device_type');     
         
         if(!$device_id)
         {
