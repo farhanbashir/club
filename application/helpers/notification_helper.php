@@ -6,7 +6,7 @@ $CI =& get_instance();
         $url = $CI->config->item("REMOTE_SOCKET_GOOGLE");
 
         $fields = array(
-            'registration_ids' => array($registatoin_ids),
+            'registration_ids' => $registatoin_ids,
             'data' => array("message"=>$message),
         );
 
@@ -38,7 +38,7 @@ $CI =& get_instance();
 
         // Close connection
         curl_close($ch);
-        echo $result;
+        //echo $result;
     }
 
     function send_notification_iphone($deviceToken, $message, $file_url, $sound='default')
@@ -104,3 +104,14 @@ $CI =& get_instance();
 
 
     }
+
+function sendEmail($data)
+{
+    $to = $data['to'];
+    $from = $data["from"];
+    $subject = $data['subject'];
+    $message = $data['message'];
+    $headers = "From: $from" . "\r\n";
+
+    mail($to, $subject, $message,$headers);
+}    

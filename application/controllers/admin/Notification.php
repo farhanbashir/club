@@ -82,6 +82,7 @@ class Notification extends MY_Controller {
             $devices = $this->device->get_all_devices();
             if(count($devices) > 0)
             {
+                $devices_ids = array();
                 foreach ($devices as $device) {
                        if($device['type'] == 0 && isset($device['uid']))
                        {
@@ -89,10 +90,16 @@ class Notification extends MY_Controller {
                        } 
                        elseif($device['type'] == 1 && isset($device['uid']))
                        {
-                            send_notification_android($device['uid'], $notification);
+                            $devices_ids[] = $device['uid'];
+                            //send_notification_android($device['uid'], $notification);
                        } 
-                       
                 }
+
+                if(count($devices_ids) > 0)
+                {
+                    send_notification_android($devices_ids, $notification);
+                }
+
             }    
         }   
         elseif($send_to == 1)
@@ -100,13 +107,19 @@ class Notification extends MY_Controller {
             $devices = $this->device->get_android_devices();
             if(count($devices) > 0)
             {
+                $devices_ids = array();
                 foreach ($devices as $device) {
                     if(isset($device['uid']))
                     {
-                        send_notification_iphone($device['uid'], $notification, $file_url);
+                        $devices_ids[] = $device['uid'];
                     }    
                        
                 }   
+
+                if(count($devices_ids) > 0)
+                {
+                    send_notification_android($devices_ids, $notification);
+                }    
             }
         } 
         elseif($send_to == 2) 
