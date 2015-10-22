@@ -149,9 +149,13 @@ class Page extends MY_Controller {
         $data_serialize = !empty($_POST['page']['data']) ? $_POST['page']['data'] : '';
 
         if ($_POST['page']['key'] == 'private_parties' || $_POST['page']['key'] == 'fringe_benefits_salon_barbers' || $_POST['page']['key'] == 'sauna_and_steam_room') {
-            if (!empty($_FILES['pdf']['name'])) {
-                $pdf_data = $this->uploadPagePdfFile($_POST['page']['id'], $_POST['page']['key']);
-                $data_serialize['pdf'] = $pdf_data['file'];
+            if (isset($_FILES['pdf']['name'])) {
+                if(!empty($_FILES['pdf']['name']))
+                {
+                    $pdf_data = $this->uploadPagePdfFile($_POST['page']['id'], $_POST['page']['key']);
+                    $data_serialize['pdf'] = $pdf_data['file'];    
+                }    
+                
                 $data = array(
                     'key' => $_POST['page']['key'],
                     'content' => !empty($_POST['page']['content']) ? $_POST['page']['content'] : '',
