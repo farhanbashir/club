@@ -55,7 +55,7 @@
                                     &nbsp;&nbsp;&nbsp;
                        <a href="<?php echo base_url(); ?>index.php/admin/promotions/delete/<?php echo $promotion['content_id']; ?>/<?php echo ($promotion['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                         <?php
-                                        echo ($promotion['is_active'] == 1) ? "Deactivate" : "Activate";
+                                        echo ($promotion['is_active'] == 1) ? "Delete" : "Activate";
                                         ?>
                                     </a>
                                 </td> 

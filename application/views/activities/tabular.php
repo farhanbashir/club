@@ -60,7 +60,7 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/activities/delete/<?php echo $activity['content_id']; ?>/<?php echo ($activity['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                         <?php
-                                        echo ($activity['is_active'] == 1) ? "Deactivate" : "Activate";
+                                        echo ($activity['is_active'] == 1) ? "Delete" : "Activate";
                                         ?>
                                     </a>
                                 </td> 

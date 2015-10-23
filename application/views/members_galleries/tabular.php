@@ -50,7 +50,7 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/members_galleries/delete/<?php echo $members_gallery['id']; ?>/<?php echo ($members_gallery['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                         <?php
-                                        echo ($members_gallery['is_active'] == 1) ? "Deactivate" : "Activate";
+                                        echo ($members_gallery['is_active'] == 1) ? "Delete" : "Activate";
                                         ?>
                                     </a>
                                 </td> 

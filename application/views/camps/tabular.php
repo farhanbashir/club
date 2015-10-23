@@ -61,7 +61,7 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/camps/delete/<?php echo $camp['content_id']; ?>/<?php echo ($camp['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                         <?php
-                                        echo ($camp['is_active'] == 1) ? "Deactivate" : "Activate";
+                                        echo ($camp['is_active'] == 1) ? "Delete" : "Activate";
                                         ?>
                                     </a>
                                 </td> 

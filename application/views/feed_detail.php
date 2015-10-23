@@ -41,7 +41,7 @@
                             {
                             ?>
                             <td>
-                                <button onclick="confirm_deactive();" class="btn btn-danger">Deactivate Feed</button>
+                                <button onclick="confirm_deactive();" class="btn btn-danger">Delete Feed</button>
                             </td>
                             <?php
                             }

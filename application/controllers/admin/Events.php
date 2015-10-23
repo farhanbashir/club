@@ -136,11 +136,11 @@ class Events extends MY_Controller {
     public function delete($id, $status, $view = NULL) {
         $flag = $this->content->delete_content($id, $status);
 //        $this->image->delete_content_images($id);
-        if (empty($view)) {
+//        if (empty($view)) {
             redirect(site_url('admin/' . $this->type . '/index'));
-        } else {
-            redirect(site_url('admin/' . $this->type . '/view/' . $id));
-        }
+//        } else {
+//            redirect(site_url('admin/' . $this->type . '/view/' . $id));
+//        }
     }
 
     public function delete_image($id, $content_id) {

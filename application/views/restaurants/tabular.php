@@ -70,7 +70,7 @@
                                 &nbsp;&nbsp;&nbsp;
                                 <a href="<?php echo base_url(); ?>index.php/admin/restaurants/delete/<?php echo $restaurant['content_id']; ?>/<?php echo ($restaurant['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                     <?php
-                                    echo ($restaurant['is_active'] == 1) ? "Deactivate" : "Activate";
+                                    echo ($restaurant['is_active'] == 1) ? "Delete" : "Activate";
                                     ?>
                                 </a>
                             </td> 

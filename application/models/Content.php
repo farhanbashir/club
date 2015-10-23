@@ -46,7 +46,7 @@ Class Content extends CI_Model {
         $sql = "select c.*,ct.content as content_type_name from content c
                 inner join content_type ct on ct.content_type_id=c.content_type_id 
                 where ct.content = '$type'
-                ";// AND c.is_active = 1
+                 AND c.is_active = 1";
 
 
         if ($page >= 0) {

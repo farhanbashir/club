@@ -18,7 +18,7 @@ class MY_Controller extends CI_Controller {
 
         $config['upload_path'] = $path;
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '999999999';
+        $config['max_size'] = '512KB';
         $config['max_width'] = '10024';
         $config['max_height'] = '10768';
 
@@ -78,7 +78,7 @@ class MY_Controller extends CI_Controller {
 
         $config['upload_path'] = $path;
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '999999999';
+        $config['max_size'] = '512KB';
         $config['max_width'] = '10024';
         $config['max_height'] = '10768';
 
@@ -230,7 +230,7 @@ class MY_Controller extends CI_Controller {
 
         $config['upload_path'] = $path;
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '999999999';
+        $config['max_size'] = '512KB';
         $config['max_width'] = '10024';
         $config['max_height'] = '10768';
 

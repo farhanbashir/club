@@ -9,7 +9,7 @@ $data = unserialize($event['data']);
             <p class="lead col-xs-6">Event # <?php echo ucfirst($event['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/events/delete/' . $event['content_id'] . '/' . (($event['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($event['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($event['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
+            <a href="<?php echo site_url('admin/events/delete/' . $event['content_id'] . '/' . (($event['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($event['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($event['is_active'] == 1) ? "Delete" : "Activate"; ?></button></a>
 
             <div class="table-responsive">
                 <table class="table">

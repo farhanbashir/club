@@ -67,7 +67,7 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/classes/delete/<?php echo $class['content_id']; ?>/<?php echo ($class['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                         <?php
-                                        echo ($class['is_active'] == 1) ? "Deactivate" : "Activate";
+                                        echo ($class['is_active'] == 1) ? "Delete" : "Activate";
                                         ?>
                                     </a>
                                 </td> 

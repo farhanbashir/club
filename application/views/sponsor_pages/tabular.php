@@ -54,7 +54,7 @@
                                 &nbsp;&nbsp;&nbsp;
                                 <a href="<?php echo base_url(); ?>index.php/admin/sponsor_pages/delete/<?php echo $sponsor_page['content_id']; ?>/<?php echo ($sponsor_page['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                     <?php
-                                    echo ($sponsor_page['is_active'] == 1) ? "Deactivate" : "Activate";
+                                    echo ($sponsor_page['is_active'] == 1) ? "Delete" : "Activate";
                                     ?>
                                 </a>
                             </td> 
