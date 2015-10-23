@@ -13,3 +13,4 @@ $config["club_availability_url"] = "https://cdn.nonweiler.com/tcad/availability"
 $config["club_reservation_url"] = "https://cdn.nonweiler.com/tcad/reservation";
 $config["club_authentication_url"] = "https://cdn.nonweiler.com/tcad/authenticate";
 $config["admin_emails"] = "farhan.bashir2002@gmail.com,shaoaib.hafeez@createmedia-group.com,syed.sami@createmedia-group.com";
+$config['default_email'] = "admin@club.com";

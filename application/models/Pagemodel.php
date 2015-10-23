@@ -47,6 +47,13 @@ Class Pagemodel extends CI_Model {
         return $result;
     }
 
+    public function get_page_by_id($id) {
+        $query = $this->db->get_where('page', array('page_id' => $id), 1);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
+
     public function add_page($data) {
         $this->db->insert('page', $data);
     }

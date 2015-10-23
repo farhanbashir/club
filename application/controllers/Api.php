@@ -1228,14 +1228,66 @@ class Api extends REST_Controller {
                 break;
             default:
                 $email_data['membership'] = $this->post('membership');
-                $email_data['email'] = $this->post('email');
+                $email = $this->post('email');
+                if(!empty($email))
+                {
+                    $email_data['email'] = $email;    
+                }    
                 $email_data['first_name'] = $this->post('first_name');
                 $email_data['last_name'] = $this->post('last_name');
                 $content_id = $this->post('content_id');    
-                $content_data = $this->content->get_content_data($content_id);
-                $email_data = $this->__makeEmailMessage($email_data, $content_data);
+                $is_page = $this->post('is_page');
+                if($is_page)
+                {
+                    $content_data = $this->pagemodel->get_page_by_id($content_id);
+                    if(count($content_data) > 0)
+                    {
+                        $unserialize_data = unserialize($content_data[0]['data']);
+                        $title = $content_data[0]['key']; 
+                        if(!isset($unserialize_data['email']) || empty($unserialize_data['email']))
+                        {
+                            $data["header"]["error"] = "1";
+                            $data["header"]["message"] = "Email not present for this";
+                            $this->response($data,400);       
+                        }    
+                        $email_data['to'] = $unserialize_data['email'];
+                    }   
+                    else
+                    {
+                        $data["header"]["error"] = "1";
+                        $data["header"]["message"] = "No data found for this id";
+                        $this->response($data,400);       
+                    } 
+                    
+                }   
+                else
+                {
+                    $content_data = $this->content->get_content_data($content_id);    
+                    if(count($content_data) > 0)
+                    {
+                        $unserialize_data = unserialize($content_data[0]['data']);
+                        $title = $content_data[0]['title'];
+                        if(!isset($unserialize_data['email']) || empty($unserialize_data['email']))
+                        {
+                            $data["header"]["error"] = "1";
+                            $data["header"]["message"] = "Email not present for this";
+                            $this->response($data,400);       
+                        }
+                        $email_data['to'] = $unserialize_data['email'];
+                    }   
+                    else
+                    {
+                        $data["header"]["error"] = "1";
+                        $data["header"]["message"] = "No data found for this id";
+                        $this->response($data,400);       
+                    }
+
+                } 
+                
+                $email_data = $this->__makeEmailMessage($email_data, $title);
+                $email_data['from'] = (!empty($email)) ? $email_data['email'] : $this->config->item('default_email');
                 //debug($email_data,1);
-                $email_data['from'] = $email_data['email'];
+                
                 sendEmail($email_data);
             break;
         }
@@ -1245,11 +1297,11 @@ class Api extends REST_Controller {
         $this->response($data,200);
     }
 
-    function __makeEmailMessage($email_data, $data)
+    function __makeEmailMessage($email_data, $title)
     {
         $subject = 'Reservation Request';
         $message = "Hello Admin \n" ;
-        $message .= $email_data['first_name'].' '.$email_data['last_name']." wants to reserve ".$data[0]['title'].'. ';
+        $message .= $email_data['first_name'].' '.$email_data['last_name']." wants to reserve ".$title.'. ';
         //$message .= "\nYou can contact ".$email_data['first_name']." at this email ".$email_data['from'];
         $message .= "\nBelow is the detail";
         foreach($email_data as $key=>$value)
