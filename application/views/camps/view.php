@@ -9,7 +9,7 @@ $data = unserialize($camp['data']);
             <p class="lead col-xs-6">Camp and Course # <?php echo ucfirst($camp['content_id']); ?></p>
 
 
-            <a href="<?php echo site_url('admin/camps/delete/' . $camp['content_id'] . '/' . (($camp['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($camp['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($camp['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
+            <a href="<?php echo site_url('admin/camps/delete/' . $camp['content_id'] . '/' . (($camp['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($camp['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($camp['is_active'] == 1) ? "Delete" : "Activate"; ?></button></a>
 
             <div class="table-responsive">
                 <table class="table">

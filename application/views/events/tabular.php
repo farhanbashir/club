@@ -57,7 +57,7 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/events/delete/<?php echo $event['content_id']; ?>/<?php echo ($event['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                         <?php
-                                        echo ($event['is_active'] == 1) ? "Deactivate" : "Activate";
+                                        echo ($event['is_active'] == 1) ? "Delete" : "Activate";
                                         ?>
                                     </a>
                                 </td> 

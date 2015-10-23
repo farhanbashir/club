@@ -16,7 +16,7 @@ $outlet_types = array(
 
 
 
-            <a href="<?php echo site_url('admin/restaurants/delete/' . $restaurant['content_id'] . '/' . (($restaurant['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($restaurant['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($restaurant['is_active'] == 1) ? "Deactivate" : "Activate"; ?></button></a>
+            <a href="<?php echo site_url('admin/restaurants/delete/' . $restaurant['content_id'] . '/' . (($restaurant['is_active'] == 1) ? '0' : '1') . '/view'); ?>"><button class="btn <?php echo ($restaurant['is_active'] == 1) ? "btn-danger" : "btn-primary"; ?> pull-right status_confirm" style="margin:10px "><?php echo ($restaurant['is_active'] == 1) ? "Delete" : "Activate"; ?></button></a>
 
 
             <div class="table-responsive">

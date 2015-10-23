@@ -61,7 +61,7 @@
                                         &nbsp;&nbsp;&nbsp;
                                         <a href="<?php echo base_url(); ?>index.php/admin/galleries/delete/<?php echo $gallery['content_id']; ?>/<?php echo ($gallery['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                             <?php
-                                            echo ($gallery['is_active'] == 1) ? "Deactivate" : "Activate";
+                                            echo ($gallery['is_active'] == 1) ? "Delete" : "Activate";
                                             ?>
                                         </a>
                                     </td> 

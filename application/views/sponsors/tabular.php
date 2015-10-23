@@ -52,7 +52,7 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="<?php echo base_url(); ?>index.php/admin/sponsors/delete/<?php echo $sponsor['content_id']; ?>/<?php echo ($sponsor['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                         <?php
-                                        echo ($sponsor['is_active'] == 1) ? "Deactivate" : "Activate";
+                                        echo ($sponsor['is_active'] == 1) ? "Delete" : "Activate";
                                         ?>
                                     </a>
                                 </td> 

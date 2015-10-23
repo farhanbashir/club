@@ -39,7 +39,7 @@
 
                             <div class="form-group">
                                 <label>Image</label>
-                                <input type="file" name="userfile">
+                                <input id="singleimage" type="file" name="userfile">
 
                             </div><!-- /.box-body -->
 

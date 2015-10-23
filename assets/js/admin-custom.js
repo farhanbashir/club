@@ -1,4 +1,20 @@
 $(document).ready(function () {
+
+
+    $(document).on('change', '#singleimage', function () {
+        files = this.files;
+        size = files[0].size;
+        //max size 512kb => 50*1000
+        if (size > 512 * 1000) {
+            alert('Please upload less than 512KB file');
+            this.value = null;
+            return false;
+
+        }
+        return true;
+    });
+
+
     counter = function () {
         var value = $('#notification_short_description').val();
 
@@ -128,7 +144,7 @@ $(document).ready(function () {
 
 
     $(".status_confirm").on('click', function (e) {
-        var r = confirm("Are you sure you want to change the status?");
+        var r = confirm("Are you sure you want to delete?");
         if (r == true) {
 
         } else {
@@ -232,7 +248,7 @@ $(document).ready(function () {
 
     $('#input2').filer({
         limit: null,
-        maxSize: null,
+        maxSize: 0.5,
         extensions: null,
         changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Upload Images here</h3> <span style="display:inline-block; margin: 15px 0"></span></div><a class="jFiler-input-choose-btn blue">Browse</a></div></div>',
         showThumbs: true,

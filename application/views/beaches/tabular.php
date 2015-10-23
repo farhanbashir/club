@@ -80,7 +80,7 @@
                                         &nbsp;&nbsp;&nbsp;
                                         <a href="<?php echo base_url(); ?>index.php/admin/beaches/delete/<?php echo $beach['content_id']; ?>/<?php echo ($beach['is_active'] == 1) ? '0' : '1'; ?>" class="status_confirm">
                                             <?php
-                                            echo ($beach['is_active'] == 1) ? "Deactivate" : "Activate";
+                                            echo ($beach['is_active'] == 1) ? "Delete" : "Activate";
                                             ?>
                                         </a>
                                     </td> 

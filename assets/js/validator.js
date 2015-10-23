@@ -23,30 +23,27 @@ jQuery(document).ready(function () {
 
     jQuery("#club_sponsor_page").validate({
         rules: {
-            "sponsor_relation[title]": {
+            "sponsor_page[title]": {
                 required: true,
                 minlength: 2,
                 maxlength: 255
             },
-            "sponsor_relation[page]": {
+            "sponsor_page[page]": {
                 required: true,
             },
-            "sponsor_relation[sponsor]": {
-                required: true,
-            },
+            
+
         },
         messages: {
-            "sponsor_relation[title]": {
+            "sponsor_page[title]": {
                 required: "Please provide a title.",
                 minlength: "The title should be at least 2 characters long.",
                 maxlength: "Title can be a maximum of 255 characters in length."
             },
-            "sponsor_relation[page]": {
+            "sponsor_page[page]": {
                 required: "Please select page"
             },
-            "sponsor_relation[sponsor]": {
-                required: "Please select sponsor.",
-            },
+         
         },
     });
 
