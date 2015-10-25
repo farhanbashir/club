@@ -945,14 +945,18 @@ class Api extends REST_Controller {
                     }
                     $news = $this->content->get_content_by_type('tennisnews');
                     foreach ($news as $new) {
-                        $image = $this->image->get_images_by_content_id($new['content_id']);
-                        $return[$i]['news'][] = array(
-                            'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
-                            'content_id' => $new['content_id'],
-                            'title' => $new['title'],
-                            'description' => $new['description'],
-                            'detail_description' => $new['detail_description'],
-                        );
+                        if($new['is_active'] == 1)
+                        {
+                            $image = $this->image->get_images_by_content_id($new['content_id']);
+                            $return[$i]['news'][] = array(
+                                'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
+                                'content_id' => $new['content_id'],
+                                'title' => $new['title'],
+                                'description' => $new['description'],
+                                'detail_description' => $new['detail_description'],
+                            );    
+                        }    
+                        
                     }
                     $return[$i] = $this->__enquireObject($return[$i]);
                     //$return[$i]['news'] = $news;
@@ -973,14 +977,18 @@ class Api extends REST_Controller {
                     }
                     $news = $this->content->get_content_by_type('snookernews');
                     foreach ($news as $new) {
-                        $image = $this->image->get_images_by_content_id($new['content_id']);
-                        $return[$i]['news'][] = array(
-                            'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
-                            'content_id' => $new['content_id'],
-                            'title' => $new['title'],
-                            'description' => $new['description'],
-                            'detail_description' => $new['detail_description'],
-                        );
+                        if($new['is_active'] == 1)
+                        {
+                            $image = $this->image->get_images_by_content_id($new['content_id']);
+                            $return[$i]['news'][] = array(
+                                'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
+                                'content_id' => $new['content_id'],
+                                'title' => $new['title'],
+                                'description' => $new['description'],
+                                'detail_description' => $new['detail_description'],
+                            );    
+                        }    
+                        
                     }
                     $return[$i] = $this->__enquireObject($return[$i]);
                     //$return[$i]['news'] = $news;
@@ -1001,14 +1009,17 @@ class Api extends REST_Controller {
                     }
                     $news = $this->content->get_content_by_type('badmintonnews');
                     foreach ($news as $new) {
-                        $image = $this->image->get_images_by_content_id($new['content_id']);
-                        $return[$i]['news'][] = array(
-                            'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
-                            'content_id' => $new['content_id'],
-                            'title' => $new['title'],
-                            'description' => $new['description'],
-                            'detail_description' => $new['detail_description'],
-                        );
+                        if($new['is_active'] == 1)
+                        {    
+                            $image = $this->image->get_images_by_content_id($new['content_id']);
+                            $return[$i]['news'][] = array(
+                                'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
+                                'content_id' => $new['content_id'],
+                                'title' => $new['title'],
+                                'description' => $new['description'],
+                                'detail_description' => $new['detail_description'],
+                            );
+                        }    
                     }
                     $return[$i] = $this->__enquireObject($return[$i]);
                     //$return[$i]['news'] = $news;
@@ -1029,14 +1040,17 @@ class Api extends REST_Controller {
                     }
                     $news = $this->content->get_content_by_type('squash_and_racketballnews');
                     foreach ($news as $new) {
-                        $image = $this->image->get_images_by_content_id($new['content_id']);
-                        $return[$i]['news'][] = array(
-                            'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
-                            'content_id' => $new['content_id'],
-                            'title' => $new['title'],
-                            'description' => $new['description'],
-                            'detail_description' => $new['detail_description'],
-                        );
+                        if($new['is_active'] == 1)
+                        {    
+                            $image = $this->image->get_images_by_content_id($new['content_id']);
+                            $return[$i]['news'][] = array(
+                                'image' => !empty($image[0]) ? $image[0]['path'].$image[0]['name'] : '',
+                                'content_id' => $new['content_id'],
+                                'title' => $new['title'],
+                                'description' => $new['description'],
+                                'detail_description' => $new['detail_description'],
+                            );
+                        }    
                     }
                     $return[$i] = $this->__enquireObject($return[$i]);
                     //$return[$i]['news'] = $news;
@@ -1176,8 +1190,30 @@ class Api extends REST_Controller {
                 }
                 switch ($outlet_type) {
                     case 'vista':
+                    case 'waves':
+                    case 'main':
                         # code...
-                        
+                               
+                        $email_data['content_id'] = $this->post('content_id');
+                        $content_data = $this->content->get_content_data($content_id);    
+                        if(count($content_data) > 0)
+                        {
+                            $unserialize_data = unserialize($content_data[0]['data']);
+                            $title = $content_data[0]['title'];
+                            // if(!isset($unserialize_data['email']) || empty($unserialize_data['email']))
+                            // {
+                            //     $data["header"]["error"] = "1";
+                            //     $data["header"]["message"] = "Email not present for this";
+                            //     $this->response($data,400);       
+                            // }
+                            // $email_data['to'] = $unserialize_data['email'];
+                        }   
+                        else
+                        {
+                            $data["header"]["error"] = "1";
+                            $data["header"]["message"] = "No data found for this id";
+                            $this->response($data,400);       
+                        }
                         $email_data['outlet_type'] = $outlet_type;
                         $email_data['name'] = $this->post('name');
                         $email_data['membership'] = $this->post('membership');
@@ -1191,35 +1227,37 @@ class Api extends REST_Controller {
                         sendEmail($email_data);
                         break;
 
-                    case 'waves':
-                        # code...
-                        $email_data['outlet_type'] = $outlet_type;
-                        $email_data['name'] = $this->post('name');
-                        $email_data['membership'] = $this->post('membership');
-                        $email_data['date_time'] = $this->post('date_time');
-                        $email_data['seating_option'] = $this->post('seating_option');
-                        $email_data['adults'] = $this->post('adults');
-                        $email_data['juniors'] = $this->post('juniors');
-                        $email_data['special_ocassion'] = $this->post('special_ocassion');
-                        $email_data = $this->__makeEmailMessageForOutlet($email_data);
-                        //debug($email_data,1);
-                        sendEmail($email_data);
-                        break; 
+                    // case 'waves':
+                    //     # code...
+                    //     $email_data['content_id'] = $this->post('content_id');
+                    //     $email_data['outlet_type'] = $outlet_type;
+                    //     $email_data['name'] = $this->post('name');
+                    //     $email_data['membership'] = $this->post('membership');
+                    //     $email_data['date_time'] = $this->post('date_time');
+                    //     $email_data['seating_option'] = $this->post('seating_option');
+                    //     $email_data['adults'] = $this->post('adults');
+                    //     $email_data['juniors'] = $this->post('juniors');
+                    //     $email_data['special_ocassion'] = $this->post('special_ocassion');
+                    //     $email_data = $this->__makeEmailMessageForOutlet($email_data);
+                    //     //debug($email_data,1);
+                    //     sendEmail($email_data);
+                    //     break; 
                         
-                    case 'main':
-                        # code...
-                        $email_data['outlet_type'] = $outlet_type;
-                        $email_data['name'] = $this->post('name');
-                        $email_data['membership'] = $this->post('membership');
-                        $email_data['date_time'] = $this->post('date_time');
-                        $email_data['seating_option'] = $this->post('seating_option');
-                        $email_data['adults'] = $this->post('adults');
-                        $email_data['juniors'] = $this->post('juniors');
-                        $email_data['special_ocassion'] = $this->post('special_ocassion');
-                        $email_data = $this->__makeEmailMessageForOutlet($email_data);
-                        //debug($email_data,1);
-                        sendEmail($email_data);
-                        break;       
+                    // case 'main':
+                    //     # code...
+                    //     $email_data['content_id'] = $this->post('content_id');
+                    //     $email_data['outlet_type'] = $outlet_type;
+                    //     $email_data['name'] = $this->post('name');
+                    //     $email_data['membership'] = $this->post('membership');
+                    //     $email_data['date_time'] = $this->post('date_time');
+                    //     $email_data['seating_option'] = $this->post('seating_option');
+                    //     $email_data['adults'] = $this->post('adults');
+                    //     $email_data['juniors'] = $this->post('juniors');
+                    //     $email_data['special_ocassion'] = $this->post('special_ocassion');
+                    //     $email_data = $this->__makeEmailMessageForOutlet($email_data);
+                    //     //debug($email_data,1);
+                    //     sendEmail($email_data);
+                    //     break;       
                     
                     default:
                         # code...
@@ -1244,13 +1282,13 @@ class Api extends REST_Controller {
                     {
                         $unserialize_data = unserialize($content_data[0]['data']);
                         $title = $content_data[0]['key']; 
-                        if(!isset($unserialize_data['email']) || empty($unserialize_data['email']))
-                        {
-                            $data["header"]["error"] = "1";
-                            $data["header"]["message"] = "Email not present for this";
-                            $this->response($data,400);       
-                        }    
-                        $email_data['to'] = $unserialize_data['email'];
+                        // if(!isset($unserialize_data['email']) || empty($unserialize_data['email']))
+                        // {
+                        //     $data["header"]["error"] = "1";
+                        //     $data["header"]["message"] = "Email not present for this";
+                        //     $this->response($data,400);       
+                        // }    
+                        // $email_data['to'] = $unserialize_data['email'];
                     }   
                     else
                     {
@@ -1267,13 +1305,13 @@ class Api extends REST_Controller {
                     {
                         $unserialize_data = unserialize($content_data[0]['data']);
                         $title = $content_data[0]['title'];
-                        if(!isset($unserialize_data['email']) || empty($unserialize_data['email']))
-                        {
-                            $data["header"]["error"] = "1";
-                            $data["header"]["message"] = "Email not present for this";
-                            $this->response($data,400);       
-                        }
-                        $email_data['to'] = $unserialize_data['email'];
+                        // if(!isset($unserialize_data['email']) || empty($unserialize_data['email']))
+                        // {
+                        //     $data["header"]["error"] = "1";
+                        //     $data["header"]["message"] = "Email not present for this";
+                        //     $this->response($data,400);       
+                        // }
+                        // $email_data['to'] = $unserialize_data['email'];
                     }   
                     else
                     {
