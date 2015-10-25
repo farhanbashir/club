@@ -54,10 +54,6 @@ jQuery(document).ready(function () {
                 minlength: 2,
                 maxlength: 255
             },
-            "course[date]": {
-                required: true,
-                date: true
-            },
             "course[detail_description]": {
                 required: true,
             },
@@ -67,10 +63,6 @@ jQuery(document).ready(function () {
                 required: "Please provide a title.",
                 minlength: "The title should be at least 2 characters long.",
                 maxlength: "Title can be a maximum of 255 characters in length."
-            },
-            "course[date]": {
-                required: "Please provide a valid start date.",
-                date: "Please provide a valid date."
             },
             "course[detail_description]": {
                 required: "Please provide discription.",
@@ -110,10 +102,6 @@ jQuery(document).ready(function () {
                 minlength: 2,
                 maxlength: 255
             },
-            "event[date]": {
-                required: true,
-                date: true
-            },
             "event[description]": {
                 required: true,
             },
@@ -127,10 +115,6 @@ jQuery(document).ready(function () {
                 required: "Please provide a title.",
                 minlength: "The title should be at least 2 characters long.",
                 maxlength: "Title can be a maximum of 255 characters in length."
-            },
-            "event[date]": {
-                required: "Please provide a valid start date.",
-                date: "Please provide a valid date."
             },
             "event[description]": {
                 required: "Please provide discription.",
@@ -323,14 +307,6 @@ jQuery(document).ready(function () {
             "activity[description]": {
                 required: true,
             },
-            "activity[start_date]": {
-                required: true,
-                date: true,
-            },
-            "activity[end_date]": {
-                required: true,
-                date: true,
-            },
         },
         messages: {
             "activity[title]": {
@@ -340,14 +316,6 @@ jQuery(document).ready(function () {
             },
             "activity[description]": {
                 required: "Please provide discription.",
-            },
-            "activity[start_date]": {
-                required: "Please provide start date.",
-                date: true,
-            },
-            "activity[end_date]": {
-                required: "Please provide end date.",
-                date: true,
             },
         },
     });
@@ -362,14 +330,6 @@ jQuery(document).ready(function () {
             "camp[description]": {
                 required: true,
             },
-            "camp[start_date]": {
-                required: true,
-                date: true,
-            },
-            "camp[end_date]": {
-                required: true,
-                date: true,
-            },
         },
         messages: {
             "camp[title]": {
@@ -379,14 +339,6 @@ jQuery(document).ready(function () {
             },
             "camp[description]": {
                 required: "Please provide discription.",
-            },
-            "camp[start_date]": {
-                required: "Please provide start date.",
-                date: true,
-            },
-            "camp[end_date]": {
-                required: "Please provide end date.",
-                date: true,
             },
         },
     });

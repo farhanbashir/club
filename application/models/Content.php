@@ -28,7 +28,7 @@ Class Content extends CI_Model {
                 (
                         SELECT content_type_id FROM content_type
                         WHERE content = '$type'
-                )";// AND is_active=1 
+                ) AND is_active=1"; 
         $query = $this->db->query($sql);
         $result = $query->result_array();
         $query->free_result();
