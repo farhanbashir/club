@@ -539,6 +539,7 @@ class Api extends REST_Controller {
                     }
                     $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['end_date']);
+                    unset($return[$i]['start_date']);
                     unset($return[$i]['data']);
                     unset($return[$i]['content_type_id']);
                     unset($return[$i]['detail_description']);
@@ -1807,6 +1808,7 @@ class Api extends REST_Controller {
 
             //removing unwanted fields
             //unset($return['start_date']);
+            unset($return['start_date']);
             unset($return['end_date']);
             unset($return['data']);
             unset($return['content_type_id']);
