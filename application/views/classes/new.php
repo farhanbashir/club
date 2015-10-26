@@ -49,14 +49,14 @@
                             <div class="form-group">
                                 <label>Time</label>
                                 <div class="input-group">
-                                    <input id="time_picker" name="class[data][time]" type="text" class="form-control timepicker">
+                                    <input id="time_picker_class" name="class[data][time]" type="text" class="form-control timepicker">
                                     <div class="input-group-addon">
                                         <i class="fa fa-clock-o"></i>
                                     </div>
                                 </div><!-- /.input group -->
                             </div>
 
-                            
+
                             <div class="form-group">
                                 <label>Enquire Now - Enquire Now</label>
                                 <input type="text" class="form-control" name="class[data][enquire]" placeholder="Enter ..." >
@@ -74,7 +74,7 @@
                                 <input type="text" class="form-control" name="class[data][enquire_label]" placeholder="Enter ..." >
                             </div>
 
-                            
+
                             <div class="form-group">
                                 <label>PDF File</label>
                                 <input type="file" name="pdf">
@@ -87,11 +87,12 @@
 
                                 </div>
                             </div> 
+
+                            <div class="form-group">
+                                <label for="publish_date">Publish Date</label>
+                                <input id="publish_date" class="form-control" name="class[data][publish_date]" placeholder="Enter ..." value="<?php echo!empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
+                            </div>
                         </div><!-- /.box-body -->
-                        <div class="form-group">
-                            <label for="publish_date">Publish Date</label>
-                            <input id="publish_date" class="form-control" name="class[data][publish_date]" placeholder="Enter ..." value="<?php echo !empty($data['publish_date']) ? $data['publish_date'] : ''; ?>">
-                        </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

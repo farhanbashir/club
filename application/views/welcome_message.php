@@ -17,8 +17,10 @@
         <link href="<?php echo asset_css('jvectormap/jquery-jvectormap-1.2.2.css'); ?>" rel="stylesheet" type="text/css" />
         <!-- Date Picker -->
         <link href="<?php echo asset_css('datepicker/datepicker3.css'); ?>" rel="stylesheet" type="text/css" />
-         <link href="<?php echo asset_css('select2/select2.min.css'); ?>" rel="stylesheet" type="text/css" />
-        <link href="<?php echo asset_css('timepicker/bootstrap-timepicker.css'); ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo asset_css('select2/select2.min.css'); ?>" rel="stylesheet" type="text/css" />
+        <!--<link href="<?php // echo asset_css('timepicker/bootstrap-timepicker.css'); ?>" rel="stylesheet" type="text/css" />-->
+        <link href="<?php echo asset_css('jquery.timepicker.css'); ?>" rel="stylesheet" type="text/css" />
+
         <!-- Date Time Picker -->
         <link href="<?php echo asset_css('jquery.datetimepicker.css'); ?>" rel="stylesheet" type="text/css" />
         <!-- Daterange picker -->
@@ -85,8 +87,11 @@
         <script src="<?php echo asset_js('plugins/datepicker/bootstrap-datepicker.js'); ?>" type="text/javascript"></script>
         <!-- datetimepicker -->
         <script src="<?php echo asset_js('plugins/jquery.datetimepicker.js'); ?>" type="text/javascript"></script>
-        <script src="<?php echo asset_js('plugins/timepicker/bootstrap-timepicker.js'); ?>" type="text/javascript"></script>
-       
+        <!--<script src="<?php // echo asset_js('plugins/timepicker/bootstrap-timepicker.js');   ?>" type="text/javascript"></script>-->
+
+        <script src="<?php echo asset_js('plugins/jquery.timepicker.js'); ?>" type="text/javascript"></script>
+
+
         <!-- Bootstrap WYSIHTML5 -->
         <script src="<?php echo asset_js('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js'); ?>" type="text/javascript"></script>
         <!-- iCheck -->

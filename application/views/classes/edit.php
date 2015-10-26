@@ -56,14 +56,14 @@ $data = unserialize($class['data']);
                                     <div class="form-group">
                                         <label>Time</label>
                                         <div class="input-group">
-                                            <input id="time_picker" name="class[data][time]" type="text" class="form-control timepicker"value="<?php echo!empty($data['time']) ? $data['time'] : '' ?>">
+                                            <input id="time_picker_class" name="class[data][time]" type="text" class="form-control timepicker"value="<?php echo!empty($data['time']) ? $data['time'] : '' ?>">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-clock-o"></i>
                                             </div>
                                         </div><!-- /.input group -->
                                     </div>
 
-                                     <div class="form-group">
+                                    <div class="form-group">
                                         <label>Enquire Now - Phone No.</label>
                                         <input type="text" class="form-control" name="class[data][enquire]" placeholder="Enter ..." value="<?php echo!empty($data['enquire']) ? $data['enquire'] : ''; ?>">
                                     </div>
@@ -79,7 +79,7 @@ $data = unserialize($class['data']);
                                         <label>Enquire Label</label>
                                         <input type="text" class="form-control" name="class[data][enquire_label]" placeholder="Enter ..." value="<?php echo!empty($data['enquire_label']) ? $data['enquire_label'] : ''; ?>">
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label>PDF File</label>
                                         <input type="file" name="pdf">

@@ -17,15 +17,8 @@ $(function ($) {
     $('#start_date').datetimepicker({format: 'Y-m-d H:i:s'});
     $('#end_date').datetimepicker({format: 'Y-m-d H:i:s'});
     $('#publish_date').datetimepicker({format: 'Y-m-d H:i:s'});
-
-
-
-
-
+    $("#time_picker_class").timepicker({ 'timeFormat': 'h:i A' });
     $('#multiple_select').select2();
-
-$('input#time_picker').timepicker({ timeFormat: 'h:mm:ss p' });
-//    $("#time_picker").timepicker();
 
 
 }(jQuery));
