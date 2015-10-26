@@ -22,10 +22,10 @@ if (!empty($data['day'])) {
                             <th>Title:</th>
                             <td><?php echo $class['title']; ?></td>
                         </tr>
-                        <tr>
+<!--                        <tr>
                             <th>Date:</th>
-                            <td><?php echo $class['start_date']; ?></td>
-                        </tr>
+                            <td><?php // echo $class['start_date']; ?></td>
+                        </tr>-->
                         <tr>
                             <th>Short Description</th>
                             <td><?php echo $class['description']; ?></td>

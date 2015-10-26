@@ -99,7 +99,7 @@ class Classes extends MY_Controller {
 
         $data = array(
             'title' => $_POST['class']['title'],
-            'start_date' => $_POST['class']['start_date'],
+//            'start_date' => $_POST['class']['start_date'],
             'description' => $_POST['class']['description'],
             'data' => serialize($serialize_data),
             'modified_time'=>date('Y-m-d H:i:s')
@@ -133,7 +133,7 @@ class Classes extends MY_Controller {
 
         $data = array(
             'title' => $_POST['class']['title'],
-            'start_date' => $_POST['class']['start_date'],
+//            'start_date' => $_POST['class']['start_date'],
             'description' => $_POST['class']['description'],
             'data' => serialize($serialize_data),
             'modified_time'=>date('Y-m-d H:i:s')
