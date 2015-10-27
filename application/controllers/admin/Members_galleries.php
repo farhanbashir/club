@@ -141,8 +141,9 @@ class Members_galleries extends MY_Controller {
         foreach ($decoded_results['data'] as $item) {
             $count++;
             $image_link = $item['images']['thumbnail']['url'];
+            $low_resolution = $item['images']['low_resolution']['url'];
             echo '<div  class="checkbox-wrapper col-md-6">'
-            . '<input class="checkbox_images" name="members_gallery[images][]" value="' . $image_link . '" form-control" id="checkbox_' . $count . '" type="checkbox">'
+            . '<input class="checkbox_images" name="members_gallery[images][]" value="' . $low_resolution . '" form-control" id="checkbox_' . $count . '" type="checkbox">'
             . '<img class="image_instagram" for="checkbox_' . $count . '" src="' . $image_link . '" />'
             . '</div>';
         }
