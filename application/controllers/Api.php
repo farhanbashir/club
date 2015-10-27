@@ -279,7 +279,11 @@ class Api extends REST_Controller {
         foreach($data as $val)
         {
             $end_date = date('Y-m-d', strtotime($val['start_date']));
-            if($val['start_date'] >= date('Y-m-d') || $val['end_date'] >= date('Y-m-d'))
+            if(($val['start_date'] == "0000-00-00 00:00:00" || $val['start_date'] == "") && ($val['end_date'] == '0000-00-00 00:00:00' || $val['end_date'] == ''))
+            {
+                $return[] = $val;
+            }
+            elseif($val['start_date'] >= date('Y-m-d') || $val['end_date'] >= date('Y-m-d'))
             {
                 $return[] = $val;
             }    
@@ -324,7 +328,7 @@ class Api extends REST_Controller {
             }
             else
             {
-                $return[] = $val;   
+                //$return[] = $val;   
             }    
             //if($val['end_date'])
         }    
