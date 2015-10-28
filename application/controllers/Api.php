@@ -145,6 +145,17 @@ class Api extends REST_Controller {
             
     }
 
+    function logout_post()
+    {
+        $headers = getallheaders();
+        $user_id = $headers['user_id'];
+        $token = $headers['token'];
+        $this->device->edit_device($user_id,array("token"=>""));
+        $data["header"]["error"] = "0";
+        $data["header"]["message"] = "Username logout successfully";
+        $this->response($data, 200);
+    }
+
 	function login_post()
     {
     	$data = array();
