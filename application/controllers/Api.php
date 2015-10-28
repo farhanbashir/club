@@ -37,11 +37,11 @@ class Api extends REST_Controller {
        if(!in_array($this->router->method, $this->config->item('allowed_calls_without_token')))
        {
             $headers = getallheaders();
-            if(isset($headers['token']))
+            if(isset($headers['Token']))
             {
-                if(isset($headers['user_id']))
+                if(isset($headers['Userid']))
                 {
-                    if(!$this->device->validToken($headers['user_id'],$headers['token']))
+                    if(!$this->device->validToken($headers['Userid'],$headers['Token']))
                     {
                         $data["header"]["error"] = "1";
                         $data["header"]["message"] = "Please provide valid token";
@@ -148,8 +148,8 @@ class Api extends REST_Controller {
     function logout_post()
     {
         $headers = getallheaders();
-        $user_id = $headers['user_id'];
-        $token = $headers['token'];
+        $user_id = $headers['Userid'];
+        $token = $headers['Token'];
         $this->device->edit_device($user_id,array("token"=>""));
         $data["header"]["error"] = "0";
         $data["header"]["message"] = "Username logout successfully";
@@ -217,7 +217,7 @@ class Api extends REST_Controller {
                     }
                 }
                 $array['reply']['user_id'] = $user_id;
-                $array['reply']['token'] = $token;
+                $array['reply']['Token'] = $token;
                 $data["header"]["error"] = "0";
                 $data["header"]["message"] = "Login successfully";
                 $data['body'] = $array['reply'];
