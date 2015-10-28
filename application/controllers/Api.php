@@ -34,6 +34,37 @@ class Api extends REST_Controller {
        $this->load->model('members_gallery_images_model', '', TRUE);
        $this->load->model('pdf', '', TRUE);
 	   //$this->load->model('news','',TRUE);
+       if(!in_array($this->router->method, $this->config->item('allowed_calls_without_token')))
+       {
+            $headers = getallheaders();
+            if(isset($headers['token']))
+            {
+                if(isset($headers['user_id']))
+                {
+                    if(!$this->device->validToken($headers['user_id'],$headers['token']))
+                    {
+                        $data["header"]["error"] = "1";
+                        $data["header"]["message"] = "Please provide valid token";
+                        $this->response($data, 401);                     
+                    }    
+                }   
+                else
+                {
+                    $data["header"]["error"] = "1";
+                    $data["header"]["message"] = "Please provide user id (header)";
+                    $this->response($data, 401);              
+                } 
+            } 
+            else
+            {
+                $data["header"]["error"] = "1";
+                $data["header"]["message"] = "Please provide access token";
+                $this->response($data, 401);       
+            }    
+        
+       } 
+        
+       
 	 }
 
 	public function index()
@@ -146,6 +177,7 @@ class Api extends REST_Controller {
 
             if(isset($array['reply']['membership']))
             {
+                $token = bin2hex(openssl_random_pseudo_bytes(16));    
                 $user_present = $this->user->checkUser($username);
                 if($user_present == false)
                 {
@@ -160,7 +192,7 @@ class Api extends REST_Controller {
                 if(count($device) > 0)
                 {
                     //update device table
-                    $device_data = array('uid'=>$device_id, 'type'=>$device_type);
+                    $device_data = array('uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
                     $this->device->edit_device($user_id, $device_data);
                 }
                 else
@@ -169,11 +201,12 @@ class Api extends REST_Controller {
                     {
 
                         //insert device table
-                        $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$device_type);
+                        $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
                         $this->device->insert_device($device_data);
                     }
                 }
                 $array['reply']['user_id'] = $user_id;
+                $array['reply']['token'] = $token;
                 $data["header"]["error"] = "0";
                 $data["header"]["message"] = "Login successfully";
                 $data['body'] = $array['reply'];

@@ -16,6 +16,27 @@ Class Device extends CI_Model
         return $result;
     }
 
+    function validToken($user_id, $token)
+    {
+        $this -> db -> select('uid');
+        $this -> db -> from('devices');
+        $this -> db -> where('user_id', $user_id);
+        $this -> db -> where('token', $token);
+        //$this -> db -> where('password', $password);
+        $this -> db -> limit(1);
+
+        $query = $this -> db -> get();
+
+        if($query -> num_rows() == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     function get_iphone_devices()
     {
         $sql = "select * from devices where `type`=0" ;
