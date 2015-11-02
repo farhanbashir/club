@@ -71,6 +71,11 @@ Class Device extends CI_Model
         return ($this->db->affected_rows() != 1) ? false : true;
     }
 
+    function delete_device($user_id,$token)
+    {
+        return $this->db->delete('devices', array('user_id' => $user_id,"token"=>$token));
+    }
+
     function insert_device($data)
     {
         $this->db->insert('devices',$data);

@@ -150,7 +150,7 @@ class Api extends REST_Controller {
         $headers = getallheaders();
         $user_id = $headers['Userid'];
         $token = $headers['Token'];
-        $this->device->edit_device($user_id,array("token"=>""));
+        $this->device->delete_device($user_id,$token);
         $data["header"]["error"] = "0";
         $data["header"]["message"] = "Username logout successfully";
         $this->response($data, 200);
@@ -186,6 +186,7 @@ class Api extends REST_Controller {
             $array = json_decode($json,TRUE);
             //$result = $this->user->login($username, $password, 0);
 
+            //if(count($result) > 0)
             if(isset($array['reply']['membership']))
             {
                 $token = bin2hex(openssl_random_pseudo_bytes(16));    
@@ -199,23 +200,27 @@ class Api extends REST_Controller {
                     $user_id = $user_present[0]->user_id;
                 }
 
-                $device = $this->device->get_user_device($user_id);
-                if(count($device) > 0)
-                {
-                    //update device table
-                    $device_data = array('uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
-                    $this->device->edit_device($user_id, $device_data);
-                }
-                else
-                {
-                    if(isset($device_type) && isset($device_id))
-                    {
+                //insert device table
+                $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
+                $this->device->insert_device($device_data);
 
-                        //insert device table
-                        $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
-                        $this->device->insert_device($device_data);
-                    }
-                }
+                // $device = $this->device->get_user_device($user_id);
+                // if(count($device) > 0)
+                // {
+                //     //update device table
+                //     $device_data = array('uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
+                //     $this->device->edit_device($user_id, $device_data);
+                // }
+                // else
+                // {
+                //     if(isset($device_type) && isset($device_id))
+                //     {
+
+                //         //insert device table
+                //         $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
+                //         $this->device->insert_device($device_data);
+                //     }
+                // }
                 $array['reply']['user_id'] = $user_id;
                 $array['reply']['Token'] = $token;
                 $data["header"]["error"] = "0";
