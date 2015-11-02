@@ -1244,7 +1244,7 @@ class Api extends REST_Controller {
                         # code...
                                
                         $email_data['content_id'] = $this->post('content_id');
-                        $content_data = $this->content->get_content_data($content_id);    
+                        $content_data = $this->content->get_content_data($email_data['content_id']);    
                         if(count($content_data) > 0)
                         {
                             $unserialize_data = unserialize($content_data[0]['data']);
