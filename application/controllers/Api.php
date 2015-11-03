@@ -230,7 +230,7 @@ class Api extends REST_Controller {
             else
             {
                 $data["header"]["error"] = "1";
-                $data["header"]["message"] = $array['reply']['loginInfo'];//"Username or password is incorrect";
+                $data["header"]["message"] = "Username or password is incorrect";//$array['reply']['loginInfo'];
             }
 
             $this->response($data);
