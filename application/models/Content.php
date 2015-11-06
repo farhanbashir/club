@@ -35,6 +35,20 @@ Class Content extends CI_Model {
         return $result[0]['count'];
     }
 
+    function get_content_by_type_api($type) {
+        
+        $sql = "select c.*,ct.content as content_type_name from content c
+                inner join content_type ct on ct.content_type_id=c.content_type_id 
+                where ct.content = '$type'
+                 AND c.is_active = 1";
+
+
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;
+    }
+
     function get_content_by_type($type, $page = 0) {
         // $sql = "select * from content
         //     WHERE content_type_id =

@@ -276,7 +276,7 @@ class Api extends REST_Controller {
     {
         $type = $this->post('type');
 
-        $result = $this->content->get_content_by_type($type);
+        $result = $this->content->get_content_by_type_api($type);
 
         if(count($result) > 0)
         {
@@ -997,7 +997,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-                    $news = $this->content->get_content_by_type('tennisnews');
+                    $news = $this->content->get_content_by_type_api('tennisnews');
                     foreach ($news as $new) {
                         if($new['is_active'] == 1)
                         {
@@ -1029,7 +1029,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-                    $news = $this->content->get_content_by_type('snookernews');
+                    $news = $this->content->get_content_by_type_api('snookernews');
                     foreach ($news as $new) {
                         if($new['is_active'] == 1)
                         {
@@ -1061,7 +1061,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-                    $news = $this->content->get_content_by_type('badmintonnews');
+                    $news = $this->content->get_content_by_type_api('badmintonnews');
                     foreach ($news as $new) {
                         if($new['is_active'] == 1)
                         {    
@@ -1092,7 +1092,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-                    $news = $this->content->get_content_by_type('squash_and_racketballnews');
+                    $news = $this->content->get_content_by_type_api('squash_and_racketballnews');
                     foreach ($news as $new) {
                         if($new['is_active'] == 1)
                         {    
@@ -2024,7 +2024,7 @@ class Api extends REST_Controller {
         }
 
         //$result = $this->sponsor_relation_model->get_sponsor_by_page($page);
-        $result = $this->content->get_content_by_type('sponsor_pages');
+        $result = $this->content->get_content_by_type_api('sponsor_pages');
 
         if(count($result) > 0)
         {
