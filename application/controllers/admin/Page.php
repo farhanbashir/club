@@ -154,6 +154,9 @@ class Page extends MY_Controller {
                 {
                     $pdf_data = $this->uploadPagePdfFile($_POST['page']['id'], $_POST['page']['key']);
                     $data_serialize['pdf'] = $pdf_data['file'];    
+                }
+                else {
+                    $data_serialize['pdf'] = $_POST['page']['pdf_file'];
                 }    
                 
                 $data = array(
@@ -199,7 +202,10 @@ class Page extends MY_Controller {
     }
 
     public function remove_pdf($param) {
-        $page_id = $this->pagemodel->update_page_by_id($param[0], $data = array('data' => ''));
+        $page = $this->pagemodel->get_page_by_id($param[0]);
+        $data = unserialize($page[0]['data']);
+        $data['pdf'] = "";
+        $page_id = $this->pagemodel->update_page_by_id($param[0], $data = array('data' => serialize($data)));
         redirect(site_url('admin/page/' . $param[1]));
     }
 

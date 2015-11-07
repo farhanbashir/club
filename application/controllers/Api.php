@@ -45,21 +45,21 @@ class Api extends REST_Controller {
                     {
                         $data["header"]["error"] = "1";
                         $data["header"]["message"] = "Please provide valid token";
-                        $this->response($data, 401);                     
+                        $this->response($data, 200);                     
                     }    
                 }   
                 else
                 {
                     $data["header"]["error"] = "1";
                     $data["header"]["message"] = "Please provide user id (header)";
-                    $this->response($data, 401);              
+                    $this->response($data, 200);              
                 } 
             } 
             else
             {
                 $data["header"]["error"] = "1";
                 $data["header"]["message"] = "Please provide access token";
-                $this->response($data, 401);       
+                $this->response($data, 200);       
             }    
         
        } 
@@ -1421,6 +1421,7 @@ class Api extends REST_Controller {
                 $message .= "\n".ucfirst(str_replace("_", " ", $key)).":  ".$value;    
             }    
         }    
+        $email_data['from'] = $this->config->item('default_email');
         $email_data['subject'] = $subject;
         $email_data['message'] = $message;
         return $email_data;
