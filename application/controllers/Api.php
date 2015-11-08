@@ -1385,7 +1385,7 @@ class Api extends REST_Controller {
         }
         
         $data["header"]["error"] = "0";
-        $data["header"]["message"] = "Admin will contact you";
+        $data["header"]["message"] = "Your booking has been received. You will get a call shortly for confirmation.";
         $this->response($data,200);
     }
 
