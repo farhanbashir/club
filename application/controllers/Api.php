@@ -328,7 +328,7 @@ class Api extends REST_Controller {
         foreach($data as $val)
         {
             $end_date = date('Y-m-d', strtotime($val['start_date']));
-            if(($val['start_date'] == "0000-00-00 00:00:00" || $val['start_date'] == "") && ($val['end_date'] == '0000-00-00 00:00:00' || $val['end_date'] == ''))
+            if(($val['start_date'] == "0000-00-00 00:00:00" || $val['start_date'] == "") || ($val['end_date'] == '0000-00-00 00:00:00' || $val['end_date'] == ''))
             {
                 $return[] = $val;
             }
@@ -1387,6 +1387,92 @@ class Api extends REST_Controller {
         $data["header"]["error"] = "0";
         $data["header"]["message"] = "Your booking has been received. You will get a call shortly for confirmation.";
         $this->response($data,200);
+    }
+
+    function enquiryForm_post()
+    {
+        $email_data = array();
+        $email_data['family_name'] = $this->post('family_name');
+        $email_data['first_name'] = $this->post('first_name');
+        $email_data['nationality'] = $this->post('nationality');
+        $email_data['company_name'] = $this->post('company_name');
+        $email_data['contact_number'] = $this->post('contact_number');
+        $email_data['email'] = $this->post('email');
+        $email_data['membership_type'] = $this->post('membership_type');
+        $email_data['join_existing_member'] = $this->post('join_existing_member');
+        $email_data['existing_membership_number'] = $this->post('existing_membership_number');
+        $email_data['hear_about_club'] = $this->post('hear_about_club',true);
+        $email_data['to'] = $this->config->item('admin_emails');
+        
+        if(!$email_data['family_name'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide family name";
+            $this->response($data,400);
+        }
+
+        if(!$email_data['first_name'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide first name";
+            $this->response($data,400);
+        }
+
+        if(!$email_data['nationality'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide nationality";
+            $this->response($data,400);
+        }
+
+        if(!$email_data['company_name'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide company name";
+            $this->response($data,400);
+        }
+        
+        if(!$email_data['contact_number'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide contact number";
+            $this->response($data,400);
+        }
+
+        if(!$email_data['email'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide email";
+            $this->response($data,400);
+        }
+
+                
+        $email_data = $this->__makeEnquiryEmail($email_data);
+        $email_data['from'] = $email_data['email'];
+        //debug($email_data,1);
+        
+        sendEmail($email_data);
+        
+        $data["header"]["error"] = "0";
+        $data["header"]["message"] = "Your enquiry has been received. You will get a call shortly for confirmation.";
+        $this->response($data,200);
+    }
+
+    function __makeEnquiryEmail($email_data)
+    {
+        $subject = 'Enquiry Request';
+        $message = "Hello Admin \n" ;
+        $message .= "\nBelow is the detail of enquiry request";
+        foreach($email_data as $key=>$value)
+        {
+            if($key != "to")
+            {
+                $message .= "\n".ucfirst(str_replace("_", " ", $key)).":  ".$value;    
+            }    
+        }
+        $email_data['subject'] = $subject;
+        $email_data['message'] = $message;
+        return $email_data;
     }
 
     function __makeEmailMessage($email_data, $title)
