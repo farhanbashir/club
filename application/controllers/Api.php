@@ -34,6 +34,37 @@ class Api extends REST_Controller {
        $this->load->model('members_gallery_images_model', '', TRUE);
        $this->load->model('pdf', '', TRUE);
 	   //$this->load->model('news','',TRUE);
+       if(!in_array($this->router->method, $this->config->item('allowed_calls_without_token')))
+       {
+            $headers = getallheaders();
+            if(isset($headers['Token']))
+            {
+                if(isset($headers['Userid']))
+                {
+                    if(!$this->device->validToken($headers['Userid'],$headers['Token']))
+                    {
+                        $data["header"]["error"] = "1";
+                        $data["header"]["message"] = "Please provide valid token";
+                        $this->response($data, 200);                     
+                    }    
+                }   
+                else
+                {
+                    $data["header"]["error"] = "1";
+                    $data["header"]["message"] = "Please provide user id (header)";
+                    $this->response($data, 200);              
+                } 
+            } 
+            else
+            {
+                $data["header"]["error"] = "1";
+                $data["header"]["message"] = "Please provide access token";
+                $this->response($data, 200);       
+            }    
+        
+       } 
+        
+       
 	 }
 
 	public function index()
@@ -114,6 +145,17 @@ class Api extends REST_Controller {
             
     }
 
+    function logout_post()
+    {
+        $headers = getallheaders();
+        $user_id = $headers['Userid'];
+        $token = $headers['Token'];
+        $this->device->delete_device($user_id,$token);
+        $data["header"]["error"] = "0";
+        $data["header"]["message"] = "Username logout successfully";
+        $this->response($data, 200);
+    }
+
 	function login_post()
     {
     	$data = array();
@@ -144,8 +186,10 @@ class Api extends REST_Controller {
             $array = json_decode($json,TRUE);
             //$result = $this->user->login($username, $password, 0);
 
+            //if(count($result) > 0)
             if(isset($array['reply']['membership']))
             {
+                $token = bin2hex(openssl_random_pseudo_bytes(16));    
                 $user_present = $this->user->checkUser($username);
                 if($user_present == false)
                 {
@@ -156,24 +200,29 @@ class Api extends REST_Controller {
                     $user_id = $user_present[0]->user_id;
                 }
 
-                $device = $this->device->get_user_device($user_id);
-                if(count($device) > 0)
-                {
-                    //update device table
-                    $device_data = array('uid'=>$device_id, 'type'=>$device_type);
-                    $this->device->edit_device($user_id, $device_data);
-                }
-                else
-                {
-                    if(isset($device_type) && isset($device_id))
-                    {
+                //insert device table
+                $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
+                $this->device->insert_device($device_data);
 
-                        //insert device table
-                        $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$device_type);
-                        $this->device->insert_device($device_data);
-                    }
-                }
+                // $device = $this->device->get_user_device($user_id);
+                // if(count($device) > 0)
+                // {
+                //     //update device table
+                //     $device_data = array('uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
+                //     $this->device->edit_device($user_id, $device_data);
+                // }
+                // else
+                // {
+                //     if(isset($device_type) && isset($device_id))
+                //     {
+
+                //         //insert device table
+                //         $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
+                //         $this->device->insert_device($device_data);
+                //     }
+                // }
                 $array['reply']['user_id'] = $user_id;
+                $array['reply']['Token'] = $token;
                 $data["header"]["error"] = "0";
                 $data["header"]["message"] = "Login successfully";
                 $data['body'] = $array['reply'];
@@ -181,7 +230,7 @@ class Api extends REST_Controller {
             else
             {
                 $data["header"]["error"] = "1";
-                $data["header"]["message"] = $array['reply']['loginInfo'];//"Username or password is incorrect";
+                $data["header"]["message"] = "Username or password is incorrect";//$array['reply']['loginInfo'];
             }
 
             $this->response($data);
@@ -227,7 +276,7 @@ class Api extends REST_Controller {
     {
         $type = $this->post('type');
 
-        $result = $this->content->get_content_by_type($type);
+        $result = $this->content->get_content_by_type_api($type);
 
         if(count($result) > 0)
         {
@@ -279,7 +328,11 @@ class Api extends REST_Controller {
         foreach($data as $val)
         {
             $end_date = date('Y-m-d', strtotime($val['start_date']));
-            if($val['start_date'] >= date('Y-m-d') || $val['end_date'] >= date('Y-m-d'))
+            if(($val['start_date'] == "0000-00-00 00:00:00" || $val['start_date'] == "") || ($val['end_date'] == '0000-00-00 00:00:00' || $val['end_date'] == ''))
+            {
+                $return[] = $val;
+            }
+            elseif($val['start_date'] >= date('Y-m-d') || $val['end_date'] >= date('Y-m-d'))
             {
                 $return[] = $val;
             }    
@@ -324,7 +377,7 @@ class Api extends REST_Controller {
             }
             else
             {
-                $return[] = $val;   
+                //$return[] = $val;   
             }    
             //if($val['end_date'])
         }    
@@ -539,6 +592,7 @@ class Api extends REST_Controller {
                     }
                     $return[$i] = $this->__enquireObject($return[$i]);
                     unset($return[$i]['end_date']);
+                    unset($return[$i]['start_date']);
                     unset($return[$i]['data']);
                     unset($return[$i]['content_type_id']);
                     unset($return[$i]['detail_description']);
@@ -943,7 +997,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-                    $news = $this->content->get_content_by_type('tennisnews');
+                    $news = $this->content->get_content_by_type_api('tennisnews');
                     foreach ($news as $new) {
                         if($new['is_active'] == 1)
                         {
@@ -975,7 +1029,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-                    $news = $this->content->get_content_by_type('snookernews');
+                    $news = $this->content->get_content_by_type_api('snookernews');
                     foreach ($news as $new) {
                         if($new['is_active'] == 1)
                         {
@@ -1007,7 +1061,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-                    $news = $this->content->get_content_by_type('badmintonnews');
+                    $news = $this->content->get_content_by_type_api('badmintonnews');
                     foreach ($news as $new) {
                         if($new['is_active'] == 1)
                         {    
@@ -1038,7 +1092,7 @@ class Api extends REST_Controller {
                     {
                         $return[$i] = array_merge($return[$i],$additional_fields);    
                     }
-                    $news = $this->content->get_content_by_type('squash_and_racketballnews');
+                    $news = $this->content->get_content_by_type_api('squash_and_racketballnews');
                     foreach ($news as $new) {
                         if($new['is_active'] == 1)
                         {    
@@ -1195,7 +1249,7 @@ class Api extends REST_Controller {
                         # code...
                                
                         $email_data['content_id'] = $this->post('content_id');
-                        $content_data = $this->content->get_content_data($content_id);    
+                        $content_data = $this->content->get_content_data($email_data['content_id']);    
                         if(count($content_data) > 0)
                         {
                             $unserialize_data = unserialize($content_data[0]['data']);
@@ -1331,8 +1385,94 @@ class Api extends REST_Controller {
         }
         
         $data["header"]["error"] = "0";
-        $data["header"]["message"] = "Admin will contact you";
+        $data["header"]["message"] = "Your booking has been received. You will get a call shortly for confirmation.";
         $this->response($data,200);
+    }
+
+    function enquiryForm_post()
+    {
+        $email_data = array();
+        $email_data['family_name'] = $this->post('family_name');
+        $email_data['first_name'] = $this->post('first_name');
+        $email_data['nationality'] = $this->post('nationality');
+        $email_data['company_name'] = $this->post('company_name');
+        $email_data['contact_number'] = $this->post('contact_number');
+        $email_data['email'] = $this->post('email');
+        $email_data['membership_type'] = $this->post('membership_type');
+        $email_data['join_existing_member'] = $this->post('join_existing_member');
+        $email_data['existing_membership_number'] = $this->post('existing_membership_number');
+        $email_data['hear_about_club'] = $this->post('hear_about_club',true);
+        $email_data['to'] = $this->config->item('admin_emails');
+        
+        if(!$email_data['family_name'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide family name";
+            $this->response($data,400);
+        }
+
+        if(!$email_data['first_name'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide first name";
+            $this->response($data,400);
+        }
+
+        if(!$email_data['nationality'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide nationality";
+            $this->response($data,400);
+        }
+
+        if(!$email_data['company_name'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide company name";
+            $this->response($data,400);
+        }
+        
+        if(!$email_data['contact_number'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide contact number";
+            $this->response($data,400);
+        }
+
+        if(!$email_data['email'])
+        {
+            $data["header"]["error"] = "1";
+            $data["header"]["message"] = "Please provide email";
+            $this->response($data,400);
+        }
+
+                
+        $email_data = $this->__makeEnquiryEmail($email_data);
+        $email_data['from'] = $email_data['email'];
+        //debug($email_data,1);
+        
+        sendEmail($email_data);
+        
+        $data["header"]["error"] = "0";
+        $data["header"]["message"] = "Your enquiry has been received. You will get a call shortly for confirmation.";
+        $this->response($data,200);
+    }
+
+    function __makeEnquiryEmail($email_data)
+    {
+        $subject = 'Enquiry Request';
+        $message = "Hello Admin \n" ;
+        $message .= "\nBelow is the detail of enquiry request";
+        foreach($email_data as $key=>$value)
+        {
+            if($key != "to")
+            {
+                $message .= "\n".ucfirst(str_replace("_", " ", $key)).":  ".$value;    
+            }    
+        }
+        $email_data['subject'] = $subject;
+        $email_data['message'] = $message;
+        return $email_data;
     }
 
     function __makeEmailMessage($email_data, $title)
@@ -1367,6 +1507,7 @@ class Api extends REST_Controller {
                 $message .= "\n".ucfirst(str_replace("_", " ", $key)).":  ".$value;    
             }    
         }    
+        $email_data['from'] = $this->config->item('default_email');
         $email_data['subject'] = $subject;
         $email_data['message'] = $message;
         return $email_data;
@@ -1807,6 +1948,7 @@ class Api extends REST_Controller {
 
             //removing unwanted fields
             //unset($return['start_date']);
+            unset($return['start_date']);
             unset($return['end_date']);
             unset($return['data']);
             unset($return['content_type_id']);
@@ -1969,7 +2111,7 @@ class Api extends REST_Controller {
         }
 
         //$result = $this->sponsor_relation_model->get_sponsor_by_page($page);
-        $result = $this->content->get_content_by_type('sponsor_pages');
+        $result = $this->content->get_content_by_type_api('sponsor_pages');
 
         if(count($result) > 0)
         {

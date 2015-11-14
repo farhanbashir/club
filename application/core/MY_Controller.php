@@ -17,11 +17,11 @@ class MY_Controller extends CI_Controller {
         $cpt = count($_FILES['userfile']['name']);
 
         $config['upload_path'] = $path;
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = '*';
         $config['max_size'] = '512KB';
         $config['max_width'] = '10024';
         $config['max_height'] = '10768';
-
+        $this->upload->initialize($config);
 
         if (!file_exists('path/to/directory')) {
             mkdir('path/to/directory', 0777, true);
@@ -38,9 +38,16 @@ class MY_Controller extends CI_Controller {
 
 
 
-            $this->upload->initialize($config);
-            $this->upload->do_upload();
-            $this->load->library('upload', $config);
+            
+            //$this->load->library('upload', $config);
+            if (!$this->upload->do_upload()) {
+                $this->uploadSuccess = false;
+                $this->uploadError = array('error' => $this->upload->display_errors());
+            } else {
+                $this->uploadSuccess = true;
+                $this->uploadData = $this->upload->data();
+                //return $data;
+            }
             $image_data = $this->upload->data();
 
 
@@ -52,11 +59,11 @@ class MY_Controller extends CI_Controller {
             );
         }
 
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+        //$this->load->library('upload', $config);
+        //$this->upload->initialize($config);
 
 
-        if (!$this->upload->do_upload()) {
+        if ($this->uploadSuccess == false) {
             $this->uploadSuccess = false;
             $this->uploadError = array('error' => $this->upload->display_errors());
         } else {
@@ -77,11 +84,12 @@ class MY_Controller extends CI_Controller {
         $cpt = count($_FILES['userfile']['name']);
 
         $config['upload_path'] = $path;
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = '*';
         $config['max_size'] = '512KB';
         $config['max_width'] = '10024';
         $config['max_height'] = '10768';
 
+        $this->upload->initialize($config);
 
         if (!file_exists('path/to/directory')) {
             mkdir('path/to/directory', 0777, true);
@@ -97,10 +105,18 @@ class MY_Controller extends CI_Controller {
             $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
 
 
-
-            $this->upload->initialize($config);
-            $this->upload->do_upload();
-            $this->load->library('upload', $config);
+            //$this->load->library('upload', $config);
+            
+            
+            //$this->upload->do_upload();
+            if (!$this->upload->do_upload()) {
+                $this->uploadSuccess = false;
+                $this->uploadError = array('error' => $this->upload->display_errors());
+            } else {
+                $this->uploadSuccess = true;
+                $this->uploadData = $this->upload->data();
+                //return $data;
+            }
             $image_data = $this->upload->data();
 
 
@@ -112,11 +128,11 @@ class MY_Controller extends CI_Controller {
             );
         }
 
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+        //$this->load->library('upload', $config);
+        //$this->upload->initialize($config);
 
 
-        if (!$this->upload->do_upload()) {
+        if ($this->uploadSuccess == false) {
             $this->uploadSuccess = false;
             $this->uploadError = array('error' => $this->upload->display_errors());
         } else {
