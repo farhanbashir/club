@@ -81,7 +81,11 @@ class Page extends MY_Controller {
             'snooker',
             'parties',
             'sauna_and_steam_room',
-            'members_gallery'
+            'members_gallery',
+            'main_pool',
+            'kid_pool',
+            'main_beach',
+            'adults_beach'
         );
         if (in_array($page_slug, $pages)) {
             $page = $this->pagemodel->get_page_by_key($page_slug);
