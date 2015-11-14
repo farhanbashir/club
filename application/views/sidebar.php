@@ -56,18 +56,18 @@
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-edit"></i> <span>Pool</span>
+                        <i class="fa fa-edit"></i> <span>Inside Pools</span>
                         <i class="fa pull-right fa-angle-left"></i>
                     </a>
                     <ul class="treeview-menu" style="display: none;">
-                        <li><a href="<?php echo site_url('admin/page/main_pool') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Main Pool</a></li>
-                        <li><a href="<?php echo site_url('admin/page/kid_pool') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Kid Pool</a></li>
+                        <li><a href="<?php echo site_url('admin/page/main_pool') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>​Main Pool</a></li>
+                        <li><a href="<?php echo site_url('admin/page/kid_pool') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Childrens Pool</a></li>
                     </ul>
                 </li>
 
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-edit"></i> <span>Beach</span>
+                        <i class="fa fa-edit"></i> <span>Inside Beaches</span>
                         <i class="fa pull-right fa-angle-left"></i>
                     </a>
                     <ul class="treeview-menu" style="display: none;">
