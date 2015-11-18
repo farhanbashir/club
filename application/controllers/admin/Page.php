@@ -85,7 +85,8 @@ class Page extends MY_Controller {
             'main_pool',
             'kid_pool',
             'main_beach',
-            'adults_beach'
+            'adults_beach',
+            'preferences'
         );
         if (in_array($page_slug, $pages)) {
             $page = $this->pagemodel->get_page_by_key($page_slug);

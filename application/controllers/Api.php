@@ -204,6 +204,13 @@ class Api extends REST_Controller {
                 $device_data = array('user_id'=>$user_id,'uid'=>$device_id, 'type'=>$device_type,'token'=>$token);
                 $this->device->insert_device($device_data);
 
+                //get preferences
+                $preferences_data = array();
+                $homepage_image = $this->image->get_homepage_image();
+                if(count($homepage_image) > 0)
+                {
+                    $preferences_data['homepage_image'] = $homepage_image[0]['path'].$homepage_image[0]['name'];
+                }    
                 // $device = $this->device->get_user_device($user_id);
                 // if(count($device) > 0)
                 // {
@@ -223,6 +230,7 @@ class Api extends REST_Controller {
                 // }
                 $array['reply']['user_id'] = $user_id;
                 $array['reply']['Token'] = $token;
+                $array['reply']['preferences'] = $preferences_data;
                 $data["header"]["error"] = "0";
                 $data["header"]["message"] = "Login successfully";
                 $data['body'] = $array['reply'];
@@ -2180,7 +2188,7 @@ class Api extends REST_Controller {
             $return = array();
             foreach($result as $res)
             {
-                $return['images'][] = $res['image'];
+                $return['images'][] = array("image"=>$res['image'],"name"=>$res['name'],"text"=>$res['text']);
             }
 
             if(count($post) > 0)

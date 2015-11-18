@@ -11,8 +11,9 @@ Class Members_gallery_images_model extends CI_Model {
 
     public function add_images($data) {
 
-        foreach ($data as $image) {
-            $image_path = array('image' => $image);
+        foreach ($data as $image_data) {
+            $image_data = json_decode(base64_decode($image_data),true);
+            $image_path = $image_data;
             $this->db->insert('members_gallery_images', $image_path);
         }
     }

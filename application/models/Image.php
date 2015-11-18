@@ -20,6 +20,18 @@ Class Image extends CI_Model {
         return $result;
     }
 
+    function get_homepage_image()
+    {
+        $sql = "select i.* from page p 
+                inner join image i on p.page_id=i.page_id 
+                where `key`='preferences' order by i.image_id desc limit 1";
+
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->free_result();
+        return $result;        
+    }
+
     function get_images_by_page_id($page_id) {
         $this->db->where('is_active', 1);
         $query = $this->db->get_where('image', array('page_id' => $page_id));
