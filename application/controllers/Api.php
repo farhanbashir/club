@@ -193,7 +193,7 @@ class Api extends REST_Controller {
                 $user_present = $this->user->checkUser($username);
                 if($user_present == false)
                 {
-                    $user_id = $this->user->add_user(array('username'=>$username,'password'=>$password));
+                    $user_id = $this->user->add_user(array('username'=>$username,'password'=>$password,'email'=>$array['reply']['email']));
                 }   
                 else
                 {
