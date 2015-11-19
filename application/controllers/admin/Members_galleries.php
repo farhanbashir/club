@@ -143,7 +143,7 @@ class Members_galleries extends MY_Controller {
             $image_link = $item['images']['thumbnail']['url'];
             $low_resolution = $item['images']['low_resolution']['url'];
             $name = $item['user']['full_name'];
-            $text = $item['caption']['text'];
+            $text = utf8_encode($item['caption']['text']);
             $item_array = array("image"=>$low_resolution,"name"=>$name,"text"=>$text);
             echo '<div  class="checkbox-wrapper col-md-6">'
             . '<input class="checkbox_images" name="members_gallery[images][]" value="' . base64_encode(json_encode($item_array)) . '" form-control" id="checkbox_' . $count . '" type="checkbox">'
