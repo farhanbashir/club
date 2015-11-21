@@ -242,14 +242,14 @@ class MY_Controller extends CI_Controller {
         }
 
         $config['upload_path'] = $path;
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = '*';
         $config['max_size'] = '512KB';
         $config['max_width'] = '10024';
         $config['max_height'] = '10768';
 
 
         $this->upload->initialize($config);
-        $this->upload->do_upload($file_name);
+        //$this->upload->do_upload($file_name);
         if (!$this->upload->do_upload($file_name)) {
             $this->uploadSuccess = false;
             $this->uploadError = array('error' => $this->upload->display_errors());
