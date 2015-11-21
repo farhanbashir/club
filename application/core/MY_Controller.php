@@ -234,6 +234,39 @@ class MY_Controller extends CI_Controller {
         }
     }
 
+    public function uploadPreferencesImage($id,$type,$file_name)
+    {
+        $path = './assets/uploads/' . $type . '/' . $id;
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        $config['upload_path'] = $path;
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '512KB';
+        $config['max_width'] = '10024';
+        $config['max_height'] = '10768';
+
+
+        $this->upload->initialize($config);
+        $this->upload->do_upload($file_name);
+        if (!$this->upload->do_upload($file_name)) {
+            $this->uploadSuccess = false;
+            $this->uploadError = array('error' => $this->upload->display_errors());
+        } else {
+            $this->uploadSuccess = true;
+            $image_data = $this->upload->data();
+            $data = array(
+                'content_id' => $id,
+                'name' => $image_data['file_name'],
+                'path' => base_url() . 'assets/uploads/' . $type . '/' . $id . '/',
+                'is_active' => 1
+            );
+            return $data;
+        }
+     
+    }
+
     public function uploadSingleImageFile($id, $type) {
 
         $path = './assets/uploads/' . $type . '/' . $id;

@@ -169,7 +169,7 @@
                 <i class="fa pull-right fa-angle-left"></i>
             </a>
             <ul class="treeview-menu" style="display: none;">
-                <li><a href="<?php echo site_url('admin/page/preferences') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Preferences</a></li>
+                <li><a href="<?php echo site_url('admin/preferences/index') ?>" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>Preferences</a></li>
             </ul>
         </li>
         <!--        <li class="active">-->
