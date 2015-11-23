@@ -21,7 +21,7 @@ $data = unserialize($page['data']);
                                 <div class="box-body">
 
                                     <div class="form-group">
-                                        <label>Home Page Image For Iphone</label>
+                                        <label>Home Page Image For Iphone (640 × 1136)</label>
                                         <div style="background: #f7f8fa;padding: 50px;">
 
                                             <input type="file" name="iphone_image" >
@@ -30,7 +30,7 @@ $data = unserialize($page['data']);
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Home Page Image For Ipad</label>
+                                        <label>Home Page Image For Ipad (1536 × 2048)</label>
                                         <div style="background: #f7f8fa;padding: 50px;">
 
                                             <input type="file" name="ipad_image" >
@@ -39,7 +39,7 @@ $data = unserialize($page['data']);
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Home Page Image For Android</label>
+                                        <label>Home Page Image For Android (1080 x 1920)</label>
                                         <div style="background: #f7f8fa;padding: 50px;">
 
                                             <input type="file" name="android_image" >
@@ -48,7 +48,7 @@ $data = unserialize($page['data']);
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Home Page Image For Tablet</label>
+                                        <label>Home Page Image For Tablet (800 x 1280)</label>
                                         <div style="background: #f7f8fa;padding: 50px;">
 
                                             <input type="file" name="tablet_image" >
