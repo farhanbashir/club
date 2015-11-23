@@ -206,11 +206,11 @@ class Api extends REST_Controller {
 
                 //get preferences
                 $preferences_data = array();
-                $homepage_image = $this->image->get_homepage_image();
-                if(count($homepage_image) > 0)
-                {
-                    $preferences_data['homepage_image'] = $homepage_image[0]['path'].$homepage_image[0]['name'];
-                }    
+                $page_data = $this->pagemodel->get_page_by_key('preferences');
+                 if(count($page_data) > 0)
+                 {
+                     $preferences_data = unserialize($page_data[0]['data']);
+                 }    
                 // $device = $this->device->get_user_device($user_id);
                 // if(count($device) > 0)
                 // {
@@ -1233,7 +1233,8 @@ class Api extends REST_Controller {
         $type = $this->post('type');
         $email_data = array();
         $email_data['to'] = $this->config->item('admin_emails');
-        
+        $message_header = "";
+
         if(!$type)
         {
             $data["header"]["error"] = "1";
@@ -1285,6 +1286,8 @@ class Api extends REST_Controller {
                         $email_data['juniors'] = $this->post('juniors');
                         $email_data['special_ocassion'] = $this->post('special_ocassion');
                         $email_data = $this->__makeEmailMessageForOutlet($email_data);
+                        $message_header = "We have received your reservation request and endeavour to get back to you within 6 working hours.";
+
                         //debug($email_data,1);
                         sendEmail($email_data);
                         break;
@@ -1387,13 +1390,14 @@ class Api extends REST_Controller {
                 $email_data = $this->__makeEmailMessage($email_data, $title);
                 $email_data['from'] = (!empty($email)) ? $email_data['email'] : $this->config->item('default_email');
                 //debug($email_data,1);
-                
+                $message_header = "We have received your booking enquiry. You will receive a call shortly for booking confirmation.";
                 sendEmail($email_data);
+                
             break;
         }
         
         $data["header"]["error"] = "0";
-        $data["header"]["message"] = "Your booking has been received. You will get a call shortly for confirmation.";
+        $data["header"]["message"] = $message_header;
         $this->response($data,200);
     }
 
@@ -1469,8 +1473,9 @@ class Api extends REST_Controller {
     function __makeEnquiryEmail($email_data)
     {
         $subject = 'Enquiry Request';
-        $message = "Hello Admin \n" ;
-        $message .= "\nBelow is the detail of enquiry request";
+        $message = "Hi Admin \n" ;
+        $message .= "\nWe have received an enquiry request from the club app. Below is the details \n\n";
+        
         foreach($email_data as $key=>$value)
         {
             if($key != "to")
@@ -1478,6 +1483,8 @@ class Api extends REST_Controller {
                 $message .= "\n".ucfirst(str_replace("_", " ", $key)).":  ".$value;    
             }    
         }
+        
+        $message .="\n Regards,\nThe Club App";
         $email_data['subject'] = $subject;
         $email_data['message'] = $message;
         return $email_data;
@@ -1486,10 +1493,11 @@ class Api extends REST_Controller {
     function __makeEmailMessage($email_data, $title)
     {
         $subject = 'Reservation Request';
-        $message = "Hello Admin \n" ;
-        $message .= $email_data['first_name'].' '.$email_data['last_name']." wants to reserve ".$title.'. ';
+        $message = "Hi Admin \n\n" ;
+        $message .= "We have received an reservation request from ".strtoupper($email_data['first_name']).' '.strtoupper($email_data['last_name'])." for ".strtoupper($title).'.';
+        //$message .= $email_data['first_name'].' '.$email_data['last_name']." wants to reserve ".$title.'. ';
         //$message .= "\nYou can contact ".$email_data['first_name']." at this email ".$email_data['from'];
-        $message .= "\nBelow is the detail";
+        $message .= "\n\nBelow is the detail\n";
         foreach($email_data as $key=>$value)
         {
             if($key != "to")
@@ -1497,6 +1505,8 @@ class Api extends REST_Controller {
                 $message .= "\n".ucfirst(str_replace("_", " ", $key)).":  ".$value;    
             }    
         }
+                
+        $message .="\n\nRegards,\nThe Club App";
         $email_data['subject'] = $subject;
         $email_data['message'] = $message;
         return $email_data;
@@ -1505,16 +1515,27 @@ class Api extends REST_Controller {
     function __makeEmailMessageForOutlet($email_data)
     {
         $subject = 'Reservation Request For Outlet';
-        $message = "Hello Admin \n" ;
-        $message .= $email_data['name']." wants to reserve ".$email_data['outlet_type'].' Outlet. ';
-        $message .= "\nBelow is the detail";
+        $message = "Hi Admin \n\n" ;
+        $message .= "We have received an outlet reservation request from ".strtoupper($email_data['name'])." for ".strtoupper($email_data['outlet_type']).' outlet. ';
+        //$message .= $email_data['name']." wants to reserve ".$email_data['outlet_type'].' Outlet. ';
+        $message .= "\n\nBelow is the detail\n";
         foreach($email_data as $key=>$value)
         {
             if($key != "to")
             {
-                $message .= "\n".ucfirst(str_replace("_", " ", $key)).":  ".$value;    
+            	$key_text = ucfirst(str_replace("_", " ", $key));
+
+	            if( $key_text == 'Special ocassion'){
+	            	
+	            	$key_text = 'Special Occasion';
+	            
+	            }
+            	
+                $message .= "\n".$key_text." :  ".$value;    
             }    
         }    
+  
+        $message .="\n\nRegards,\nThe Club App";
         $email_data['from'] = $this->config->item('default_email');
         $email_data['subject'] = $subject;
         $email_data['message'] = $message;
