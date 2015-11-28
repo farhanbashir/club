@@ -68,7 +68,7 @@ class Notification extends MY_Controller {
 
         $notification_id = $this->notifications->add_notification($data);
 
-        //$this->send_notifications($data['send_to'],$data['notification']);
+        $this->send_notifications($data['send_to'],$data['notification']);
 
         redirect(site_url('admin/notification'));
     }
@@ -130,7 +130,8 @@ class Notification extends MY_Controller {
                 foreach ($devices as $device) {
                     if(isset($device['uid']))
                     {
-                       send_notification_android($device['uid'], $notification, $file_url); 
+                        send_notification_iphone($device['uid'], $notification, $file_url);
+                       //send_notification_android($device['uid'], $notification, $file_url); 
                     }    
                        
                 }             

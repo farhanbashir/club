@@ -34,6 +34,7 @@ class Api extends REST_Controller {
        $this->load->model('members_gallery_images_model', '', TRUE);
        $this->load->model('pdf', '', TRUE);
 	   //$this->load->model('news','',TRUE);
+      
        if(!in_array($this->router->method, $this->config->item('allowed_calls_without_token')))
        {
             $headers = getallheaders();
@@ -245,6 +246,23 @@ class Api extends REST_Controller {
         }
     }
 
+    function getPreferences_post()
+    {
+        //get preferences
+        $preferences_data = array();
+        $data = array();
+        $page_data = $this->pagemodel->get_page_by_key('preferences');
+        if(count($page_data) > 0)
+        {
+            $preferences_data = unserialize($page_data[0]['data']);
+        }
+
+        $data["header"]["error"] = "0";
+        //$data["header"]["message"] = "Login successfully";
+        $data['body'] = $preferences_data;
+        $this->response($data);
+    }
+
     function forgetPassword_post()
     {
     	$data = array();
@@ -336,6 +354,15 @@ class Api extends REST_Controller {
         foreach($data as $val)
         {
             $end_date = date('Y-m-d', strtotime($val['start_date']));
+            // if(($val['start_date'] != "0000-00-00 00:00:00" || $val['start_date'] != "") && ($val['end_date'] != '0000-00-00 00:00:00' || $val['end_date'] != ''))
+            // {
+            //     if($end_date < date('Y-m-d'))
+            //     {
+            //         $val['is_active'] = 0;
+            //         $return[] = $val;
+            //     }    
+            // }
+            // else
             if(($val['start_date'] == "0000-00-00 00:00:00" || $val['start_date'] == "") || ($val['end_date'] == '0000-00-00 00:00:00' || $val['end_date'] == ''))
             {
                 $return[] = $val;
@@ -1390,7 +1417,7 @@ class Api extends REST_Controller {
                 $email_data = $this->__makeEmailMessage($email_data, $title);
                 $email_data['from'] = (!empty($email)) ? $email_data['email'] : $this->config->item('default_email');
                 //debug($email_data,1);
-                $message_header = "We have received your booking enquiry. You will receive a call shortly for booking confirmation.";
+                $message_header = "Your booking is confirmed.";
                 sendEmail($email_data);
                 
             break;
@@ -1540,6 +1567,36 @@ class Api extends REST_Controller {
         $email_data['subject'] = $subject;
         $email_data['message'] = $message;
         return $email_data;
+    }
+
+    function __sendReservationEmail()
+    {
+        $headers = getallheaders();
+        $user_id = $headers["Userid"];
+        $type_text = $this->post("type_text");
+        $time = $this->post("time");
+        $date = $this->post("date");
+            
+        $user_data = $this->user->get_user_detail($user_id);
+        if(count($user_data) > 0)
+        {
+            $receiption_phone = $this->config->item("receiption_phone");
+            $subject = "Booking Request Received";
+            $content = "Thank you for booking with The Club App. Your booking is as follows:
+                        \n
+                        ".$type_text."\n
+                        ".$time."\n
+                        ".$date."\n
+                        \n
+                        Please contact Main Reception if you have any queries on $receiption_phone.\n
+                        \n
+                        Best Wishes,\n
+                        The Club Team";
+
+            $email_data = array("to"=>$user_data["email"],"message"=>$content,"from"=>$this->config->item('default_email'),"subject"=>$subject);            
+            sendEmail($email_data);
+        }    
+        
     }
 
     function getEventById_post()
@@ -2066,7 +2123,9 @@ class Api extends REST_Controller {
         }    
         else
         {
+            //$this->__sendReservationEmail();
             $data["header"]["error"] = "0";
+            $data["header"]["message"] = "Your booking is confirmed.";
             $data["body"] = $array['reply'];
             $this->response($data,200);   
         }
