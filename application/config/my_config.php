@@ -16,3 +16,4 @@ $config["admin_emails"] = "farhan.bashir2002@gmail.com,shaoaib.hafeez@createmedi
 $config['default_email'] = "admin@club.com";
 $config["allowed_calls_without_token"] = array("login","forgetPassword","testNotification","enquiryForm","getPreferences");
 $config["receiption_phone"] = "026731111";
+$config["android_notification_title"] = "The-Club";

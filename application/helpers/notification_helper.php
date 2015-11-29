@@ -7,7 +7,7 @@ $CI =& get_instance();
 
         $fields = array(
             'registration_ids' => $registatoin_ids,
-            'data' => array("message"=>$message),
+            'data' => array("title"=>$CI->config->item("android_notification_title"),"subtitle"=>'',"message"=>$message),
         );
 
     //print_r($fields);die;
