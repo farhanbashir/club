@@ -1577,25 +1577,17 @@ class Api extends REST_Controller {
         $time = $this->post("time");
         $date = $this->post("date");
             
+        if($user_id){    
         $user_data = $this->user->get_user_detail($user_id);
         if(count($user_data) > 0)
         {
             $receiption_phone = $this->config->item("receiption_phone");
             $subject = "Booking Request Received";
-            $content = "Thank you for booking with The Club App. Your booking is as follows:
-                        \n
-                        ".$type_text."\n
-                        ".$time."\n
-                        ".$date."\n
-                        \n
-                        Please contact Main Reception if you have any queries on $receiption_phone.\n
-                        \n
-                        Best Wishes,\n
-                        The Club Team";
-
-            $email_data = array("to"=>$user_data["email"],"message"=>$content,"from"=>$this->config->item('default_email'),"subject"=>$subject);            
+            $content = "Thank you for booking with The Club App. Your booking is as follows:\n\n".$type_text."\n".$time."\n".$date."\n\nPlease contact Main Reception if you have any queries on $receiption_phone.\n\nBest Wishes,\nThe Club Team";
+            $email_data = array("to"=>"greatahbab@gmail.com","message"=>$content,"from"=>$this->config->item('default_email'),"subject"=>$subject);            
             sendEmail($email_data);
         }    
+        }
         
     }
 
@@ -2123,7 +2115,7 @@ class Api extends REST_Controller {
         }    
         else
         {
-            //$this->__sendReservationEmail();
+            $this->__sendReservationEmail();
             $data["header"]["error"] = "0";
             $data["header"]["message"] = "Your booking is confirmed.";
             $data["body"] = $array['reply'];
