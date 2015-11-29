@@ -142,7 +142,7 @@ class Members_galleries extends MY_Controller {
             $count++;
             $image_link = $item['images']['thumbnail']['url'];
             $low_resolution = $item['images']['low_resolution']['url'];
-            $name = $item['user']['full_name'];
+            $name = $item['user']['username'];
             $text = utf8_encode($item['caption']['text']);
             $item_array = array("image"=>$low_resolution,"name"=>$name,"text"=>$text);
             echo '<div  class="checkbox-wrapper col-md-6">'
